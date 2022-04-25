@@ -1,0 +1,26 @@
+
+body div#header span {
+    /* display: grid; */
+    width: 33%;
+    display: inline-grid;
+    text-align: center;
+}
+
+body div#header span:nth-child(3) button {
+    width: fit-content;
+}
+
+
+body div#welcome-msg {
+    margin: 5% 0 0 0;
+    padding: 2% 0 2% 0;
+    text-align: center;
+}
+
+body div#operation-items>.item {
+    height: 15em;
+    width: 16%;
+    margin: 0 2% 4% 1%;
+    display: inline-grid;
+}
+
