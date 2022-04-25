@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Roles</title>
+    <script type = "text/javascript" src="./js/create-roles.js"></script>  
+
+    <link rel="stylesheet" href="./css/login.css" />
+</head>
+<body>
+    <div id="header">
+        <img id="header-logo" src="" alt="logo_image"/>
+    </div>
+
+    <div id="createRoles-div">
+        <form method="POST" action="/createRoles">
+            <label for="roleName">Roles</label>
+            <input type="text" id="roleName" name="roleName"><br><br>
+            <input type = "button" onclick = "createRoles()" value = "Create">  
+        </form>
+    </div>
+</body>
+</html>
