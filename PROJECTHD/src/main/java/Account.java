@@ -1,6 +1,3 @@
-import restaurant.Account;
-import restaurant.Role;
-
 public class Account {
 	private static int tempID = 1;
 	private int accountId;
