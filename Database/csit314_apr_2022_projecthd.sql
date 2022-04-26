@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2022 at 07:30 AM
+-- Generation Time: Apr 26, 2022 at 03:56 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: ` CSIT314_APR_2022_PROJECTHD`
+-- Database: `csit314_apr_2022_projecthd`
 --
 
 -- --------------------------------------------------------
@@ -31,9 +31,10 @@ CREATE TABLE `Account` (
   `AccountID` int(5) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `RoleID` int(5) NOT NULL,
-  `DateJoined` date NOT NULL,
+  `DateJoined` timestamp NOT NULL DEFAULT current_timestamp(),
   `Username` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL
+  `Password` varchar(50) NOT NULL,
+  `Status` varchar(10) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,8 +46,7 @@ CREATE TABLE `Account` (
 CREATE TABLE `AccountLog` (
   `LogID` int(5) NOT NULL,
   `AccountID` int(5) NOT NULL,
-  `Date` date NOT NULL,
-  `Time` time NOT NULL,
+  `Date` datetime NOT NULL DEFAULT current_timestamp(),
   `OperationFlag` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -71,6 +71,7 @@ CREATE TABLE `Role` (
 --
 ALTER TABLE `Account`
   ADD PRIMARY KEY (`AccountID`),
+  ADD UNIQUE KEY `Username` (`Username`),
   ADD KEY `RoleID` (`RoleID`);
 
 --
