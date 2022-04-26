@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Roles</title>
+    <script type = "text/javascript" src="./js/search-roles.js"></script>  
+
+    <link rel="stylesheet" href="./css/login.css" />
+</head>
+<body>
+    <div id="header">
+        <img id="header-logo" src="" alt="logo_image"/>
+    </div>
+
+    <div id="searchRoles-div">
+        <form method="POST" action="/searchRoles">
+            <label for="searchRoles">Roles</label>
+            <input type="text" id="roleName" name="roleName" placeholder="Search for roles" title="Type in a role"><br><br>
+            <input type = "button" onclick = "searchRoles()" value = "Search">  
+        </form>
+    </div>
+</body>
+</html>
