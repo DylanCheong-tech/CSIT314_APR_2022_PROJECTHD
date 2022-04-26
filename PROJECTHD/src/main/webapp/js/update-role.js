@@ -1,44 +1,15 @@
-let sample_data = [
-    {id : 1, name: "json", desc : "abc"},
-    {id : 1, name: "json", desc : "abc"},
-    {id : 1, name: "json", desc : "abc"},
-    {id : 1, name: "json", desc : "abc"},
-    {id : 1, name: "json", desc : "abc"}
-]
+var params = new URLSearchParams(window.location.search);
+var status = params.get("status");
 
-var list_frame = document.getElementById("role-list");
+if (status == "success"){
+    window.alert("Update Account Successfull");
 
-for (index in sample_data)
-{
-    var row = document.createElement("tr");
-    var form = document.createElement("form");
-    form.id = "form" + (index+1);
+    window.location.href = "/update-account.html";
+}
+else if (status == "fail"){
+    window.alert("Update Account Fail");
 
-    for (item in sample_data[index])
-    {
-        var column = document.createElement("td");
-        column.innerHTML = sample_data[index][item];
-
-        row.appendChild(column);
-    }
-
-    var btnCol = document.createElement("td");
-    var button = document.createElement("button");
-    button.innerHTML = "Update";
-    // function binding --> <function_name>.bind(event, <parameters if any>)
-
-    button.onclick = () => {window.alert("Testing")};
-
-    btnCol.appendChild(button);
-    row.appendChild(btnCol);
-
-    row.appendChild(form);
-
-    console.log(row);
-    
-    list_frame.appendChild(row);
-
-    console.log(list_frame);
+    window.location.href = "/update-account.html";
 }
 
 setInterval(() => {
@@ -51,42 +22,110 @@ setInterval(() => {
 
 function redirectToPortal() {
     window.location.href = "./user-admin-portal.html";
-    // window.location.assign("./user-admin-portal.html"); // works like above, not sure whats the difference
-    //  window.location.replace("./user-admin-portal.html"); // no record in history so back button doesnt work
 }
 
-function displayLogout () {
+function displayLogout() {
     window.confirm("Are you sure want to logout ? ");
 }
 
-// need to scale updateRole()/submitUpdate()
-var updateBtn = document.getElementById("update-btn");
-var submitBtn = document.getElementById("submit-btn");
+let sample_data = [
+    {id : 1, name: "json", desc : "abc"},
+    {id : 1, name: "json", desc : "abc"},
+    {id : 1, name: "json", desc : "abc"},
+    {id : 1, name: "json", desc : "abc"},
+    {id : 1, name: "json", desc : "abc"}
+]
 
-function updateRole() {
-    updateBtn.style.display = 'none';
-    submitBtn.style.display = 'inline';
-    document.getElementById("id1").readOnly = false;
-    document.getElementById("name1").readOnly = false;
-    document.getElementById("desc1").readOnly = false;
+var list_frame = document.getElementById("role-list");
+
+for (index in sample_data) {
+    var row = document.createElement("tr");
+    row.id = "record-" + (parseInt(index) + 1);
+
+    var column1 = document.createElement("td");
+    column1.innerHTML = sample_data[index].id;
+    row.appendChild(column1);
+
+    var column2 = document.createElement("td");
+    column2.innerHTML = sample_data[index].name;
+    row.appendChild(column2);
+
+    var column3 = document.createElement("td");
+    column3.innerHTML = sample_data[index].desc;
+    row.appendChild(column3);
+
+    var btnCol = document.createElement("td");
+    var button = document.createElement("button");
+    button.innerHTML = "Update";
+    button.onclick = updateRole.bind(event, row.id);
+
+    btnCol.appendChild(button);
+    row.appendChild(btnCol);
+
+    list_frame.appendChild(row);
 }
 
-var new_id;
-var new_name;
-var new_desc;
+function updateRole(recordID) {
+    var row = document.getElementById(recordID);
 
-function submitUpdate() {
-    new_id = document.getElementById("id1").value;
-    new_name = document.getElementById("name1").value;
-    new_desc = document.getElementById("desc1").value;
-    console.log(new_id); // update db
-    console.log(new_name); // update db
-    console.log(new_desc); // update db
-    document.getElementById("id1").readOnly = true;
-    document.getElementById("name1").readOnly = true;
-    document.getElementById("desc1").readOnly = true;
-    submitBtn.style.display = 'none';
-    updateBtn.style.display = 'inline';
+    var childs = row.childNodes;
+
+    // invisible id field (as needed for updated in backed end)
+    var column = document.createElement("td");
+    var input = document.createElement("input");
+    input.name = "roleID";
+    input.type = "text";
+    input.value = childs[0].textContent;
+
+    column.appendChild(input);
+    column.style.display = "none";
+    row.appendChild(column);
+
+    // name field
+    var column = document.createElement("td");
+    var input = document.createElement("input");
+    input.name = "name";
+    input.type = "text";
+    input.value = childs[1].textContent;
+
+    column.appendChild(input);
+    childs[1].replaceWith(column);
+
+    // desc field
+    column = document.createElement("td");
+    input = document.createElement("input");
+    input.name = "desc";
+    input.type = "text";
+    input.value = childs[2].textContent;
+
+    column.appendChild(input);
+    childs[2].replaceWith(column);
+
+    var button = document.createElement("button");
+    button.type = "submit";
+    button.textContent = "Submit";
+    
+    childs[3].replaceWith(button);
+    button.onclick = submitUpdate.bind(event, row.id);
+
+    var buttonsList = document.querySelectorAll("button");
+
+    for (index in buttonsList)  {
+        if (buttonsList[index].innerHTML == "Update")  {
+            buttonsList[index].disabled = true;
+        }
+    }
 }
 
-
+function submitUpdate(recordID) {
+    // code to submit to backend
+    var updateRole = true; // boolean should be pulled from backend?
+    if (updateRole == true) {
+        alert("Update Roles Successful")
+    // forgot the part where dylan mentions about AJAX? 
+    // where page will refresh with updated info
+    } else {
+        alert("Update Roles Fail")
+    // does page refresh?
+    }
+}

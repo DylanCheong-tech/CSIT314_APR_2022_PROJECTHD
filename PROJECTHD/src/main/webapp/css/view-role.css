@@ -1,0 +1,36 @@
+body div#header span {
+    display: inline-block;
+}
+
+body div#header span#header-date-time {
+    width: 70%;
+}
+
+body div#header span.header-btn{
+    width: 14%;
+    text-align: right;
+}
+
+body div#welcome-msg {
+    margin: 5% 0 0 0;
+    padding: 2% 0 2% 0;
+    text-align: center;
+}
+
+body div#view-role-form {
+    text-align: center;
+}
+
+body div#view-role-form form span.text-item {
+    display: inline-block;
+    text-align: left;
+    width: 15%;
+}
+
+body div#view-role-form form select, div#view-role-form form input {
+    width: 20%;
+}
+
+body div#view-role-form{
+    display: none;
+}

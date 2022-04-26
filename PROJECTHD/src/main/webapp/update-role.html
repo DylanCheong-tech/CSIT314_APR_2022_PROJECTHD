@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Admin Portal</title>
+    <title>Update Account</title>
 
     <link rel="stylesheet" href="./css/update-role.css" />
 </head>
+
 <body>
-    <div id="header-container">
-        <span id="header-date-time" align="left"></span>
-        <span align="center">
-        <button id="user-admin-portal-btn" type="button" onclick="redirectToPortal()">User Admin Portal</button>
+    <div id="header">
+        <span id="header-date-time"></span>
+        <span class="header-btn">
+            <button id="user-admin-portal-btn" type="button" onclick="redirectToPortal()">User Admin Portal</button>
         </span>
-        <span align="center">
-        <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+        <span class="header-btn">
+            <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
         </span>
     </div>
 
-    <div id="update-roles-header">
+    <div id="welcome-msg">
         Update Roles
     </div>
 
-    <table id="operation-table" align="center">
-        <thead>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Action</th>
-        </thead>
-        <tbody id="role-list">
-            <tr>
-                <td><input type='text' id="id1" value="1" readonly></td>
-                <td><input type='text' id="name1" value="abc xyz" readonly></td>
-                <td><input type='text' id="desc1" value="lorem ipsum lorem ipsum lorem ipsum" readonly></td>
-                <td>
-                    <button id="update-btn" type="button" onclick="updateRole()">Update</button>
-                    <button id="submit-btn" type="button" onclick="submitUpdate()" hidden>Submit</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+    <form action="/updateRole" method="post"></form>
+        <table id="update-role-table" align="center">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </thead>
+            <tbody id="role-list">
+            </tbody>
+        </table>
+    </form>
+    
     <script src="./js/update-role.js"></script>
 </body>
+
 </html>
