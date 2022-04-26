@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 public class Account {
 	private static final String connStr = "jdbc:mysql://localhost:3306/csit314_apr_2022_projecthd?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+	private static final String dbusername  = "root";
+	private static final String dbpassword = "";
 	private int accountID;
 	private String username;
 	private String password;
@@ -77,8 +79,7 @@ public class Account {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT Password FROM Account WHERE Username = ? ");
@@ -97,6 +98,7 @@ public class Account {
 
 			result = stmt.executeQuery();
 
+			// write to the AccontLog database
 			if (result.next()) {
 				this.accountID = result.getInt("AccountID");
 
@@ -124,8 +126,7 @@ public class Account {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT Password FROM Account WHERE Username = ? ");
@@ -153,8 +154,7 @@ public class Account {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn
@@ -178,8 +178,7 @@ public class Account {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn
@@ -202,8 +201,7 @@ public class Account {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement(
@@ -232,8 +230,7 @@ public class Account {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Account WHERE Name = ? ");
@@ -279,8 +276,7 @@ public class Account {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Account WHERE AccountID = ? ");
@@ -326,8 +322,7 @@ public class Account {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Account");
@@ -360,6 +355,30 @@ public class Account {
 		}
 
 		return returnArray;
+	}
+
+	public int getID() {
+		return this.accountID;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public String getUsername() {
+		return this.username;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public Role getRole() {
+		return this.role;
+	}
+
+	public String getDateJoined() {
+		return this.dateJoined;
 	}
 
 	@Override

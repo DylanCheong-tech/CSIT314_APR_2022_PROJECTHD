@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
 public class Role {
 	private static final String connStr = "jdbc:mysql://localhost:3306/csit314_apr_2022_projecthd?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
+	private static final String dbusername = "root";
+	private static final String dbpassword = "";
 	private int roleID;
 	private String name;
 	private String descriptions;
@@ -35,8 +37,7 @@ public class Role {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("INSERT INTO Role (Name, Descriptions) VALUES ( ?, ?)");
@@ -59,8 +60,7 @@ public class Role {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn
@@ -85,8 +85,7 @@ public class Role {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("DELETE FROM Role WHERE RoleID = ? ");
@@ -111,8 +110,7 @@ public class Role {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role WHERE Name = ? ");
@@ -144,8 +142,7 @@ public class Role {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
@@ -177,8 +174,7 @@ public class Role {
 		try (
 
 				Connection conn = DriverManager.getConnection(
-						connStr,
-						"root", "");
+						connStr, dbusername, dbpassword);
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role");
@@ -202,6 +198,14 @@ public class Role {
 
 	public int getID() {
 		return this.roleID;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public String getDescriptions() {
+		return this.descriptions;
 	}
 
 	@Override
