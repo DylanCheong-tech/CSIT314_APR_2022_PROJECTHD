@@ -270,7 +270,7 @@ public class Account {
 		return returnAcc;
 	}
 
-	public static Account viewRole(int accountID) {
+	public static Account viewAccount(int accountID) {
 		Account returnAcc = null;
 
 		try (

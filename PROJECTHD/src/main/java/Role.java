@@ -81,7 +81,7 @@ public class Role {
 		}
 	}
 
-	public static boolean deleteRole(int roleId) {
+	public static boolean deleteRole(int roleID) {
 		try (
 
 				Connection conn = DriverManager.getConnection(
