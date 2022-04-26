@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+
+    <link rel="stylesheet" href="./css/create-account.css" />
+</head>
+<body>
+    <div id="header">
+        <span id="header-date-time"></span>
+        <span>
+        <img id="header-logo" src="" alt="logo_image"/>
+        </span>
+        <span>
+        <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+        </span>
+    </div>
+
+    <div id="welcome-msg">
+        Create Account
+    </div>
+
+    <div id="create-account-form">
+        <p>Create Account Form</p>
+        <form action="/createAccount" method="POST">
+            <span class="text-item">ID</span> 
+            <input type="text" value="1" disabled />
+            <br />
+
+            <span class="text-item">Name</span>
+            <input type="text" />
+            <br />
+
+            <span class="text-item">Role ID</span>
+            <!-- need to depend on the database records -->
+            <select>
+                <option selected disabled></option>
+                <option>1 - Staff</option>
+                <option>2 - Restaurant Manager</option>
+                <option>3 - Restaurant Owner</option>
+            </select>
+            <br />
+
+            <span class="text-item">Username</span>
+            <input type="text" />
+            <br />
+
+            <span class="text-item">Password</span>
+            <input type="text" />
+            <br />
+            <br />
+
+            <button type="submit">Create</button>
+        </form>
+    </div>
+
+    <script src="./js/user-admin-portal.js"></script>
+</body>
+</html>

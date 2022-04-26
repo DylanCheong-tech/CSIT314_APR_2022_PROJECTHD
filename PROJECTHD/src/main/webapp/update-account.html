@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Account</title>
+
+    <link rel="stylesheet" href="./css/update-account.css" />
+</head>
+
+<body>
+    <div id="header">
+        <span id="header-date-time"></span>
+        <span class="header-btn">
+            <button id="logout-btn" type="button" onclick="alert('Testing')">User Admin Portal</button>
+        </span>
+        <span class="header-btn">
+            <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+        </span>
+    </div>
+
+    <div id="welcome-msg">
+        Update Account
+    </div>
+
+    <table id="update-acc-table" align="center">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Role ID</th>
+            <th>Password</th>
+            <th>Date Joined</th>
+            <th>Action</th>
+        </thead>
+
+        <tbody id="acc-list">
+        </tbody>
+    </table>
+
+    <script src="./js/update-account.js"></script>
+</body>
+
+</html>
