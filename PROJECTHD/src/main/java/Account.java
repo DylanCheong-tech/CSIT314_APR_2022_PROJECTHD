@@ -122,7 +122,7 @@ public class Account {
 		}
 	}
 
-	public static void logout(String username) {
+	public static boolean logout(String username) {
 		try (
 
 				Connection conn = DriverManager.getConnection(
@@ -145,12 +145,16 @@ public class Account {
 				stmt.executeUpdate();
 			}
 
+			return true;
+
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+
+			return false;
 		}
 	}
 
-	public void createAccount() {
+	public boolean createAccount() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
@@ -168,9 +172,11 @@ public class Account {
 			stmt.executeUpdate();
 
 			System.out.println("Inserted Successfully");
+			return true;
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+			return false;
 		}
 	}
 
@@ -270,7 +276,7 @@ public class Account {
 		return returnAcc;
 	}
 
-	public static Account viewAccount(int accountID) {
+	public static Account getAccount(int accountID) {
 		Account returnAcc = null;
 
 		try (

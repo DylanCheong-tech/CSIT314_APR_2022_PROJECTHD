@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
 
+    <!--Google jQuery CDN-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="./css/create-account.css" />
 </head>
 <body>
@@ -25,31 +28,31 @@
 
     <div id="create-account-form">
         <p>Create Account Form</p>
-        <form action="/createAccount" method="POST">
+        <form action="/createAccount" method="post">
             <span class="text-item">ID</span> 
             <input type="text" value="1" disabled />
             <br />
 
             <span class="text-item">Name</span>
-            <input type="text" />
+            <input type="text" name="name" />
             <br />
 
             <span class="text-item">Role ID</span>
             <!-- need to depend on the database records -->
-            <select>
-                <option selected disabled></option>
-                <option>1 - Staff</option>
-                <option>2 - Restaurant Manager</option>
-                <option>3 - Restaurant Owner</option>
+            <select name="role">
+                <option selected disabled value=""></option>
+                <option value="1 - Staff">1 - Staff</option>
+                <option value="2 - Restaurant Manager">2 - Restaurant Manager</option>
+                <option value="3 - Restaurant Owner">3 - Restaurant Owner</option>
             </select>
             <br />
 
             <span class="text-item">Username</span>
-            <input type="text" />
+            <input type="text" name="username" />
             <br />
 
             <span class="text-item">Password</span>
-            <input type="text" />
+            <input type="text" name="password" />
             <br />
             <br />
 
@@ -57,6 +60,6 @@
         </form>
     </div>
 
-    <script src="./js/user-admin-portal.js"></script>
+    <script src="./js/create-account.js"></script>
 </body>
 </html>

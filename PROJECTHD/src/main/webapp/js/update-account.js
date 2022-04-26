@@ -1,3 +1,17 @@
+var params = new URLSearchParams(window.location.search);
+var status = params.get("status");
+
+if (status == "success"){
+    window.alert("Update Account Successfull");
+
+    window.location.href = "/update-account.html";
+}
+else if (status == "fail"){
+    window.alert("Update Account Fail");
+
+    window.location.href = "/update-account.html";
+}
+
 setInterval(() => {
     var currentDate = new Date();
     var date = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
@@ -36,15 +50,15 @@ for (index in sample_data) {
     row.appendChild(column2);
 
     var column3 = document.createElement("td");
-    column3.innerHTML = sample_data[index].username;
+    column3.innerHTML = sample_data[index].roleID;
     row.appendChild(column3);
 
     var column4 = document.createElement("td");
-    column4.innerHTML = sample_data[index].roleID;
+    column4.innerHTML = sample_data[index].username;
     row.appendChild(column4);
 
     var column5 = document.createElement("td");
-    column5.innerHTML = "*".repeat(sample_data[index].password.length);
+    column5.innerHTML = "*".repeat(8);
     row.appendChild(column5);
 
     var column6 = document.createElement("td");
@@ -68,36 +82,31 @@ function updateAccount(recordID) {
 
     var childs = row.childNodes;
 
-    // name field
+    // invisible id field (as needed for updated in backed end)
     var column = document.createElement("td");
     var input = document.createElement("input");
+    input.name = "accID";
+    input.type = "text";
+    input.value = childs[0].textContent;
+
+    column.appendChild(input);
+    column.style.display = "none";
+    row.appendChild(column);
+
+    // name field
+    column = document.createElement("td");
+    input = document.createElement("input");
+    input.name = "name";
     input.type = "text";
     input.value = childs[1].textContent;
 
     column.appendChild(input);
     childs[1].replaceWith(column);
 
-    // username field
-    column = document.createElement("td");
-    input = document.createElement("input");
-    input.type = "text";
-    input.value = childs[2].textContent;
-
-    column.appendChild(input);
-    childs[2].replaceWith(column);
-
-    // password field
-    column = document.createElement("td");
-    input = document.createElement("input");
-    input.type = "text";
-    input.value = childs[4].textContent;
-
-    column.appendChild(input);
-    childs[4].replaceWith(column);
-
     // role id (drop down list)
     column = document.createElement("td");
     var select = document.createElement("select");
+    select.name = "role";
     for (index in role_list) {
         var option = document.createElement("option");
         option.value = role_list[index];
@@ -105,20 +114,38 @@ function updateAccount(recordID) {
         select.appendChild(option);
     }
     column.appendChild(select);
+    childs[2].replaceWith(column);
+
+    // username field
+    column = document.createElement("td");
+    input = document.createElement("input");
+    input.name = "username"
+    input.type = "text";
+    input.value = childs[3].textContent;
+
+    column.appendChild(input);
     childs[3].replaceWith(column);
+
+    // password field
+    column = document.createElement("td");
+    input = document.createElement("input");
+    input.name = "password";
+    input.type = "text";
+    input.value = childs[4].textContent;
+
+    column.appendChild(input);
+    childs[4].replaceWith(column);
 
     var button = document.createElement("button");
     button.type = "submit";
     button.textContent = "Submit";
-    
+
     childs[6].replaceWith(button);
 
     var buttonsList = document.querySelectorAll("button");
 
-    for (index in buttonsList)
-    {
-        if (buttonsList[index].innerHTML == "Update")
-        {
+    for (index in buttonsList) {
+        if (buttonsList[index].innerHTML == "Update") {
             buttonsList[index].disabled = true;
         }
     }

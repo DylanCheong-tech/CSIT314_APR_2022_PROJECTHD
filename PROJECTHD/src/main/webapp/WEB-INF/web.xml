@@ -11,8 +11,33 @@
    </servlet>
 
    <servlet>
-      <servlet-name>JSONReply</servlet-name>
-      <servlet-class>JSONReply</servlet-class>
+      <servlet-name>UserAdminLogoutC</servlet-name>
+      <servlet-class>UserAdminLogoutC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminCreateAccountC</servlet-name>
+      <servlet-class>UserAdminCreateAccountC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminSuspendAccountC</servlet-name>
+      <servlet-class>UserAdminSuspendAccountC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminUpdateAccountC</servlet-name>
+      <servlet-class>UserAdminUpdateAccountC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminSearchAccountC</servlet-name>
+      <servlet-class>UserAdminSearchAccountC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminViewAccountC</servlet-name>
+      <servlet-class>UserAdminViewAccountC</servlet-class>
    </servlet>
  
    <!-- Note: All <servlet> elements MUST be grouped together and
@@ -24,8 +49,32 @@
    </servlet-mapping>
 
    <servlet-mapping>
-      <servlet-name>JSONReply</servlet-name>
-      <url-pattern>/json</url-pattern>
+      <servlet-name>UserAdminLogoutC</servlet-name>
+      <url-pattern>/logoutUser</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminCreateAccountC</servlet-name>
+      <url-pattern>/createAccount</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminSuspendAccountC</servlet-name>
+      <url-pattern>/suspendAccount</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminUpdateAccountC</servlet-name>
+      <url-pattern>/updateAccount</url-pattern>
    </servlet-mapping>
   
+   <servlet-mapping>
+      <servlet-name>UserAdminSearchAccountC</servlet-name>
+      <url-pattern>/searchAccount</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminViewAccountC</servlet-name>
+      <url-pattern>/getAccount</url-pattern>
+   </servlet-mapping>
 </web-app>

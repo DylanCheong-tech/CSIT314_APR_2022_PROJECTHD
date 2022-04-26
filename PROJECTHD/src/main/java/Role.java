@@ -27,6 +27,12 @@ public class Role {
 		this.descriptions = descriptions;
 	}
 
+	public Role(int roleID) {
+		this.roleID = roleID;
+		this.name = "";
+		this.descriptions = "";
+	}
+
 	public Role(Role role) {
 		this.roleID = role.roleID;
 		this.name = role.name;
@@ -90,7 +96,7 @@ public class Role {
 		) {
 			PreparedStatement stmt = conn.prepareStatement("DELETE FROM Role WHERE RoleID = ? ");
 
-			stmt.setInt(1, roleId);
+			stmt.setInt(1, roleID);
 
 			stmt.executeUpdate();
 

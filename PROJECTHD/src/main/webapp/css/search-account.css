@@ -16,3 +16,7 @@ body div#welcome-msg {
     padding: 2% 0 2% 0;
     text-align: center;
 }
+
+body div#search-frame{
+    text-align: center;
+}
