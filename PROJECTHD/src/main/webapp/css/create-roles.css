@@ -1,0 +1,24 @@
+ h2
+ {
+     text-align:center;
+     background-color: #f1f1f1;
+     border: 1px solid #ddd; 
+ }
+
+ form 
+ { 
+    text-align: center;
+ }
+
+ #create-role-form
+ {
+     text-align: center;
+ }
+
+ label
+ {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+ }
+
