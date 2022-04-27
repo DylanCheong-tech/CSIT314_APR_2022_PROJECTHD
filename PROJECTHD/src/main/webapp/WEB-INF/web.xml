@@ -64,6 +64,16 @@
       <servlet-name>UserAdminViewRoleC</servlet-name>
       <servlet-class>UserAdminViewRoleC</servlet-class>
    </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminGetRoleList</servlet-name>
+      <servlet-class>UserAdminGetRoleList</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminGetAccountList</servlet-name>
+      <servlet-class>UserAdminGetAccountList</servlet-class>
+   </servlet>
  
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
@@ -126,5 +136,15 @@
    <servlet-mapping>
       <servlet-name>UserAdminViewRoleC</servlet-name>
       <url-pattern>/getRole</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminGetRoleList</servlet-name>
+      <url-pattern>/getRoleList</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminGetAccountList</servlet-name>
+      <url-pattern>/getAccountList</url-pattern>
    </servlet-mapping>
 </web-app>

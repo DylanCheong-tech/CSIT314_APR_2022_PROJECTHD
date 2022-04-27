@@ -70,7 +70,7 @@ function viewAccount (accountID){
         "dataType": "json"
     }).responseJSON;
 
-    if (!requested_json){
+    if (!acc_json){
         window.alert("View Account Fail");
         return;
     }

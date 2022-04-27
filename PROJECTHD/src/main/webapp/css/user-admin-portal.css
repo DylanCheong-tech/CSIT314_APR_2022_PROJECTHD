@@ -1,26 +1,70 @@
-
 body div#header span {
-    width: 33%;
-    display: inline-grid;
+    width: 32%;
+    display: inline-block;
+    text-align: right;
+}
+
+body div#header span#header-date-time {
+    text-align: left;
+    font-size: 2em;
+    line-height: 1.5em;
+    padding: 0 0 0 1em;
+}
+
+body div#header span#logo {
     text-align: center;
 }
 
-body div#header span:nth-child(3) button {
-    width: fit-content;
-    margin: 0 0 0 60%;
+body div#header span img#header-logo {
+    display: inline-block;
+    width: 25%;
 }
 
+/* body div#header span#button {
+    margin: 0 0 3em 0;
+} */
+
+body div#header span#button button {
+    display: inline-block;
+    width: 50%;
+    height: 2.5em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border : 2px #000000 solid;
+}
 
 body div#welcome-msg {
-    margin: 5% 0 0 0;
+    margin: 1% 0 1% 0;
     padding: 2% 0 2% 0;
     text-align: center;
+    background-color: #FFD100;
+    font-size: 2em;
 }
 
-body div#operation-items>.item {
-    height: 15em;
-    width: 16%;
-    margin: 0 2% 4% 1%;
+body div#operation-items span.item {
+    height: fit-content;
+    width: 17%;
+    margin: 0 1% 4% 1%;
     display: inline-grid;
+    position: relative;
+
+    border: 2px #000000 solid;
+    border-radius: 50px;
 }
 
+body div#operation-items span.item img.action-logo{
+    margin: 10% 0 10% 27.5%;
+    width: 45%;
+}
+
+body div#operation-items span.item button.action-button{
+    background-color: #FFD100;
+    border-radius: 50px;
+    width: 80%;
+    margin: 0 0 0 10%;
+    font-size: 1.2em;
+
+    height: 2.5em;
+    position: absolute;
+    top : 90%;
+}

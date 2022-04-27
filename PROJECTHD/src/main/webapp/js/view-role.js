@@ -11,37 +11,35 @@ function displayLogout() {
     window.confirm("Are you sure want to logout ? ");
 }
 
-let sample_data = [
-    {id : 1, name: "json", desc : "abc"},
-    {id : 1, name: "json", desc : "abc"},
-    {id : 1, name: "json", desc : "abc"},
-    {id : 1, name: "json", desc : "abc"},
-    {id : 1, name: "json", desc : "abc"}
-]
-
+var role_list = $.ajax({
+    async: false,
+    "url": "/getRoleList",
+    "type": "get",
+    "dataType": "json"
+}).responseJSON;
 
 var list_frame = document.getElementById("role-list");
 
-for (index in sample_data) {
+for (index in role_list) {
     var row = document.createElement("tr");
     row.id = "record-" + (parseInt(index) + 1);
 
     var column1 = document.createElement("td");
-    column1.innerHTML = sample_data[index].id;
+    column1.innerHTML = role_list[index].roleID;
     row.appendChild(column1);
 
     var column2 = document.createElement("td");
-    column2.innerHTML = sample_data[index].name;
+    column2.innerHTML = role_list[index].name;
     row.appendChild(column2);
 
     var column3 = document.createElement("td");
-    column3.innerHTML = sample_data[index].desc;
+    column3.innerHTML = role_list[index].descriptions;
     row.appendChild(column3);
 
     var btnCol = document.createElement("td");
     var button = document.createElement("button");
     button.innerHTML = "View";
-    button.onclick = viewRole.bind(event, sample_data[index].roleID);
+    button.onclick = viewRole.bind(event, role_list[index].roleID);
 
     btnCol.appendChild(button);
     row.appendChild(btnCol);
@@ -57,7 +55,7 @@ function viewRole (roleID){
         "dataType": "json"
     }).responseJSON;
 
-    if (!requested_json){
+    if (!role_json){
         window.alert("View Role Fail");
         return;
     }
@@ -67,7 +65,7 @@ function viewRole (roleID){
 
     document.getElementById("roleID").value = role_json.roleID;
     document.getElementById("name").value = role_json.name;
-    document.getElementById("desc").value = role_json.desc;
+    document.getElementById("desc").value = role_json.descriptions;
 }
 
 function backToList (){

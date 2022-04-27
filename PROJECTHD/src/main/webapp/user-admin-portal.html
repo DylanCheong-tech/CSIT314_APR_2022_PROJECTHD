@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,79 +8,81 @@
     <title>User Admin Portal</title>
 
     <!--Google jQuery CDN-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/user-admin-portal.css" />
 </head>
+
 <body>
     <div id="header">
-        <span id="header-date-time"></span>
-        <span>
-        <img id="header-logo" src="" alt="logo_image"/>
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="logo">
+            <img id="header-logo" src="./img/logo.png" alt="logo_image" />
         </span>
-        <span>
-        <button id="logout-btn" type="button" onclick="logout()">Logout</button>
+        <span id="button">
+            <button id="logout-btn" type="button" onclick="logout()">Logout</button>
         </span>
     </div>
 
-    <div id="welcome-msg">
+    <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color">
         Welcome, User Admin
     </div>
 
     <div id="operation-items" align="center">
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/Create_Light.png" alt="action_logo" />
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">Create Account</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/Delete_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">Suspend Account</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/Update_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">Update Account</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/Search_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">Search Account</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/View_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">View Account</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/Create_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">Create Role</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/Delete_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">Delete Role</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/Update_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">Update Role</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/Search_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">Search Role</button>
         </span>
-        <span class="item">
-            <img class="action-logo" src="" alt="action_logo" />
-            <br />
-            <button class="action-button">Action Button</button>
+        <span class="item mode-border-color">
+            <img class="action-logo" src="./img/View_Light.png" alt="action_logo" />
+
+            <button class="action-button mode-font-color mode-bg-color-2 mode-border-color">View Role</button>
         </span>
+
     </div>
 
 
     <script src="./js/user-admin-portal.js"></script>
 </body>
+
 </html>

@@ -11,16 +11,12 @@ function displayLogout() {
     window.confirm("Are you sure want to logout ? ");
 }
 
-let sample_data = [
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" },
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" },
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" },
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" },
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" }
-]
-
-let role_list = ["1 - Restaurant Manager", "2 - Staff", "3 - Restaurant Owner"];
-
+var account_list = $.ajax({
+    async: false,
+    "url": "/getAccountList",
+    "type": "get",
+    "dataType": "json"
+}).responseJSON;
 
 function displayAccountList(json_list) {
     var list_frame = document.getElementById("acc-list");
@@ -42,11 +38,11 @@ function displayAccountList(json_list) {
         row.appendChild(column3);
 
         var column4 = document.createElement("td");
-        column4.innerHTML = json_list[index].role.roleID;
+        column4.innerHTML = json_list[index].role.roleID + " - " + json_list[index].role.name;
         row.appendChild(column4);
 
         var column5 = document.createElement("td");
-        column5.innerHTML = "*".repeat(json_list[index].password.length);
+        column5.innerHTML = "*".repeat(8);
         row.appendChild(column5);
 
         var column6 = document.createElement("td");
@@ -86,5 +82,5 @@ function searchAccount() {
     displayAccountList(result_list);
 }
 
-// demo purpose 
-displayAccountList(sample_data);
+// display the list of account 
+displayAccountList(account_list);

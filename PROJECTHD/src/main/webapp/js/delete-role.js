@@ -25,30 +25,29 @@ function displayLogout() {
     window.confirm("Are you sure want to logout ? ");
 }
 
-let sample_data = [
-    {id : 1, name: "json", desc : "abc"},
-    {id : 2, name: "json", desc : "abc"},
-    {id : 3, name: "json", desc : "abc"},
-    {id : 4, name: "json", desc : "abc"},
-    {id : 5, name: "json", desc : "abc"}
-]
+var role_list = $.ajax({
+    async :false,
+    "url": "/getRoleList",
+    "type": "get",
+    "dataType": "json"
+}).responseJSON;
 
 var list_frame = document.getElementById("role-list");
 
-for (index in sample_data)
+for (index in role_list)
 {
     var row = document.createElement("tr");
 
     var column1 = document.createElement("td");
-    column1.innerHTML = sample_data[index].id;
+    column1.innerHTML = role_list[index].roleID;
     row.appendChild(column1);
 
     var column2 = document.createElement("td");
-    column2.innerHTML = sample_data[index].name;
+    column2.innerHTML = role_list[index].name;
     row.appendChild(column2);
 
     var column3 = document.createElement("td");
-    column3.innerHTML = sample_data[index].desc;
+    column3.innerHTML = role_list[index].descriptions;
     row.appendChild(column3);
 
     var btnCol = document.createElement("td");
@@ -60,7 +59,7 @@ for (index in sample_data)
     var invisible_input = document.createElement("input");
     invisible_input.name = "roleID";
     invisible_input.type = "text";
-    invisible_input.value = sample_data[index].id;
+    invisible_input.value = role_list[index].id;
     invisible_input.style.display = "none";
 
     form.appendChild(invisible_input);

@@ -6,3 +6,58 @@ body div {
 body div:nth-child(2) {
     margin: 5em 0 0 0;
 }
+
+body div#header img {
+    width : 8%;
+}
+
+body div#login-div {
+    text-align: center;
+    position: relative;
+    margin-top: 0;
+}
+
+body div#login-div img#background-image {
+    width: 100%;
+    position: relative;
+}
+
+body div#login-div form {
+    position: absolute;
+    top: 25%;
+    left: 32.5%;
+    display: inline-block;
+    width: 35%;
+    padding: 1em;
+    background-color: #FFD100;
+    border-radius: 50px;
+}
+body div#login-div form * {
+    margin: .6em 0 .6em 0;
+}
+
+body div#login-div form label {
+    display: inline-block;
+    width: 30%;
+    text-align: left;
+}
+
+body div#login-div form input {
+    display: inline-block;
+    width: 40%;
+    height: 1.5em;
+}
+
+body div#login-div form select{
+    display: inline-block;
+    width: 41%;
+    height: 2em;
+}
+
+body div#login-div form button {
+    width: 25%;
+    height: 2.5em;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+    border : 2px #000000 solid;
+}

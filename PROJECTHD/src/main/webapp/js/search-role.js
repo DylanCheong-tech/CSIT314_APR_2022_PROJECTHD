@@ -11,14 +11,12 @@ function displayLogout() {
   window.confirm("Are you sure want to logout ? ");
 }
 
-let sample_data = [
-  {roleID : 1, name: "json", descriptions : "abc"},
-  {roleID : 1, name: "json", descriptions : "abc"},
-  {roleID : 1, name: "json", descriptions : "abc"},
-  {roleID : 1, name: "json", descriptions : "abc"},
-  {roleID : 1, name: "json", descriptions : "abc"}
-]
-
+var role_list = $.ajax({
+  async :false,
+  "url": "/getRoleList",
+  "type": "get",
+  "dataType": "json"
+}).responseJSON;
 
 function displayRoleList(json_list) {
   var list_frame = document.getElementById("role-list");
@@ -72,5 +70,5 @@ function searchRole() {
   displayRoleList(result_list);
 }
 
-// demo purpose 
-displayRoleList(sample_data);
+// display all the role list
+displayRoleList(role_list);
