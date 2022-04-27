@@ -2,14 +2,14 @@ var params = new URLSearchParams(window.location.search);
 var status = params.get("status");
 
 if (status == "success"){
-    window.alert("Update Account Successfull");
+    window.alert("Update Role Successfull");
 
-    window.location.href = "/update-account.html";
+    window.location.href = "/update-role.html";
 }
 else if (status == "fail"){
-    window.alert("Update Account Fail");
+    window.alert("Update Role Fail");
 
-    window.location.href = "/update-account.html";
+    window.location.href = "/update-role.html";
 }
 
 setInterval(() => {
@@ -106,7 +106,6 @@ function updateRole(recordID) {
     button.textContent = "Submit";
     
     childs[3].replaceWith(button);
-    button.onclick = submitUpdate.bind(event, row.id);
 
     var buttonsList = document.querySelectorAll("button");
 
@@ -114,18 +113,5 @@ function updateRole(recordID) {
         if (buttonsList[index].innerHTML == "Update")  {
             buttonsList[index].disabled = true;
         }
-    }
-}
-
-function submitUpdate(recordID) {
-    // code to submit to backend
-    var updateRole = true; // boolean should be pulled from backend?
-    if (updateRole == true) {
-        alert("Update Roles Successful")
-    // forgot the part where dylan mentions about AJAX? 
-    // where page will refresh with updated info
-    } else {
-        alert("Update Roles Fail")
-    // does page refresh?
     }
 }

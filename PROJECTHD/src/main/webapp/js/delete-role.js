@@ -1,3 +1,17 @@
+var params = new URLSearchParams(window.location.search);
+var status = params.get("status");
+
+if (status == "success"){
+    window.alert("Delete Role Successfull");
+
+    window.location.href = "/delete-role.html";
+}
+else if (status == "fail"){
+    window.alert("Delete Role Fail");
+
+    window.location.href = "/delete-role.html";
+}
+
 setInterval(() => {
     var currentDate = new Date();
     var date = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
@@ -24,8 +38,6 @@ var list_frame = document.getElementById("role-list");
 for (index in sample_data)
 {
     var row = document.createElement("tr");
-    var form = document.createElement("form");
-    form.id = "form" + (index+1);
 
     var column1 = document.createElement("td");
     column1.innerHTML = sample_data[index].id;
@@ -40,18 +52,26 @@ for (index in sample_data)
     row.appendChild(column3);
 
     var btnCol = document.createElement("td");
+
+    var form = document.createElement("form");
+    form.method = "post";
+    form.action = "/deleteRole";
+
+    var invisible_input = document.createElement("input");
+    invisible_input.name = "roleID";
+    invisible_input.type = "text";
+    invisible_input.value = sample_data[index].id;
+    invisible_input.style.display = "none";
+
+    form.appendChild(invisible_input);
+
     var button = document.createElement("button");
     button.innerHTML = "Delete";
-    button.onclick = deleteRole.bind(event, sample_data[index].id);
+    button.type = "submit";
 
-    btnCol.appendChild(button);
+    form.appendChild(button);
+    btnCol.appendChild(form);
     row.appendChild(btnCol);
-
-    row.appendChild(form);
     
     list_frame.appendChild(row);
-}
-
-function deleteRole (roleID){
-    window.alert("Deleting Role " + roleID);
 }

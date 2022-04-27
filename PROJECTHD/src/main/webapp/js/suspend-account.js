@@ -80,7 +80,7 @@ for (index in sample_data) {
     form.appendChild(invisible_input);
 
     var button = document.createElement("button");
-    button.innerHTML = "Delete";
+    button.innerHTML = "Suspend";
     button.type = "submit";
 
     form.appendChild(button);

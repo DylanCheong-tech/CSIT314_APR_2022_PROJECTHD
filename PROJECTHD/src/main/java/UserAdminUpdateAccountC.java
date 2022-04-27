@@ -11,9 +11,9 @@ public class UserAdminUpdateAccountC extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        Account newAccount = new Account(accID, username, password, name, new Role(roleId));
+        Account updateAccount = new Account(accID, username, password, name, new Role(roleId));
         
-        if(newAccount.updateAccount()){
+        if(updateAccount.updateAccount()){
             response.sendRedirect("/update-account.html?status=success");
         }
         else{

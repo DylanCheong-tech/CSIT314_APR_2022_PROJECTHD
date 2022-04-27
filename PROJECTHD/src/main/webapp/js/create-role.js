@@ -1,3 +1,17 @@
+var params = new URLSearchParams(window.location.search);
+var status = params.get("status");
+
+if (status == "success"){
+    window.alert("Create Role Successfull");
+
+    window.location.href = "/create-role.html";
+}
+else if (status == "fail"){
+    window.alert("Create Role Fail");
+
+    window.location.href = "/create-role.html";
+}
+
 function createRoles()
 {
     var roleName = document.getElementById("roleID").value;
@@ -23,7 +37,7 @@ setInterval(() =>
 
 function userAdminPortal()
 {
-    window.location.href="./webapp/user-admin-portal.html";
+    window.location.href="/user-admin-portal.html";
 }
 
 function displayLogout () 

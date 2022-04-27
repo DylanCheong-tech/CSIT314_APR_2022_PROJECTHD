@@ -1,87 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./css/search-role.css" />
-  <script src="https://kit.fontawesome.com/7aff8950fd.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Role</title>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!--Google jQuery CDN-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="./css/search-role.css" />
 </head>
 
 <body>
-
-  <h1>
-    <div>
-      <span id="header-date-time" style="float:left;"></span>
-      <span>
-        <button id="logout-btn" type="button" onclick="displayLogout()" style="float: right;">Logout</button>
-      </span>
-      <span>
-        <button id="admin-portal-btn" type="button" onclick="userAdminPortal()" style="float: right;">User Admin
-          Portal</button>
-      </span>
-      <br>
+    <div id="header">
+        <span id="header-date-time"></span>
+        <span class="header-btn">
+            <button id="logout-btn" type="button" onclick="alert('Testing')">User Admin Portal</button>
+        </span>
+        <span class="header-btn">
+            <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+        </span>
     </div>
-  </h1>
 
-  <h2>Search Roles</h2>
-  <input type="text" id="searchTextbox" onkeyup="searchRoles()" placeholder="Search for roles.." title="Type in a role">
-  <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+    <div id="welcome-msg">
+        Search Role
+    </div>
 
-  <table id="searchTable">
-    <tr class="header">
-      <th style="width:auto;">ID</th>
-      <th style="width:20;">Name</th>
-      <th style="width:70;">Description</th>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Johan Heng</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Dylan Cheong</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Freddy Agus</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>Kai Zhe</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Winson Jr.</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>Toh Zhan Feng</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>Freddie Koh</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.</td>
-    </tr>
-  </table>
+    <div id="search-frame">
+        <input id="search-bar" />
+        <button id="search-btn" onclick="searchRole()">Search</button>
+    </div>
 
-  <script src="./js/search-role.js"></script>
+    <table id="search-role-table" align="center">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+        </thead>
+        <tbody id="role-list">
+        </tbody>
+    </table>
+
+    <script src="./js/search-role.js"></script>
 </body>
 
 </html>

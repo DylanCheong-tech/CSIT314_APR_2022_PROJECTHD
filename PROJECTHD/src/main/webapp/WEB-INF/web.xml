@@ -39,6 +39,31 @@
       <servlet-name>UserAdminViewAccountC</servlet-name>
       <servlet-class>UserAdminViewAccountC</servlet-class>
    </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminCreateRoleC</servlet-name>
+      <servlet-class>UserAdminCreateRoleC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminDeleteRoleC</servlet-name>
+      <servlet-class>UserAdminDeleteRoleC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminUpdateRoleC</servlet-name>
+      <servlet-class>UserAdminUpdateRoleC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminSearchRoleC</servlet-name>
+      <servlet-class>UserAdminSearchRoleC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>UserAdminViewRoleC</servlet-name>
+      <servlet-class>UserAdminViewRoleC</servlet-class>
+   </servlet>
  
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
@@ -76,5 +101,30 @@
    <servlet-mapping>
       <servlet-name>UserAdminViewAccountC</servlet-name>
       <url-pattern>/getAccount</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminCreateRoleC</servlet-name>
+      <url-pattern>/createRole</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminDeleteRoleC</servlet-name>
+      <url-pattern>/deleteRole</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminUpdateRoleC</servlet-name>
+      <url-pattern>/updateRole</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminSearchRoleC</servlet-name>
+      <url-pattern>/searchRole</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>UserAdminViewRoleC</servlet-name>
+      <url-pattern>/getRole</url-pattern>
    </servlet-mapping>
 </web-app>

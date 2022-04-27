@@ -31,15 +31,20 @@
         <form action="/createRole" method="post">
             <p>Create Roles Form</p>
             <label for="roleID">Role ID</label>
-            <input type="text" id="roleIDTextbox" name="roleIDTextbox" value="" placeholder="Role ID goes here"><br>
+            <input type="text" id="roleID" value="1" disabled />
+            <br />
+
             <label for="name">Name</label>
-            <input type="text" id="nameTextbox" name="nameTextbox" value="" placeholder="John doe"><br>
-            <label for="description">Description</label>
-            <input type="text" id="descriptionTextbox" name="descriptionTextbox" value=""
-                placeholder="Idk what goes here"><br><br>
-            <button type="submit" ">Submit</button>
-  </form> 
-</div>
+            <input type="text" id="name" name="name" />
+            <br />
+
+            <label for="descriptions">Descriptions</label>
+            <input type="text" id="descriptions" name="descriptions" />
+            <br />
+            <br />
+            <button type="submit">Create</button>
+        </form>
+    </div>
 
     <script src=" ./js/create-role.js"></script>
 </body>

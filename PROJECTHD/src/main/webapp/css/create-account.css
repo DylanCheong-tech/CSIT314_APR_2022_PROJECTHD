@@ -19,7 +19,7 @@ div#create-account-form {
     text-align: center;
 }
 
-div#create-account-form form span.text-item {
+div#create-account-form form label.text-item {
     display: inline-block;
     text-align: left;
     width: 15%;

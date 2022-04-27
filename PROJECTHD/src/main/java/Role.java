@@ -142,7 +142,7 @@ public class Role {
 		return returnRole;
 	}
 
-	public static Role viewRole(int roleID) {
+	public static Role getRole(int roleID) {
 		Role returnRole = null;
 
 		try (
