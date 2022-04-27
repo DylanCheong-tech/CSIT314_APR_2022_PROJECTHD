@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/create-role.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <h1>
+        <div>
+            <span id="header-date-time" style="float:left;"></span>
+            <span>
+                <button id="logout-btn" type="button" onclick="displayLogout()" style="float: right;">Logout</button>
+            </span>
+            <span>
+                <button id="admin-portal-btn" type="button" onclick="userAdminPortal()" style="float: right;">User Admin
+                    Portal</button>
+            </span>
+            <br>
+        </div>
+    </h1>
+
+    <h2>Create Roles</h2>
+
+    <div id="create-role-form">
+        <form action="/createRole" method="post">
+            <p>Create Roles Form</p>
+            <label for="roleID">Role ID</label>
+            <input type="text" id="roleIDTextbox" name="roleIDTextbox" value="" placeholder="Role ID goes here"><br>
+            <label for="name">Name</label>
+            <input type="text" id="nameTextbox" name="nameTextbox" value="" placeholder="John doe"><br>
+            <label for="description">Description</label>
+            <input type="text" id="descriptionTextbox" name="descriptionTextbox" value=""
+                placeholder="Idk what goes here"><br><br>
+            <button type="submit" ">Submit</button>
+  </form> 
+</div>
+
+    <script src=" ./js/create-role.js"></script>
+</body>
+
+</html>

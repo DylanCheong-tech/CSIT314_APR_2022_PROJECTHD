@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/search-role.css" />
+  <script src="https://kit.fontawesome.com/7aff8950fd.js" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <h1>
+    <div>
+      <span id="header-date-time" style="float:left;"></span>
+      <span>
+        <button id="logout-btn" type="button" onclick="displayLogout()" style="float: right;">Logout</button>
+      </span>
+      <span>
+        <button id="admin-portal-btn" type="button" onclick="userAdminPortal()" style="float: right;">User Admin
+          Portal</button>
+      </span>
+      <br>
+    </div>
+  </h1>
+
+  <h2>Search Roles</h2>
+  <input type="text" id="searchTextbox" onkeyup="searchRoles()" placeholder="Search for roles.." title="Type in a role">
+  <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+
+  <table id="searchTable">
+    <tr class="header">
+      <th style="width:auto;">ID</th>
+      <th style="width:20;">Name</th>
+      <th style="width:70;">Description</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Johan Heng</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Dylan Cheong</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Freddy Agus</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Kai Zhe</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Winson Jr.</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Toh Zhan Feng</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Freddie Koh</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.</td>
+    </tr>
+  </table>
+
+  <script src="./js/search-role.js"></script>
+</body>
+
+</html>

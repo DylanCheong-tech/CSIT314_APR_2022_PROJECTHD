@@ -64,7 +64,7 @@ setInterval(() =>
 
 function userAdminPortal()
 {
-    window.location.href="./webapp/user-admin-portal.html";
+    window.location.href="/user-admin-portal.html";
 }
 
 function displayLogout () 
