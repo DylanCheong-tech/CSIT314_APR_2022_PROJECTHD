@@ -55,26 +55,24 @@ class Date {
     }
 }
 
-public class AccountTestCase {
+public class AccountTestDataGenerator {
 	private static final String connStr = "jdbc:mysql://localhost:3306/csit314_apr_2022_projecthd?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 	private static final String dbusername  = "root";
 	private static final String dbpassword = "";
 	
-	public AccountTestCase() {
+	public AccountTestDataGenerator() {
 		
 	}
 	
 	public static void main(String[] args) {
-		Role role1 = new Role("User Admin", "User Admin manages all account");
-		Role role2 = new Role("Restaurant Manager", "Restaurant Manager manages Menu Item and Coupon");
-		Role role3 = new Role("Staff", "Staff manages Orders");
-		Role role4 = new Role("Restaurant Owner", "Restaurant Owner Generates reports");
+		Role role1 = new Role(1, "Restaurant Owner", "This is Rsstaurant Manager");
+		Role role2 = new Role(2, "Staff", "This is Staff");
+		Role role3 = new Role(3, "Restaurant Owner", "This is Restaurant Owner");
 		
 		ArrayList<Role> roleArray = new ArrayList<Role>();
 		roleArray.add(role1);
 		roleArray.add(role2);
 		roleArray.add(role3);
-		roleArray.add(role4);
 		
 		ArrayList<Account> accArray = new ArrayList<Account>();
 		
@@ -85,7 +83,7 @@ public class AccountTestCase {
 		
 		for(int i=0; i<100; i++) {
 			Random rn = new Random();
-			int answer = rn.nextInt(4);
+			int answer = rn.nextInt(3);
 			String iString = String.valueOf(i + 1);
 			
 			Account acc = new Account(username + iString, password + iString, name + iString, roleArray.get(answer), date.toString());
@@ -116,12 +114,6 @@ public class AccountTestCase {
 				ex.printStackTrace();
 			}
 		}
-		
-		
-		
-		
-		
-		
 		
 		
 		

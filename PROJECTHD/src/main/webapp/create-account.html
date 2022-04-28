@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,48 +8,47 @@
     <title>Create Account</title>
 
     <!--Google jQuery CDN-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/create-account.css" />
 </head>
+
 <body>
     <div id="header">
-        <span id="header-date-time"></span>
-        <span>
-        <img id="header-logo" src="" alt="logo_image"/>
-        </span>
-        <span>
-        <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="buttons">
+            <button id="portal-btn" type="button" onclick="displayLogout()">User Admin Portal</button>
+            <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
         </span>
     </div>
 
-    <div id="welcome-msg">
+    <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
         Create Account
     </div>
 
-    <div id="create-account-form">
-        <p>Create Account Form</p>
+    <div id="create-account-form" class="mode-border-color-1">
+        <p class="mode-font-color mode-bg-color-2 mode-border-color-1">Create Account Form</p>
         <form action="/createAccount" method="post">
-            <label class="text-item">ID</label> 
-            <input type="text" value="1" disabled />
+            <label class="text-item mode-font-color">ID</label>
+            <input id="id-input" class="mode-border-color-1" type="text" value="1" disabled />
             <br />
 
-            <label class="text-item">Name</label>
-            <input type="text" name="name" />
+            <label class="text-item mode-font-color">Name</label>
+            <input class="mode-border-color-1" type="text" name="name" />
             <br />
 
-            <label class="text-item">Role ID</label>
-            <select id="role-list" name="role">
+            <label class="text-item mode-font-color">Role ID</label>
+            <select class="mode-border-color-1" id="role-list" name="role">
                 <option selected disabled value=""></option>
             </select>
             <br />
 
-            <label class="text-item">Username</label>
-            <input type="text" name="username" />
+            <label class="text-item mode-font-color">Username</label>
+            <input class="mode-border-color-1" type="text" name="username" />
             <br />
 
-            <label class="text-item">Password</label>
-            <input type="text" name="password" />
+            <label class="text-item mode-font-color">Password</label>
+            <input class="mode-border-color-1" type="text" name="password" />
             <br />
             <br />
 
@@ -58,4 +58,5 @@
 
     <script src="./js/create-account.js"></script>
 </body>
+
 </html>

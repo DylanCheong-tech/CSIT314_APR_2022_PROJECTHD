@@ -80,6 +80,7 @@ var images = document.getElementsByClassName("action-logo");
 
 var currentDate = new Date();
 var hours = currentDate.getHours();
+// var hours = 20;
 
 var day_theme = {font_color : "#000000", bg_color_1 : "#FFFFFF" , bg_color_2 : "#FFD100", border : "2px #000000 solid", origin : "Light"};
 var night_theme = {font_color : "#FFFFFF", bg_color_1 : "#000000" , bg_color_2 : "#000000", border : "2px #FFD100 solid", origin : "Dark"};

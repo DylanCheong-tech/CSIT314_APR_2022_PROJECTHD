@@ -11,6 +11,7 @@ public class Account {
 	private String name;
 	private Role role;
 	private String dateJoined;
+	private String status;
 
 	public Account() {
 		this.accountID = 0;
@@ -19,6 +20,16 @@ public class Account {
 		this.name = "";
 		this.role = null;
 		this.dateJoined = "";
+	}
+
+	public Account(int accountID, String username, String password, String name, Role role, String dateJoined, String status) {
+		this.accountID = accountID;
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.role = role;
+		this.dateJoined = dateJoined;
+		this.status = status;
 	}
 
 	public Account(int accountID, String username, String password, String name, Role role, String dateJoined) {
@@ -252,6 +263,7 @@ public class Account {
 				String date = result.getString("DateJoined");
 				String username = result.getString("Username");
 				String password = result.getString("Password");
+				String status = result.getString("Status");
 
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
 				stmt2.setInt(1, roleID);
@@ -262,7 +274,7 @@ public class Account {
 					String roleName = roleResult.getString("Name");
 					String desc = roleResult.getString("Descriptions");
 
-					returnAcc = new Account(id, username, password, name, new Role(roleID, roleName, desc), date);
+					returnAcc = new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status);
 				}
 
 			}
@@ -298,6 +310,7 @@ public class Account {
 				String date = result.getString("DateJoined");
 				String username = result.getString("Username");
 				String password = result.getString("Password");
+				String status = result.getString("Status");
 
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
 				stmt2.setInt(1, roleID);
@@ -308,7 +321,7 @@ public class Account {
 					String roleName = roleResult.getString("Name");
 					String desc = roleResult.getString("Descriptions");
 
-					returnAcc = new Account(id, username, password, name, new Role(roleID, roleName, desc), date);
+					returnAcc = new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status);
 				}
 
 			}
@@ -342,6 +355,7 @@ public class Account {
 				String date = result.getString("DateJoined");
 				String username = result.getString("Username");
 				String password = result.getString("Password");
+				String status = result.getString("Status");
 
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
 				stmt2.setInt(1, roleID);
@@ -352,7 +366,7 @@ public class Account {
 					String roleName = roleResult.getString("Name");
 					String desc = roleResult.getString("Descriptions");
 
-					returnArray.add(new Account(id, username, password, name, new Role(roleID, roleName, desc), date));
+					returnArray.add(new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status));
 				}
 			}
 
@@ -385,6 +399,10 @@ public class Account {
 
 	public String getDateJoined() {
 		return this.dateJoined;
+	}
+
+	public String getStatus (){
+		return this.status;
 	}
 
 	@Override
