@@ -85,8 +85,6 @@ var account_list = $.ajax({
     "dataType": "json"
 }).responseJSON;
 
-console.log(account_list);
-
 let role_list = ["1 - Restaurant Manager", "2 - Staff", "3 - Restaurant Owner"];
 
 var list_frame = document.getElementById("acc-list");

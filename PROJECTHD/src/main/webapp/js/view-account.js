@@ -11,50 +11,63 @@ function displayLogout() {
     window.confirm("Are you sure want to logout ? ");
 }
 
-let sample_data = [
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" },
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" },
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" },
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" },
-    { accountID: 1, name: "json", username: "username", password: "password", role : {roleID: "1 - Staff"}, dateJoined: "10/10/2022 1" }
-]
-
-let role_list = ["1 - Restaurant Manager", "2 - Staff", "3 - Restaurant Owner"];
+var account_list = $.ajax({
+    async: false,
+    "url": "/getAccountList",
+    "type": "get",
+    "dataType": "json"
+}).responseJSON;
 
 var list_frame = document.getElementById("acc-list");
 
-for (index in sample_data) {
+for (index in account_list) {
     var row = document.createElement("tr");
     row.id = "record-" + (parseInt(index) + 1);
 
     var column1 = document.createElement("td");
-    column1.innerHTML = sample_data[index].accountID;
+    column1.innerHTML = account_list[index].accountID;
     row.appendChild(column1);
 
     var column2 = document.createElement("td");
-    column2.innerHTML = sample_data[index].name;
+    column2.classList.add("mode-font-color");
+    column2.classList.add("mode-border-color-1");
+    column2.innerHTML = account_list[index].role.roleID + " - " + account_list[index].role.name;
     row.appendChild(column2);
 
     var column3 = document.createElement("td");
-    column3.innerHTML = sample_data[index].username;
+    column3.classList.add("mode-font-color");
+    column3.classList.add("mode-border-color-1");
+    column3.innerHTML = account_list[index].name;
     row.appendChild(column3);
 
     var column4 = document.createElement("td");
-    column4.innerHTML = sample_data[index].role.roleID;
+    column4.classList.add("mode-font-color");
+    column4.classList.add("mode-border-color-1");
+    column4.innerHTML = account_list[index].username;
     row.appendChild(column4);
 
     var column5 = document.createElement("td");
-    column5.innerHTML = "*".repeat(sample_data[index].password.length);
+    column5.classList.add("mode-font-color");
+    column5.classList.add("mode-border-color-1");
+    column5.innerHTML = "*".repeat(8);
     row.appendChild(column5);
 
     var column6 = document.createElement("td");
-    column6.innerHTML = sample_data[index].dateJoined;
+    column6.classList.add("mode-font-color");
+    column6.classList.add("mode-border-color-1");
+    column6.innerHTML = account_list[index].dateJoined.split(" ")[0];
     row.appendChild(column6);
+
+    var column7 = document.createElement("td");
+    column7.classList.add("mode-font-color");
+    column7.classList.add("mode-border-color-1");
+    column7.innerHTML = account_list[index].status;
+    row.appendChild(column7);
 
     var btnCol = document.createElement("td");
     var button = document.createElement("button");
     button.innerHTML = "View";
-    button.onclick = viewAccount.bind(event, sample_data[index].accountID);
+    button.onclick = viewAccount.bind(event, account_list[index].accountID);
 
     btnCol.appendChild(button);
     row.appendChild(btnCol);

@@ -11,7 +11,8 @@ public class UserAdminSearchRoleC extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            String name = request.getQueryString().split("=")[1];
+            // replacing the query string <space> encoded value if any
+            String name = request.getQueryString().split("=")[1].replaceAll("%20", " ");
 
             Role resultRole = Role.searchRole(name);
 

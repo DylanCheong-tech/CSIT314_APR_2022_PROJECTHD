@@ -35,6 +35,7 @@ body div#header span#buttons button {
     background-color: #FFD100;
     border : 2px #000000 solid;
     font-size: 1.1em;
+    cursor: pointer;
 }
 
 body div#welcome-msg {
@@ -71,4 +72,5 @@ body div#operation-items span.item button.action-button{
     height: 2.5em;
     position: absolute;
     top : 90%;
+    cursor: pointer;
 }

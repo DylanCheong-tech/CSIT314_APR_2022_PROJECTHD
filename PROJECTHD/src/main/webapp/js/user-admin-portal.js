@@ -53,7 +53,7 @@ setInterval(() => {
     var second = currentDate.getSeconds() + "";
     second = second.length < 2 ? "0" + second : second;
 
-    var date = currentDate.getDate() + " "  + month_str + " " + currentDate.getFullYear();
+    var date = currentDate.getDate() + " " + month_str + " " + currentDate.getFullYear();
     var time = hour + " : " + minutes + " : " + second;
 
     document.getElementById("header-date-time").innerHTML = date + "<br />" + time;
@@ -65,51 +65,60 @@ function displayLogout() {
 }
 
 function logout() {
+    var params = new URLSearchParams(window.location.search);
+    var username = params.get("username");
     $.ajax({
-        // username
-        "url": "/logoutUser?username=dylan",
+        "url": "/logoutUser?username=" + username,
         "type": "get",
-        "dataType": "json"
+        "complete": () => {
+            window.location.href = "/login.html";
+        }
     });
 }
 
 var mode_font_color = document.getElementsByClassName("mode-font-color");
 var mode_bg_color_2 = document.getElementsByClassName("mode-bg-color-2");
-var mode_border_color = document.getElementsByClassName("mode-border-color");
+var mode_border_color_1 = document.getElementsByClassName("mode-border-color-1");
+var mode_border_color_2 = document.getElementsByClassName("mode-border-color-2");
 var images = document.getElementsByClassName("action-logo");
 
 var currentDate = new Date();
 var hours = currentDate.getHours();
 // var hours = 20;
 
-var day_theme = {font_color : "#000000", bg_color_1 : "#FFFFFF" , bg_color_2 : "#FFD100", border : "2px #000000 solid", origin : "Light"};
-var night_theme = {font_color : "#FFFFFF", bg_color_1 : "#000000" , bg_color_2 : "#000000", border : "2px #FFD100 solid", origin : "Dark"};
+var day_theme = { font_color: "#000000", bg_color_1: "#FFFFFF", bg_color_2: "#FFD100", border_1: "2px #000000 solid", border_2: "2px #FFFFFF solid", origin: "Light" };
+var night_theme = { font_color: "#FFFFFF", bg_color_1: "#000000", bg_color_2: "#000000", border_1: "2px #FFD100 solid", border_2: "2px #FFD100 solid", origin: "Dark" };
 
-function display_theme (theme) {
-    for (index in mode_font_color){
+function display_theme(theme) {
+    for (index in mode_font_color) {
         mode_font_color.item(index).style.color = theme.font_color;
     }
-    
-    document.getElementsByTagName("body")[0].style.backgroundColor = theme.bg_color_1;    
-    
-    for (index in mode_bg_color_2){
+
+    document.getElementsByTagName("body")[0].style.backgroundColor = theme.bg_color_1;
+
+    for (index in mode_bg_color_2) {
         mode_bg_color_2.item(index).style.backgroundColor = theme.bg_color_2;
     }
-    
-    for (index in mode_border_color){
-        mode_border_color.item(index).style.border = theme.border;
+
+    for (index in mode_border_color_1) {
+        mode_border_color_1.item(index).style.border = theme.border_1;
     }
 
-    for (index in images){
+    for (index in mode_border_color_2) {
+        mode_border_color_2.item(index).style.borderBottom = theme.border_2;
+        mode_border_color_2.item(index).style.borderTop = theme.border_2;
+    }
+
+    for (index in images) {
         var invert = theme.origin == "Light" ? "Dark" : "Light";
 
         images.item(index).src = images.item(index).src.replace(invert, theme.origin);
     }
 }
 
-if (hours < 19){
+if (hours < 19) {
     display_theme(day_theme);
 }
-else{
+else {
     display_theme(night_theme);
 }

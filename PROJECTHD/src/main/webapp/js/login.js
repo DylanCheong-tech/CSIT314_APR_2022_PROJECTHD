@@ -1,3 +1,13 @@
+var params = new URLSearchParams(window.location.search);
+var status = params.get("status");
+var alert_box = document.getElementById("alert-box");
+var alert_box_msg = document.getElementById("alert-message");
+
+if (status == "fail"){
+    alert_box_msg.textContent = "Login Fail";
+    alert_box.style.display = "inline-block";
+}
+
 var role_list = $.ajax({
     async :false,
     "url": "/getRoleList",
@@ -47,4 +57,9 @@ if (hours < 19){
 }
 else{
     display_theme(night_theme);
+}
+
+function alert_confirm (){
+    alert_box.style.display = "none";
+    window.location.href = "/login.html";
 }

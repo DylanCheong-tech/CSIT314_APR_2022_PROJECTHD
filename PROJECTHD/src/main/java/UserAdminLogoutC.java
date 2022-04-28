@@ -8,6 +8,5 @@ public class UserAdminLogoutC extends HttpServlet {
         String username = request.getQueryString().split("=")[1];
 
         Account.logout(username);
-        response.sendRedirect("/login.html");
     }
 }

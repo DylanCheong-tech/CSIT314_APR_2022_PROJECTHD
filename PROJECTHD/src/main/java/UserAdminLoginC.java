@@ -13,9 +13,9 @@ public class UserAdminLoginC extends HttpServlet {
 		boolean loginSuccess = acc.login();
 
 		if (loginSuccess) {
-			response.sendRedirect("/user-admin-portal.html");
+			response.sendRedirect("/user-admin-portal.html?username=" + username);
 		} else {
-			response.sendRedirect("/login.html");
+			response.sendRedirect("/login.html?status=fail");
 		}
 
 	}

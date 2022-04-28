@@ -10,6 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="./css/alert-box.css" />
 </head>
 <body>
     <div id="header" class="mode-bg-color-1">
@@ -36,6 +37,12 @@
 
             <button type="submit" class="mode-font-color mode-bg-color-1 mode-border-color">Login</button>
         </form>
+    </div>
+
+    <div id="alert-box">
+        <span id="alert-message"></span>
+        <br />
+        <button type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
     <script src="./js/login.js"></script>

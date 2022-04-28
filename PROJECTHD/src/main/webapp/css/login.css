@@ -60,4 +60,5 @@ body div#login-div form button {
     border-radius: 9px;
     background-color: #FFFFFF;
     border : 2px #000000 solid;
+    cursor: pointer;
 }
