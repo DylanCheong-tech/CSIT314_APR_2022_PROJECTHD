@@ -8,43 +8,84 @@
     <title>Update Account</title>
 
     <!--Google jQuery CDN-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/update-account.css" />
+    <link rel="stylesheet" href="./css/alert-box.css" />
 </head>
 
 <body>
     <div id="header">
-        <span id="header-date-time"></span>
-        <span class="header-btn">
-            <button id="logout-btn" type="button" onclick="alert('Testing')">User Admin Portal</button>
-        </span>
-        <span class="header-btn">
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="buttons">
+            <button id="portal-btn" type="button" onclick="displayLogout()">User Admin Portal</button>
             <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
         </span>
     </div>
 
-    <div id="welcome-msg">
+    <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
         Update Account
     </div>
 
-    <form action="/updateAccount" method="post">
-        <table id="update-acc-table" align="center">
-            <thead>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Role ID</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Date Joined</th>
-                <th>Action</th>
-            </thead>
+    <table id="update-acc-table" align="center">
+        <thead>
+            <th>ID</th>
+            <th>Role ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Date Joined</th>
+            <th>Status</th>
+            <th>Action</th>
+        </thead>
 
-            <tbody id="acc-list">
-            </tbody>
-        </table>
-    </form>
+        <tbody id="acc-list">
+        </tbody>
+    </table>
 
+    <div id="update-acc-form" class="mode-border-color-1">
+        <p class="mode-font-color mode-bg-color-2 mode-border-color-1">Update Account Form</p>
+        <form action="/updateAccount" method="POST">
+            <label class="text-item mode-font-color">ID</label>
+            <input class="mode-border-color-1" id="accID" name="accID" type="text" disabled />
+            <br />
+
+            <label class="text-item mode-font-color">Role ID</label>
+            <select class="mode-border-color-1" id="role-list" name="role">
+                <option selected disabled value=""></option>
+            </select>
+            <br />
+
+            <label class="text-item mode-font-color">Name</label>
+            <input class="mode-border-color-1" id="name" name="name" type="text" />
+            <br />
+
+            <label class="text-item mode-font-color">Username</label>
+            <input class="mode-border-color-1" id="username" name="username" type="text" />
+            <br />
+
+            <label class="text-item mode-font-color">Password</label>
+            <input class="mode-border-color-1" id="password" name="password" type="text" />
+            <br />
+
+            <label class="text-item mode-font-color">Date Joined</label>
+            <input class="mode-border-color-1" id="dateJoined" type="text" disabled />
+            <br />
+
+            <label class="text-item mode-font-color">Status</label>
+            <input class="mode-border-color-1" id="status" type="text" disabled />
+            <br />
+            <br />
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+    <div id="alert-box">
+        <span id="alert-message"></span>
+        <br />
+        <button type="button" onclick="alert_confirm()">Ok</button>
+    </div>
 
     <script src="./js/update-account.js"></script>
 </body>

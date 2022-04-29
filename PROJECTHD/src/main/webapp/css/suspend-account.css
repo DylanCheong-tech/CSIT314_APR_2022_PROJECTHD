@@ -22,27 +22,29 @@ body div#header span#buttons {
 
 body div#header span#buttons button {
     width: fit-content;
-    margin: 0 0 0 10%;
+    margin: 0 0 0 5%;
+    padding: 0 3% 0 3%;
     height: 2.5em;
     border-radius: 9px;
     background-color: #FFD100;
     border : 2px #000000 solid;
     font-size: 1.1em;
+    cursor: pointer;
 }
 
 body div#welcome-msg {
-    margin: 1% 0 5% 0;
+    margin: 1% 0 1% 0;
     padding: 1% 0 1% 0;
     text-align: center;
     background-color: #FFD100;
     font-size: 2em;
 }
 
-body table#delete-acc-table {
+body table#suspend-acc-table {
     width: 100%;
 }
 
-body table#delete-acc-table thead tr th, body table#delete-acc-table tbody tr td {
+body table#suspend-acc-table thead tr th, body table#suspend-acc-table tbody tr td {
     display: inline-block;
     border: 2px solid #000000;
     margin: .5% 1% .5% 1%;
@@ -53,15 +55,27 @@ body table#delete-acc-table thead tr th, body table#delete-acc-table tbody tr td
     min-height: 1.5em;
 }
 
-body table#delete-acc-table thead tr th {
+body table#suspend-acc-table thead tr th {
     background-color: #FFD100;
 }
 
-body table#delete-acc-table tbody tr:hover {
-    background-color: rgb(255, 255, 8);
+body table#suspend-acc-table tbody tr td:last-child {
+    background-color: #FFD100;
 }
 
-body table#delete-acc-table tbody tr td button {
+body table#suspend-acc-table thead tr th:nth-child(1), body table#suspend-acc-table tbody tr td:nth-child(1) {
+    width: 4%;
+}
+
+body table#suspend-acc-table thead tr th:nth-child(2), body table#suspend-acc-table tbody tr td:nth-child(2) {
+    width: 13%;
+}
+
+body table#suspend-acc-table thead tr th:nth-child(3), body table#suspend-acc-table tbody tr td:nth-child(3) {
+    width: 13%;
+}
+
+body table#suspend-acc-table tbody tr td button {
     background-color: transparent;
     width: 100%;
     border: none;

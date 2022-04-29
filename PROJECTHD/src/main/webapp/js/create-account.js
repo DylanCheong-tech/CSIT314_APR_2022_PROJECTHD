@@ -1,16 +1,16 @@
 
 var params = new URLSearchParams(window.location.search);
 var status = params.get("status");
+var alert_box = document.getElementById("alert-box");
+var alert_box_msg = document.getElementById("alert-message");
 
 if (status == "success"){
-    window.alert("Create Account Successfull");
-
-    window.location.href = "/create-account.html";
+    alert_box_msg.textContent = "Create Account Successfull";
+    alert_box.style.display = "inline-block";
 }
 else if (status == "fail"){
-    window.alert("Create Account Fail");
-
-    window.location.href = "/create-account.html";
+    alert_box_msg.textContent = "Create Account Fail";
+    alert_box.style.display = "inline-block";
 }
 
 var role_list = $.ajax({
@@ -95,8 +95,8 @@ var mode_border_color_1 = document.getElementsByClassName("mode-border-color-1")
 var mode_border_color_2 = document.getElementsByClassName("mode-border-color-2");
 
 var currentDate = new Date();
-var hours = currentDate.getHours();
-// var hours = 20;
+// var hours = currentDate.getHours();
+var hours = 20;
 
 var day_theme = {font_color : "#000000", bg_color_1 : "#FFFFFF" , bg_color_2 : "#FFD100", border_1 : "2px #000000 solid", border_2 : "2px #FFFFFF solid", origin : "Light"};
 var night_theme = {font_color : "#FFFFFF", bg_color_1 : "#000000" , bg_color_2 : "#000000", border_1 : "2px #FFD100 solid", border_2 : "2px #FFD100 solid", origin : "Dark"};
@@ -127,4 +127,9 @@ if (hours < 19){
 }
 else{
     display_theme(night_theme);
+}
+
+function alert_confirm() {
+    alert_box.style.display = "none";
+    window.location.href = "/create-account.html";
 }

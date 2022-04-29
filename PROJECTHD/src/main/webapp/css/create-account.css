@@ -22,7 +22,8 @@ body div#header span#buttons {
 
 body div#header span#buttons button {
     width: fit-content;
-    margin: 0 0 0 10%;
+    margin: 0 0 0 5%;
+    padding: 0 3% 0 3%;
     height: 2.5em;
     border-radius: 9px;
     background-color: #FFD100;
@@ -58,7 +59,7 @@ div#create-account-form form label.text-item {
     display: inline-block;
     text-align: left;
     width: 20%;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 div#create-account-form form button {
@@ -67,22 +68,24 @@ div#create-account-form form button {
     border-radius: 9px;
     background-color: #FFD100;
     border : 2px #000000 solid;
+    cursor: pointer;
+    font-size: 1.4em;
 }
 
 div#create-account-form form input {
     width: 60%;
+    height: 1.4em;
     margin: 1% 0 1% 0;
     border: 2px #000000 solid;
+    font-size: 1.3em;
 }
 
 div#create-account-form form select {
     width: 61.5%;
+    height: 1.8em;
     margin: 1% 0 1% 0;
     border: 2px #000000 solid;
-}
-
-div#create-account-form form select {
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 
 div#create-account-form form input#id-input {

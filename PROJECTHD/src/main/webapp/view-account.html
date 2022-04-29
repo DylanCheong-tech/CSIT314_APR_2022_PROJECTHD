@@ -11,31 +11,31 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/view-account.css" />
+    <link rel="stylesheet" href="./css/alert-box.css" />
 </head>
 
 <body>
     <div id="header">
-        <span id="header-date-time"></span>
-        <span class="header-btn">
-            <button id="logout-btn" type="button" onclick="alert('Testing')">User Admin Portal</button>
-        </span>
-        <span class="header-btn">
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="buttons">
+            <button id="portal-btn" type="button" onclick="displayLogout()">User Admin Portal</button>
             <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
         </span>
     </div>
 
-    <div id="welcome-msg">
+    <div id="welcome-msg" class="mode-border-color-2">
         View Account
     </div>
 
-    <table id="search-acc-table" align="center">
+    <table id="view-acc-table" align="center">
         <thead>
             <th>ID</th>
+            <th>Role ID</th>
             <th>Name</th>
             <th>Username</th>
-            <th>Role ID</th>
             <th>Password</th>
             <th>Date Joined</th>
+            <th>Status</th>
             <th>Action</th>
         </thead>
 
@@ -43,36 +43,46 @@
         </tbody>
     </table>
 
-    <div id="view-account-form">
-        <p>View Account Form</p>
-        <form action="/viewAccount" method="POST">
-            <span class="text-item">ID</span> 
-            <input id="accID" type="text" disabled />
+    <div id="view-acc-form" class="mode-border-color-1">
+        <p class="mode-font-color mode-bg-color-2 mode-border-color-1">View Account Form</p>
+        <form>
+            <label class="text-item mode-font-color">ID</label>
+            <input class="mode-border-color-1" id="accID" type="text" disabled />
             <br />
 
-            <span class="text-item">Name</span>
-            <input id="name" type="text" disabled />
+            <label class="text-item mode-font-color">Role ID</label>
+            <input class="mode-border-color-1" id="role" type="text" disabled />
             <br />
 
-            <span class="text-item">Role ID</span>
-            <input id="role" type="text" disabled />
+            <label class="text-item mode-font-color">Name</label>
+            <input class="mode-border-color-1" id="name" type="text" disabled />
             <br />
 
-            <span class="text-item">Username</span>
-            <input id="username" type="text" disabled />
+            <label class="text-item mode-font-color">Username</label>
+            <input class="mode-border-color-1" id="username" type="text" disabled />
             <br />
 
-            <span class="text-item">Password</span>
-            <input id="password" type="text" disabled />
+            <label class="text-item mode-font-color">Password</label>
+            <input class="mode-border-color-1" id="password" type="text" disabled />
             <br />
 
-            <span class="text-item">Date Joined</span>
-            <input id="dateJoined" type="text" disabled />
+            <label class="text-item mode-font-color">Date Joined</label>
+            <input class="mode-border-color-1" id="dateJoined" type="text" disabled />
+            <br />
+
+            <label class="text-item mode-font-color">Status</label>
+            <input class="mode-border-color-1" id="status" type="text" disabled />
             <br />
             <br />
 
             <button type="button" onclick="backToList()">Back</button>
         </form>
+    </div>
+
+    <div id="alert-box">
+        <span id="alert-message"></span>
+        <br />
+        <button type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
     <script src="./js/view-account.js"></script>

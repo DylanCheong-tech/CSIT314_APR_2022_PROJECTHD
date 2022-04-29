@@ -8,44 +8,50 @@
     <title>Search Account</title>
 
     <!--Google jQuery CDN-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/search-account.css" />
+    <link rel="stylesheet" href="./css/alert-box.css" />
 </head>
 
 <body>
     <div id="header">
-        <span id="header-date-time"></span>
-        <span class="header-btn">
-            <button id="logout-btn" type="button" onclick="alert('Testing')">User Admin Portal</button>
-        </span>
-        <span class="header-btn">
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="buttons">
+            <button id="portal-btn" type="button" onclick="displayLogout()">User Admin Portal</button>
             <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
         </span>
     </div>
 
-    <div id="welcome-msg">
+    <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
         Search Account
     </div>
 
     <div id="search-frame">
-        <input id="search-bar" />
+        <input id="search-bar" placeholder="Enter Account Name ... " />
         <button id="search-btn" onclick="searchAccount()">Search</button>
     </div>
 
     <table id="search-acc-table" align="center">
         <thead>
             <th>ID</th>
+            <th>Role ID</th>
             <th>Name</th>
             <th>Username</th>
-            <th>Role ID</th>
             <th>Password</th>
             <th>Date Joined</th>
+            <th>Status</th>
         </thead>
 
         <tbody id="acc-list">
         </tbody>
     </table>
+
+    <div id="alert-box">
+        <span id="alert-message"></span>
+        <br />
+        <button type="button" onclick="alert_confirm()">Ok</button>
+    </div>
 
     <script src="./js/search-account.js"></script>
 </body>

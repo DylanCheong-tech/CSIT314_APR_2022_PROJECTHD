@@ -59,23 +59,6 @@ setInterval(() => {
     document.getElementById("header-date-time").innerHTML = date + "<br />" + time;
 }, 1000);
 
-
-function displayLogout() {
-    window.confirm("Are you sure want to logout ? ");
-}
-
-function logout() {
-    var params = new URLSearchParams(window.location.search);
-    var username = params.get("username");
-    $.ajax({
-        "url": "/logoutUser?username=" + username,
-        "type": "get",
-        "complete": () => {
-            window.location.href = "/login.html";
-        }
-    });
-}
-
 var mode_font_color = document.getElementsByClassName("mode-font-color");
 var mode_bg_color_2 = document.getElementsByClassName("mode-bg-color-2");
 var mode_border_color_1 = document.getElementsByClassName("mode-border-color-1");
@@ -84,7 +67,7 @@ var images = document.getElementsByClassName("action-logo");
 
 var currentDate = new Date();
 var hours = currentDate.getHours();
-// var hours = 20;
+// var hours = 6;
 
 var day_theme = { font_color: "#000000", bg_color_1: "#FFFFFF", bg_color_2: "#FFD100", border_1: "2px #000000 solid", border_2: "2px #FFFFFF solid", origin: "Light" };
 var night_theme = { font_color: "#FFFFFF", bg_color_1: "#000000", bg_color_2: "#000000", border_1: "2px #FFD100 solid", border_2: "2px #FFD100 solid", origin: "Dark" };
@@ -121,4 +104,26 @@ if (hours < 19) {
 }
 else {
     display_theme(night_theme);
+}
+
+var alert_box = document.getElementById("alert-box");
+
+function logout() {
+    alert_box.style.display = "inline-block";
+}
+
+function confirm_logout() {
+    var params = new URLSearchParams(window.location.search);
+    var username = params.get("username");
+    $.ajax({
+        "url": "/logoutUser?username=" + username,
+        "type": "get",
+        "complete": () => {
+            window.location.href = "/login.html";
+        }
+    });
+}
+
+function cancel_logout() {
+    alert_box.style.display = "none";
 }

@@ -1,18 +1,148 @@
+body {
+    text-align: center;
+}
+
 body div#header span {
+    width: 48%;
     display: inline-block;
-}
-
-body div#header span#header-date-time {
-    width: 70%;
-}
-
-body div#header span.header-btn{
-    width: 14%;
     text-align: right;
 }
 
+body div#header span#header-date-time {
+    text-align: left;
+    font-size: 2em;
+    line-height: 1.5em;
+    padding: 0 0 0 1em;
+}
+
+body div#header span#buttons {
+    margin: 2.5% 0 0 0;
+    vertical-align: top;
+}
+
+body div#header span#buttons button {
+    width: fit-content;
+    margin: 0 0 0 5%;
+    padding: 0 3% 0 3%;
+    height: 2.5em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border : 2px #000000 solid;
+    font-size: 1.1em;
+}
+
 body div#welcome-msg {
-    margin: 5% 0 0 0;
-    padding: 2% 0 2% 0;
+    margin: 1% 0 1% 0;
+    padding: 1% 0 1% 0;
     text-align: center;
+    background-color: #FFD100;
+    font-size: 2em;
+}
+
+body table#update-acc-table {
+    width: 100%;
+}
+
+body table#update-acc-table thead tr th, body table#update-acc-table tbody tr td {
+    display: inline-block;
+    border: 2px solid #000000;
+    margin: .5% 1% .5% 1%;
+    padding : .5% 0 .5% 0;
+    border-radius: 10px;
+    width: 10%;
+    font-size: 1.2em;
+    min-height: 1.5em;
+}
+
+body table#update-acc-table thead tr th {
+    background-color: #FFD100;
+}
+
+body table#update-acc-table tbody tr:hover {
+    background-color: rgb(255, 255, 8);
+}
+
+body table#update-acc-table tbody tr td:last-child {
+    background-color: #FFD100;
+}
+
+body table#update-acc-table tbody tr td button {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+body table#update-acc-table tbody tr td input, body table#update-acc-table tbody tr td select {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    font-size: 1.05em;
+}
+div#update-acc-form {
+    text-align: center;
+    display: none;
+    width: 50%;
+    border: 2px #000000 solid;
+    padding: 0 0 2% 0;
+}
+
+div#update-acc-form p {
+    border-bottom: 2px solid #000000;
+    background-color: #FFD100;
+    margin: 0 0 5% 0;
+    padding : 2% 0 2% 0;
+    font-size: 1.8em;
+}
+
+div#update-acc-form form label.text-item {
+    display: inline-block;
+    text-align: left;
+    width: 20%;
+    font-size: 1.5em;
+}
+
+div#update-acc-form form button {
+    width: 25%;
+    height: 2.5em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border : 2px #000000 solid;
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+div#update-acc-form form input {
+    width: 60%;
+    height: 1.4em;
+    margin: 1% 0 1% 0;
+    border: 2px #000000 solid;
+    font-size: 1.3em;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+div#update-acc-form form select {
+    width: 61.5%;
+    height: 1.8em;
+    margin: 1% 0 1% 0;
+    border: 2px #000000 solid;
+    font-size: 1.3em;
+}
+
+body table#update-acc-table tbody tr td input:focus, body table#update-acc-table tbody tr td select:focus {
+    outline: none;
+}
+
+body table#update-acc-table thead tr th:nth-child(1), body table#update-acc-table tbody tr td:nth-child(1) {
+    width: 4%;
+}
+
+body table#update-acc-table thead tr th:nth-child(2), body table#update-acc-table tbody tr td:nth-child(2) {
+    width: 13%;
+}
+
+body table#update-acc-table thead tr th:nth-child(3), body table#update-acc-table tbody tr td:nth-child(3) {
+    width: 13%;
 }

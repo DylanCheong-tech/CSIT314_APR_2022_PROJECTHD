@@ -1,6 +1,5 @@
 body div#alert-box {
     position: absolute;
-    /* display: inline-block; */
     display: none;
     background-color: #FFD100;
     border: 2px #000000 solid;
