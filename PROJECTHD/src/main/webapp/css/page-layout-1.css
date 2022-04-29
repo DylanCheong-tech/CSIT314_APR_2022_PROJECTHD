@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+}
+
+div#header {
+    min-height: 6em;
+}
+
+div#header span {
+    width: 48%;
+    display: inline-block;
+    text-align: right;
+}
+
+div#header span#header-date-time {
+    text-align: left;
+    font-size: 2em;
+    line-height: 1.5em;
+    padding: 0 0 0 1em;
+}
+
+div#header span#buttons {
+    margin: 2.5% 0 0 0;
+    vertical-align: top;
+}
+
+div#header span#buttons button {
+    width: fit-content;
+    margin: 0 0 0 5%;
+    padding: 0 3% 0 3%;
+    height: 2.5em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border : 2px #000000 solid;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+div#welcome-msg {
+    margin: 1% 0 1% 0;
+    padding: 1% 0 1% 0;
+    text-align: center;
+    background-color: #FFD100;
+    font-size: 2em;
+}

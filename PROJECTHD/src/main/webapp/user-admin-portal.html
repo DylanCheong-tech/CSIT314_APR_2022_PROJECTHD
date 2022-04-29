@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/user-admin-portal.css" />
+    <link rel="stylesheet" href="./css/alert-box.css" />
 </head>
 
 <body>
@@ -29,51 +30,51 @@
     </div>
 
     <div id="operation-items" align="center">
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/create-account.html')">
             <img class="action-logo" src="./img/Create_Light.png" alt="action_logo" />
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Create Account</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/suspend-account.html')">
             <img class="action-logo" src="./img/Delete_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Suspend Account</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/update-account.html')">
             <img class="action-logo" src="./img/Update_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Update Account</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/search-account.html')">
             <img class="action-logo" src="./img/Search_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Search Account</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/view-account.html')">
             <img class="action-logo" src="./img/View_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">View Account</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/create-role.html')">
             <img class="action-logo" src="./img/Create_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Create Role</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/delete-role.html')">
             <img class="action-logo" src="./img/Delete_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Delete Role</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/update-role.html')">
             <img class="action-logo" src="./img/Update_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Update Role</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/search-role.html')">
             <img class="action-logo" src="./img/Search_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Search Role</button>
         </span>
-        <span class="item mode-border-color-1">
+        <span class="item mode-border-color-1" onclick="redirect_page('/view-role.html')">
             <img class="action-logo" src="./img/View_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">View Role</button>
@@ -82,13 +83,15 @@
     </div>
 
     <div id="alert-box">
-        <span id="alert-message">Are you sure want to logout?</span>
+        <span id="alert-message"></span>
         <br />
-        <button type="button" onclick="confirm_logout()">Logout</button>
-        <button type="button" onclick="cancel_logout()">Cancel</button>
+        <button class="logout-btn" type="button" onclick="confirm_logout()">Logout</button>
+        <button class="logout-btn" type="button" onclick="cancel_logout()">Cancel</button>
+        <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
     <script src="./js/user-admin-portal.js"></script>
+    <script src="./js/logout.js"></script>
 </body>
 
 </html>

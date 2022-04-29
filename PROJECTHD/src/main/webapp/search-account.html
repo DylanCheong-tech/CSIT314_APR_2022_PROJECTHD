@@ -10,16 +10,19 @@
     <!--Google jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./css/search-account.css" />
     <link rel="stylesheet" href="./css/alert-box.css" />
+    <link rel="stylesheet" href="./css/page-layout-1.css" />
+    <link rel="stylesheet" href="./css/table-layout.css" />
+    <link rel="stylesheet" href="./css/search-account.css" />
+
 </head>
 
 <body>
     <div id="header">
         <span id="header-date-time" class="mode-font-color"></span>
         <span id="buttons">
-            <button id="portal-btn" type="button" onclick="displayLogout()">User Admin Portal</button>
-            <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+            <button id="portal-btn" type="button" onclick="window.location.href = '/user-admin-portal.html'">User Admin Portal</button>
+            <button id="logout-btn" type="button" onclick="logout()">Logout</button>
         </span>
     </div>
 
@@ -27,12 +30,12 @@
         Search Account
     </div>
 
-    <div id="search-frame">
-        <input id="search-bar" placeholder="Enter Account Name ... " />
+    <div id="search-frame" class="mode-border-color-1">
+        <input id="search-bar" class="mode-font-color" placeholder="Enter Account Name ... " />
         <button id="search-btn" onclick="searchAccount()">Search</button>
     </div>
 
-    <table id="search-acc-table" align="center">
+    <table id="table" align="center">
         <thead>
             <th>ID</th>
             <th>Role ID</th>
@@ -54,6 +57,8 @@
     </div>
 
     <script src="./js/search-account.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/date-time.js"></script>
 </body>
 
 </html>

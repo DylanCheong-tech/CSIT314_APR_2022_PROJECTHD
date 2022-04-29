@@ -4,6 +4,11 @@ var status = params.get("status");
 var alert_box = document.getElementById("alert-box");
 var alert_box_msg = document.getElementById("alert-message");
 
+var hide_btn = document.getElementsByClassName("logout-btn");
+for (index in hide_btn) {
+    hide_btn.item(index).style.display = "none";
+}
+
 if (status == "success"){
     alert_box_msg.textContent = "Create Account Successfull";
     alert_box.style.display = "inline-block";
@@ -11,6 +16,11 @@ if (status == "success"){
 else if (status == "fail"){
     alert_box_msg.textContent = "Create Account Fail";
     alert_box.style.display = "inline-block";
+}
+
+function alert_confirm() {
+    alert_box.style.display = "none";
+    window.location.href = "/create-account.html";
 }
 
 var role_list = $.ajax({
@@ -27,67 +37,6 @@ for (index in role_list) {
     option.innerText = role_list[index].name;
     select.appendChild(option);
 }
-
-setInterval(() => {
-    var currentDate = new Date();
-
-    var month_str;
-
-    switch (currentDate.getMonth() + 1) {
-        case 1:
-            month_str = "January";
-            break;
-        case 2:
-            month_str = "February";
-            break;
-        case 3:
-            month_str = "March";
-            break;
-        case 4:
-            month_str = "April";
-            break;
-        case 5:
-            month_str = "May";
-            break;
-        case 6:
-            month_str = "June";
-            break;
-        case 7:
-            month_str = "July";
-            break;
-        case 8:
-            month_str = "August";
-            break;
-        case 9:
-            month_str = "September";
-            break;
-        case 10:
-            month_str = "October";
-            break;
-        case 11:
-            month_str = "November";
-            break;
-        case 12:
-            month_str = "December";
-            break;
-        default:
-            break;
-    }
-
-    var hour = currentDate.getHours() + "";
-    hour = hour.length < 2 ? "0" + hour : hour;
-
-    var minutes = currentDate.getMinutes() + "";
-    minutes = minutes.length < 2 ? "0" + minutes : minutes;
-
-    var second = currentDate.getSeconds() + "";
-    second = second.length < 2 ? "0" + second : second;
-
-    var date = currentDate.getDate() + " "  + month_str + " " + currentDate.getFullYear();
-    var time = hour + " : " + minutes + " : " + second;
-
-    document.getElementById("header-date-time").innerHTML = date + "<br />" + time;
-}, 1000);
 
 var mode_font_color = document.getElementsByClassName("mode-font-color");
 var mode_bg_color_2 = document.getElementsByClassName("mode-bg-color-2");
@@ -132,9 +81,4 @@ if (hours < 19){
 }
 else{
     display_theme(night_theme);
-}
-
-function alert_confirm() {
-    alert_box.style.display = "none";
-    window.location.href = "/create-account.html";
 }

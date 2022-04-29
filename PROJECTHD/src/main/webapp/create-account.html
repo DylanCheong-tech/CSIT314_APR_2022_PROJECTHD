@@ -12,14 +12,16 @@
 
     <link rel="stylesheet" href="./css/create-account.css" />
     <link rel="stylesheet" href="./css/alert-box.css" />
+    <link rel="stylesheet" href="./css/page-layout-1.css" />
+    <link rel="stylesheet" href="./css/form-layout.css" />
 </head>
 
 <body>
     <div id="header">
         <span id="header-date-time" class="mode-font-color"></span>
         <span id="buttons">
-            <button id="portal-btn" type="button" onclick="displayLogout()">User Admin Portal</button>
-            <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+            <button id="portal-btn" type="button" onclick="window.location.href = '/user-admin-portal.html'">User Admin Portal</button>
+            <button id="logout-btn" type="button" onclick="logout()">Logout</button>
         </span>
     </div>
 
@@ -27,7 +29,7 @@
         Create Account
     </div>
 
-    <div id="create-account-form" class="mode-border-color-1">
+    <div id="form" class="mode-border-color-1">
         <p class="mode-font-color mode-bg-color-2 mode-border-color-3">Create Account Form</p>
         <form action="/createAccount" method="post">
             <label class="text-item mode-font-color">ID</label>
@@ -60,10 +62,14 @@
     <div id="alert-box">
         <span id="alert-message"></span>
         <br />
-        <button type="button" onclick="alert_confirm()">Ok</button>
+        <button class="logout-btn" type="button" onclick="confirm_logout()">Logout</button>
+        <button class="logout-btn" type="button" onclick="cancel_logout()">Cancel</button>
+        <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
     <script src="./js/create-account.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/date-time.js"></script>
 </body>
 
 </html>

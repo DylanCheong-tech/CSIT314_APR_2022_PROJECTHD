@@ -59,6 +59,7 @@ body div#operation-items span.item {
 
     border: 2px #000000 solid;
     border-radius: 50px;
+    cursor: pointer;
 }
 
 body div#operation-items span.item img.action-logo{
@@ -76,30 +77,5 @@ body div#operation-items span.item button.action-button{
     height: 2.5em;
     position: absolute;
     top : 90%;
-    cursor: pointer;
-}
-
-body div#alert-box {
-    position: absolute;
-    display: none;
-    background-color: #FFD100;
-    border: 2px #000000 solid;
-    border-radius: 50px;
-    width: 50%;
-    line-height: 2em;
-    font-size: 2.5em;
-    top : 50%;
-    left: 25%;
-}
-
-body div#alert-box button{
-    font-size: .5em;
-    width: 25%;
-    height: 2.5em;
-    margin: 0 8% 0 8%;
-    border-radius: 9px;
-    background-color: #000000;
-    border : 2px #000000 solid;
-    color: #FFFFFF;
     cursor: pointer;
 }

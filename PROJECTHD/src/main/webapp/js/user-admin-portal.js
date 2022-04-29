@@ -1,3 +1,7 @@
+var params = new URLSearchParams(window.location.search);
+var username = params.get("username");
+window.localStorage.setItem("username", username);
+
 setInterval(() => {
     var currentDate = new Date();
 
@@ -104,26 +108,4 @@ if (hours < 19) {
 }
 else {
     display_theme(night_theme);
-}
-
-var alert_box = document.getElementById("alert-box");
-
-function logout() {
-    alert_box.style.display = "inline-block";
-}
-
-function confirm_logout() {
-    var params = new URLSearchParams(window.location.search);
-    var username = params.get("username");
-    $.ajax({
-        "url": "/logoutUser?username=" + username,
-        "type": "get",
-        "complete": () => {
-            window.location.href = "/login.html";
-        }
-    });
-}
-
-function cancel_logout() {
-    alert_box.style.display = "none";
 }

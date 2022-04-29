@@ -5,7 +5,8 @@ import java.io.*;
 public class UserAdminLogoutC extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        String username = request.getQueryString().split("=")[1];
+        // replacing the query string <space> encoded value if any
+        String username = request.getQueryString().split("=")[1].replaceAll("%20", " ");
 
         Account.logout(username);
     }

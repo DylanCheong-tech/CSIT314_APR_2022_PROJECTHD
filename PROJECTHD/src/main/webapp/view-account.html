@@ -10,16 +10,19 @@
     <!--Google jQuery CDN-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./css/view-account.css" />
     <link rel="stylesheet" href="./css/alert-box.css" />
+    <link rel="stylesheet" href="./css/page-layout-1.css" />
+    <link rel="stylesheet" href="./css/form-layout.css" />
+    <link rel="stylesheet" href="./css/table-layout.css" />
+    <link rel="stylesheet" href="./css/view-account.css" />
 </head>
 
 <body>
     <div id="header">
         <span id="header-date-time" class="mode-font-color"></span>
         <span id="buttons">
-            <button id="portal-btn" type="button" onclick="displayLogout()">User Admin Portal</button>
-            <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+            <button id="portal-btn" type="button" onclick="window.location.href = '/user-admin-portal.html'">User Admin Portal</button>
+            <button id="logout-btn" type="button" onclick="logout()">Logout</button>
         </span>
     </div>
 
@@ -27,7 +30,7 @@
         View Account
     </div>
 
-    <table id="view-acc-table" align="center">
+    <table id="table" align="center">
         <thead>
             <th>ID</th>
             <th>Role ID</th>
@@ -43,7 +46,7 @@
         </tbody>
     </table>
 
-    <div id="view-acc-form" class="mode-border-color-1">
+    <div id="form" class="mode-border-color-1">
         <p class="mode-font-color mode-bg-color-2 mode-border-color-3">View Account Form</p>
         <form>
             <label class="text-item mode-font-color">ID</label>
@@ -82,10 +85,14 @@
     <div id="alert-box">
         <span id="alert-message"></span>
         <br />
-        <button type="button" onclick="alert_confirm()">Ok</button>
+        <button class="logout-btn" type="button" onclick="confirm_logout()">Logout</button>
+        <button class="logout-btn" type="button" onclick="cancel_logout()">Cancel</button>
+        <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
     <script src="./js/view-account.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/date-time.js"></script>
 </body>
 
 </html>
