@@ -68,7 +68,7 @@ public class AccountTestDataGenerator {
 		Role role1 = new Role(1, "Restaurant Manager", "This is Rsstaurant Manager");
 		Role role2 = new Role(2, "Staff", "This is Staff");
 		Role role3 = new Role(3, "Restaurant Owner", "This is Restaurant Owner");
-		Role role4 = new Role("User Admin", "This is User Admin");
+		Role role4 = new Role(4, "User Admin", "This is User Admin");
 		
 		ArrayList<Role> roleArray = new ArrayList<Role>();
 		roleArray.add(role1);
