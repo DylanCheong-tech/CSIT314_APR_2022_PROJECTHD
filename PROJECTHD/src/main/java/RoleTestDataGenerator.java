@@ -10,13 +10,15 @@ public class RoleTestDataGenerator {
 	private static final String dbpassword = "";
 	
 	public static void main(String[] args) {
-		Role role1 = new Role("Restaurant Owner", "This is Rsstaurant Manager");
+		Role role1 = new Role("Restaurant Manager", "This is Rsstaurant Manager");
 		Role role2 = new Role("Staff", "This is Staff");
 		Role role3 = new Role("Restaurant Owner", "This is Restaurant Owner");
+		Role role4 = new Role("User Admin", "This is User Admin");
 		ArrayList<Role> roleArray = new ArrayList<Role>();
 		roleArray.add(role1);
 		roleArray.add(role2);
 		roleArray.add(role3);
+		roleArray.add(role4);
 
 		for(Role role : roleArray) {
 		

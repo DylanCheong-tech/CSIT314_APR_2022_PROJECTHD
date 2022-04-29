@@ -164,8 +164,8 @@ var currentDate = new Date();
 // var hours = currentDate.getHours();
 var hours = 20;
 
-var day_theme = {font_color : "#000000", bg_color_1 : "#FFFFFF" , bg_color_2 : "#FFD100", border_1 : "2px #000000 solid", border_2 : "2px #FFFFFF solid", hover : "#FFD100", origin : "Light"};
-var night_theme = {font_color : "#FFFFFF", bg_color_1 : "#000000" , bg_color_2 : "#000000", border_1 : "2px #FFD100 solid", border_2 : "2px #FFD100 solid", hover : "darkslategrey", origin : "Dark"};
+var day_theme = { font_color: "#000000", bg_color_1: "#FFFFFF", bg_color_2: "#FFD100", border_1: "2px #000000 solid", border_2: "2px #FFFFFF solid", hover: "#FFD100", origin: "Light" };
+var night_theme = { font_color: "#FFFFFF", bg_color_1: "#000000", bg_color_2: "#000000", border_1: "2px #FFD100 solid", border_2: "2px #FFD100 solid", hover: "darkslategrey", origin: "Dark" };
 
 function display_theme(theme) {
     for (index in mode_font_color) {
@@ -198,10 +198,10 @@ function display_theme(theme) {
     });
 }
 
-if (hours < 19){
+if (hours < 19) {
     display_theme(day_theme);
 }
-else{
+else {
     display_theme(night_theme);
 }
 
@@ -224,14 +224,16 @@ function updateAccount(recordID) {
     for (index in role_list) {
         var option = document.createElement("option");
         option.value = role_list[index].roleID;
-        option.innerText = role_list[index].name;
+        option.innerText = role_list[index].roleID + " - " + role_list[index].name;
+        if (option.textContent == childs[1].textContent){
+            option.selected = true;
+        }
         select.appendChild(option);
     }
 
     document.getElementById("name").value = childs[2].textContent;
     document.getElementById("username").value = childs[3].textContent;
     // extract out the the real password 
-    console.log(account_list)
     for (index in account_list) {
         if (account_list[index].accountID == childs[0].textContent) {
             document.getElementById("password").value = account_list[index].password;;
@@ -240,19 +242,4 @@ function updateAccount(recordID) {
 
     document.getElementById("dateJoined").value = childs[5].textContent;
     document.getElementById("status").value = childs[6].textContent;
-
-    // role id (drop down list)
-    column = document.createElement("td");
-    column.classList.add("mode-border-color-1");
-    var select = document.createElement("select");
-    select.classList.add("mode-font-color");
-    select.name = "role";
-    for (index in role_list) {
-        var option = document.createElement("option");
-        option.value = role_list[index].roleID;
-        option.innerText = role_list[index].roleID + " - " + role_list[index].name;
-        select.appendChild(option);
-    }
-    column.appendChild(select);
-    childs[1].replaceWith(column);
 }
