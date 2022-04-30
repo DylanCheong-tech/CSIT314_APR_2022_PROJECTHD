@@ -1,22 +1,7 @@
-body div#header span {
-  display: inline-block;
+table#table thead tr th:nth-child(2), table#table tbody tr td:nth-child(2) {
+  width: 30%;
 }
 
-body div#header span#header-date-time {
-  width: 70%;
-}
-
-body div#header span.header-btn{
-  width: 14%;
-  text-align: right;
-}
-
-body div#welcome-msg {
-  margin: 5% 0 0 0;
-  padding: 2% 0 2% 0;
-  text-align: center;
-}
-
-body div#search-frame{
-  text-align: center;
+table#table thead tr th:nth-child(3), table#table tbody tr td:nth-child(3) {
+  width: 45%;
 }

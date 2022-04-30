@@ -22,10 +22,6 @@ function alert_confirm() {
     window.location.href = "/update-account.html";
 }
 
-function displayLogout() {
-    window.confirm("Are you sure want to logout ? ");
-}
-
 var account_list = $.ajax({
     async: false,
     "url": "/getAccountList",

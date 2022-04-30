@@ -1,18 +1,24 @@
-body div#header span {
-    display: inline-block;
+div#form {
+    display: none;
 }
 
-body div#header span#header-date-time {
-    width: 70%;
+div#form form textarea {
+    font-size: 1.5em;
+    width: 60%;
+    border: 2px #000000 solid;
+    height: 5em;
+    margin: 1% 0 1% 0;
 }
 
-body div#header span.header-btn{
-    width: 14%;
-    text-align: right;
+div#form form label#desc-label{
+    vertical-align: top;
+    margin: 1% 0 0 0;
 }
 
-body div#welcome-msg {
-    margin: 5% 0 0 0;
-    padding: 2% 0 2% 0;
-    text-align: center;
+table#table thead tr th:nth-child(2), table#table tbody tr td:nth-child(2) {
+    width: 30%;
+}
+
+table#table thead tr th:nth-child(3), table#table tbody tr td:nth-child(3) {
+    width: 45%;
 }

@@ -53,9 +53,13 @@ function display_theme(theme) {
     });
 }
 
-if (hours < 19) {
-    display_theme(day_theme);
+var current_theme;
+
+if (hours < 19){
+    current_theme = day_theme;
 }
-else {
-    display_theme(night_theme);
+else{
+    current_theme = night_theme;
 }
+
+display_theme(current_theme);

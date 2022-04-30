@@ -1,31 +1,25 @@
 var params = new URLSearchParams(window.location.search);
 var status = params.get("status");
+var alert_box = document.getElementById("alert-box");
+var alert_box_msg = document.getElementById("alert-message");
+
+var hide_btn = document.getElementsByClassName("logout-btn");
+for (index in hide_btn) {
+    hide_btn.item(index).style.display = "none";
+}
 
 if (status == "success") {
-    window.alert("Update Role Successfull");
-
-    window.location.href = "/update-role.html";
+    alert_box_msg.textContent = "Update Role Successfull";
+    alert_box.style.display = "inline-block";
 }
 else if (status == "fail") {
-    window.alert("Update Role Fail");
+    alert_box_msg.textContent = "Updates Role Fail";
+    alert_box.style.display = "inline-block";
+}
 
+function alert_confirm() {
+    alert_box.style.display = "none";
     window.location.href = "/update-role.html";
-}
-
-setInterval(() => {
-    var currentDate = new Date();
-    var date = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
-    var time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
-
-    document.getElementById("header-date-time").innerHTML = date + "      " + time;
-}, 1000);
-
-function redirectToPortal() {
-    window.location.href = "./user-admin-portal.html";
-}
-
-function displayLogout() {
-    window.confirm("Are you sure want to logout ? ");
 }
 
 var role_list = $.ajax({
@@ -42,20 +36,28 @@ for (index in role_list) {
     row.id = "record-" + (parseInt(index) + 1);
 
     var column1 = document.createElement("td");
+    column1.classList.add("mode-font-color");
+    column1.classList.add("mode-border-color-1");
     column1.innerHTML = role_list[index].roleID;
     row.appendChild(column1);
 
     var column2 = document.createElement("td");
+    column2.classList.add("mode-font-color");
+    column2.classList.add("mode-border-color-1");
     column2.innerHTML = role_list[index].name;
     row.appendChild(column2);
 
     var column3 = document.createElement("td");
+    column3.classList.add("mode-font-color");
+    column3.classList.add("mode-border-color-1");
     column3.innerHTML = role_list[index].descriptions;
     row.appendChild(column3);
 
     var btnCol = document.createElement("td");
+    btnCol.classList.add("mode-border-color-1");
     var button = document.createElement("button");
     button.innerHTML = "Update";
+    button.type = "button";
     button.onclick = updateRole.bind(event, row.id);
 
     btnCol.appendChild(button);
@@ -69,48 +71,11 @@ function updateRole(recordID) {
 
     var childs = row.childNodes;
 
-    // invisible id field (as needed for updated in backed end)
-    var column = document.createElement("td");
-    var input = document.createElement("input");
-    input.name = "roleID";
-    input.type = "text";
-    input.value = childs[0].textContent;
+    document.getElementById("table").style.display = "none";
+    document.getElementById("form").style.display = "inline-block";
 
-    column.appendChild(input);
-    column.style.display = "none";
-    row.appendChild(column);
+    document.getElementById("roleID").value = childs[0].textContent;
 
-    // name field
-    var column = document.createElement("td");
-    var input = document.createElement("input");
-    input.name = "name";
-    input.type = "text";
-    input.value = childs[1].textContent;
-
-    column.appendChild(input);
-    childs[1].replaceWith(column);
-
-    // desc field
-    column = document.createElement("td");
-    input = document.createElement("input");
-    input.name = "desc";
-    input.type = "text";
-    input.value = childs[2].textContent;
-
-    column.appendChild(input);
-    childs[2].replaceWith(column);
-
-    var button = document.createElement("button");
-    button.type = "submit";
-    button.textContent = "Submit";
-
-    childs[3].replaceWith(button);
-
-    var buttonsList = document.querySelectorAll("button");
-
-    for (index in buttonsList) {
-        if (buttonsList[index].innerHTML == "Update") {
-            buttonsList[index].disabled = true;
-        }
-    }
+    document.getElementById("name").value = childs[1].textContent;
+    document.getElementById("desc").value = childs[2].textContent;
 }
