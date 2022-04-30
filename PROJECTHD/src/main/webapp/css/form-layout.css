@@ -37,6 +37,7 @@ div#form form input {
     margin: 1% 0 1% 0;
     border: 2px #000000 solid;
     font-size: 1.3em;
+    background-color: #FFFFFF;
 }
 
 div#form form select {
@@ -45,10 +46,10 @@ div#form form select {
     margin: 1% 0 1% 0;
     border: 2px #000000 solid;
     font-size: 1.3em;
+    background-color: #FFFFFF;
 }
 
 div#form form input#id-input {
     width: 10%;
     margin: 1% 50% 1% 0;
-    background-color: #FFFFFF;
 }

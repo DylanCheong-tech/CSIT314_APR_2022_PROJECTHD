@@ -10,25 +10,27 @@
     <!--Google jQuery CDN-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="./css/alert-box.css" />
+    <link rel="stylesheet" href="./css/page-layout-1.css" />
+    <link rel="stylesheet" href="./css/form-layout.css" />
+    <link rel="stylesheet" href="./css/table-layout.css" />
     <link rel="stylesheet" href="./css/view-role.css" />
 </head>
 
 <body>
     <div id="header">
-        <span id="header-date-time"></span>
-        <span class="header-btn">
-            <button id="logout-btn" type="button" onclick="alert('Testing')">User Admin Portal</button>
-        </span>
-        <span class="header-btn">
-            <button id="logout-btn" type="button" onclick="displayLogout()">Logout</button>
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="buttons">
+            <button id="portal-btn" type="button" onclick="window.location.href = '/user-admin-portal.html'">User Admin Portal</button>
+            <button id="logout-btn" type="button" onclick="logout()">Logout</button>
         </span>
     </div>
 
-    <div id="welcome-msg">
+    <div id="welcome-msg" class="mode-border-color-2">
         View Roles
     </div>
 
-    <table id="search-role-table" align="center">
+    <table id="table" align="center">
         <thead>
             <th>ID</th>
             <th>Name</th>
@@ -40,19 +42,19 @@
         </tbody>
     </table>
 
-    <div id="view-role-form">
+    <div id="form">
         <p>View Role Form</p>
         <form action="/viewRole" method="POST">
-            <span class="text-item">ID</span> 
-            <input id="roleID" type="text" disabled />
+            <label class="text-item mode-font-color">ID</label> 
+            <input class="mode-border-color-1" id="roleID" type="text" disabled />
             <br />
 
-            <span class="text-item">Name</span>
-            <input id="name" type="text" disabled />
+            <label class="text-item mode-font-color">Name</label>
+            <input class="mode-border-color-1" id="name" type="text" disabled />
             <br />
 
-            <span class="text-item">Description</span>
-            <input id="desc" type="text" disabled />
+            <label class="text-item mode-font-color">Description</label>
+            <input class="mode-border-color-1" id="desc" type="text" disabled />
             <br />
             <br />
 
@@ -60,7 +62,18 @@
         </form>
     </div>
 
+    <div id="alert-box">
+        <span id="alert-message"></span>
+        <br />
+        <button class="logout-btn" type="button" onclick="confirm_logout()">Logout</button>
+        <button class="logout-btn" type="button" onclick="cancel_logout()">Cancel</button>
+        <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
+    </div>
+
     <script src="./js/view-role.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/date-time.js"></script>
+    <script src="./js/page-theme.js"></script>
 </body>
 
 </html>
