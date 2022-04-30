@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,19 +8,26 @@
     <title>Login</title>
 
     <!--Google jQuery CDN-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/login.css" />
     <link rel="stylesheet" href="./css/alert-box.css" />
 </head>
+
 <body>
     <div id="header" class="mode-bg-color-1">
-        <img id="header-logo" src="./img/logo.png" alt="logo_image"/>
+        <img id="header-logo" src="./img/logo.png" alt="logo_image" />
     </div>
 
 
     <div id="login-div">
-        <img id="background-image" src="./img/test.png" alt="background_img" />
+        <div id="image-frame">
+            <img class="background-image" src="./img/honeyzstar1.png" alt="background_img" />
+            <img class="background-image" src="./img/honeyzstar2.png" alt="background_img" />
+            <img class="background-image" src="./img/honeyzstar3.png" alt="background_img" />
+            <img class="background-image" src="./img/honeyzstar4.png" alt="background_img" /> 
+        </div>
+        
         <form method="POST" action="/loginUser" class="mode-bg-color-2 mode-border-color">
             <label class="mode-font-color">
                 Login As
@@ -46,5 +54,7 @@
     </div>
 
     <script src="./js/login.js"></script>
+    <script src="./js/page-theme.js"></script>
 </body>
+
 </html>

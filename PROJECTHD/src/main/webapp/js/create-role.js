@@ -1,46 +1,23 @@
 var params = new URLSearchParams(window.location.search);
 var status = params.get("status");
+var alert_box = document.getElementById("alert-box");
+var alert_box_msg = document.getElementById("alert-message");
+
+var hide_btn = document.getElementsByClassName("logout-btn");
+for (index in hide_btn) {
+    hide_btn.item(index).style.display = "none";
+}
 
 if (status == "success"){
-    window.alert("Create Role Successfull");
-
-    window.location.href = "/create-role.html";
+    alert_box_msg.textContent = "Create Role Successfull";
+    alert_box.style.display = "inline-block";
 }
 else if (status == "fail"){
-    window.alert("Create Role Fail");
+    alert_box_msg.textContent = "Create Role Fail";
+    alert_box.style.display = "inline-block";
+}
 
+function alert_confirm() {
+    alert_box.style.display = "none";
     window.location.href = "/create-role.html";
-}
-
-function createRoles()
-{
-    var roleName = document.getElementById("roleID").value;
-    window.alert("Create Roles Successful");
-    //connect to database
-    //add role to database
-    //if success
-    alert("Create Role Successful");
-    //else
-    //alert("Create Roles fail");
-    
-
-}
-
-setInterval(() => 
-{
-    var currentDate = new Date();
-    var date = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
-    var time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
-
-    document.getElementById("header-date-time").innerHTML = date + "      " + time;
-}, 1000);
-
-function userAdminPortal()
-{
-    window.location.href="/user-admin-portal.html";
-}
-
-function displayLogout () 
-{
-    window.confirm("Are you sure want to logout ? ");
 }

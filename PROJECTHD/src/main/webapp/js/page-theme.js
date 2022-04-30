@@ -7,7 +7,7 @@ var mode_row_hover_color = document.querySelectorAll("body table tbody tr");
 
 var currentDate = new Date();
 var hours = currentDate.getHours();
-var hours = 20;
+// var hours = 20;
 
 var day_theme = { font_color: "#000000", bg_color_1: "#FFFFFF", bg_color_2: "#FFD100", border_1: "2px #000000 solid", border_2: "2px #FFFFFF solid", hover: "#FFD100", origin: "Light" };
 var night_theme = { font_color: "#FFFFFF", bg_color_1: "#000000", bg_color_2: "#000000", border_1: "2px #FFD100 solid", border_2: "2px #FFD100 solid", hover: "darkslategrey", origin: "Dark" };

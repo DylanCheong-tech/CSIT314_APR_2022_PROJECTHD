@@ -3,50 +3,66 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/create-role.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+
+    <!--Google jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./css/create-role.css" />
+    <link rel="stylesheet" href="./css/alert-box.css" />
+    <link rel="stylesheet" href="./css/page-layout-1.css" />
+    <link rel="stylesheet" href="./css/form-layout.css" />
 
 </head>
 
 <body>
 
-    <h1>
-        <div>
-            <span id="header-date-time" style="float:left;"></span>
-            <span>
-                <button id="logout-btn" type="button" onclick="displayLogout()" style="float: right;">Logout</button>
-            </span>
-            <span>
-                <button id="admin-portal-btn" type="button" onclick="userAdminPortal()" style="float: right;">User Admin
-                    Portal</button>
-            </span>
-            <br>
-        </div>
-    </h1>
+    <div id="header">
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="buttons">
+            <button id="portal-btn" type="button" onclick="window.location.href = '/user-admin-portal.html'">User Admin
+                Portal</button>
+            <button id="logout-btn" type="button" onclick="logout()">Logout</button>
+        </span>
+    </div>
 
-    <h2>Create Roles</h2>
+    <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
+        Create Role
+    </div>
 
-    <div id="create-role-form">
+    <div id="form" class="mode-border-color-1">
+        <p class="mode-font-color mode-bg-color-2 mode-border-color-3">Create Roles Form</p>
         <form action="/createRole" method="post">
-            <p>Create Roles Form</p>
-            <label for="roleID">Role ID</label>
-            <input type="text" id="roleID" value="1" disabled />
+            <label class="text-item mode-font-color" for="roleID">Role ID</label>
+            <input class="mode-border-color-1" type="text" id="id-input" value="1" disabled />
             <br />
 
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" />
+            <label class="text-item mode-font-color" for="name">Name</label>
+            <input class="mode-border-color-1" type="text" id="name" name="name" />
             <br />
 
-            <label for="descriptions">Descriptions</label>
-            <input type="text" id="descriptions" name="descriptions" />
+            <label class="text-item mode-font-color" for="descriptions">Descriptions</label>
+            <input  class="mode-border-color-1"type="text" id="descriptions" name="descriptions" />
             <br />
             <br />
             <button type="submit">Create</button>
         </form>
     </div>
 
+    <div id="alert-box">
+        <span id="alert-message"></span>
+        <br />
+        <button class="logout-btn" type="button" onclick="confirm_logout()">Logout</button>
+        <button class="logout-btn" type="button" onclick="cancel_logout()">Cancel</button>
+        <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
+    </div>
+
     <script src=" ./js/create-role.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/date-time.js"></script>
 </body>
 
 </html>
