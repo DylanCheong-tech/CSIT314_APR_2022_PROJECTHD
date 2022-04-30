@@ -1,21 +1,24 @@
+package honeyzstar.useradmin;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
-import com.google.gson.Gson;
 import java.util.ArrayList;
+import com.google.gson.Gson;
 
-public class UserAdminGetRoleList extends HttpServlet {
+import honeyzstar.entity.Account;
+
+public class UserAdminGetAccountList extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         response.setContentType("application/json; charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        ArrayList<Role> returnList = new ArrayList<Role>();
+        ArrayList<Account> returnList = new ArrayList<Account>();
 
         try {
 
-            returnList = Role.getRolelist();
+            returnList = Account.getAccountList();
 
             out.println(new Gson().toJson(returnList));
 

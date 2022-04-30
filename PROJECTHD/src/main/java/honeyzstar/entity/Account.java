@@ -1,3 +1,4 @@
+package honeyzstar.entity;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -377,6 +378,34 @@ public class Account {
 		return returnArray;
 	}
 
+	public void setID (int accID){
+		this.accountID = accID;
+	}
+
+	public void setName (String name){
+		this.name = name;
+	}
+
+	public void setUsername (String username){
+		this.username = username;
+	}
+
+	public void setPassword (String password){
+		this.password = password;
+	}
+
+	public void setRole (Role otherRole){
+		this.role = new Role(otherRole);
+	}
+
+	public void setDateJoined (String dateJoined){
+		this.dateJoined = dateJoined;
+	}
+
+	public void setStatus (String status){
+		this.status = status;
+	}
+
 	public int getID() {
 		return this.accountID;
 	}
@@ -408,5 +437,29 @@ public class Account {
 	@Override
 	public String toString() {
 		return String.format("Account ID: %-5d Name : %10s Username: %10s Password : %10s Joined Date : %10s\n %-20s", this.accountID, this.name, this.username, this.password, this.dateJoined, this.role);
+	}
+
+	@Override 
+	public boolean equals (Object anotherAcc){
+		if (anotherAcc instanceof Account){
+			Account compareAcc = (Account) anotherAcc;
+			if (this.accountID == compareAcc.accountID){
+				if (this.name.equals(compareAcc.name)){
+					if (this.username.equals(compareAcc.username)){
+						if(this.password.equals(compareAcc.password)){
+							if (this.role.equals(compareAcc.role)){
+								if (this.dateJoined.equals(compareAcc.dateJoined)){
+									if (this.status.equals(compareAcc.status)){
+										return true;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 }

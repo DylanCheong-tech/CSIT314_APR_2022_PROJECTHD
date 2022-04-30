@@ -7,72 +7,72 @@
   
   <servlet>
       <servlet-name>UserAdminLoginC</servlet-name>
-      <servlet-class>UserAdminLoginC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminLoginC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminLogoutC</servlet-name>
-      <servlet-class>UserAdminLogoutC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminLogoutC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminCreateAccountC</servlet-name>
-      <servlet-class>UserAdminCreateAccountC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminCreateAccountC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminSuspendAccountC</servlet-name>
-      <servlet-class>UserAdminSuspendAccountC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminSuspendAccountC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminUpdateAccountC</servlet-name>
-      <servlet-class>UserAdminUpdateAccountC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminUpdateAccountC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminSearchAccountC</servlet-name>
-      <servlet-class>UserAdminSearchAccountC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminSearchAccountC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminViewAccountC</servlet-name>
-      <servlet-class>UserAdminViewAccountC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminViewAccountC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminCreateRoleC</servlet-name>
-      <servlet-class>UserAdminCreateRoleC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminCreateRoleC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminDeleteRoleC</servlet-name>
-      <servlet-class>UserAdminDeleteRoleC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminDeleteRoleC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminUpdateRoleC</servlet-name>
-      <servlet-class>UserAdminUpdateRoleC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminUpdateRoleC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminSearchRoleC</servlet-name>
-      <servlet-class>UserAdminSearchRoleC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminSearchRoleC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminViewRoleC</servlet-name>
-      <servlet-class>UserAdminViewRoleC</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminViewRoleC</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminGetRoleList</servlet-name>
-      <servlet-class>UserAdminGetRoleList</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminGetRoleList</servlet-class>
    </servlet>
 
    <servlet>
       <servlet-name>UserAdminGetAccountList</servlet-name>
-      <servlet-class>UserAdminGetAccountList</servlet-class>
+      <servlet-class>honeyzstar.useradmin.UserAdminGetAccountList</servlet-class>
    </servlet>
  
    <!-- Note: All <servlet> elements MUST be grouped together and

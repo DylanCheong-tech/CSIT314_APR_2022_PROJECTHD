@@ -1,5 +1,9 @@
+package honeyzstar.useradmin;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import honeyzstar.entity.Account;
+
 import java.io.*;
 
 public class UserAdminSuspendAccountC extends HttpServlet {

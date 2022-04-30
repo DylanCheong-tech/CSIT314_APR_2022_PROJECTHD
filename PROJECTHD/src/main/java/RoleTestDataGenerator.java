@@ -2,6 +2,8 @@
 import java.sql.*;
 import java.util.ArrayList;
 
+import honeyzstar.entity.Role;
+
 
 
 public class RoleTestDataGenerator {
@@ -10,7 +12,7 @@ public class RoleTestDataGenerator {
 	private static final String dbpassword = "";
 	
 	public static void main(String[] args) {
-		Role role1 = new Role("Restaurant Manager", "This is Rsstaurant Manager");
+		Role role1 = new Role("Restaurant Manager", "This is Restaurant Manager");
 		Role role2 = new Role("Staff", "This is Staff");
 		Role role3 = new Role("Restaurant Owner", "This is Restaurant Owner");
 		Role role4 = new Role("User Admin", "This is User Admin");

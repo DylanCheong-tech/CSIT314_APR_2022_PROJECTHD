@@ -1,9 +1,12 @@
+package honeyzstar.useradmin;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 import com.google.gson.Gson;
 
-public class UserAdminSearchRoleC extends HttpServlet {
+import honeyzstar.entity.Account;
+
+public class UserAdminSearchAccountC extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
@@ -14,12 +17,12 @@ public class UserAdminSearchRoleC extends HttpServlet {
             // replacing the query string <space> encoded value if any
             String name = request.getQueryString().split("=")[1].replaceAll("%20", " ");
 
-            Role resultRole = Role.searchRole(name);
+            Account resultAcc = Account.searchAccount(name);
 
-            if (resultRole == null) {
+            if (resultAcc == null) {
                 out.println(new Gson().toJson(null));
             } else {
-                out.println(new Gson().toJson(resultRole));
+                out.println(new Gson().toJson(resultAcc));
             }
 
         } finally {

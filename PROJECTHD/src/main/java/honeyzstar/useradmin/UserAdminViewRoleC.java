@@ -1,7 +1,10 @@
+package honeyzstar.useradmin;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 import com.google.gson.Gson;
+
+import honeyzstar.entity.Role;
 
 public class UserAdminViewRoleC extends HttpServlet {
     @Override

@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
+
+import honeyzstar.entity.Account;
+import honeyzstar.entity.Role;
+
 import java.sql.*;
 
 enum Month {
@@ -65,7 +69,7 @@ public class AccountTestDataGenerator {
 	}
 	
 	public static void main(String[] args) {
-		Role role1 = new Role(1, "Restaurant Manager", "This is Rsstaurant Manager");
+		Role role1 = new Role(1, "Restaurant Manager", "This is Restaurant Manager");
 		Role role2 = new Role(2, "Staff", "This is Staff");
 		Role role3 = new Role(3, "Restaurant Owner", "This is Restaurant Owner");
 		Role role4 = new Role(4, "User Admin", "This is User Admin");

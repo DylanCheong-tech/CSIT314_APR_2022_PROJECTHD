@@ -1,3 +1,4 @@
+package honeyzstar.entity;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -202,6 +203,18 @@ public class Role {
 		return returnRole;
 	}
 
+	public void setID (int roleID){
+		this.roleID = roleID;
+	}
+
+	public void setName (String name){
+		this.name = name;
+	}
+
+	public void setDesc (String desc){
+		this.descriptions = desc;
+	}
+
 	public int getID() {
 		return this.roleID;
 	}
@@ -217,6 +230,22 @@ public class Role {
 	@Override
 	public String toString() {
 		return String.format("ID: %5d Name: %-20s Descriptions: %-50s", this.roleID, this.name, this.descriptions);
+	}
+
+	@Override
+	public boolean equals(Object anotherRole) {
+		if (anotherRole instanceof Role){
+			Role compareRole = (Role) anotherRole;
+			if (this.roleID == compareRole.roleID) {
+				if (this.name.equals(compareRole.name)) {
+					if (this.descriptions.equals(compareRole.descriptions)) {
+						return true;
+					}
+				}
+			}
+		}
+		
+		return false;
 	}
 
 }

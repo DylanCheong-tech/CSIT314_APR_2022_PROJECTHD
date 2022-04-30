@@ -1,5 +1,9 @@
+package honeyzstar.useradmin;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import honeyzstar.entity.Role;
+
 import java.io.*;
 
 public class UserAdminUpdateRoleC extends HttpServlet {
