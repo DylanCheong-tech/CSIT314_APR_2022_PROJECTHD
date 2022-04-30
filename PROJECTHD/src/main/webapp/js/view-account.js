@@ -3,9 +3,11 @@ var status = params.get("status");
 var alert_box = document.getElementById("alert-box");
 var alert_box_msg = document.getElementById("alert-message");
 
-var hide_btn = document.getElementsByClassName("logout-btn");
-for (index in hide_btn) {
-    hide_btn.item(index).style.display = "none";
+function show_confrim_btn() {
+    var hide_btn = document.getElementsByClassName("confirm-btn");
+    for (index in hide_btn) {
+        hide_btn.item(index).style.display = "inline-block";
+    }
 }
 
 function alert_confirm() {
@@ -88,6 +90,7 @@ function viewAccount (accountID){
     }).responseJSON;
 
     if (!acc_json){
+        show_confrim_btn();
         alert_box_msg.textContent = "View Account Fail";
         alert_box.style.display = "inline-block";
         return;

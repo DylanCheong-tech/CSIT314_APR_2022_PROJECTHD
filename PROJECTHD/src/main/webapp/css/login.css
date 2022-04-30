@@ -23,19 +23,19 @@ div#login-div {
 
 div#login-div div#image-frame {
     width: 430%;
+    height: fit-content;
     position: absolute;
     left: -1%;
     text-align: left;
     transition: all 4s;
-
-    background-color: #000000;
-    /* background-color: #FFFFFF; */
 }
 
 div#login-div img.background-image{
     display: inline-block;
     width: 24%;
     opacity: 80%;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
 }
 
 div#login-div form {
