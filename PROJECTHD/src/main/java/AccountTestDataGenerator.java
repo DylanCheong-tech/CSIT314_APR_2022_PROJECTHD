@@ -72,27 +72,24 @@ public class AccountTestDataGenerator {
 		Role role1 = new Role(1, "Restaurant Manager", "This is Restaurant Manager");
 		Role role2 = new Role(2, "Staff", "This is Staff");
 		Role role3 = new Role(3, "Restaurant Owner", "This is Restaurant Owner");
-		Role role4 = new Role(4, "User Admin", "This is User Admin");
 		
 		ArrayList<Role> roleArray = new ArrayList<Role>();
 		roleArray.add(role1);
 		roleArray.add(role2);
 		roleArray.add(role3);
-		roleArray.add(role4);
 		
 		ArrayList<Account> accArray = new ArrayList<Account>();
 		
-		String name = "name";
-		Date date = new Date(27, Month.April, 2022);
+		String name = "Test Account ";
 		String username = "username";
 		String password = "password";
 		
 		for(int i=0; i<100; i++) {
 			Random rn = new Random();
-			int answer = rn.nextInt(4);
+			int answer = rn.nextInt(3);
 			String iString = String.valueOf(i + 1);
 			
-			Account acc = new Account(username + iString, password + iString, name + iString, roleArray.get(answer), date.toString());
+			Account acc = new Account(username + iString, password + iString, name + iString, roleArray.get(answer));
 			accArray.add(acc);
 			
 		}

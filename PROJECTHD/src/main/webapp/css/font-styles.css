@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+body, input, select {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+button, div#welcome-msg, span#header-date-time{
+    font-family: 'Montserrat', sans-serif;
+}
+
+table#table thead tr th {
+
+}
