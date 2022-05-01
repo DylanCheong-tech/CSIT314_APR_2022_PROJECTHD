@@ -1,3 +1,7 @@
 div#form {
     display: none;
 }
+
+div#form input {
+    cursor: not-allowed;
+}

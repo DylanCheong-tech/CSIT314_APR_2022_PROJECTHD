@@ -15,9 +15,9 @@ public class UserAdminViewAccountC extends HttpServlet {
 
         try {
             System.out.println(request.getQueryString().split("=")[1]);
-            int accID = Integer.parseInt(request.getQueryString().split("=")[1]);
+            int accountID = Integer.parseInt(request.getQueryString().split("=")[1]);
 
-            Account resultAcc = Account.getAccount(accID);
+            Account resultAcc = Account.getAccount(accountID);
 
             if (resultAcc == null) {
                 out.println(new Gson().toJson(null));

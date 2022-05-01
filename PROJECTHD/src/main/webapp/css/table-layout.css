@@ -11,6 +11,7 @@ table#table thead tr th, table#table tbody tr td {
     width: 10%;
     font-size: 1.2em;
     min-height: 1.5em;
+    line-height: 1.5em;
 }
 
 table#table thead tr th {
@@ -20,6 +21,8 @@ table#table thead tr th {
 
 table#table tbody tr td {
     text-align: left;
+    max-height: 1.3em;
+    overflow: hidden;
 }
 
 table#table tbody tr td:last-child {

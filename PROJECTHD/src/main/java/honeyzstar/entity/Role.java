@@ -129,9 +129,9 @@ public class Role {
 			if (result.next()) {
 				int id = result.getInt("RoleID");
 				String name = result.getString("Name");
-				String desc = result.getString("Descriptions");
+				String descriptions = result.getString("Descriptions");
 
-				returnRole = new Role(id, name, desc);
+				returnRole = new Role(id, name, descriptions);
 			}
 
 			System.out.println("Searched Successfully");
@@ -161,9 +161,9 @@ public class Role {
 			if (result.next()) {
 				int id = result.getInt("RoleID");
 				String name = result.getString("Name");
-				String desc = result.getString("Descriptions");
+				String descriptions = result.getString("Descriptions");
 
-				returnRole = new Role(id, name, desc);
+				returnRole = new Role(id, name, descriptions);
 			}
 
 			System.out.println("Viewed Successfully");
@@ -191,9 +191,9 @@ public class Role {
 			while (result.next()) {
 				int id = result.getInt("RoleID");
 				String name = result.getString("Name");
-				String desc = result.getString("Descriptions");
+				String descriptions = result.getString("Descriptions");
 
-				returnRole.add(new Role(id, name, desc));
+				returnRole.add(new Role(id, name, descriptions));
 			}
 
 		} catch (SQLException ex) {
@@ -211,8 +211,8 @@ public class Role {
 		this.name = name;
 	}
 
-	public void setDesc (String desc){
-		this.descriptions = desc;
+	public void setDesc (String descriptions){
+		this.descriptions = descriptions;
 	}
 
 	public int getID() {

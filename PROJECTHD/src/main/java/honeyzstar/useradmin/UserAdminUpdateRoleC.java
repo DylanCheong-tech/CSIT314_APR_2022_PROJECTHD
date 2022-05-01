@@ -11,9 +11,9 @@ public class UserAdminUpdateRoleC extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         int roleID = Integer.parseInt(request.getParameter("roleID"));
         String name = request.getParameter("name");
-        String desc = request.getParameter("desc");
+        String descriptions = request.getParameter("descriptions");
         
-        Role updateRole = new Role(roleID, name, desc);
+        Role updateRole = new Role(roleID, name, descriptions);
 
         if(updateRole.updateRole()){
             response.sendRedirect("/update-role.html?status=success");

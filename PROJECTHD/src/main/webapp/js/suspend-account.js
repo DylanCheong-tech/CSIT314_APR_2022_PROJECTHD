@@ -95,7 +95,7 @@ for (index in account_list) {
     form.action = "/suspendAccount";
 
     var invisible_input = document.createElement("input");
-    invisible_input.name = "accID";
+    invisible_input.name = "accountID";
     invisible_input.type = "text";
     invisible_input.value = account_list[index].accountID;
     invisible_input.style.display = "none";

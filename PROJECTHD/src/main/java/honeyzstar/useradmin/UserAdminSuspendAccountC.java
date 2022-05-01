@@ -9,7 +9,7 @@ import java.io.*;
 public class UserAdminSuspendAccountC extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        int accountID = Integer.parseInt(request.getParameter("accID"));
+        int accountID = Integer.parseInt(request.getParameter("accountID"));
 
         if (Account.suspendAccount(accountID)){
             response.sendRedirect("/suspend-account.html?status=success");

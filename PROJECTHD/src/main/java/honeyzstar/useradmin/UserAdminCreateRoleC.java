@@ -10,9 +10,9 @@ public class UserAdminCreateRoleC extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String name = request.getParameter("name");
-        String desc = request.getParameter("descriptions");
+        String descriptions = request.getParameter("descriptions");
 
-        Role newRole = new Role(name, desc);
+        Role newRole = new Role(name, descriptions);
         
         if(newRole.createRole()){
             response.sendRedirect("/create-role.html?status=success");

@@ -12,11 +12,11 @@ public class UserAdminCreateAccountC extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String name = request.getParameter("name");
-        int roleId = Integer.parseInt(request.getParameter("role").substring(0,1));
+        int roleID = Integer.parseInt(request.getParameter("roleID").substring(0,1));
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        Account newAccount = new Account(username, password, name, new Role(roleId));
+        Account newAccount = new Account(username, password, name, new Role(roleID));
         
         if(newAccount.createAccount()){
             response.sendRedirect("/create-account.html?status=success");
