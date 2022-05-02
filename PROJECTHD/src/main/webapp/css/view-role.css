@@ -1,11 +1,6 @@
 div#form {
     display: none;
 }
-
-div#form input {
-    cursor: not-allowed;
-}
-
 table#table thead tr th:nth-child(2), table#table tbody tr td:nth-child(2) {
     width: 30%;
 }

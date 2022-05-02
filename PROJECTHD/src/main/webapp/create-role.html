@@ -42,11 +42,11 @@
             <br />
 
             <label class="text-item mode-font-color" for="name">Name</label>
-            <input class="mode-border-color-1" type="text" id="name" name="name" />
+            <input class="mode-border-color-1" type="text" id="name" name="name" required pattern="[a-z0-9\s]*" title="No special character" />
             <br />
 
-            <label class="text-item mode-font-color" for="descriptions">Descriptions</label>
-            <input  class="mode-border-color-1"type="text" id="descriptions" name="descriptions" />
+            <label id="desc-label" class="text-item mode-font-color" for="descriptions">Descriptions</label>
+            <textarea class="mode-border-color-1" id="desc" name="descriptions" required ></textarea>
             <br />
             <br />
             <button type="submit">Create</button>

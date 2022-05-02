@@ -54,23 +54,23 @@
             <label class="text-item mode-font-color">ID</label>
             <input class="mode-border-color-1" id="accID" name="accountID" type="text" readonly/>
             <br />
+            
+            <label class="text-item mode-font-color">Name</label>
+            <input class="mode-border-color-1" id="name" name="name" type="text" required pattern="[a-z0-9\s]*" title="No special character" />
+            <br />
 
             <label class="text-item mode-font-color">Role ID</label>
-            <select class="mode-border-color-1" id="role-list" name="roleID">
+            <select class="mode-border-color-1" id="role-list" name="roleID" required>
                 <option selected disabled value=""></option>
             </select>
             <br />
 
-            <label class="text-item mode-font-color">Name</label>
-            <input class="mode-border-color-1" id="name" name="name" type="text" />
-            <br />
-
             <label class="text-item mode-font-color">Username</label>
-            <input class="mode-border-color-1" id="username" name="username" type="text" />
+            <input class="mode-border-color-1" id="username" name="username" type="text" required pattern="[a-z0-9]*" title="No special character" />
             <br />
 
             <label class="text-item mode-font-color">Password</label>
-            <input class="mode-border-color-1" id="password" name="password" type="text" />
+            <input class="mode-border-color-1" id="password" name="password" type="text" required />
             <br />
 
             <label class="text-item mode-font-color">Date Joined</label>

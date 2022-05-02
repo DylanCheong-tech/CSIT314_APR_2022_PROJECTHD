@@ -40,6 +40,10 @@ div#form form input {
     background-color: #FFFFFF;
 }
 
+div#form form input:disabled, div#form form input:read-only {
+    cursor: not-allowed;
+}
+
 div#form form select {
     width: 61.5%;
     height: 1.8em;

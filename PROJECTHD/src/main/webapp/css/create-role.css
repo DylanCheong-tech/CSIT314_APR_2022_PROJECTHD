@@ -1,0 +1,12 @@
+div#form form textarea {
+    font-size: 1.5em;
+    width: 60%;
+    border: 2px #000000 solid;
+    height: 5em;
+    margin: 1% 0 1% 0;
+}
+
+div#form form label#desc-label{
+    vertical-align: top;
+    margin: 1% 0 0 0;
+}
