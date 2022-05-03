@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2022 at 03:56 AM
+-- Generation Time: May 03, 2022 at 03:58 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -53,13 +53,49 @@ CREATE TABLE `AccountLog` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Coupon`
+--
+
+CREATE TABLE `Coupon` (
+  `CouponID` int(5) NOT NULL,
+  `Code` varchar(10) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Descriptions` varchar(1000) NOT NULL,
+  `DiscountType` varchar(50) NOT NULL,
+  `DiscountAmount` decimal(10,2) NOT NULL,
+  `Status` varchar(20) NOT NULL DEFAULT 'Available',
+  `CreatedAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `UpdatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `MenuItem`
+--
+
+CREATE TABLE `MenuItem` (
+  `MenuItemID` int(5) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Type` varchar(50) NOT NULL,
+  `Price` decimal(10,2) NOT NULL,
+  `Descriptions` varchar(1000) NOT NULL,
+  `Status` varchar(20) NOT NULL DEFAULT 'Available',
+  `CreatedAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `UpdatedAt` datetime NOT NULL,
+  `ImageDataURL` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Role`
 --
 
 CREATE TABLE `Role` (
   `RoleID` int(5) NOT NULL,
   `Name` varchar(50) NOT NULL,
-  `Descriptions` varchar(1000) DEFAULT NULL
+  `Descriptions` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -82,6 +118,18 @@ ALTER TABLE `AccountLog`
   ADD KEY `AccountID` (`AccountID`);
 
 --
+-- Indexes for table `Coupon`
+--
+ALTER TABLE `Coupon`
+  ADD PRIMARY KEY (`CouponID`);
+
+--
+-- Indexes for table `MenuItem`
+--
+ALTER TABLE `MenuItem`
+  ADD PRIMARY KEY (`MenuItemID`);
+
+--
 -- Indexes for table `Role`
 --
 ALTER TABLE `Role`
@@ -102,6 +150,18 @@ ALTER TABLE `Account`
 --
 ALTER TABLE `AccountLog`
   MODIFY `LogID` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Coupon`
+--
+ALTER TABLE `Coupon`
+  MODIFY `CouponID` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `MenuItem`
+--
+ALTER TABLE `MenuItem`
+  MODIFY `MenuItemID` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Role`
