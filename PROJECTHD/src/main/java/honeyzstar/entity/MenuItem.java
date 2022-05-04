@@ -16,7 +16,7 @@ public class MenuItem {
 	private Status status;
 	private Date createdAt;
 	private Date UpdatedAt;
-	private String imageURL;
+	private String imageDataURL;
 
 	
 	public MenuItem() {
@@ -27,10 +27,10 @@ public class MenuItem {
 		this.status = null;
 		this.createdAt = null;
 		this.UpdatedAt = null;
-		this.imageURL = "";
+		this.imageDataURL = "";
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, Date updatedAt, String imageURL) {
+	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, Date updatedAt, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -38,10 +38,10 @@ public class MenuItem {
 		this.status = status;
 		this.createdAt = createdAt;
 		this.UpdatedAt = updatedAt;
-		this.imageURL = imageURL;
+		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(int id, String name, Type type, double price, String descriptions, Status status, String imageURL) {
+	public MenuItem(int id, String name, Type type, double price, String descriptions, Status status, String imageDataURL) {
 		this.menuItemID = id;
 		this.name = name;
 		this.type = type;
@@ -49,10 +49,10 @@ public class MenuItem {
 		this.descriptions = descriptions;
 		this.status = status;
 		this.UpdatedAt = null;
-		this.imageURL = imageURL;
+		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, String imageURL) {
+	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -60,16 +60,16 @@ public class MenuItem {
 		this.status = status;
 		this.createdAt = createdAt;
 		this.UpdatedAt = null;
-		this.imageURL = imageURL;
+		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, String imageURL) {
+	public MenuItem(String name, Type type, double price, String descriptions, Status status, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.imageURL = imageURL;
+		this.imageDataURL = imageDataURL;
 	}
 	
 	public boolean createMenuItem() {
@@ -86,7 +86,7 @@ public class MenuItem {
 			stmt.setDouble(3,  this.price);
 			stmt.setString(4,  String.valueOf(this.status));
 			stmt.setString(5, this.descriptions);
-			stmt.setString(6,  this.imageURL);
+			stmt.setString(6,  this.imageDataURL);
 
 			stmt.executeUpdate();
 
@@ -135,7 +135,7 @@ public class MenuItem {
 			stmt.setDouble(3, this.price);
 			stmt.setString(4, String.valueOf(this.status));
 			stmt.setString(5, this.descriptions);
-			stmt.setString(6,  this.imageURL);
+			stmt.setString(6,  this.imageDataURL);
 			stmt.setInt(7, this.menuItemID);
 
 			stmt.executeUpdate();
@@ -296,12 +296,12 @@ public class MenuItem {
 		UpdatedAt = updatedAt;
 	}
 
-	public String getImageURL() {
-		return imageURL;
+	public String getImageDataURL() {
+		return imageDataURL;
 	}
 
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
+	public void setImageDataURL(String imageDataURL) {
+		this.imageDataURL = imageDataURL;
 	}
 	
 	

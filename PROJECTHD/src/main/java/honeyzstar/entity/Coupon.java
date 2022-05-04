@@ -123,7 +123,8 @@ public class Coupon {
 			stmt.setDouble(4,  this.discountAmount);
 			stmt.setString(5, this.descriptions);
 			stmt.setString(6,  String.valueOf(this.status));
-
+			stmt.setInt(7, this.couponID);
+			
 			stmt.executeUpdate();
 
 			System.out.println("Updated Successfully");
