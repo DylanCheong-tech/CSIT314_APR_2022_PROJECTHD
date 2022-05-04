@@ -4,89 +4,76 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-public class MenuItem {
+public class Coupon {
 	private static final String connStr = "jdbc:mysql://localhost:3306/csit314_apr_2022_projecthd?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 	private static final String dbusername = "root";
 	private static final String dbpassword = "";
-	private int menuItemID;
+	private int couponID;
 	private String name;
-	private Type type;
-	private double price;
+	private String code;
+	private DiscountType discountType;
+	private double discountAmount;
 	private String descriptions;
 	private Status status;
 	private Date createdAt;
 	private Date UpdatedAt;
-	private String imageURL;
 
 	
-	public MenuItem() {
+	public Coupon() {
 		this.name = "";
-		this.type = null;
-		this.price = 0.0;
+		this.code = "";
+		this.discountType = null;
+		this.discountAmount = 0.0;
 		this.descriptions = "";
 		this.status = null;
 		this.createdAt = null;
 		this.UpdatedAt = null;
-		this.imageURL = "";
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, Date updatedAt, String imageURL) {
+	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, Status status, Date updatedAt) {
 		this.name = name;
-		this.type = type;
-		this.price = price;
+		this.code = code;
+		this.discountType = discountType;
+		this.discountAmount = discountAmount;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.createdAt = createdAt;
 		this.UpdatedAt = updatedAt;
-		this.imageURL = imageURL;
 	}
 	
-	public MenuItem(int id, String name, Type type, double price, String descriptions, Status status, String imageURL) {
-		this.menuItemID = id;
+	public Coupon(int id, String name, String code, DiscountType discountType, double discountAmount, String descriptions, Status status) {
+		this.couponID = id;
 		this.name = name;
-		this.type = type;
-		this.price = price;
+		this.code = code;
+		this.discountType = discountType;
+		this.discountAmount = discountAmount;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.UpdatedAt = null;
-		this.imageURL = imageURL;
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, String imageURL) {
+	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, Status status) {
 		this.name = name;
-		this.type = type;
-		this.price = price;
+		this.code = code;
+		this.discountType = discountType;
+		this.discountAmount = discountAmount;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.createdAt = createdAt;
-		this.UpdatedAt = null;
-		this.imageURL = imageURL;
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, String imageURL) {
-		this.name = name;
-		this.type = type;
-		this.price = price;
-		this.descriptions = descriptions;
-		this.status = status;
-		this.imageURL = imageURL;
-	}
-	
-	public boolean createMenuItem() {
+	public boolean createCoupon() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO MenuItem (Name, Type, Price, Status, UpdatedAt, Descriptions, ImageDataURL) VALUES ( ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)");
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Name, Code, DiscountType, discountAmount, Descriptions, Status, UpdatedAt) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
 
 			stmt.setString(1, this.name);
-			stmt.setString(2, String.valueOf(this.type));
-			stmt.setDouble(3,  this.price);
-			stmt.setString(4,  String.valueOf(this.status));
+			stmt.setString(2, this.code);
+			stmt.setString(3,  String.valueOf(discountType));
+			stmt.setDouble(4,  this.discountAmount);
 			stmt.setString(5, this.descriptions);
-			stmt.setString(6,  this.imageURL);
+			stmt.setString(6,  String.valueOf(this.status));
 
 			stmt.executeUpdate();
 
@@ -99,16 +86,16 @@ public class MenuItem {
 		}
 	}
 	
-	public boolean deleteMenuItem() {
+	public boolean deleteCoupon() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("DELETE FROM MenuItem WHERE MenuItemID = ?");
+			PreparedStatement stmt = conn.prepareStatement("DELETE FROM Coupon WHERE CouponID = ?");
 
-			stmt.setInt(1, this.menuItemID);
+			stmt.setInt(1, this.couponID);
 
 			stmt.executeUpdate();
 
@@ -121,22 +108,21 @@ public class MenuItem {
 		}
 	}
 	
-	public boolean updateMenuItem() {
+	public boolean updateCoupon() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("UPDATE MenuItem SET Name = ?, Type = ?, Price = ?, Descriptions = ?, Status = ?, UpdatedAt = CURRENT_TIMESTAMP, ImageDataURL = ? WHERE MenuItemID = ?");
+			PreparedStatement stmt = conn.prepareStatement("UPDATE Coupon SET Name = ?, Code = ?, DiscountType = ?, discountAmount = ?, Descriptions = ?, Status = ?, UpdatedAt = CURRENT_TIMESTAMP WHERE CouponID = ?");
 
 			stmt.setString(1, this.name);
-			stmt.setString(2, String.valueOf(this.type));
-			stmt.setDouble(3, this.price);
-			stmt.setString(4, String.valueOf(this.status));
+			stmt.setString(2, this.code);
+			stmt.setString(3,  String.valueOf(discountType));
+			stmt.setDouble(4,  this.discountAmount);
 			stmt.setString(5, this.descriptions);
-			stmt.setString(6,  this.imageURL);
-			stmt.setInt(7, this.menuItemID);
+			stmt.setString(6,  String.valueOf(this.status));
 
 			stmt.executeUpdate();
 
@@ -149,14 +135,14 @@ public class MenuItem {
 		}
 	}
 	
-	public MenuItem searchMenuItem() {
+	public Coupon searchCoupon() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MenuItem WHERE Name = ? ");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Coupon WHERE Name = ? ");
 
 			stmt.setString(1, this.name);
 
@@ -174,16 +160,16 @@ public class MenuItem {
 		return this;
 	}
 	
-	public MenuItem getMenuItem() {
+	public Coupon getCoupon() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MenuItem WHERE MenuItemID = ? ");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Coupon WHERE CouponID = ? ");
 
-			stmt.setInt(1, this.menuItemID);
+			stmt.setInt(1, this.couponID);
 
 			ResultSet result = stmt.executeQuery();
 
@@ -199,8 +185,8 @@ public class MenuItem {
 		return this;
 	}
 
-	public static ArrayList<MenuItem> getMenuItemList() {
-		ArrayList<MenuItem> returnArray = new ArrayList<MenuItem>();
+	public static ArrayList<Coupon> getCouponList() {
+		ArrayList<Coupon> returnArray = new ArrayList<Coupon>();
 
 		try (
 
@@ -208,20 +194,20 @@ public class MenuItem {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MenuItem");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Coupon");
 
 			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
-				int id = result.getInt("MenuItemID");
+				int id = result.getInt("CouponID");
 				String name = result.getString("Name");
-				String tempType = result.getString("Type");
-				double price = result.getDouble("Price");
+				String code = result.getString("Code");
+				String tempType = result.getString("DiscountType");
+				double discountAmount = result.getDouble("DiscountAmount");
 				String descriptions = result.getString("Descriptions");
 				String status = result.getString("Status");
-				String imageDataURL = result.getString("ImageDataURL");
 				
-				returnArray.add(new MenuItem(id, name, Type.valueOf(tempType), price, descriptions, Status.valueOf(status), imageDataURL));
+				returnArray.add(new Coupon(id, name, code, DiscountType.valueOf(tempType), discountAmount, descriptions, Status.valueOf(status)));
 				
 			}
 
@@ -231,13 +217,13 @@ public class MenuItem {
 
 		return returnArray;
 	}
-	
-	public int getMenuItemID() {
-		return menuItemID;
+
+	public int getCouponID() {
+		return couponID;
 	}
 
-	public void setMenuItemID(int menuItemID) {
-		this.menuItemID = menuItemID;
+	public void setCouponID(int couponID) {
+		this.couponID = couponID;
 	}
 
 	public String getName() {
@@ -248,20 +234,28 @@ public class MenuItem {
 		this.name = name;
 	}
 
-	public Type getType() {
-		return type;
+	public String getCode() {
+		return code;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public double getPrice() {
-		return price;
+	public DiscountType getDiscountType() {
+		return discountType;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setDiscountType(DiscountType discountType) {
+		this.discountType = discountType;
+	}
+
+	public double getDiscountAmount() {
+		return discountAmount;
+	}
+
+	public void setDiscountAmount(double discountAmount) {
+		this.discountAmount = discountAmount;
 	}
 
 	public String getDescriptions() {
@@ -295,15 +289,4 @@ public class MenuItem {
 	public void setUpdatedAt(Date updatedAt) {
 		UpdatedAt = updatedAt;
 	}
-
-	public String getImageURL() {
-		return imageURL;
-	}
-
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
-	}
-	
-	
-
 }
