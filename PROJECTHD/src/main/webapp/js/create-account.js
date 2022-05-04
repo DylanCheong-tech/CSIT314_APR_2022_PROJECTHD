@@ -39,6 +39,7 @@ var select = document.getElementById("role-list");
 for (index in role_list) {
     var option = document.createElement("option");
     option.value = role_list[index].roleID;
-    option.innerText = role_list[index].name;
+    option.innerText = role_list[index].roleID + " - " + role_list[index].name;
     select.appendChild(option);
 }
+

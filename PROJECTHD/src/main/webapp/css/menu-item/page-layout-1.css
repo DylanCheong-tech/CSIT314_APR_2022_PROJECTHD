@@ -1,0 +1,58 @@
+body {
+    text-align: center;
+}
+
+body div#header {
+    min-height: 6em;
+    background-color: #FFD100 ;
+}
+
+body div#header span {
+    width: 32%;
+    display: inline-block;
+    text-align: right;
+}
+
+body div#header span#header-date-time {
+    text-align: left;
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 0 0 0 1em;
+    margin: 4% 0 0 0;
+    vertical-align: top;
+}
+
+body div#header span#logo {
+    text-align: center;
+}
+
+body div#header span img#header-logo {
+    display: inline-block;
+    width: 35%;
+}
+
+body div#header span#buttons {
+    margin: 4% 0 0 0;
+    vertical-align: top;
+    text-align: center;
+}
+
+body div#header span#buttons button {
+    display: inline-block;
+    width: 35%;
+    height: 2.5em;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+    border : 2px #000000 solid;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin: 0 0 0 2%;
+}
+
+div#welcome-msg {
+    /* margin: 1% 0 1% 0; */
+    padding: 1% 0 1% 0;
+    text-align: center;
+    font-size: 2em;
+    height: fit-content;
+}
