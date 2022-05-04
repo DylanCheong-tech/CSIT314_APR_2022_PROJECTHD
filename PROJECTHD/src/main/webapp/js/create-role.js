@@ -12,7 +12,7 @@ function show_confrim_btn() {
 
 if (status == "success"){
     show_confrim_btn();
-    alert_box_msg.textContent = "Create Role Successfull";
+    alert_box_msg.textContent = "Create Role Successful";
     alert_box.style.display = "inline-block";
 }
 else if (status == "fail"){
