@@ -82,19 +82,19 @@ for (index in account_list) {
 }
 
 function viewAccount (accountID){
-    var acc_json = $.ajax({
-        async :false,
-        "url": "/getAccount?accID=" + accountID,
-        "type": "get",
-        "dataType": "json"
-    }).responseJSON;
+    // var acc_json = $.ajax({
+    //     async :false,
+    //     "url": "/getAccount?accID=" + accountID,
+    //     "type": "get",
+    //     "dataType": "json"
+    // }).responseJSON;
 
-    if (!acc_json){
-        show_confrim_btn();
-        alert_box_msg.textContent = "View Account Fail";
-        alert_box.style.display = "inline-block";
-        return;
-    }
+    // if (!acc_json){
+    //     show_confrim_btn();
+    //     alert_box_msg.textContent = "View Account Fail";
+    //     alert_box.style.display = "inline-block";
+    //     return;
+    // }
 
     document.getElementById("table").style.display = "none";
     document.getElementById("form").style.display = "inline-block";

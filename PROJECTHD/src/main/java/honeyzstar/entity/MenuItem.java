@@ -193,6 +193,7 @@ public class MenuItem {
 				this.setUpdatedAt(result.getString("UpdatedAt"));
 				this.setImageDataURL(result.getString("ImageDataURL"));
 				System.out.println("Searched Successfully");
+				return this;
 			}
 			
 
@@ -200,7 +201,7 @@ public class MenuItem {
 			ex.printStackTrace();
 		}
 
-		return this;
+		return null;
 	}
 	
 	public MenuItem getMenuItem() {
@@ -227,6 +228,8 @@ public class MenuItem {
 				this.setUpdatedAt(result.getString("UpdatedAt"));
 				this.setImageDataURL(result.getString("ImageDataURL"));
 				System.out.println("Searched Successfully");
+
+				return this;
 			}
 			
 
@@ -234,7 +237,7 @@ public class MenuItem {
 			ex.printStackTrace();
 		}
 
-		return this;
+		return null;
 	}
 
 	public static ArrayList<MenuItem> getMenuItemList() {

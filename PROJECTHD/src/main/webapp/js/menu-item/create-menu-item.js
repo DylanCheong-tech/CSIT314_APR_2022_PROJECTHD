@@ -1,3 +1,7 @@
+var alert_success_message = "Create Menu Item Successful";
+var alert_fail_message = "Create Menu Item Fail";
+var redirect_address = "create-menu-item.html";
+
 var img_reader = new FileReader();
 var img_data_url;
 
@@ -109,3 +113,12 @@ function previewImage () {
         console.log(img_data_url);
     }, 5000);
 }
+
+var menu_item_list = $.ajax({
+    async: false,
+    "url": "/getMenuItemList",
+    "type": "get",
+    "dataType": "json"
+}).responseJSON;
+
+document.getElementById("id-input").value = parseInt(menu_item_list[menu_item_list.length - 1].menuItemID) + 1;

@@ -50,4 +50,4 @@ var account_list = $.ajax({
     "dataType": "json"
 }).responseJSON;
 
-document.getElementById("id-input").value = account_list[account_list.length - 1].accountID;
+document.getElementById("id-input").value = parseInt(account_list[account_list.length - 1].accountID) + 1;

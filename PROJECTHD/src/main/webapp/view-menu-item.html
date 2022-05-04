@@ -38,7 +38,7 @@
 
     <div id="search-frame" class="mode-border-color-1">
         <input id="search-bar" class="mode-font-color" placeholder="Enter Account Name ... " />
-        <button id="search-btn" onclick="searchAccount()">Search</button>
+        <button id="search-btn" onclick="searchMenuItem()">Search</button>
     </div>
 
     <select id="filter-frame">
@@ -66,6 +66,7 @@
 
     <div id="form" class="mode-border-color-1">
         <p class="mode-font-color mode-bg-color-2 mode-border-color-3">View Menu Item Form</p>
+        <p></p>
         <form action="" method="post">
             <label class="text-item mode-font-color">ID</label>
             <input id="id-input" class="mode-border-color-1" type="text" value="1" disabled />
@@ -111,7 +112,7 @@
             <br />
             <br />
 
-            <button type="button">Back</button>
+            <button type="button" onclick="backToList()">Back</button>
         </form>
     </div>
 
@@ -123,7 +124,8 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
-    <script src="./js/restaurantmanager/view-menu-item.js"></script>
+    <script src="./js/menu-item/view-menu-item.js"></script>
+    <script src="./js/menu-item/search-function.js"></script>
     <script src="./js/logout.js"></script>
     <script src="./js/date-time.js"></script>
     <!-- <script src="./js/page-theme.js"></script> -->

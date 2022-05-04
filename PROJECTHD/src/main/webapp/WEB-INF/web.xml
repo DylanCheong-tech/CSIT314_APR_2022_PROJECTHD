@@ -101,6 +101,11 @@
       <servlet-name>RestaurantManagerSearchMenuItemC</servlet-name>
       <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerSearchMenuItemC</servlet-class>
    </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerViewMenuItemC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerViewMenuItemC</servlet-class>
+   </servlet>
  
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
@@ -200,5 +205,10 @@
    <servlet-mapping>
       <servlet-name>RestaurantManagerSearchMenuItemC</servlet-name>
       <url-pattern>/searchMenuItem</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerViewMenuItemC</servlet-name>
+      <url-pattern>/getMenuItem</url-pattern>
    </servlet-mapping>
 </web-app>

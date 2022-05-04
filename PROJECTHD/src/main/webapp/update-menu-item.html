@@ -39,7 +39,7 @@
 
     <div id="search-frame" class="mode-border-color-1">
         <input id="search-bar" class="mode-font-color" placeholder="Enter Account Name ... " />
-        <button id="search-btn" onclick="searchAccount()">Search</button>
+        <button id="search-btn" onclick="searchMenuItem()">Search</button>
     </div>
 
     <select id="filter-frame">
@@ -64,6 +64,7 @@
 
     <div id="form" class="mode-border-color-1">
         <p class="mode-font-color mode-bg-color-2 mode-border-color-3">Update Menu Item Form</p>
+        <p></p>
         <form action="/updateMenuItem" method="post">
             <label class="text-item mode-font-color">ID</label>
             <input id="id-input" class="mode-border-color-1" type="text" name="menuItemID" value="1" readonly />
@@ -109,6 +110,7 @@
 
             <div id="image-drop-frame">
                 <div id="image-drop" ondrop="dropImage(event)" ondragover="dragoverImage(event)">
+                    <img id="upload-icon" src="./img/image-upload.png" /> <br />
                     <span id="image-drop-msg">
                         <strong>Drag</strong> and <strong>Drop</strong> a picture here
                         <br />
@@ -141,7 +143,9 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
-    <script src="./js/restaurantmanager/update-menu-item.js"></script>
+    <script src="./js/menu-item/update-menu-item.js"></script>
+    <script src="./js/menu-item/search-function.js"></script>
+    <script src="./js/menu-item/alert-box.js"></script>
     <script src="./js/logout.js"></script>
     <script src="./js/date-time.js"></script>
     <!-- <script src="./js/page-theme.js"></script> -->
