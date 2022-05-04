@@ -153,8 +153,8 @@ public class MenuItem {
 			stmt.setString(1, this.name);
 			stmt.setString(2, String.valueOf(this.type));
 			stmt.setDouble(3, this.price);
-			stmt.setString(4, String.valueOf(this.status));
-			stmt.setString(5, this.descriptions);
+			stmt.setString(4, this.descriptions);
+			stmt.setString(5, String.valueOf(this.status));
 			stmt.setString(6,  this.imageDataURL);
 			stmt.setInt(7, this.menuItemID);
 

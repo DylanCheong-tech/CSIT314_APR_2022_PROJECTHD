@@ -28,7 +28,7 @@ public class CouponTestDataGenerator {
 		ArrayList<Coupon> couponArray = new ArrayList<Coupon>();
 		
 		String name = "Test Coupon ";
-		String code = "Test Code ";
+		String code = "Coupon";
 		
 		
 		

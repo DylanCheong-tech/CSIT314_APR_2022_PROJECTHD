@@ -211,5 +211,10 @@ function updateMenuItem(recordID) {
     document.getElementById("type").value = childs[2].textContent;
     document.getElementById("price").value = childs[3].textContent;
     document.getElementById("status").value = childs[4].textContent;
-    // document.getElementById("desc").value = childs[5].textContent;
+
+    for (index in menu_item_list){
+        if (menu_item_list[index].menuItemID == childs[0].textContent){
+            document.getElementById("desc").value = menu_item_list[index].descriptions;
+        }
+    }
 }

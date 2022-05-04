@@ -5,9 +5,6 @@ import javax.servlet.http.*;
 import java.io.*;
 import com.google.gson.Gson;
 
-import honeyzstar.entity.Type;
-import honeyzstar.entity.Status;
-
 import honeyzstar.entity.MenuItem;
 
 public class RestaurantManagerSearchMenuItemC extends HttpServlet {
