@@ -14,8 +14,8 @@ public class MenuItem {
 	private double price;
 	private String descriptions;
 	private Status status;
-	private Date createdAt;
-	private Date UpdatedAt;
+	private String createdAt;
+	private String UpdatedAt;
 	private String imageDataURL;
 
 	
@@ -30,7 +30,19 @@ public class MenuItem {
 		this.imageDataURL = "";
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, Date updatedAt, String imageDataURL) {
+	public MenuItem(int id, String name, Type type, double price, String descriptions, Status status, String createdAt, String updatedAt, String imageDataURL) {
+		this.menuItemID = id;
+		this.name = name;
+		this.type = type;
+		this.price = price;
+		this.descriptions = descriptions;
+		this.status = status;
+		this.createdAt = createdAt;
+		this.UpdatedAt = updatedAt;
+		this.imageDataURL = imageDataURL;
+	}
+	
+	public MenuItem(String name, Type type, double price, String descriptions, Status status, String createdAt, String updatedAt, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -52,7 +64,7 @@ public class MenuItem {
 		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, String imageDataURL) {
+	public MenuItem(String name, Type type, double price, String descriptions, Status status, String createdAt, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -219,9 +231,11 @@ public class MenuItem {
 				double price = result.getDouble("Price");
 				String descriptions = result.getString("Descriptions");
 				String status = result.getString("Status");
+				String createdAt = result.getString("CreatedAt");
+				String updatedAt = result.getString("UpdatedAt");
 				String imageDataURL = result.getString("ImageDataURL");
 				
-				returnArray.add(new MenuItem(id, name, Type.valueOf(tempType), price, descriptions, Status.valueOf(status), imageDataURL));
+				returnArray.add(new MenuItem(id, name, Type.valueOf(tempType), price, descriptions, Status.valueOf(status), createdAt, updatedAt, imageDataURL));
 				
 			}
 
@@ -280,19 +294,19 @@ public class MenuItem {
 		this.status = status;
 	}
 
-	public Date getCreatedAt() {
+	public String getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Date getUpdatedAt() {
+	public String getUpdatedAt() {
 		return UpdatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt) {
+	public void setUpdatedAt(String updatedAt) {
 		UpdatedAt = updatedAt;
 	}
 

@@ -36,6 +36,12 @@ public class Date {
         this.day = day;
     }
     
+    public Date(Date otherDate) {
+		this.year = otherDate.year;
+		this.month = otherDate.month;
+		this.day = otherDate.day;
+    }
+    
     public int getYear() {
     	return year;
     }
