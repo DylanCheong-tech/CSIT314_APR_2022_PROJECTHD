@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-
 enum Month {
     January(1),
     February(2),
@@ -199,7 +198,7 @@ public class MenuItem {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role WHERE Name = ? ");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MenuItem WHERE Name = ? ");
 
 			stmt.setString(1, this.name);
 
@@ -224,7 +223,7 @@ public class MenuItem {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role WHERE MenuItemID = ? ");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MenuItem WHERE MenuItemID = ? ");
 
 			stmt.setInt(1, this.menuItemID);
 
