@@ -65,6 +65,6 @@ public class AccountTest {
 
     @Test 
     public void testGetAccountList() {
-        assertTrue("Test User Admin Search Role", Account.getAccountList() instanceof ArrayList);
+        assertTrue("Test User Admin Get Account List", Account.getAccountList() instanceof ArrayList);
     }
 }

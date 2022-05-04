@@ -84,6 +84,17 @@ public class MenuItem {
 		this.imageURL = "";
 	}
 	
+	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, Date updatedAt, String imageURL) {
+		this.name = name;
+		this.type = type;
+		this.price = price;
+		this.descriptions = descriptions;
+		this.status = status;
+		this.createdAt = createdAt;
+		this.UpdatedAt = updatedAt;
+		this.imageURL = imageURL;
+	}
+	
 	public MenuItem(String name, Type type, double price, String descriptions, Status status, Date createdAt, String imageURL) {
 		this.name = name;
 		this.type = type;
@@ -101,7 +112,6 @@ public class MenuItem {
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.UpdatedAt = null;
 		this.imageURL = imageURL;
 	}
 	
@@ -145,7 +155,7 @@ public class MenuItem {
 
 			stmt.executeUpdate();
 
-			System.out.println("Suspended Successfully");
+			System.out.println("Deleted Successfully");
 			return true;
 
 		} catch (SQLException ex) {
@@ -182,10 +192,7 @@ public class MenuItem {
 		}
 	}
 	
-	public MenuItem searchMenuItem(String roleName) {
-
-		Role returnRole = null;
-
+	public MenuItem searchMenuItem() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
@@ -194,27 +201,80 @@ public class MenuItem {
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role WHERE Name = ? ");
 
-			stmt.setString(1, roleName);
+			stmt.setString(1, this.name);
 
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
-				int id = result.getInt("RoleID");
-				String name = result.getString("Name");
-				String descriptions = result.getString("Descriptions");
-
-				returnRole = new Role(id, name, descriptions);
+				System.out.println("Searched Successfully");
 			}
-
-			System.out.println("Searched Successfully");
+			
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 
-		return returnRole;
+		return this;
+	}
+	
+	public MenuItem getMenuItem() {
+		try (
+
+				Connection conn = DriverManager.getConnection(
+						connStr, dbusername, dbpassword);
+
+		) {
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role WHERE MenuItemID = ? ");
+
+			stmt.setInt(1, this.menuItemID);
+
+			ResultSet result = stmt.executeQuery();
+
+			if (result.next()) {
+				System.out.println("Searched Successfully");
+			}
+			
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		return this;
 	}
 
+	public static ArrayList<MenuItem> getMenuItemList() {
+		ArrayList<MenuItem> returnArray = new ArrayList<MenuItem>();
+
+		try (
+
+				Connection conn = DriverManager.getConnection(
+						connStr, dbusername, dbpassword);
+
+		) {
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MenuItem");
+
+			ResultSet result = stmt.executeQuery();
+
+			while (result.next()) {
+				int id = result.getInt("MenuItemID");
+				String name = result.getString("Name");
+				String tempType = result.getString("Type");
+				double price = result.getDouble("Price");
+				String descriptions = result.getString("Descriptions");
+				String status = result.getString("Status");
+				String imageDataURL = result.getString("ImageDataURL");
+				
+				returnArray.add(new MenuItem(name, Type.valueOf(tempType), price, descriptions, Status.valueOf(status), imageDataURL));
+				
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		return returnArray;
+	}
+	
 	public int getMenuItemID() {
 		return menuItemID;
 	}

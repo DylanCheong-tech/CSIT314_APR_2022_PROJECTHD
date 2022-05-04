@@ -53,4 +53,33 @@ public class MenuItemTest {
     	
     	assertTrue("Test Restaurant Manager Update Menu Item", this.testMenuItem.updateMenuItem());
     }
+    
+    @Test 
+    public void testSearchMenuItem (){
+    	this.testMenuItem.setMenuItemID(109);
+    	this.testMenuItem.setName("testname3");
+    	this.testMenuItem.setType(Type.SideDish);
+    	this.testMenuItem.setPrice(8.0);
+    	this.testMenuItem.setStatus(Status.Unavailable);
+    	this.testMenuItem.setDescriptions("this is a test menu item");
+
+        assertEquals("Test User Admin Search Menu Item", this.testMenuItem, this.testMenuItem.searchMenuItem());
+    }
+    
+    @Test 
+    public void testGetMenuItem (){
+    	this.testMenuItem.setMenuItemID(103);
+    	this.testMenuItem.setName("testname4");
+    	this.testMenuItem.setType(Type.Beverage);
+    	this.testMenuItem.setPrice(11.4);
+    	this.testMenuItem.setStatus(Status.Available);
+    	this.testMenuItem.setDescriptions("this is a test menu item");
+
+        assertEquals("Test User Admin View Menu Item", this.testMenuItem, this.testMenuItem.getMenuItem());
+    }
+    
+    @Test 
+    public void testGetMenuItemList() {
+        assertTrue("Test Restaurant Manager Get Menu Item List", MenuItem.getMenuItemList() instanceof ArrayList);
+    }
 }
