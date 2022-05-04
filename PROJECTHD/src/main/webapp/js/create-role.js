@@ -25,3 +25,12 @@ function alert_confirm() {
     alert_box.style.display = "none";
     window.location.href = "/create-role.html";
 }
+
+var role_list = $.ajax({
+    async: false,
+    "url": "/getRoleList",
+    "type": "get",
+    "dataType": "json"
+  }).responseJSON;
+
+document.getElementById("id-input").value = role_list[role_list.length - 1].roleID;

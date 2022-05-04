@@ -43,3 +43,11 @@ for (index in role_list) {
     select.appendChild(option);
 }
 
+var account_list = $.ajax({
+    async: false,
+    "url": "/getAccountList",
+    "type": "get",
+    "dataType": "json"
+}).responseJSON;
+
+document.getElementById("id-input").value = account_list[account_list.length - 1].accountID;
