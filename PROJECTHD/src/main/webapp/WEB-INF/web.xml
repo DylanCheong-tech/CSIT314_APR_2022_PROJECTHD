@@ -74,6 +74,28 @@
       <servlet-name>UserAdminGetAccountList</servlet-name>
       <servlet-class>honeyzstar.useradmin.UserAdminGetAccountList</servlet-class>
    </servlet>
+
+   <!-- Restaurant Manager -->
+
+   <servlet>
+      <servlet-name>RestaurantManagerCreateMenuItemC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerCreateMenuItemC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerDeleteMenuItemC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerDeleteMenuItemC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerGetMenuItemList</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerGetMenuItemList</servlet-class>
+   </servlet>
+
+   <!-- <servlet>
+      <servlet-name>RestaurantManagerUpdateMenuItemC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerUpdateMenuItemC</servlet-class>
+   </servlet> -->
  
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
@@ -147,4 +169,26 @@
       <servlet-name>UserAdminGetAccountList</servlet-name>
       <url-pattern>/getAccountList</url-pattern>
    </servlet-mapping>
+
+   <!-- Restaurant Manager -->
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerCreateMenuItemC</servlet-name>
+      <url-pattern>/createMenuItem</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerDeleteMenuItem</servlet-name>
+      <url-pattern>/deleteMenuItem</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerDeleteMenuItemC</servlet-name>
+      <url-pattern>/getMenuItemList</url-pattern>
+   </servlet-mapping>
+
+   <!-- <servlet-mapping>
+      <servlet-name>RestaurantManagerUpdateMenuItemC</servlet-name>
+      <url-pattern>/updateMenuItem</url-pattern>
+   </servlet-mapping> -->
 </web-app>

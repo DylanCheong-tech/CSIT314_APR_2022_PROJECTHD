@@ -78,6 +78,8 @@ function displayAccountList(json_list) {
 displayAccountList(account_list);
 
 function searchAccount() {
+    document.getElementById("back-btn-frame").style.display = "block";
+
     var accName = document.getElementById("search-bar").value;
 
     var requested_json = $.ajax({
@@ -111,4 +113,19 @@ function searchAccount() {
 
 function alert_confirm() {
     alert_box.style.display = "none";
+}
+
+function back () {
+    document.getElementById("back-btn-frame").style.display = "none";
+    document.getElementById("search-bar").value = "";
+
+    var list_frame = document.getElementById("acc-list");
+    // remove all the list first
+    var firstChild = list_frame.firstElementChild;
+    while (firstChild) {
+        firstChild.remove();
+        firstChild = list_frame.firstElementChild;
+    }
+
+    displayAccountList(account_list);
 }

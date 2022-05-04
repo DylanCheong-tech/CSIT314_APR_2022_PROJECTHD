@@ -51,6 +51,8 @@ function displayRoleList(json_list) {
 }
 
 function searchRole() {
+  document.getElementById("back-btn-frame").style.display = "block";
+
   var roleName = document.getElementById("search-bar").value;
 
   var requested_json = $.ajax({
@@ -85,3 +87,18 @@ function searchRole() {
 
 // display all the role list
 displayRoleList(role_list);
+
+function back () {
+  document.getElementById("back-btn-frame").style.display = "none";
+  document.getElementById("search-bar").value = "";
+
+  var list_frame = document.getElementById("role-list");
+  // remove all the list first
+  var firstChild = list_frame.firstElementChild;
+  while (firstChild) {
+      firstChild.remove();
+      firstChild = list_frame.firstElementChild;
+  }
+
+  displayRoleList(role_list);
+}
