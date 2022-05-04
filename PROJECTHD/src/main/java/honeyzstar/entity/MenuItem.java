@@ -30,6 +30,14 @@ public class MenuItem {
 		this.imageDataURL = "";
 	}
 	
+	public MenuItem(int id) {
+		this.menuItemID = id;
+	}
+	
+	public MenuItem(String name) {
+		this.name = name;
+	}
+	
 	public MenuItem(int id, String name, Type type, double price, String descriptions, Status status, String createdAt, String updatedAt, String imageDataURL) {
 		this.menuItemID = id;
 		this.name = name;
