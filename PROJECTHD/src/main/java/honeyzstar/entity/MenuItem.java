@@ -183,6 +183,15 @@ public class MenuItem {
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
+				this.setMenuItemID(result.getInt("MenuItemID"));
+				this.setName(result.getString("Name"));
+				this.setType(Type.valueOf(result.getString("Type")));
+				this.setPrice(result.getDouble("Price"));
+				this.setDescriptions(result.getString("Descriptions"));
+				this.setStatus(Status.valueOf(result.getString("Status")));
+				this.setCreatedAt(result.getString("CreatedAt"));
+				this.setUpdatedAt(result.getString("UpdatedAt"));
+				this.setImageDataURL(result.getString("ImageDataURL"));
 				System.out.println("Searched Successfully");
 			}
 			
@@ -208,6 +217,15 @@ public class MenuItem {
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
+				this.setMenuItemID(result.getInt("MenuItemID"));
+				this.setName(result.getString("Name"));
+				this.setType(Type.valueOf(result.getString("Type")));
+				this.setPrice(result.getDouble("Price"));
+				this.setDescriptions(result.getString("Descriptions"));
+				this.setStatus(Status.valueOf(result.getString("Status")));
+				this.setCreatedAt(result.getString("CreatedAt"));
+				this.setUpdatedAt(result.getString("UpdatedAt"));
+				this.setImageDataURL(result.getString("ImageDataURL"));
 				System.out.println("Searched Successfully");
 			}
 			

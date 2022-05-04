@@ -42,7 +42,7 @@ public class MenuItemTestDataGenerator {
 			int typeRandom = rn.nextInt(3);
 			String iString = String.valueOf(i + 1);
 			
-			MenuItem item = new MenuItem(name + iString, typeArray.get(typeRandom), xrounded, statusArray.get(statusRandom), "this is a menu item " + iString, "this is an image URL " + iString);
+			MenuItem item = new MenuItem(name + iString, typeArray.get(typeRandom), xrounded, "this is a menu item " + iString, statusArray.get(statusRandom), "this is an image URL " + iString);
 			menuItemArray.add(item);
 			
 		}
@@ -56,12 +56,12 @@ public class MenuItemTestDataGenerator {
 			) {
 				PreparedStatement stmt = conn.prepareStatement("INSERT INTO MenuItem (Name, Type, Price, Status, UpdatedAt, Descriptions, ImageDataURL) VALUES ( ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)");
 
-				stmt.setString(1, item.name);
-				stmt.setString(2, String.valueOf(item.type));
-				stmt.setDouble(3,  item.price);
-				stmt.setString(4,  String.valueOf(item.status));
-				stmt.setString(5, item.descriptions);
-				stmt.setString(6,  item.imageDataURL);
+				stmt.setString(1, item.getName());
+				stmt.setString(2, String.valueOf(item.getType()));
+				stmt.setDouble(3,  item.getPrice());
+				stmt.setString(4,  String.valueOf(item.getStatus()));
+				stmt.setString(5, item.getDescriptions());
+				stmt.setString(6,  item.getImageDataURL());
 
 				stmt.executeUpdate();
 
@@ -71,8 +71,5 @@ public class MenuItemTestDataGenerator {
 				ex.printStackTrace();
 			}
 		}
-		
-		
-		
 	}
 }

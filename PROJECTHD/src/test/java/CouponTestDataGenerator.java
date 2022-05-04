@@ -44,7 +44,7 @@ public class CouponTestDataGenerator {
 			String iString = String.valueOf(i + 1);
 			
 			Coupon coupon = new Coupon(name + iString, code + iString, discountTypeArray.get(typeRandom), xrounded, "this is a Coupon " + iString, statusArray.get(statusRandom));
-			couponArray.add(item);
+			couponArray.add(coupon);
 			
 		}
 		
@@ -57,12 +57,12 @@ public class CouponTestDataGenerator {
 			) {
 				PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Name, Code, DiscountType, discountAmount, Descriptions, Status, UpdatedAt) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
 
-				stmt.setString(1, coupon.name);
-				stmt.setString(2, coupon.code);
-				stmt.setString(3,  String.valueOf(coupon.discountType));
-				stmt.setDouble(4,  coupon.discountAmount);
-				stmt.setString(5, coupon.descriptions);
-				stmt.setString(6,  String.valueOf(coupon.status));
+				stmt.setString(1, coupon.getName());
+				stmt.setString(2, coupon.getCode());
+				stmt.setString(3,  String.valueOf(coupon.getDiscountType()));
+				stmt.setDouble(4,  coupon.getDiscountAmount());
+				stmt.setString(5, coupon.getDescriptions());
+				stmt.setString(6,  String.valueOf(coupon.getStatus()));
 
 				stmt.executeUpdate();
 

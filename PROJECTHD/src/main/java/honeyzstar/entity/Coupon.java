@@ -150,6 +150,13 @@ public class Coupon {
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
+				this.setCouponID(result.getInt("CouponID"));
+				this.setName(result.getString("Name"));
+				this.setCode(result.getString("Code"));
+				this.setDiscountType(DiscountType.valueOf(result.getString("DiscountType")));
+				this.setDiscountAmount(result.getDouble("DiscountAmount"));
+				this.setDescriptions(result.getString("Descriptions"));
+				this.setStatus(Status.valueOf(result.getString("Status")));
 				System.out.println("Searched Successfully");
 			}
 			
@@ -175,6 +182,13 @@ public class Coupon {
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
+				this.setCouponID(result.getInt("CouponID"));
+				this.setName(result.getString("Name"));
+				this.setCode(result.getString("Code"));
+				this.setDiscountType(DiscountType.valueOf(result.getString("DiscountType")));
+				this.setDiscountAmount(result.getDouble("DiscountAmount"));
+				this.setDescriptions(result.getString("Descriptions"));
+				this.setStatus(Status.valueOf(result.getString("Status")));
 				System.out.println("Searched Successfully");
 			}
 			
