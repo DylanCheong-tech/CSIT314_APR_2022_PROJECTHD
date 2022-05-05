@@ -10,6 +10,18 @@ div#search-frame {
   /* background-color: transparent; */
 }
 
+div#sort-frame {
+  display: inline-block;
+  text-align: center;
+  width: 15%;
+  height : 3em;
+  margin: 0 0 1% 0;
+  padding: .5% 0 .5% 0;
+  background-color: #FFD100;
+  border: 1px solid #000000;
+  /* background-color: transparent; */
+}
+
 div#search-frame input {
   width: 80%;
   height: 90%;
@@ -36,12 +48,17 @@ div#search-frame button {
   color: #000000;
 }
 
-select#filter-frame {
-  display: inline-block;
-  border: 1px solid #000000;
-  width: 8%;
-  height: 2.9em;
-  font-size: 1.4em;
+select#sort-list{
+  background-color: none;
+  border: 1px #000000 solid;
+  font-size: 1.2em;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 90%;
+  width: 90%;
+  margin: 2% 0 0 0;
+  padding: 2% 1% 2% 1%;
+  background-color: #FFFFFF;
+  color: #000000;
   text-align: center;
-  margin: 0 0 1% 0;
 }

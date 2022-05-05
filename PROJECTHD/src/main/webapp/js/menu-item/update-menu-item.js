@@ -168,30 +168,18 @@ function display_list(menu_item_list) {
         var column7 = document.createElement("td");
         column7.classList.add("mode-font-color");
         column7.classList.add("mode-border-color-1");
-        column7.innerHTML = menu_item_list[index].UpdatedAt;
+        column7.innerHTML = menu_item_list[index].updatedAt;
         row.appendChild(column7);
 
         var btnCol = document.createElement("td");
         btnCol.classList.add("mode-border-color-1");
-        var form = document.createElement("form");
-        form.method = "post";
-        form.action = "/deleteRole";
-
-        var invisible_input = document.createElement("input");
-        invisible_input.name = "menuItemID";
-        invisible_input.type = "text";
-        invisible_input.value = menu_item_list[index].menuItemID;
-        invisible_input.style.display = "none";
-
-        form.appendChild(invisible_input);
 
         var button = document.createElement("button");
         button.onclick = updateMenuItem.bind(event, menu_item_list[index].menuItemID);
         button.innerHTML = "Update";
         button.type = "button";
 
-        form.appendChild(button);
-        btnCol.appendChild(form);
+        btnCol.appendChild(button);
         row.appendChild(btnCol);
 
         list_frame.appendChild(row);
@@ -201,7 +189,7 @@ display_list(menu_item_list);
 
 function updateMenuItem(recordID) {
     document.getElementById("search-frame").style.display = "none";
-    document.getElementById("filter-frame").style.display = "none";
+    document.getElementById("sort-frame").style.display = "none";
 
     var row = document.getElementById(recordID);
 

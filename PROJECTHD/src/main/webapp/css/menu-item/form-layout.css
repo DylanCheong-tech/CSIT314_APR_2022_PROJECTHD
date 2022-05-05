@@ -26,7 +26,7 @@ div#form p:nth-child(2){
 div#form form label.text-item {
     display: inline-block;
     text-align: left;
-    width: 20%;
+    width: 25%;
     font-size: 1.5em;
 }
 
@@ -104,6 +104,16 @@ div#form form div#upload-message {
     padding: 1% 0 0 0;
     width:  61%;
     text-align: left;
+}
+
+div#form form div#upload-message button {
+    font-size: .8em;
+    width: fit-content;
+    margin: 0 0 0 3%;
+    height: fit-content;
+    font-style: italic;
+    color: grey;
+    border: 1px solid grey;
 }
 
 div#form form div#annotate  {

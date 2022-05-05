@@ -4,8 +4,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 
-import honeyzstar.entity.Type;
-import honeyzstar.entity.Status;
+import honeyzstar.entity.MenuItemType;
+import honeyzstar.entity.MenuItemStatus;
 
 import honeyzstar.entity.MenuItem;
 
@@ -19,9 +19,7 @@ public class RestaurantManagerCreateMenuItemC extends HttpServlet {
         String desc = request.getParameter("descriptions");
         String image = request.getParameter("imageDataURL");
 
-        // System.out.println(image);
-
-        MenuItem newMenuItem = new MenuItem(name, Type.valueOf(type), price, desc, Status.valueOf(status) , image);
+        MenuItem newMenuItem = new MenuItem(name, MenuItemType.valueOf(type), price, desc, MenuItemStatus.valueOf(status) , image);
         
         if(newMenuItem.createMenuItem()){
             response.sendRedirect("/create-menu-item.html?status=success");

@@ -3,7 +3,7 @@ import java.util.Random;
 import java.sql.*;
 
 import honeyzstar.entity.Coupon;
-import honeyzstar.entity.Status;
+import honeyzstar.entity.CouponStatus;
 import honeyzstar.entity.DiscountType;
 
 public class CouponTestDataGenerator {
@@ -21,9 +21,9 @@ public class CouponTestDataGenerator {
 		discountTypeArray.add(DiscountType.Value);		
 		discountTypeArray.add(DiscountType.OnetoOne);
 		
-		ArrayList<Status> statusArray = new ArrayList<Status>();
-		statusArray.add(Status.Available);
-		statusArray.add(Status.Unavailable);
+		ArrayList<CouponStatus> statusArray = new ArrayList<CouponStatus>();
+		statusArray.add(CouponStatus.Active);
+		statusArray.add(CouponStatus.Expired);
 		
 		ArrayList<Coupon> couponArray = new ArrayList<Coupon>();
 		

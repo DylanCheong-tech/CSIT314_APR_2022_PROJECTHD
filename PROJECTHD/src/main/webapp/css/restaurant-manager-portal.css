@@ -81,14 +81,41 @@ body div#operation-items span.item img.action-logo{
 
 div#user-profile {
     vertical-align: top;
-    /* text-align: left; */
+}
+
+div#user-profile div#user-pic img {
+    display: inline-block;
+    width: 65%;
+    margin: 6% 0 0 0;
+    border: 2px solid #000000;
+    border-radius: 50%;
+}
+
+div#user-profile div#user-info-1 {
+    position: relative;
+    display: inline-block;
+    width: 12.5em;
+    text-align: left;
+    line-height: 2em;
+}
+
+div#user-profile div#user-info-1 span {
+    position: absolute;
+    left: 3.5em;
+}
+
+div#user-profile div#user-info-2 {
+    display: inline-block;
+    width: 15em;
+    text-align: left;
+    line-height: 2em;
 }
 
 div#user-profile div#user-pic {
     display: inline-block;
     background-color: #FFD100;
-    width: 11em;
-    height: 10em;
+    width: 15em;
+    height: 12em;
     border: 1px solid #000000;
     border-radius: 10px;
 }

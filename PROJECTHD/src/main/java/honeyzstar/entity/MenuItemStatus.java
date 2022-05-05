@@ -1,6 +1,6 @@
 package honeyzstar.entity;
 
-public enum Status {
+public enum MenuItemStatus {
 	Available,
 	Unavailable;
 }

@@ -26,7 +26,7 @@ public class CouponTest {
     	this.testCoupon.setDiscountType(DiscountType.OnetoOne);
     	this.testCoupon.setDiscountAmount(5.4);
     	this.testCoupon.setDescriptions("this is a coupon");
-    	this.testCoupon.setStatus(Status.Available);
+    	this.testCoupon.setStatus(CouponStatus.Active);
     	
     	
     	assertTrue("Test Restaurant Manager Create Coupon", this.testCoupon.createCoupon());
@@ -40,7 +40,7 @@ public class CouponTest {
     	this.testCoupon.setDiscountType(DiscountType.Value);
     	this.testCoupon.setDiscountAmount(5.4);
     	this.testCoupon.setDescriptions("this is a coupon");
-    	this.testCoupon.setStatus(Status.Available);
+    	this.testCoupon.setStatus(CouponStatus.Active);
     	
         assertTrue("Test Restaurant Manager Delete Coupon", this.testCoupon.deleteCoupon());
     }
@@ -53,7 +53,7 @@ public class CouponTest {
     	this.testCoupon.setDiscountType(DiscountType.Percentage);
     	this.testCoupon.setDiscountAmount(8.4);
     	this.testCoupon.setDescriptions("this is a coupon");
-    	this.testCoupon.setStatus(Status.Available);
+    	this.testCoupon.setStatus(CouponStatus.Active);
     	
     	
     	assertTrue("Test Restaurant Manager Update Coupon", this.testCoupon.updateCoupon());
@@ -67,7 +67,7 @@ public class CouponTest {
     	this.testCoupon.setDiscountType(DiscountType.Percentage);
     	this.testCoupon.setDiscountAmount(4.9);
     	this.testCoupon.setDescriptions("this is a coupon");
-    	this.testCoupon.setStatus(Status.Available);
+    	this.testCoupon.setStatus(CouponStatus.Active);
 
         assertEquals("Test Restaurant Manager Search Coupon", this.testCoupon, this.testCoupon.searchCoupon());
     }
@@ -80,7 +80,7 @@ public class CouponTest {
     	this.testCoupon.setDiscountType(DiscountType.Percentage);
     	this.testCoupon.setDiscountAmount(12.2);
     	this.testCoupon.setDescriptions("this is a coupon");
-    	this.testCoupon.setStatus(Status.Available);
+    	this.testCoupon.setStatus(CouponStatus.Active);
 
         assertEquals("Test Restaurant Manager View Menu Item", this.testCoupon, this.testCoupon.getCoupon());
     }

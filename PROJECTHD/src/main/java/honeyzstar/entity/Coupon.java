@@ -14,9 +14,9 @@ public class Coupon {
 	private DiscountType discountType;
 	private double discountAmount;
 	private String descriptions;
-	private Status status;
+	private CouponStatus status;
 	private Date createdAt;
-	private Date UpdatedAt;
+	private Date updateAt;
 
 	
 	public Coupon() {
@@ -27,20 +27,20 @@ public class Coupon {
 		this.descriptions = "";
 		this.status = null;
 		this.createdAt = null;
-		this.UpdatedAt = null;
+		this.updateAt = null;
 	}
 	
-	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, Status status, Date updatedAt) {
+	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status, Date updatedAt) {
 		this.name = name;
 		this.code = code;
 		this.discountType = discountType;
 		this.discountAmount = discountAmount;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.UpdatedAt = updatedAt;
+		this.updateAt = updatedAt;
 	}
 	
-	public Coupon(int id, String name, String code, DiscountType discountType, double discountAmount, String descriptions, Status status) {
+	public Coupon(int id, String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
 		this.couponID = id;
 		this.name = name;
 		this.code = code;
@@ -50,13 +50,21 @@ public class Coupon {
 		this.status = status;
 	}
 	
-	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, Status status) {
+	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
 		this.name = name;
 		this.code = code;
 		this.discountType = discountType;
 		this.discountAmount = discountAmount;
 		this.descriptions = descriptions;
 		this.status = status;
+	}
+
+	public Coupon(int id) {
+		this.couponID = id;
+	}
+
+	public Coupon(String name) {
+		this.name = name;
 	}
 	
 	public boolean createCoupon() {
@@ -156,8 +164,9 @@ public class Coupon {
 				this.setDiscountType(DiscountType.valueOf(result.getString("DiscountType")));
 				this.setDiscountAmount(result.getDouble("DiscountAmount"));
 				this.setDescriptions(result.getString("Descriptions"));
-				this.setStatus(Status.valueOf(result.getString("Status")));
+				this.setStatus(CouponStatus.valueOf(result.getString("Status")));
 				System.out.println("Searched Successfully");
+				return this;
 			}
 			
 
@@ -165,7 +174,7 @@ public class Coupon {
 			ex.printStackTrace();
 		}
 
-		return this;
+		return null;
 	}
 	
 	public Coupon getCoupon() {
@@ -188,7 +197,7 @@ public class Coupon {
 				this.setDiscountType(DiscountType.valueOf(result.getString("DiscountType")));
 				this.setDiscountAmount(result.getDouble("DiscountAmount"));
 				this.setDescriptions(result.getString("Descriptions"));
-				this.setStatus(Status.valueOf(result.getString("Status")));
+				this.setStatus(CouponStatus.valueOf(result.getString("Status")));
 				System.out.println("Searched Successfully");
 			}
 			
@@ -222,7 +231,7 @@ public class Coupon {
 				String descriptions = result.getString("Descriptions");
 				String status = result.getString("Status");
 				
-				returnArray.add(new Coupon(id, name, code, DiscountType.valueOf(tempType), discountAmount, descriptions, Status.valueOf(status)));
+				returnArray.add(new Coupon(id, name, code, DiscountType.valueOf(tempType), discountAmount, descriptions, CouponStatus.valueOf(status)));
 				
 			}
 
@@ -281,11 +290,11 @@ public class Coupon {
 		this.descriptions = descriptions;
 	}
 
-	public Status getStatus() {
+	public CouponStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(CouponStatus status) {
 		this.status = status;
 	}
 
@@ -298,10 +307,10 @@ public class Coupon {
 	}
 
 	public Date getUpdatedAt() {
-		return UpdatedAt;
+		return updateAt;
 	}
 
 	public void setUpdatedAt(Date updatedAt) {
-		UpdatedAt = updatedAt;
+		updateAt = updatedAt;
 	}
 }

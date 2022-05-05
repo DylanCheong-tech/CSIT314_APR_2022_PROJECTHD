@@ -3,8 +3,8 @@ import java.util.Random;
 import java.sql.*;
 
 import honeyzstar.entity.MenuItem;
-import honeyzstar.entity.Status;
-import honeyzstar.entity.Type;
+import honeyzstar.entity.MenuItemStatus;
+import honeyzstar.entity.MenuItemType;
 
 public class MenuItemTestDataGenerator {
 	private static final String connStr = "jdbc:mysql://localhost:3306/csit314_apr_2022_projecthd?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
@@ -16,14 +16,14 @@ public class MenuItemTestDataGenerator {
 	}
 	
 	public static void main(String[] args) {
-		ArrayList<Type> typeArray = new ArrayList<Type>();
-		typeArray.add(Type.Beverage);
-		typeArray.add(Type.SideDish);
-		typeArray.add(Type.MainCourse);
+		ArrayList<MenuItemType> typeArray = new ArrayList<MenuItemType>();
+		typeArray.add(MenuItemType.Beverage);
+		typeArray.add(MenuItemType.SideDish);
+		typeArray.add(MenuItemType.MainCourse);
 		
-		ArrayList<Status> statusArray = new ArrayList<Status>();
-		statusArray.add(Status.Available);
-		statusArray.add(Status.Unavailable);
+		ArrayList<MenuItemStatus> statusArray = new ArrayList<MenuItemStatus>();
+		statusArray.add(MenuItemStatus.Available);
+		statusArray.add(MenuItemStatus.Unavailable);
 		
 		ArrayList<MenuItem> menuItemArray = new ArrayList<MenuItem>();
 		

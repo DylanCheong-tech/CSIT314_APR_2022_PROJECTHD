@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Menu Item</title>
+    <title>View Coupon</title>
 
     <!--Google jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./css/menu-item/alert-box.css" />
     <link rel="stylesheet" href="./css/menu-item/page-layout-1.css" />
-    <link rel="stylesheet" href="./css/menu-item/table-layout.css" />
-    <link rel="stylesheet" href="./css/menu-item/form-layout.css" />
+    <link rel="stylesheet" href="./css/coupon/table-layout.css" />
     <link rel="stylesheet" href="./css/menu-item/search-filter.css" />
+    <link rel="stylesheet" href="./css/coupon/form-layout.css" />
+    <link rel="stylesheet" href="./css/coupon/view-coupon.css" />
     <link rel="stylesheet" href="./css/font-styles.css" />
-    <link rel="stylesheet" href="./css/menu-item/view-menu-item.css" />
 
 </head>
 
@@ -27,58 +27,60 @@
             <img id="header-logo" src="./img/logo.png" alt="logo_image" />
         </span>
         <span id="buttons">
-            <button id="portal-btn" type="button" onclick="window.location.href = '/restaurant-manager-portal.html'">Portal Home</button>
+            <button id="portal-btn" type="button"
+                onclick="window.location.href = '/restaurant-manager-portal.html'">Portal Home</button>
             <button id="logout-btn" type="button" onclick="logout()">Logout</button>
         </span>
     </div>
 
     <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
-        View Menu Item
+        View Coupon
     </div>
 
     <div id="search-frame" class="mode-border-color-1">
-        <input id="search-bar" class="mode-font-color" placeholder="Enter Menu Item Name ... " />
-        <button id="search-btn" onclick="searchMenuItem()">Search</button>
+        <input id="search-bar" class="mode-font-color" placeholder="Enter Coupon Name ... " />
+        <button id="search-btn" onclick="searchCoupon()">Search</button>
     </div>
 
     <div id="sort-frame">
         <select onchange="sort('sort-list')" id="sort-list">
             <option selected disabled>Sort</option>
             <option value="id">By ID</option>
+            <option value="code">By Code</option>
             <option value="name">By Name</option>
-            <option value="type">By Type</option>
-            <option value="price">By Price</option>
+            <option value="discountType">By Discount Type</option>
+            <option value="discountAmount">By Discount Amount</option>
             <option value="status">By Status</option>
-            <option value="dateCreated">By Date Created</option>
-            <option value="lastUpdated">By Last Updated</option>
         </select>
     </div>
 
     <table id="table" align="center">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Price</th>
-                <th>Status</th>
-                <th>Date Created</th>
-                <th>Last Update</th>
-                <th>Action</th>
-            </tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Discount Type</th>
+            <th>Discount Amount</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Action</th>
         </thead>
 
-        <tbody id="menu-item-list">
+        <tbody id="coupon-list">
         </tbody>
     </table>
-    <div id="outline"></div>
 
     <div id="form" class="mode-border-color-1">
-        <p class="mode-font-color mode-bg-color-2 mode-border-color-3">View Menu Item Form</p>
+        <p class="mode-font-color mode-bg-color-2 mode-border-color-3">View Coupon Form</p>
         <p></p>
-        <form action="" method="post">
+        <form method="post">
             <label class="text-item mode-font-color">ID</label>
-            <input id="id-input" class="mode-border-color-1" type="text" value="1" disabled />
+            <input id="id-input" class="mode-border-color-1" type="text" name="couponID" readonly />
+            <br />
+
+            <label class="text-item mode-font-color">Code</label>
+            <input id="code" class="mode-border-color-1" type="text" name="code" required pattern="[A-Za-z0-9]*"
+                title="No special character" />
             <br />
 
             <label class="text-item mode-font-color">Name</label>
@@ -86,38 +88,30 @@
                 title="No special character" />
             <br />
 
-            <label class="text-item mode-font-color">Type</label>
-            <select id="type" class="mode-border-color-1" id="type-list" name="type" required>
+            <label class="text-item mode-font-color">Discount Type</label>
+            <select id="discountType" class="mode-border-color-1" id="type-list" name="discountType" required>
                 <option selected disabled value=""></option>
-                <option value="Beverage">Beverage</option>
-                <option value="SideDish">SideDish</option>
-                <option value="MainCourse">MainCourse</option>
+                <option value="Percentage">Percentage</option>
+                <option value="Value">Value</option>
+                <option value="OnetoOne">One To One</option>
             </select>
             <br />
 
-            <label class="text-item mode-font-color">Price</label>
-            <input id="price" class="mode-border-color-1" type="text" name="price" required pattern="[0-9.]*"
-                title="No special character" />
-            <br />
-
-            <label class="text-item mode-font-color">Status</label>
-            <select id="status" class="mode-border-color-1" id="status-list" name="status" required>
-                <option selected disabled value=""></option>
-                <option value="Available">Available</option>
-                <option value="Unavailable">Unavailable</option>
-            </select>
+            <label class="text-item mode-font-color">Discount Amount</label>
+            <input id="discountAmount" class="mode-border-color-1" type="text" name="discountAmount" required
+                pattern="[0-9.]*" title="No special character" />
             <br />
 
             <label class="text-item mode-font-color">Descriptions</label>
-            <input id="desc" class="mode-border-color-1" type="text" name="descriptions" required />
-            <br />
+            <input id="descriptions" class="mode-border-color-1" type="text" name="descriptions" required />
 
-            <label id="image-label" class="text-item mode-font-color">Image</label>
-            <div id="image-drop-frame">
-                <div id="image-drop">
-                    <img id="image-preview" />
-                </div>
-            </div>
+            <label class="text-item mode-font-color">Status</label>
+            <select id="status" class="mode-border-color-1" id="type-list" name="status" required>
+                <option selected disabled value=""></option>
+                <option value="Active">Active</option>
+                <option value="Expired">Expired</option>
+            </select>
+            <br />
             <br />
             <br />
 
@@ -133,9 +127,10 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
-    <script src="./js/menu-item/view-menu-item.js"></script>
-    <script src="./js/menu-item/search-function.js"></script>
-    <script src="./js/menu-item/sort-function.js"></script>
+    <script src="./js/coupon/view-coupon.js"></script>
+    <script src="./js/coupon/search-function.js"></script>
+    <script src="./js/menu-item/alert-box.js"></script>
+    <script src="./js/coupon/sort-function.js"></script>
     <script src="./js/logout.js"></script>
     <script src="./js/date-time.js"></script>
     <!-- <script src="./js/page-theme.js"></script> -->

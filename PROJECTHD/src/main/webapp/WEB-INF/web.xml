@@ -106,6 +106,36 @@
       <servlet-name>RestaurantManagerViewMenuItemC</servlet-name>
       <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerViewMenuItemC</servlet-class>
    </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerCreateCouponC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerCreateCouponC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerGetCouponListC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerGetCouponListC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerDeleteCouponC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerDeleteCouponC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerUpdateCouponC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerUpdateCouponC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerViewCouponC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerViewCouponC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerSearchCouponC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerSearchCouponC</servlet-class>
+   </servlet>
  
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
@@ -210,5 +240,35 @@
    <servlet-mapping>
       <servlet-name>RestaurantManagerViewMenuItemC</servlet-name>
       <url-pattern>/getMenuItem</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerCreateCouponC</servlet-name>
+      <url-pattern>/createCoupon</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerGetCouponListC</servlet-name>
+      <url-pattern>/getCouponList</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerDeleteCouponC</servlet-name>
+      <url-pattern>/deleteCoupon</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerUpdateCouponC</servlet-name>
+      <url-pattern>/updateCoupon</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerViewCouponC</servlet-name>
+      <url-pattern>/getCoupon</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerSearchCouponC</servlet-name>
+      <url-pattern>/searchCoupon</url-pattern>
    </servlet-mapping>
 </web-app>

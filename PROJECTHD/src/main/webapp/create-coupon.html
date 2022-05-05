@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Coupon</title>
+
+    <!--Google jQuery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./css/menu-item/alert-box.css" />
+    <link rel="stylesheet" href="./css/menu-item/page-layout-1.css" />
+    <link rel="stylesheet" href="./css/coupon/form-layout.css" />
+    <link rel="stylesheet" href="./css/font-styles.css" />
+    <link rel="stylesheet" href="./css/coupon/create-coupon.css" />
+
+</head>
+
+<body>
+    <div id="header">
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="logo">
+            <img id="header-logo" src="./img/logo.png" alt="logo_image" />
+        </span>
+        <span id="buttons">
+            <button id="portal-btn" type="button" onclick="window.location.href = '/restaurant-manager-portal.html'">Portal Home</button>
+            <button id="logout-btn" type="button" onclick="logout()">Logout</button>
+        </span>
+    </div>
+
+    <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
+        Create Coupon
+    </div>
+
+    <div id="form" class="mode-border-color-1">
+        <p class="mode-font-color mode-bg-color-2 mode-border-color-3">Create Coupon Form</p>
+        <p></p>
+        <form action="/createCoupon" method="post">
+            <label class="text-item mode-font-color">ID</label>
+            <input id="id-input" class="mode-border-color-1" type="text" disabled />
+            <br />
+
+            <label class="text-item mode-font-color">Code</label>
+            <input class="mode-border-color-1" type="text" name="code" required pattern="[A-Za-z0-9]*"
+                title="No special character" />
+            <br />
+
+            <label class="text-item mode-font-color">Name</label>
+            <input class="mode-border-color-1" type="text" name="name" required pattern="[A-Za-z0-9\s]*"
+                title="No special character" />
+            <br />
+
+            <label class="text-item mode-font-color">Discount Type</label>
+            <select class="mode-border-color-1" id="type-list" name="discountType" required >
+                <option selected disabled value=""></option>
+                <option value="Percentage">Percentage</option>
+                <option value="Value">Value</option>
+                <option value="OnetoOne">One To One</option>
+            </select>
+            <br />
+
+            <label class="text-item mode-font-color">Discount Amount</label>
+            <input class="mode-border-color-1" type="text" name="discountAmount" required pattern="[0-9.]*"
+                title="No special character" />
+            <br />
+
+            <label class="text-item mode-font-color">Descriptions</label>
+            <input class="mode-border-color-1" type="text" name="descriptions" required />
+
+            <label class="text-item mode-font-color">Status</label>
+            <select class="mode-border-color-1" id="type-list" name="status" required >
+                <option selected disabled value=""></option>
+                <option value="Active">Active</option>
+                <option value="Expired">Expired</option>
+            </select>
+            <br />
+            <br />
+            <br />
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="alert-box">
+        <span id="alert-message"></span>
+        <br />
+        <button class="logout-btn" type="button" onclick="confirm_logout()">Logout</button>
+        <button class="logout-btn" type="button" onclick="cancel_logout()">Cancel</button>
+        <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
+    </div>
+
+    <script src="./js/coupon/create-coupon.js"></script>
+    <script src="./js/logout.js"></script>
+    <script src="./js/menu-item/alert-box.js"></script>
+    <script src="./js/date-time.js"></script>
+    <!-- <script src="./js/page-theme.js"></script> -->
+</body>
+
+</html>

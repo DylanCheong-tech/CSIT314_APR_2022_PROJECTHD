@@ -10,12 +10,12 @@ public class MenuItem {
 	private static final String dbpassword = "";
 	private int menuItemID;
 	private String name;
-	private Type type;
+	private MenuItemType type;
 	private double price;
 	private String descriptions;
-	private Status status;
+	private MenuItemStatus status;
 	private String createdAt;
-	private String UpdatedAt;
+	private String updatedAt;
 	private String imageDataURL;
 
 	
@@ -26,7 +26,7 @@ public class MenuItem {
 		this.descriptions = "";
 		this.status = null;
 		this.createdAt = null;
-		this.UpdatedAt = null;
+		this.updatedAt = null;
 		this.imageDataURL = "";
 	}
 	
@@ -38,7 +38,7 @@ public class MenuItem {
 		this.name = name;
 	}
 	
-	public MenuItem(int id, String name, Type type, double price, String descriptions, Status status, String createdAt, String updatedAt, String imageDataURL) {
+	public MenuItem(int id, String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt, String updatedAt, String imageDataURL) {
 		this.menuItemID = id;
 		this.name = name;
 		this.type = type;
@@ -46,44 +46,44 @@ public class MenuItem {
 		this.descriptions = descriptions;
 		this.status = status;
 		this.createdAt = createdAt;
-		this.UpdatedAt = updatedAt;
+		this.updatedAt = updatedAt;
 		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, String createdAt, String updatedAt, String imageDataURL) {
+	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt, String updatedAt, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
 		this.createdAt = createdAt;
-		this.UpdatedAt = updatedAt;
+		this.updatedAt = updatedAt;
 		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(int id, String name, Type type, double price, String descriptions, Status status, String imageDataURL) {
+	public MenuItem(int id, String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String imageDataURL) {
 		this.menuItemID = id;
 		this.name = name;
 		this.type = type;
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.UpdatedAt = null;
+		this.updatedAt = null;
 		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, String createdAt, String imageDataURL) {
+	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
 		this.createdAt = createdAt;
-		this.UpdatedAt = null;
+		this.updatedAt = null;
 		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(String name, Type type, double price, String descriptions, Status status, String imageDataURL) {
+	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -185,10 +185,10 @@ public class MenuItem {
 			if (result.next()) {
 				this.setMenuItemID(result.getInt("MenuItemID"));
 				this.setName(result.getString("Name"));
-				this.setType(Type.valueOf(result.getString("Type")));
+				this.setType(MenuItemType.valueOf(result.getString("Type")));
 				this.setPrice(result.getDouble("Price"));
 				this.setDescriptions(result.getString("Descriptions"));
-				this.setStatus(Status.valueOf(result.getString("Status")));
+				this.setStatus(MenuItemStatus.valueOf(result.getString("Status")));
 				this.setCreatedAt(result.getString("CreatedAt"));
 				this.setUpdatedAt(result.getString("UpdatedAt"));
 				this.setImageDataURL(result.getString("ImageDataURL"));
@@ -220,10 +220,10 @@ public class MenuItem {
 			if (result.next()) {
 				this.setMenuItemID(result.getInt("MenuItemID"));
 				this.setName(result.getString("Name"));
-				this.setType(Type.valueOf(result.getString("Type")));
+				this.setType(MenuItemType.valueOf(result.getString("Type")));
 				this.setPrice(result.getDouble("Price"));
 				this.setDescriptions(result.getString("Descriptions"));
-				this.setStatus(Status.valueOf(result.getString("Status")));
+				this.setStatus(MenuItemStatus.valueOf(result.getString("Status")));
 				this.setCreatedAt(result.getString("CreatedAt"));
 				this.setUpdatedAt(result.getString("UpdatedAt"));
 				this.setImageDataURL(result.getString("ImageDataURL"));
@@ -264,8 +264,7 @@ public class MenuItem {
 				String updatedAt = result.getString("UpdatedAt");
 				String imageDataURL = result.getString("ImageDataURL");
 				
-				returnArray.add(new MenuItem(id, name, Type.valueOf(tempType), price, descriptions, Status.valueOf(status), createdAt, updatedAt, imageDataURL));
-				
+				returnArray.add(new MenuItem(id, name, MenuItemType.valueOf(tempType), price, descriptions, MenuItemStatus.valueOf(status), createdAt, updatedAt, imageDataURL));
 			}
 
 		} catch (SQLException ex) {
@@ -276,7 +275,7 @@ public class MenuItem {
 	}
 	
 	public int getMenuItemID() {
-		return menuItemID;
+		return this.menuItemID;
 	}
 
 	public void setMenuItemID(int menuItemID) {
@@ -284,23 +283,23 @@ public class MenuItem {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Type getType() {
-		return type;
+	public MenuItemType getType() {
+		return this.type;
 	}
 
-	public void setType(Type type) {
+	public void setType(MenuItemType type) {
 		this.type = type;
 	}
 
 	public double getPrice() {
-		return price;
+		return this.price;
 	}
 
 	public void setPrice(double price) {
@@ -308,23 +307,23 @@ public class MenuItem {
 	}
 
 	public String getDescriptions() {
-		return descriptions;
+		return this.descriptions;
 	}
 
 	public void setDescriptions(String descriptions) {
 		this.descriptions = descriptions;
 	}
 
-	public Status getStatus() {
-		return status;
+	public MenuItemStatus getStatus() {
+		return this.status;
 	}
 
-	public void setStatus(Status status) {
+	public void setStatus(MenuItemStatus status) {
 		this.status = status;
 	}
 
 	public String getCreatedAt() {
-		return createdAt;
+		return this.createdAt;
 	}
 
 	public void setCreatedAt(String createdAt) {
@@ -332,15 +331,15 @@ public class MenuItem {
 	}
 
 	public String getUpdatedAt() {
-		return UpdatedAt;
+		return this.updatedAt;
 	}
 
 	public void setUpdatedAt(String updatedAt) {
-		UpdatedAt = updatedAt;
+		this.updatedAt = updatedAt;
 	}
 
 	public String getImageDataURL() {
-		return imageDataURL;
+		return this.imageDataURL;
 	}
 
 	public void setImageDataURL(String imageDataURL) {

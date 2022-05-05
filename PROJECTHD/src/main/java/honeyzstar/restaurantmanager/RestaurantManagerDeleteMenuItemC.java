@@ -10,9 +10,9 @@ public class RestaurantManagerDeleteMenuItemC extends HttpServlet{
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         int menuItemID = Integer.parseInt(request.getParameter("menuItemID"));
-        MenuItem newMenuItem = new MenuItem(menuItemID);
+        MenuItem menuItem = new MenuItem(menuItemID);
         
-        if(newMenuItem.deleteMenuItem()){
+        if(menuItem.deleteMenuItem()){
             response.sendRedirect("/delete-menu-item.html?status=success");
         }
         else{

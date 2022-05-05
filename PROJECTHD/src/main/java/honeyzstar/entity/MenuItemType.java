@@ -1,6 +1,6 @@
 package honeyzstar.entity;
 
-public enum Type {
+public enum MenuItemType {
 	Beverage,
 	SideDish,
 	MainCourse;

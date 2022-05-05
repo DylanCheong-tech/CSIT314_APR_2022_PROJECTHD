@@ -22,9 +22,9 @@ public class MenuItemTest {
     @Test
     public void testCreateMenuItem(){
     	this.testMenuItem.setName("name1");
-    	this.testMenuItem.setType(Type.Beverage);
+    	this.testMenuItem.setType(MenuItemType.Beverage);
     	this.testMenuItem.setPrice(5.4);
-    	this.testMenuItem.setStatus(Status.Available);
+    	this.testMenuItem.setStatus(MenuItemStatus.Available);
     	this.testMenuItem.setDescriptions("this is a menu item");
     	
     	assertTrue("Test Restaurant Manager Create Menu Item", this.testMenuItem.createMenuItem());
@@ -34,9 +34,9 @@ public class MenuItemTest {
     public void testDeleteMenuItem (){
     	this.testMenuItem.setMenuItemID(99);
     	this.testMenuItem.setName("testname1");
-    	this.testMenuItem.setType(Type.MainCourse);
+    	this.testMenuItem.setType(MenuItemType.MainCourse);
     	this.testMenuItem.setPrice(5.3);
-    	this.testMenuItem.setStatus(Status.Available);
+    	this.testMenuItem.setStatus(MenuItemStatus.Available);
     	this.testMenuItem.setDescriptions("this is a test menu item");
     	
         assertTrue("Test Restaurant Manager Delete Menu Item", this.testMenuItem.deleteMenuItem());
@@ -46,9 +46,9 @@ public class MenuItemTest {
     public void testUpdateMenuItem() {
     	this.testMenuItem.setMenuItemID(100);
     	this.testMenuItem.setName("testname1");
-    	this.testMenuItem.setType(Type.MainCourse);
+    	this.testMenuItem.setType(MenuItemType.MainCourse);
     	this.testMenuItem.setPrice(5.3);
-    	this.testMenuItem.setStatus(Status.Available);
+    	this.testMenuItem.setStatus(MenuItemStatus.Available);
     	this.testMenuItem.setDescriptions("this is a test menu item");
     	
     	assertTrue("Test Restaurant Manager Update Menu Item", this.testMenuItem.updateMenuItem());
@@ -58,9 +58,9 @@ public class MenuItemTest {
     public void testSearchMenuItem (){
     	this.testMenuItem.setMenuItemID(109);
     	this.testMenuItem.setName("testname3");
-    	this.testMenuItem.setType(Type.SideDish);
+    	this.testMenuItem.setType(MenuItemType.SideDish);
     	this.testMenuItem.setPrice(8.0);
-    	this.testMenuItem.setStatus(Status.Unavailable);
+    	this.testMenuItem.setStatus(MenuItemStatus.Unavailable);
     	this.testMenuItem.setDescriptions("this is a test menu item");
 
         assertEquals("Test User Admin Search Menu Item", this.testMenuItem, this.testMenuItem.searchMenuItem());
@@ -70,9 +70,9 @@ public class MenuItemTest {
     public void testGetMenuItem (){
     	this.testMenuItem.setMenuItemID(103);
     	this.testMenuItem.setName("testname4");
-    	this.testMenuItem.setType(Type.Beverage);
+    	this.testMenuItem.setType(MenuItemType.Beverage);
     	this.testMenuItem.setPrice(11.4);
-    	this.testMenuItem.setStatus(Status.Available);
+    	this.testMenuItem.setStatus(MenuItemStatus.Available);
     	this.testMenuItem.setDescriptions("this is a test menu item");
 
         assertEquals("Test User Admin View Menu Item", this.testMenuItem, this.testMenuItem.getMenuItem());
