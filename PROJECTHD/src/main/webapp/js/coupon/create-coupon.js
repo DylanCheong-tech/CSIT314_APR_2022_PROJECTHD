@@ -9,4 +9,4 @@ var coupon_list = $.ajax({
     "dataType": "json"
 }).responseJSON;
 
-document.getElementById("id-input").value = parseInt(coupon_list[coupon_list.length - 1].couponID) + 1;
+document.getElementById("id-input").value = parseInt(coupon_list.length != 0 ? coupon_list[coupon_list.length - 1].couponID : 0) + 1;

@@ -1,4 +1,4 @@
-package honeyzstar.useradmin;
+package honeyzstar.restaurantmanager;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -7,7 +7,7 @@ import honeyzstar.entity.Role;
 
 import java.io.*;
 
-public class UserAdminLoginC extends HttpServlet {
+public class RestaurantManagerLoginC extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
@@ -19,7 +19,7 @@ public class UserAdminLoginC extends HttpServlet {
 		boolean loginSuccess = acc.login();
 
 		if (loginSuccess) {
-			response.sendRedirect("/user-admin-portal.html?username=" + username);
+			response.sendRedirect("/restaurant-manager-portal.html?username=" + username);
 		} else {
 			response.sendRedirect("/login.html?status=fail");
 		}

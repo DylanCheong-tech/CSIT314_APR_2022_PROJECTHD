@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 03, 2022 at 03:58 AM
+-- Generation Time: May 05, 2022 at 12:14 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -63,9 +63,7 @@ CREATE TABLE `Coupon` (
   `Descriptions` varchar(1000) NOT NULL,
   `DiscountType` varchar(50) NOT NULL,
   `DiscountAmount` decimal(10,2) NOT NULL,
-  `Status` varchar(20) NOT NULL DEFAULT 'Available',
-  `CreatedAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `UpdatedAt` datetime NOT NULL
+  `Status` varchar(20) NOT NULL DEFAULT 'Available'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -82,7 +80,7 @@ CREATE TABLE `MenuItem` (
   `Descriptions` varchar(1000) NOT NULL,
   `Status` varchar(20) NOT NULL DEFAULT 'Available',
   `CreatedAt` datetime NOT NULL DEFAULT current_timestamp(),
-  `UpdatedAt` datetime NOT NULL,
+  `UpdatedAt` datetime DEFAULT NULL,
   `ImageDataURL` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

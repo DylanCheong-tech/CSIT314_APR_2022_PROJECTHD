@@ -74,7 +74,7 @@ public class Coupon {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Name, Code, DiscountType, discountAmount, Descriptions, Status, UpdatedAt) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Name, Code, DiscountType, discountAmount, Descriptions, Status) VALUES (?, ?, ?, ?, ?, ?)");
 
 			stmt.setString(1, this.name);
 			stmt.setString(2, this.code);

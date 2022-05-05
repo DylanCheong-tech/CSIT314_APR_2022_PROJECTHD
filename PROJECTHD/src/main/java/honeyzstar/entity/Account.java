@@ -69,12 +69,12 @@ public class Account {
 		this.dateJoined = "";
 	}
 
-	public Account(String username, String password) {
+	public Account(String username, String password, Role role) {
 		this.accountID = 0;
 		this.username = username;
 		this.password = password;
 		this.name = "";
-		this.role = null;
+		this.role = role;
 		this.dateJoined = "";
 	}
 
@@ -94,9 +94,10 @@ public class Account {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT Password FROM Account WHERE Username = ? ");
+			PreparedStatement stmt = conn.prepareStatement("SELECT Password FROM Account WHERE Username = ? AND RoleID = ? AND Status = 'Active'");
 
 			stmt.setString(1, this.username);
+			stmt.setInt(2, this.role.getID());
 
 			ResultSet result = stmt.executeQuery();
 			String password = "";

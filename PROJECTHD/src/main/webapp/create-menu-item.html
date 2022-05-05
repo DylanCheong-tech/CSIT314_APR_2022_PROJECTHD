@@ -10,6 +10,9 @@
     <!--Google jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- npm image-conversion package CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/WangYuLue/image-conversion/build/conversion.js"></script>
+
     <link rel="stylesheet" href="./css/menu-item/alert-box.css" />
     <link rel="stylesheet" href="./css/menu-item/page-layout-1.css" />
     <link rel="stylesheet" href="./css/menu-item/form-layout.css" />
@@ -37,7 +40,7 @@
     <div id="form" class="mode-border-color-1">
         <p class="mode-font-color mode-bg-color-2 mode-border-color-3">Create Menu Item Form</p>
         <p></p>
-        <form action="/createMenuItem" method="post">
+        <form action="/createMenuItem" method="post" onsubmit="validate_form()">
             <label class="text-item mode-font-color">ID</label>
             <input id="id-input" class="mode-border-color-1" type="text" disabled />
             <br />
@@ -94,15 +97,15 @@
                     <img id="image-preview" />
                 </div>
             </div>
-            <input id="hidden-image-data-url" name="imageDataURL" type="text" required />
             <br />
+            <input id="hidden-image-data-url" name="imageDataURL" type="text" required />
             <div id="annotate">
                 <span>Accepted Picture Format: .PNG and .JPG or .JPEG only</span>
             </div>
             <br />
             <br />
 
-            <button type="submit">Submit</button>
+            <button id="submit-btn" type="submit">Submit</button>
         </form>
     </div>
 

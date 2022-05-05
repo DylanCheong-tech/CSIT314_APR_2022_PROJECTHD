@@ -52,7 +52,7 @@ function display_list(menu_item_list) {
         var column7 = document.createElement("td");
         column7.classList.add("mode-font-color");
         column7.classList.add("mode-border-color-1");
-        column7.innerHTML = menu_item_list[index].updatedAt;
+        column7.innerHTML = menu_item_list[index].updatedAt ? menu_item_list[index].updatedAt : "-";
         row.appendChild(column7);
 
         list_frame.appendChild(row);

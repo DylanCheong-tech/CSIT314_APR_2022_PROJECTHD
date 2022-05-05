@@ -55,7 +55,7 @@ public class CouponTestDataGenerator {
 							connStr, dbusername, dbpassword);
 
 			) {
-				PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Name, Code, DiscountType, discountAmount, Descriptions, Status, UpdatedAt) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)");
+				PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Name, Code, DiscountType, discountAmount, Descriptions, Status) VALUES (?, ?, ?, ?, ?, ?)");
 
 				stmt.setString(1, coupon.getName());
 				stmt.setString(2, coupon.getCode());

@@ -99,7 +99,7 @@ public class MenuItem {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO MenuItem (Name, Type, Price, Status, UpdatedAt, Descriptions, ImageDataURL) VALUES ( ?, ?, ?, ?, CURRENT_TIMESTAMP, ?, ?)");
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO MenuItem (Name, Type, Price, Status, Descriptions, ImageDataURL) VALUES ( ?, ?, ?, ?, ?, ?)");
 
 			stmt.setString(1, this.name);
 			stmt.setString(2, String.valueOf(this.type));

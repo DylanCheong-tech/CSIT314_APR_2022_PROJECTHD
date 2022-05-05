@@ -12,6 +12,14 @@ img_reader.addEventListener('load', () => {
     document.getElementById("hidden-image-data-url").value = img_data_url;
 });
 
+function compress_image(file) {
+    imageConversion.compress(file, 0.5).then((file) => {
+        console.log("compressed");
+        console.log(file);
+        img_reader.readAsDataURL(file);
+    });
+}
+
 function dropImage(event) {
     event.preventDefault();
 
@@ -38,11 +46,9 @@ function dropImage(event) {
             if (event.dataTransfer.items[i].kind === "file") {
                 var file = event.dataTransfer.items[i].getAsFile();
                 console.log(event.dataTransfer.items[i]);
-                // document.getElementById("image-drop").innerText = file.name + " is uploaded";
 
                 if (file) {
-                    img_reader.readAsDataURL(file);
-                    console.log("REad")
+                    compress_image(file);
                 }
             }
         }
@@ -50,7 +56,7 @@ function dropImage(event) {
         for (var i = 0; i < event.dataTransfer.files.length; i++) {
             if (event.dataTransfer.items[i].kind === "file") {
                 if (event.dataTransfer.files[i]) {
-                    img_reader.readAsDataURL(event.dataTransfer.files[i]);
+                    compress_image(event.dataTransfer.files[i]);
                 }
             }
         }
@@ -107,7 +113,9 @@ function previewImage() {
     document.getElementById("image-preview").style.display = "inline-block";
 
     var image_input = document.getElementById("image-file-input");
-    img_reader.readAsDataURL(image_input.files[0]);
+    if (image_input.files[0]) {
+        compress_image(image_input.files[0]);
+    }
 
     setTimeout(() => {
         console.log(img_data_url);
@@ -168,7 +176,7 @@ function display_list(menu_item_list) {
         var column7 = document.createElement("td");
         column7.classList.add("mode-font-color");
         column7.classList.add("mode-border-color-1");
-        column7.innerHTML = menu_item_list[index].updatedAt;
+        column7.innerHTML = menu_item_list[index].updatedAt ? menu_item_list[index].updatedAt : "-";
         row.appendChild(column7);
 
         var btnCol = document.createElement("td");

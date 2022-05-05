@@ -51,3 +51,21 @@ setInterval(() => {
     }
     
 }, 4000);
+
+function updateLoginAction () {
+    var form = document.getElementById("login-form");
+    var roleID = document.getElementById("role-list").value;
+
+    if (roleID == 1){
+        form.action = "/loginRestaurantManager";
+    }
+    else if (roleID == 2){
+        form.action = "/loginStaff";
+    }
+    else if (roleID == 3){
+        form.action = "/loginRestaurantOwner";
+    }
+    else if (roleID == 4){
+        form.action = "/loginUserAdmin";
+    }
+}

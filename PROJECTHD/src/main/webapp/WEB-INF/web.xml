@@ -78,6 +78,16 @@
    <!-- Restaurant Manager -->
 
    <servlet>
+      <servlet-name>RestaurantManagerLoginC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerLoginC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantManagerLogoutC</servlet-name>
+      <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerLogoutC</servlet-class>
+   </servlet>
+
+   <servlet>
       <servlet-name>RestaurantManagerCreateMenuItemC</servlet-name>
       <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerCreateMenuItemC</servlet-class>
    </servlet>
@@ -142,12 +152,12 @@
  
    <servlet-mapping>
       <servlet-name>UserAdminLoginC</servlet-name>
-      <url-pattern>/loginUser</url-pattern>
+      <url-pattern>/loginUserAdmin</url-pattern>
    </servlet-mapping>
 
    <servlet-mapping>
       <servlet-name>UserAdminLogoutC</servlet-name>
-      <url-pattern>/logoutUser</url-pattern>
+      <url-pattern>/logoutUserAdmin</url-pattern>
    </servlet-mapping>
 
    <servlet-mapping>
@@ -211,6 +221,16 @@
    </servlet-mapping>
 
    <!-- Restaurant Manager -->
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerLoginC</servlet-name>
+      <url-pattern>/loginRestaurantManager</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantManagerLogoutC</servlet-name>
+      <url-pattern>/logoutRestaurantManager</url-pattern>
+   </servlet-mapping>
 
    <servlet-mapping>
       <servlet-name>RestaurantManagerCreateMenuItemC</servlet-name>

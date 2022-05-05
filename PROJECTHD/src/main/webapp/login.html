@@ -29,11 +29,11 @@
             <img class="background-image" src="./img/honeyzstar4.png" alt="background_img" /> 
         </div>
         
-        <form method="POST" action="/loginUser" class="mode-bg-color-2 mode-border-color">
+        <form id="login-form" method="POST" class="mode-bg-color-2 mode-border-color">
             <label class="mode-font-color">
                 Login As
             </label>
-            <select id="role-list" required>
+            <select id="role-list" name="roleID" onchange="updateLoginAction()" required>
                 <option selected disabled value=""></option>
             </select>
             <br />
