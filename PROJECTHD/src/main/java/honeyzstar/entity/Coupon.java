@@ -15,8 +15,6 @@ public class Coupon {
 	private double discountAmount;
 	private String descriptions;
 	private CouponStatus status;
-	private Date createdAt;
-	private Date updateAt;
 
 	
 	public Coupon() {
@@ -26,33 +24,9 @@ public class Coupon {
 		this.discountAmount = 0.0;
 		this.descriptions = "";
 		this.status = null;
-		this.createdAt = null;
-		this.updateAt = null;
 	}
 
-	public Coupon(int id, String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status, Date createdAt, Date updatedAt) {
-		this.couponID = id;
-		this.name = name;
-		this.code = code;
-		this.discountType = discountType;
-		this.discountAmount = discountAmount;
-		this.descriptions = descriptions;
-		this.status = status;
-		this.createdAt = createdAt;
-		this.updateAt = updatedAt;
-	}
-	
-	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status, Date updatedAt) {
-		this.name = name;
-		this.code = code;
-		this.discountType = discountType;
-		this.discountAmount = discountAmount;
-		this.descriptions = descriptions;
-		this.status = status;
-		this.updateAt = updatedAt;
-	}
-	
-	public Coupon(int id, String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
+	public Coupon(int id, String code, String name, String descriptions, DiscountType discountType, double discountAmount, CouponStatus status) {
 		this.couponID = id;
 		this.name = name;
 		this.code = code;
@@ -70,6 +44,7 @@ public class Coupon {
 		this.descriptions = descriptions;
 		this.status = status;
 	}
+	
 
 	public Coupon(int id) {
 		this.couponID = id;
@@ -86,13 +61,13 @@ public class Coupon {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Name, Code, DiscountType, discountAmount, Descriptions, Status) VALUES (?, ?, ?, ?, ?, ?)");
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Code, Name, Descriptions, DiscountType, discountAmount, Status) VALUES (?, ?, ?, ?, ?, ?)");
 
-			stmt.setString(1, this.name);
 			stmt.setString(2, this.code);
-			stmt.setString(3,  String.valueOf(discountType));
-			stmt.setDouble(4,  this.discountAmount);
+			stmt.setString(1, this.name);
 			stmt.setString(5, this.descriptions);
+			stmt.setString(3,  String.valueOf(this.discountType));
+			stmt.setDouble(4,  this.discountAmount);
 			stmt.setString(6,  String.valueOf(this.status));
 
 			stmt.executeUpdate();
@@ -135,13 +110,13 @@ public class Coupon {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("UPDATE Coupon SET Name = ?, Code = ?, DiscountType = ?, discountAmount = ?, Descriptions = ?, Status = ? WHERE CouponID = ?");
+			PreparedStatement stmt = conn.prepareStatement("UPDATE Coupon SET Code = ?, Name = ?, Descriptions = ?, DiscountType = ?, discountAmount = ?, Status = ? WHERE CouponID = ?");
 
-			stmt.setString(1, this.name);
 			stmt.setString(2, this.code);
+			stmt.setString(1, this.name);
+			stmt.setString(5, this.descriptions);
 			stmt.setString(3,  String.valueOf(discountType));
 			stmt.setDouble(4,  this.discountAmount);
-			stmt.setString(5, this.descriptions);
 			stmt.setString(6,  String.valueOf(this.status));
 			stmt.setInt(7, this.couponID);
 			
@@ -171,11 +146,11 @@ public class Coupon {
 
 			if (result.next()) {
 				this.setCouponID(result.getInt("CouponID"));
-				this.setName(result.getString("Name"));
 				this.setCode(result.getString("Code"));
+				this.setName(result.getString("Name"));
+				this.setDescriptions(result.getString("Descriptions"));
 				this.setDiscountType(DiscountType.valueOf(result.getString("DiscountType")));
 				this.setDiscountAmount(result.getDouble("DiscountAmount"));
-				this.setDescriptions(result.getString("Descriptions"));
 				this.setStatus(CouponStatus.valueOf(result.getString("Status")));
 				System.out.println("Searched Successfully");
 				return this;
@@ -204,11 +179,11 @@ public class Coupon {
 
 			if (result.next()) {
 				this.setCouponID(result.getInt("CouponID"));
-				this.setName(result.getString("Name"));
 				this.setCode(result.getString("Code"));
+				this.setName(result.getString("Name"));
+				this.setDescriptions(result.getString("Descriptions"));
 				this.setDiscountType(DiscountType.valueOf(result.getString("DiscountType")));
 				this.setDiscountAmount(result.getDouble("DiscountAmount"));
-				this.setDescriptions(result.getString("Descriptions"));
 				this.setStatus(CouponStatus.valueOf(result.getString("Status")));
 				System.out.println("Searched Successfully");
 			}
@@ -236,14 +211,14 @@ public class Coupon {
 
 			while (result.next()) {
 				int id = result.getInt("CouponID");
-				String name = result.getString("Name");
 				String code = result.getString("Code");
-				String tempType = result.getString("DiscountType");
-				double discountAmount = result.getDouble("DiscountAmount");
+				String name = result.getString("Name");
 				String descriptions = result.getString("Descriptions");
+				String discountType = result.getString("DiscountType");
+				double discountAmount = result.getDouble("DiscountAmount");
 				String status = result.getString("Status");
 				
-				returnArray.add(new Coupon(id, name, code, DiscountType.valueOf(tempType), discountAmount, descriptions, CouponStatus.valueOf(status)));
+				returnArray.add(new Coupon(id, code, name, descriptions, DiscountType.valueOf(discountType), discountAmount, CouponStatus.valueOf(status)));
 				
 			}
 
@@ -308,21 +283,5 @@ public class Coupon {
 
 	public void setStatus(CouponStatus status) {
 		this.status = status;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updateAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		updateAt = updatedAt;
 	}
 }

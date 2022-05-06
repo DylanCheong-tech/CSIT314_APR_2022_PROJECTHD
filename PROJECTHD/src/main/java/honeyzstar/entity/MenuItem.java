@@ -83,14 +83,15 @@ public class MenuItem {
 		this.imageDataURL = imageDataURL;
 	}
 	
-	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String imageDataURL) {
+	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.imageDataURL = imageDataURL;
+		this.createdAt = createdAt;
 	}
+	
 	
 	public boolean createMenuItem() {
 		try (

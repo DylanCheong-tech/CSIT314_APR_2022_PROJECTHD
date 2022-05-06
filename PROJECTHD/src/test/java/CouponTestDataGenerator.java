@@ -18,8 +18,7 @@ public class CouponTestDataGenerator {
 	public static void main(String[] args) {
 		ArrayList<DiscountType> discountTypeArray = new ArrayList<DiscountType>();
 		discountTypeArray.add(DiscountType.Percentage);
-		discountTypeArray.add(DiscountType.Value);		
-		discountTypeArray.add(DiscountType.OnetoOne);
+		discountTypeArray.add(DiscountType.Value);
 		
 		ArrayList<CouponStatus> statusArray = new ArrayList<CouponStatus>();
 		statusArray.add(CouponStatus.Active);
@@ -39,11 +38,10 @@ public class CouponTestDataGenerator {
 	        double xrounded = Math.round(x * 100.0) / 100.0; 
 	        
 			Random rn = new Random();
-			int statusRandom = rn.nextInt(2);
-			int typeRandom = rn.nextInt(3);
+			int random = rn.nextInt(2);
 			String iString = String.valueOf(i + 1);
 			
-			Coupon coupon = new Coupon(name + iString, code + iString, discountTypeArray.get(typeRandom), xrounded, "this is a Coupon " + iString, statusArray.get(statusRandom));
+			Coupon coupon = new Coupon(name + iString, code + iString, discountTypeArray.get(random), xrounded, "this is a Coupon " + iString, statusArray.get(random));
 			couponArray.add(coupon);
 			
 		}

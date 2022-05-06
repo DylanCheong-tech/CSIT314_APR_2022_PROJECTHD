@@ -56,28 +56,34 @@ public class MenuItemTest {
     
     @Test 
     public void testSearchMenuItem (){
-    	this.testMenuItem.setMenuItemID(109);
-    	this.testMenuItem.setName("testname3");
-    	this.testMenuItem.setType(MenuItemType.SideDish);
-    	this.testMenuItem.setPrice(8.0);
-    	this.testMenuItem.setStatus(MenuItemStatus.Unavailable);
-    	this.testMenuItem.setDescriptions("this is a test menu item");
+    	//this.testMenuItem.setMenuItemID(96);
+    	this.testMenuItem.setName("Test Menu Item 96");
+    	//this.testMenuItem.setType(MenuItemType.MainCourse);
+    	//this.testMenuItem.setPrice(7.37);
+    	//this.testMenuItem.setStatus(MenuItemStatus.Unavailable);
+    	//this.testMenuItem.setDescriptions("this is a menu item 96");
+    	//this.testMenuItem.setCreatedAt("2022-05-05 18:27:00");
+    	//this.testMenuItem.setUpdatedAt(null);
+    	//this.testMenuItem.setImageDataURL("this is an image URL 96");
 
-		MenuItem expectedMenuItem = new MenuItem(103, "testname4", MenuItemType.Beverage, 11.4, "this is a test menu item", MenuItemStatus.Available , "", "", "");
+		MenuItem expectedMenuItem = new MenuItem(96, "Test Menu Item 96", MenuItemType.MainCourse, 7.37, "this is a test menu item", MenuItemStatus.Unavailable , "2022-05-05 18:27:00", null, "this is an image URL 96");
 
         assertEquals("Test User Admin Search Menu Item", expectedMenuItem, this.testMenuItem.searchMenuItem());
     }
     
     @Test 
     public void testGetMenuItem (){
-    	this.testMenuItem.setMenuItemID(103);
-    	this.testMenuItem.setName("testname4");
-    	this.testMenuItem.setType(MenuItemType.Beverage);
-    	this.testMenuItem.setPrice(11.4);
-    	this.testMenuItem.setStatus(MenuItemStatus.Available);
-    	this.testMenuItem.setDescriptions("this is a test menu item");
+    	this.testMenuItem.setMenuItemID(95);
+    	//this.testMenuItem.setName("Test Menu Item 95");
+    	//this.testMenuItem.setType(MenuItemType.SideDish);
+    	//this.testMenuItem.setPrice(5.95);
+    	//this.testMenuItem.setStatus(MenuItemStatus.Unavailable);
+    	//this.testMenuItem.setDescriptions("this is a menu item 96");
+    	//this.testMenuItem.setCreatedAt("2022-05-05 18:27:00");
+    	//this.testMenuItem.setUpdatedAt(null);
+    	//this.testMenuItem.setImageDataURL("this is an image URL 95");
 
-		MenuItem expectedMenuItem = new MenuItem(103, "testname4", MenuItemType.Beverage, 11.4, "this is a test menu item", MenuItemStatus.Available , "", "", "");
+		MenuItem expectedMenuItem = new MenuItem(95, "Test Menu Item 95", MenuItemType.SideDish, 5.95, "this is a test menu item", MenuItemStatus.Unavailable , "2022-05-05 18:27:00", null, "this is an image URL 95");
 
         assertEquals("Test User Admin View Menu Item", expectedMenuItem, this.testMenuItem.getMenuItem());
     }
