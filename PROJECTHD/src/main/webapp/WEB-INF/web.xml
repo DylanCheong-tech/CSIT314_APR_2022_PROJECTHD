@@ -1,11 +1,8 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  
-  <servlet>
+   <display-name>Archetype Created Web Application</display-name>
+   <servlet>
       <servlet-name>UserAdminLoginC</servlet-name>
       <servlet-class>honeyzstar.useradmin.UserAdminLoginC</servlet-class>
    </servlet>
@@ -146,10 +143,10 @@
       <servlet-name>RestaurantManagerSearchCouponC</servlet-name>
       <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerSearchCouponC</servlet-class>
    </servlet>
- 
+
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
- 
+
    <servlet-mapping>
       <servlet-name>UserAdminLoginC</servlet-name>
       <url-pattern>/loginUserAdmin</url-pattern>
@@ -174,7 +171,7 @@
       <servlet-name>UserAdminUpdateAccountC</servlet-name>
       <url-pattern>/updateAccount</url-pattern>
    </servlet-mapping>
-  
+
    <servlet-mapping>
       <servlet-name>UserAdminSearchAccountC</servlet-name>
       <url-pattern>/searchAccount</url-pattern>
@@ -291,4 +288,16 @@
       <servlet-name>RestaurantManagerSearchCouponC</servlet-name>
       <url-pattern>/searchCoupon</url-pattern>
    </servlet-mapping>
+
+   <filter>
+      <filter-name>AuthenticationFilter</filter-name>
+      <filter-class>honeyzstar.AuthenticationFilter</filter-class>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>AuthenticationFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+
 </web-app>

@@ -29,6 +29,18 @@ public class Coupon {
 		this.createdAt = null;
 		this.updateAt = null;
 	}
+
+	public Coupon(int id, String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status, Date createdAt, Date updatedAt) {
+		this.couponID = id;
+		this.name = name;
+		this.code = code;
+		this.discountType = discountType;
+		this.discountAmount = discountAmount;
+		this.descriptions = descriptions;
+		this.status = status;
+		this.createdAt = createdAt;
+		this.updateAt = updatedAt;
+	}
 	
 	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status, Date updatedAt) {
 		this.name = name;
@@ -123,7 +135,7 @@ public class Coupon {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("UPDATE Coupon SET Name = ?, Code = ?, DiscountType = ?, discountAmount = ?, Descriptions = ?, Status = ?, UpdatedAt = CURRENT_TIMESTAMP WHERE CouponID = ?");
+			PreparedStatement stmt = conn.prepareStatement("UPDATE Coupon SET Name = ?, Code = ?, DiscountType = ?, discountAmount = ?, Descriptions = ?, Status = ? WHERE CouponID = ?");
 
 			stmt.setString(1, this.name);
 			stmt.setString(2, this.code);

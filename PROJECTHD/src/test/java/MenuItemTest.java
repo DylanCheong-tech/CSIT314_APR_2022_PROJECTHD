@@ -63,7 +63,9 @@ public class MenuItemTest {
     	this.testMenuItem.setStatus(MenuItemStatus.Unavailable);
     	this.testMenuItem.setDescriptions("this is a test menu item");
 
-        assertEquals("Test User Admin Search Menu Item", this.testMenuItem, this.testMenuItem.searchMenuItem());
+		MenuItem expectedMenuItem = new MenuItem(103, "testname4", MenuItemType.Beverage, 11.4, "this is a test menu item", MenuItemStatus.Available , "", "", "");
+
+        assertEquals("Test User Admin Search Menu Item", expectedMenuItem, this.testMenuItem.searchMenuItem());
     }
     
     @Test 
@@ -75,7 +77,9 @@ public class MenuItemTest {
     	this.testMenuItem.setStatus(MenuItemStatus.Available);
     	this.testMenuItem.setDescriptions("this is a test menu item");
 
-        assertEquals("Test User Admin View Menu Item", this.testMenuItem, this.testMenuItem.getMenuItem());
+		MenuItem expectedMenuItem = new MenuItem(103, "testname4", MenuItemType.Beverage, 11.4, "this is a test menu item", MenuItemStatus.Available , "", "", "");
+
+        assertEquals("Test User Admin View Menu Item", expectedMenuItem, this.testMenuItem.getMenuItem());
     }
     
     @Test 

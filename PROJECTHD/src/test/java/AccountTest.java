@@ -33,12 +33,12 @@ public class AccountTest {
 
     @Test
     public void testSuspendAccount (){
-        assertTrue("Test User Admin Suspend Account", Account.suspendAccount(109));
+        assertTrue("Test User Admin Suspend Account", Account.suspendAccount(30));
     }
 
     @Test 
     public void testUpdateAccount (){
-        this.testAccount.setID(109);
+        this.testAccount.setID(20);
         this.testAccount.setName("Test Update Account");
         this.testAccount.setUsername("testupdateusername");
         this.testAccount.setPassword("testupdatepassword");
@@ -50,15 +50,15 @@ public class AccountTest {
     @Test
     public void testSearchAccount (){
         Account searchAccount = Account.searchAccount("Test Update Account");
-        Account expectedAccount = new Account(109, "testupdateusername", "testupdatepassword", "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-04-30 20:44:56", "Suspended");
+        Account expectedAccount = new Account(20, "testupdateusername", "testupdatepassword", "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-04-30 20:44:56", "Suspended");
 
         assertEquals("Test User Admin Search Account", expectedAccount, searchAccount);
     }
 
     @Test 
     public void testGetAccount (){
-        Account viewAccount = Account.getAccount(109);
-        Account expectedAccount = new Account(109, "testupdateusername", "testupdatepassword", "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-04-30 20:44:56", "Suspended");
+        Account viewAccount = Account.getAccount(20);
+        Account expectedAccount = new Account(20, "testupdateusername", "testupdatepassword", "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-04-30 20:44:56", "Suspended");
 
         assertEquals("Test User Admin View Account", expectedAccount, viewAccount);
     }

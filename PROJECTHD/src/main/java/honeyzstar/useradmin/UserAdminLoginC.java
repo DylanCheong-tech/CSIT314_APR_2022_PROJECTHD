@@ -1,4 +1,5 @@
 package honeyzstar.useradmin;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -18,8 +19,15 @@ public class UserAdminLoginC extends HttpServlet {
 		Account acc = new Account(username, password, new Role(roleID));
 		boolean loginSuccess = acc.login();
 
+		HttpSession session = request.getSession();
+
 		if (loginSuccess) {
-			response.sendRedirect("/user-admin-portal.html?username=" + username);
+			response.sendRedirect("/user-admin-portal.html");
+			if (session.getAttribute("username") == null) {
+				session.setAttribute("username", username);
+				session.setMaxInactiveInterval(10);
+			}
+
 		} else {
 			response.sendRedirect("/login.html?status=fail");
 		}

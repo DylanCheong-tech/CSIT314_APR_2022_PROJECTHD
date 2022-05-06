@@ -13,7 +13,7 @@ function logout() {
 
 function confirm_logout() {
     $.ajax({
-        "url": "/logoutUserAdmin?username=" + window.localStorage.getItem("username"),
+        "url": "/logoutUserAdmin",
         "type": "get",
         "complete": () => {
             window.location.href = "/login.html";

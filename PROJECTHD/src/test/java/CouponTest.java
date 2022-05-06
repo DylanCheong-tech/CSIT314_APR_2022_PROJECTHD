@@ -69,7 +69,9 @@ public class CouponTest {
     	this.testCoupon.setDescriptions("this is a coupon");
     	this.testCoupon.setStatus(CouponStatus.Active);
 
-        assertEquals("Test Restaurant Manager Search Coupon", this.testCoupon, this.testCoupon.searchCoupon());
+		Coupon expectedCoupon = new Coupon(60, "name435", "code435", DiscountType.Percentage, 4.9, "this is a coupon", CouponStatus.Active,  "", "");
+
+        assertEquals("Test Restaurant Manager Search Coupon", expectedCoupon, this.testCoupon.searchCoupon());
     }
     
     @Test 
@@ -82,7 +84,9 @@ public class CouponTest {
     	this.testCoupon.setDescriptions("this is a coupon");
     	this.testCoupon.setStatus(CouponStatus.Active);
 
-        assertEquals("Test Restaurant Manager View Menu Item", this.testCoupon, this.testCoupon.getCoupon());
+		Coupon expectedCoupon = new Coupon(60, "name435", "code435", DiscountType.Percentage, 4.9, "this is a coupon", CouponStatus.Active,  "", "");
+
+        assertEquals("Test Restaurant Manager View Menu Item", expectedCoupon, this.testCoupon.getCoupon());
     }
     
     @Test 

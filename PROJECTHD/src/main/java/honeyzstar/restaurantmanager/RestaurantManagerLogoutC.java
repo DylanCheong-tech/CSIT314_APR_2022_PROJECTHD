@@ -9,8 +9,11 @@ import java.io.*;
 public class RestaurantManagerLogoutC extends HttpServlet {
 	@Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // replacing the query string <space> encoded value if any
-        String username = request.getQueryString().split("=")[1].replaceAll("%20", " ");
+        String username = "";
+        HttpSession session = request.getSession();
+
+        username = (String) session.getAttribute("username");
+        session.removeAttribute("username");
 
         Account.logout(username);
     }

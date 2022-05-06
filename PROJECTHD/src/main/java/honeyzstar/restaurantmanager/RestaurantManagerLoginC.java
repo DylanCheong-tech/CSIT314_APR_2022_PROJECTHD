@@ -18,8 +18,15 @@ public class RestaurantManagerLoginC extends HttpServlet {
 		Account acc = new Account(username, password, new Role(roleID));
 		boolean loginSuccess = acc.login();
 
+		HttpSession session = request.getSession();
+
 		if (loginSuccess) {
-			response.sendRedirect("/restaurant-manager-portal.html?username=" + username);
+			response.sendRedirect("/restaurant-manager-portal.html");
+
+			if (session.getAttribute("username") == null) {
+				session.setAttribute("username", username);
+				session.setMaxInactiveInterval(10);
+			}
 		} else {
 			response.sendRedirect("/login.html?status=fail");
 		}

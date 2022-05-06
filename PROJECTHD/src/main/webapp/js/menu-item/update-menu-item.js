@@ -216,6 +216,9 @@ function updateMenuItem(recordID) {
     for (index in menu_item_list) {
         if (menu_item_list[index].menuItemID == childs[0].textContent) {
             document.getElementById("desc").value = menu_item_list[index].descriptions;
+            document.getElementById("hidden-image-data-url").value = menu_item_list[index].imageDataURL;
+            document.getElementById("image-preview").src = menu_item_list[index].imageDataURL;
+            previewImage();
         }
     }
 }
