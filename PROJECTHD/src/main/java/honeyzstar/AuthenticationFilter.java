@@ -28,8 +28,6 @@ public class AuthenticationFilter implements Filter {
             
         } else {
             chain.doFilter(request, response);
-            // if (session != null)
-            // System.out.println(session.getAttribute("username"));
         }
     }
 }

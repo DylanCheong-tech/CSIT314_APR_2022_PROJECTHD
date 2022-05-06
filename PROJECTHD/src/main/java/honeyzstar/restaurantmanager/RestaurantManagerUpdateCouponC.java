@@ -20,7 +20,7 @@ public class RestaurantManagerUpdateCouponC extends HttpServlet {
         String status = request.getParameter("status");
         String desc = request.getParameter("descriptions");
 
-        Coupon updateCoupon = new Coupon(couponID, name, code, DiscountType.valueOf(discountType), discountAmount, desc, CouponStatus.valueOf(status));
+        Coupon updateCoupon = new Coupon(couponID, code, name, desc,  DiscountType.valueOf(discountType), discountAmount, CouponStatus.valueOf(status));
         
         if(updateCoupon.createCoupon()){
             response.sendRedirect("/update-coupon.html?status=success");

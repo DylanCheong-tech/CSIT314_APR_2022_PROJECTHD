@@ -59,6 +59,12 @@ body div#operation-items {
     margin: 5% 0 0 0;
 }
 
+body div#operation-items p#operation-title {
+    text-align: left;
+    margin: 0 1% 2% 5%;
+    font-size: 1.2em;
+}
+
 body div#operation-items span.item {
     height: fit-content;
     width: 17%;
@@ -106,9 +112,15 @@ div#user-profile div#user-info-1 span {
 
 div#user-profile div#user-info-2 {
     display: inline-block;
-    width: 15em;
+    width: 17em;
     text-align: left;
     line-height: 2em;
+}
+
+div#user-profile div#user-info-2 span {
+    position: absolute;
+    margin: 0;
+    left: 11em;
 }
 
 div#user-profile div#user-pic {
@@ -116,7 +128,7 @@ div#user-profile div#user-pic {
     background-color: #FFD100;
     width: 15em;
     height: 12em;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
     border-radius: 10px;
 }
 

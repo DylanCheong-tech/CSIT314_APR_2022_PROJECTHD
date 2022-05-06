@@ -25,7 +25,7 @@ public class UserAdminLoginC extends HttpServlet {
 			response.sendRedirect("/user-admin-portal.html");
 			if (session.getAttribute("username") == null) {
 				session.setAttribute("username", username);
-				session.setMaxInactiveInterval(10);
+				session.setMaxInactiveInterval(30 * 60);
 			}
 
 		} else {

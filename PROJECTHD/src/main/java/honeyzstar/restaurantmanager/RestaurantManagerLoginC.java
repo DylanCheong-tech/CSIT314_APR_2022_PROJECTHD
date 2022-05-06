@@ -25,7 +25,7 @@ public class RestaurantManagerLoginC extends HttpServlet {
 
 			if (session.getAttribute("username") == null) {
 				session.setAttribute("username", username);
-				session.setMaxInactiveInterval(10);
+				session.setMaxInactiveInterval(30 * 60);
 			}
 		} else {
 			response.sendRedirect("/login.html?status=fail");

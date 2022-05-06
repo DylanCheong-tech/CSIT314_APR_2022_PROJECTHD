@@ -91,6 +91,7 @@ function removeImageFile () {
 
     document.getElementById("image-file-input").style.display = "none";
     document.getElementById("upload-message").style.display = "none";
+    document.getElementById("image-preview").style.display = "none";
 }
 
 function previewImage () {
