@@ -82,15 +82,26 @@ public class MenuItem {
 		this.updatedAt = null;
 		this.imageDataURL = imageDataURL;
 	}
-	
-	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt) {
+
+	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.createdAt = createdAt;
+		this.createdAt = null;
+		this.updatedAt = null;
+		this.imageDataURL = imageDataURL;
 	}
+	
+	// public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt) {
+	// 	this.name = name;
+	// 	this.type = type;
+	// 	this.price = price;
+	// 	this.descriptions = descriptions;
+	// 	this.status = status;
+	// 	this.createdAt = createdAt;
+	// }
 	
 	
 	public boolean createMenuItem() {
