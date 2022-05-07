@@ -94,7 +94,6 @@ div#form form div#image-drop-frame div#image-drop img#upload-icon {
 
 div#form form div#image-drop-frame div#image-drop img#image-preview {
     display: none;
-    /* width: 40%; */
     height: 80%;
     margin: 2.5% 0 0 5%;
 }

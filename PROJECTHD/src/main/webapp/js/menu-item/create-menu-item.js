@@ -10,14 +10,23 @@ img_reader.addEventListener('load', () => {
     console.log(img_data_url);
     document.getElementById("image-preview").src = img_data_url;
     document.getElementById("hidden-image-data-url").value = img_data_url;
+    document.getElementById("submit-btn").disabled = false;
 });
 
 function compress_image (file){
-    imageConversion.compress(file, 0.5).then((file) => {
-        console.log("compressed");
-        console.log(file);
-        img_reader.readAsDataURL(file);
-    });
+    if (file.size > 500000){
+        imageConversion.compress(file, 0.2).then((file) => {
+            console.log("compressed");
+            console.log(file);
+            img_reader.readAsDataURL(file);
+        });
+    }else {
+        imageConversion.compress(file, 0.5).then((file) => {
+            console.log("compressed");
+            console.log(file);
+            img_reader.readAsDataURL(file);
+        });
+    }
 }
 
 function dropImage (event){
@@ -92,6 +101,7 @@ function removeImageFile () {
     document.getElementById("image-file-input").style.display = "none";
     document.getElementById("upload-message").style.display = "none";
     document.getElementById("image-preview").style.display = "none";
+    document.getElementById("submit-btn").disabled = true;
 }
 
 function previewImage () {

@@ -8,6 +8,4 @@ div#form form div#image-drop-frame div#image-drop {
 
 div#form form div#image-drop-frame div#image-drop img#image-preview {
     display: inline-block;
-    width: 40%;
-    margin: 2.5% 0 0 5%;
 }
