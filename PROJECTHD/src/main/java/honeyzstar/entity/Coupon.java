@@ -61,13 +61,13 @@ public class Coupon {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Code, Name, Descriptions, DiscountType, discountAmount, Status) VALUES (?, ?, ?, ?, ?, ?)");
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupon (Code, Name, DiscountType, discountAmount, Descriptions, Status) VALUES (?, ?, ?, ?, ?, ?)");
 
-			stmt.setString(2, this.code);
-			stmt.setString(1, this.name);
-			stmt.setString(5, this.descriptions);
+			stmt.setString(1, this.code);
+			stmt.setString(2, this.name);
 			stmt.setString(3,  String.valueOf(this.discountType));
 			stmt.setDouble(4,  this.discountAmount);
+			stmt.setString(5, this.descriptions);
 			stmt.setString(6,  String.valueOf(this.status));
 
 			stmt.executeUpdate();
@@ -110,13 +110,13 @@ public class Coupon {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("UPDATE Coupon SET Code = ?, Name = ?, Descriptions = ?, DiscountType = ?, discountAmount = ?, Status = ? WHERE CouponID = ?");
+			PreparedStatement stmt = conn.prepareStatement("UPDATE Coupon SET Code = ?, Name = ?, DiscountType = ?, discountAmount = ?, Descriptions = ?, Status = ? WHERE CouponID = ?");
 
-			stmt.setString(2, this.code);
-			stmt.setString(1, this.name);
-			stmt.setString(5, this.descriptions);
+			stmt.setString(1, this.code);
+			stmt.setString(2, this.name);
 			stmt.setString(3,  String.valueOf(discountType));
 			stmt.setDouble(4,  this.discountAmount);
+			stmt.setString(5, this.descriptions);
 			stmt.setString(6,  String.valueOf(this.status));
 			stmt.setInt(7, this.couponID);
 			
@@ -186,6 +186,7 @@ public class Coupon {
 				this.setDiscountAmount(result.getDouble("DiscountAmount"));
 				this.setStatus(CouponStatus.valueOf(result.getString("Status")));
 				System.out.println("Searched Successfully");
+				return this;
 			}
 			
 
@@ -193,7 +194,7 @@ public class Coupon {
 			ex.printStackTrace();
 		}
 
-		return this;
+		return null;
 	}
 
 	public static ArrayList<Coupon> getCouponList() {

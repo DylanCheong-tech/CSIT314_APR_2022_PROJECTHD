@@ -34,7 +34,7 @@ function display_list(menu_item_list) {
         var column4 = document.createElement("td");
         column4.classList.add("mode-font-color");
         column4.classList.add("mode-border-color-1");
-        column4.innerHTML = menu_item_list[index].price;
+        column4.innerHTML = "$ " + menu_item_list[index].price.toFixed(2);
         row.appendChild(column4);
 
         var column5 = document.createElement("td");

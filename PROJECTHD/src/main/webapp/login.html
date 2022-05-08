@@ -33,27 +33,22 @@
             <label class="mode-font-color">
                 Login As
             </label>
-            <select id="role-list" name="roleID" onchange="updateLoginAction()" required>
+            <select id="role-list" name="roleID" onchange="updateLoginAction()" required onfocus="remove_fail_alert()">
                 <option selected disabled value=""></option>
             </select>
             <br />
 
-            <label class="mode-font-color">Username</label> <input type="text" placeholder="Username" name="username" required pattern="[a-z0-9]*" title="No special character"/>
+            <label class="mode-font-color">Username</label> <input type="text" placeholder="Username" name="username" required pattern="[a-z0-9]*" title="No special character" onfocus="remove_fail_alert()"/>
             <br />
 
-            <label class="mode-font-color">Password</label> <input type="password" name="password" placeholder="Password" required />
+            <label class="mode-font-color">Password</label> <input type="password" name="password" placeholder="Password" required onfocus="remove_fail_alert()"/>
             <br />
+
+            <span id="login-fail-msg"></span>
+            <br /> <br />
 
             <button type="submit" class="mode-font-color mode-bg-color-1 mode-border-color">Login</button>
         </form>
-    </div>
-
-    <div id="alert-box">
-        <span id="alert-message"></span>
-        <br />
-        <button class="logout-btn" type="button" onclick="confirm_logout()">Logout</button>
-        <button class="logout-btn" type="button" onclick="cancel_logout()">Cancel</button>
-        <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
     <script src="./js/login.js"></script>

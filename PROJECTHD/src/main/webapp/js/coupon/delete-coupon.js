@@ -44,7 +44,7 @@ function display_list(coupon_list) {
         var column5 = document.createElement("td");
         column5.classList.add("mode-font-color");
         column5.classList.add("mode-border-color-1");
-        column5.innerHTML = coupon_list[index].discountAmount;
+        column5.innerHTML = coupon_list[index].discountType == "Value" ? "$ " + coupon_list[index].discountAmount : coupon_list[index].discountAmount + "%";
         row.appendChild(column5);
 
         var column6 = document.createElement("td");

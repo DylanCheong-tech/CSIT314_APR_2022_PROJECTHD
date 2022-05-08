@@ -1,24 +1,24 @@
 var params = new URLSearchParams(window.location.search);
 var status = params.get("status");
-var alert_box = document.getElementById("alert-box");
-var alert_box_msg = document.getElementById("alert-message");
-
-function show_confrim_btn() {
-    var hide_btn = document.getElementsByClassName("confirm-btn");
-    for (index in hide_btn) {
-        hide_btn.item(index).style.display = "inline-block";
-    }
-}
 
 if (status == "fail"){
-    show_confrim_btn();
-    alert_box_msg.textContent = "Login Fail";
-    alert_box.style.display = "inline-block";
+    var inputs = document.getElementsByTagName("input");
+
+    for (index in inputs){
+        inputs.item(index).classList.add("login-fail");
+    }
+
+    document.getElementById("login-fail-msg").innerHTML = "Login Fail !";
 }
 
-function alert_confirm (){
-    alert_box.style.display = "none";
-    window.location.href = "/login.html";
+function remove_fail_alert(){
+    var inputs = document.getElementsByTagName("input");
+
+    for (index in inputs){
+        inputs.item(index).classList.remove("login-fail");
+    }
+
+    document.getElementById("login-fail-msg").innerHTML = "";
 }
 
 var role_list = $.ajax({

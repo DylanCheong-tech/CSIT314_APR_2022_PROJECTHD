@@ -83,3 +83,18 @@ div#login-div form button {
     cursor: pointer;
     font-size: 1.4em;
 }
+
+div#login-div form input.login-fail {
+    border: 2px solid red;
+    background-color: lightpink;
+}
+
+div#login-div form span#login-fail-msg {
+    display: inline-block;
+    position: absolute;
+    width: 50%;
+    left: 42%;
+    margin: 0;
+    text-align: left;
+    color: red;
+}
