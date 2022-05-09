@@ -221,7 +221,7 @@ function updateMenuItem(recordID) {
 
     document.getElementById("name").value = childs[1].textContent;
     document.getElementById("type").value = childs[2].textContent;
-    document.getElementById("price").value = childs[3].textContent;
+    document.getElementById("price").value = childs[3].textContent.replaceAll(/[$\s]*/g, "");
     document.getElementById("status").value = childs[4].textContent;
 
     for (index in menu_item_list) {

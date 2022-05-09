@@ -112,6 +112,7 @@ div#user-profile div#user-info-1 span {
 
 div#user-profile div#user-info-2 {
     display: inline-block;
+    position: relative;
     width: 17em;
     text-align: left;
     line-height: 2em;
@@ -120,7 +121,7 @@ div#user-profile div#user-info-2 {
 div#user-profile div#user-info-2 span {
     position: absolute;
     margin: 0;
-    left: 11em;
+    left: 5.7em;
 }
 
 div#user-profile div#user-pic {

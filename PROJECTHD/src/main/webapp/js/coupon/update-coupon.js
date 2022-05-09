@@ -93,7 +93,7 @@ function updateCoupon(recordID) {
     document.getElementById("code").value = childs[1].textContent;
     document.getElementById("name").value = childs[2].textContent;
     document.getElementById("discountType").value = childs[3].textContent;
-    document.getElementById("discountAmount").value = childs[4].textContent;
+    document.getElementById("discountAmount").value = childs[4].textContent.replaceAll(/[$%\s]*/g, "");
     document.getElementById("descriptions").value = childs[5].textContent;
     document.getElementById("status").value = childs[6].textContent;
 }

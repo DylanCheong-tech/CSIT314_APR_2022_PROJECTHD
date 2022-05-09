@@ -285,4 +285,32 @@ public class Coupon {
 	public void setStatus(CouponStatus status) {
 		this.status = status;
 	}
+
+	@Override
+	public boolean equals (Object obj){
+		Coupon compareCoupon = null;
+		if (obj instanceof Coupon){
+			compareCoupon = (Coupon) obj;
+		}else {
+			return false;
+		}
+
+		if (this.couponID == compareCoupon.couponID){
+			if (this.name.equals(compareCoupon.name)){
+				if (this.code.equals(compareCoupon.code)){
+					if (this.discountType.equals(compareCoupon.discountType)){
+						if (this.discountAmount == compareCoupon.discountAmount){
+							if (this.descriptions.equals(compareCoupon.descriptions)){
+								if (this.status.equals(compareCoupon.status)){
+									return true;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+	}
 }

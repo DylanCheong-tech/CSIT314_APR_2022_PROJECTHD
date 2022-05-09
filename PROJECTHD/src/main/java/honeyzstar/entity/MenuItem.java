@@ -3,7 +3,6 @@ package honeyzstar.entity;
 import java.sql.*;
 import java.util.ArrayList;
 
-
 public class MenuItem {
 	private static final String connStr = "jdbc:mysql://localhost:3306/csit314_apr_2022_projecthd?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
 	private static final String dbusername = "root";
@@ -18,7 +17,6 @@ public class MenuItem {
 	private String updatedAt;
 	private String imageDataURL;
 
-	
 	public MenuItem() {
 		this.name = "";
 		this.type = null;
@@ -29,16 +27,17 @@ public class MenuItem {
 		this.updatedAt = null;
 		this.imageDataURL = "";
 	}
-	
+
 	public MenuItem(int id) {
 		this.menuItemID = id;
 	}
-	
+
 	public MenuItem(String name) {
 		this.name = name;
 	}
-	
-	public MenuItem(int id, String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt, String updatedAt, String imageDataURL) {
+
+	public MenuItem(int id, String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
+			String createdAt, String updatedAt, String imageDataURL) {
 		this.menuItemID = id;
 		this.name = name;
 		this.type = type;
@@ -49,8 +48,9 @@ public class MenuItem {
 		this.updatedAt = updatedAt;
 		this.imageDataURL = imageDataURL;
 	}
-	
-	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt, String updatedAt, String imageDataURL) {
+
+	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
+			String createdAt, String updatedAt, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -60,8 +60,9 @@ public class MenuItem {
 		this.updatedAt = updatedAt;
 		this.imageDataURL = imageDataURL;
 	}
-	
-	public MenuItem(int id, String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String imageDataURL) {
+
+	public MenuItem(int id, String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
+			String imageDataURL) {
 		this.menuItemID = id;
 		this.name = name;
 		this.type = type;
@@ -71,8 +72,9 @@ public class MenuItem {
 		this.updatedAt = null;
 		this.imageDataURL = imageDataURL;
 	}
-	
-	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt, String imageDataURL) {
+
+	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
+			String createdAt, String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -83,7 +85,8 @@ public class MenuItem {
 		this.imageDataURL = imageDataURL;
 	}
 
-	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String imageDataURL) {
+	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
+			String imageDataURL) {
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -93,17 +96,17 @@ public class MenuItem {
 		this.updatedAt = null;
 		this.imageDataURL = imageDataURL;
 	}
-	
-	// public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status, String createdAt) {
-	// 	this.name = name;
-	// 	this.type = type;
-	// 	this.price = price;
-	// 	this.descriptions = descriptions;
-	// 	this.status = status;
-	// 	this.createdAt = createdAt;
+
+	// public MenuItem(String name, MenuItemType type, double price, String
+	// descriptions, MenuItemStatus status, String createdAt) {
+	// this.name = name;
+	// this.type = type;
+	// this.price = price;
+	// this.descriptions = descriptions;
+	// this.status = status;
+	// this.createdAt = createdAt;
 	// }
-	
-	
+
 	public boolean createMenuItem() {
 		try (
 
@@ -111,14 +114,15 @@ public class MenuItem {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO MenuItem (Name, Type, Price, Status, Descriptions, ImageDataURL) VALUES ( ?, ?, ?, ?, ?, ?)");
+			PreparedStatement stmt = conn.prepareStatement(
+					"INSERT INTO MenuItem (Name, Type, Price, Status, Descriptions, ImageDataURL) VALUES ( ?, ?, ?, ?, ?, ?)");
 
 			stmt.setString(1, this.name);
 			stmt.setString(2, String.valueOf(this.type));
-			stmt.setDouble(3,  this.price);
-			stmt.setString(4,  String.valueOf(this.status));
+			stmt.setDouble(3, this.price);
+			stmt.setString(4, String.valueOf(this.status));
 			stmt.setString(5, this.descriptions);
-			stmt.setString(6,  this.imageDataURL);
+			stmt.setString(6, this.imageDataURL);
 
 			stmt.executeUpdate();
 
@@ -130,7 +134,7 @@ public class MenuItem {
 			return false;
 		}
 	}
-	
+
 	public boolean deleteMenuItem() {
 		try (
 
@@ -152,7 +156,7 @@ public class MenuItem {
 			return false;
 		}
 	}
-	
+
 	public boolean updateMenuItem() {
 		try (
 
@@ -160,14 +164,15 @@ public class MenuItem {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("UPDATE MenuItem SET Name = ?, Type = ?, Price = ?, Descriptions = ?, Status = ?, UpdatedAt = CURRENT_TIMESTAMP, ImageDataURL = ? WHERE MenuItemID = ?");
+			PreparedStatement stmt = conn.prepareStatement(
+					"UPDATE MenuItem SET Name = ?, Type = ?, Price = ?, Descriptions = ?, Status = ?, UpdatedAt = CURRENT_TIMESTAMP, ImageDataURL = ? WHERE MenuItemID = ?");
 
 			stmt.setString(1, this.name);
 			stmt.setString(2, String.valueOf(this.type));
 			stmt.setDouble(3, this.price);
 			stmt.setString(4, this.descriptions);
 			stmt.setString(5, String.valueOf(this.status));
-			stmt.setString(6,  this.imageDataURL);
+			stmt.setString(6, this.imageDataURL);
 			stmt.setInt(7, this.menuItemID);
 
 			stmt.executeUpdate();
@@ -180,7 +185,7 @@ public class MenuItem {
 			return false;
 		}
 	}
-	
+
 	public MenuItem searchMenuItem() {
 		try (
 
@@ -207,7 +212,6 @@ public class MenuItem {
 				System.out.println("Searched Successfully");
 				return this;
 			}
-			
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -215,7 +219,7 @@ public class MenuItem {
 
 		return null;
 	}
-	
+
 	public MenuItem getMenuItem() {
 		try (
 
@@ -243,7 +247,6 @@ public class MenuItem {
 
 				return this;
 			}
-			
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -275,8 +278,9 @@ public class MenuItem {
 				String createdAt = result.getString("CreatedAt");
 				String updatedAt = result.getString("UpdatedAt");
 				String imageDataURL = result.getString("ImageDataURL");
-				
-				returnArray.add(new MenuItem(id, name, MenuItemType.valueOf(tempType), price, descriptions, MenuItemStatus.valueOf(status), createdAt, updatedAt, imageDataURL));
+
+				returnArray.add(new MenuItem(id, name, MenuItemType.valueOf(tempType), price, descriptions,
+						MenuItemStatus.valueOf(status), createdAt, updatedAt, imageDataURL));
 			}
 
 		} catch (SQLException ex) {
@@ -285,7 +289,7 @@ public class MenuItem {
 
 		return returnArray;
 	}
-	
+
 	public int getMenuItemID() {
 		return this.menuItemID;
 	}
@@ -357,7 +361,36 @@ public class MenuItem {
 	public void setImageDataURL(String imageDataURL) {
 		this.imageDataURL = imageDataURL;
 	}
-	
-	
 
+	@Override
+	public boolean equals(Object obj) {
+		MenuItem compareItem = null;
+		if (obj instanceof MenuItem) {
+			compareItem = (MenuItem) obj;
+		} else {
+			return false;
+		}
+
+		if (this.menuItemID == compareItem.menuItemID) {
+			if (this.name.equals(compareItem.name)) {
+				if (this.type.equals(compareItem.type)) {
+					if (this.price == compareItem.price) {
+						if (this.descriptions.equals(compareItem.descriptions)) {
+							if (this.status.equals(compareItem.status)) {
+								if (this.createdAt.equals(compareItem.createdAt)) {
+									if (this.updatedAt.equals(compareItem.updatedAt)) {
+										if (this.imageDataURL.equals(compareItem.imageDataURL)) {
+											return true;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+	}
 }

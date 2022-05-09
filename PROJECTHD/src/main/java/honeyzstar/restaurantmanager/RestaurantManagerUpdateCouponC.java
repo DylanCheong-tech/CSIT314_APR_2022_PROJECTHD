@@ -22,7 +22,7 @@ public class RestaurantManagerUpdateCouponC extends HttpServlet {
 
         Coupon updateCoupon = new Coupon(couponID, code, name, desc,  DiscountType.valueOf(discountType), discountAmount, CouponStatus.valueOf(status));
         
-        if(updateCoupon.createCoupon()){
+        if(updateCoupon.updateCoupon()){
             response.sendRedirect("/update-coupon.html?status=success");
         }
         else{
