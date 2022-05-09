@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 05, 2022 at 12:14 PM
+-- Generation Time: May 09, 2022 at 04:00 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -87,6 +87,33 @@ CREATE TABLE `MenuItem` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Orders`
+--
+
+CREATE TABLE `Orders` (
+  `OrderID` int(5) NOT NULL,
+  `CreatedAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `UpdatedAt` datetime NOT NULL,
+  `Status` varchar(7) NOT NULL,
+  `TotalAmount` decimal(6,2) NOT NULL,
+  `TableNum` int(3) NOT NULL,
+  `CreatedBy` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `OrdersMenuItem`
+--
+
+CREATE TABLE `OrdersMenuItem` (
+  `OrderID` int(5) NOT NULL,
+  `MenuItemID` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Role`
 --
 
@@ -128,6 +155,20 @@ ALTER TABLE `MenuItem`
   ADD PRIMARY KEY (`MenuItemID`);
 
 --
+-- Indexes for table `Orders`
+--
+ALTER TABLE `Orders`
+  ADD PRIMARY KEY (`OrderID`),
+  ADD KEY `CreatedBy` (`CreatedBy`);
+
+--
+-- Indexes for table `OrdersMenuItem`
+--
+ALTER TABLE `OrdersMenuItem`
+  ADD KEY `OrderID` (`OrderID`),
+  ADD KEY `MenuItemID` (`MenuItemID`);
+
+--
 -- Indexes for table `Role`
 --
 ALTER TABLE `Role`
@@ -162,6 +203,12 @@ ALTER TABLE `MenuItem`
   MODIFY `MenuItemID` int(5) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `Orders`
+--
+ALTER TABLE `Orders`
+  MODIFY `OrderID` int(5) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `Role`
 --
 ALTER TABLE `Role`
@@ -182,6 +229,19 @@ ALTER TABLE `Account`
 --
 ALTER TABLE `AccountLog`
   ADD CONSTRAINT `accountlog_ibfk_1` FOREIGN KEY (`AccountID`) REFERENCES `Account` (`AccountID`);
+
+--
+-- Constraints for table `Orders`
+--
+ALTER TABLE `Orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`CreatedBy`) REFERENCES `Account` (`AccountID`);
+
+--
+-- Constraints for table `OrdersMenuItem`
+--
+ALTER TABLE `OrdersMenuItem`
+  ADD CONSTRAINT `ordersmenuitem_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`),
+  ADD CONSTRAINT `ordersmenuitem_ibfk_2` FOREIGN KEY (`MenuItemID`) REFERENCES `MenuItem` (`MenuItemID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
