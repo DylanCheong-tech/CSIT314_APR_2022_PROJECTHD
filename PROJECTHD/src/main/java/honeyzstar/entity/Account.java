@@ -266,7 +266,10 @@ public class Account {
 				String username = result.getString("Username");
 				String password = result.getString("Password");
 				String status = result.getString("Status");
-
+				Role role = Role.getRole(result.getInt("RoleID"));
+						
+				returnAcc = new Account(id, username, password, name, role, date, status);
+						/*
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
 				stmt2.setInt(1, roleID);
 
@@ -278,7 +281,8 @@ public class Account {
 
 					returnAcc = new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status);
 				}
-
+				*/
+				
 			}
 
 			System.out.println("Searched Successfully");
@@ -313,7 +317,12 @@ public class Account {
 				String username = result.getString("Username");
 				String password = result.getString("Password");
 				String status = result.getString("Status");
-
+				
+				Role role = Role.getRole(roleID);
+						
+				returnAcc = new Account(id, username, password, name, role, date, status);
+				
+				/*
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
 				stmt2.setInt(1, roleID);
 
@@ -325,6 +334,7 @@ public class Account {
 
 					returnAcc = new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status);
 				}
+				*/
 
 			}
 
@@ -359,6 +369,11 @@ public class Account {
 				String password = result.getString("Password");
 				String status = result.getString("Status");
 
+				Role role = Role.getRole(result.getInt("RoleID"));
+						
+				returnArray.add(new Account(id, username, password, name, role, date, status));
+				
+				/*
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
 				stmt2.setInt(1, roleID);
 
@@ -370,6 +385,9 @@ public class Account {
 
 					returnArray.add(new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status));
 				}
+				*/
+				
+			
 			}
 
 		} catch (SQLException ex) {
@@ -409,6 +427,7 @@ public class Account {
 
 	public int getID() {
 		return this.accountID;
+		
 	}
 
 	public String getName() {
