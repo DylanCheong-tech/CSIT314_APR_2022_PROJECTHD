@@ -150,6 +150,18 @@
       <servlet-class>honeyzstar.restaurantmanager.RestaurantManagerSearchCouponC</servlet-class>
    </servlet>
 
+   <!-- Staff -->
+
+   <servlet>
+      <servlet-name>StaffLoginC</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffLoginC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>StaffLogoutC</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffLogoutC</servlet-class>
+   </servlet>
+
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
 
@@ -294,6 +306,20 @@
       <servlet-name>RestaurantManagerSearchCouponC</servlet-name>
       <url-pattern>/searchCoupon</url-pattern>
    </servlet-mapping>
+
+   <!-- Staff  -->
+
+   <servlet-mapping>
+      <servlet-name>StaffLoginC</servlet-name>
+      <url-pattern>/loginStaff</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>StaffLogoutC</servlet-name>
+      <url-pattern>/logoutStaff</url-pattern>
+   </servlet-mapping>
+
+   <!-- Filter  -->
 
    <filter>
       <filter-name>AuthenticationFilter</filter-name>

@@ -1,0 +1,192 @@
+body {
+    text-align: center;
+}
+
+body div#header {
+    min-height: 6em;
+    background-color: #FFD100 ;
+}
+
+body div#header span {
+    width: 32%;
+    display: inline-block;
+    text-align: right;
+}
+
+body div#header span#header-date-time {
+    text-align: left;
+    font-size: 1.5em;
+    line-height: 1em;
+    padding: 0 0 0 1em;
+    margin: 4% 0 0 0;
+    vertical-align: top;
+}
+
+body div#header span#logo {
+    width: 30%;
+    text-align: center;
+}
+
+body div#header span img#header-logo {
+    display: inline-block;
+    width: 35%;
+}
+
+body div#header span#buttons {
+    margin: 4% 0 0 0;
+    vertical-align: top;
+}
+
+body div#header span#buttons button {
+    display: inline-block;
+    width: 35%;
+    height: 2.5em;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+    border : 2px #000000 solid;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+body div#user-profile {
+    display: inline-block;
+    width: 25%;
+    margin: 5% 0 0 0;
+}
+
+body div#operation-items {
+    display: inline-block;
+    width: 70%;
+    margin: 5% 0 0 0;
+}
+
+body div#operation-items p#operation-title {
+    text-align: left;
+    margin: 0 1% 2% 5%;
+    font-size: 1.2em;
+}
+
+body div#operation-items span.item {
+    height: fit-content;
+    width: 17%;
+    margin: 0 1% 4% 1%;
+    display: inline-grid;
+    cursor: pointer;    
+}
+
+body div#operation-items span.item span {
+    background-color: #FFD100;
+    border: 2px #000000 solid;
+    border-radius: 15px;
+    text-align: center;
+}
+
+body div#operation-items span.item img.action-logo{
+    margin: 15% 0 15% 0;
+    width: 45%;
+}
+
+div#user-profile {
+    vertical-align: top;
+}
+
+div#user-profile div#user-pic img {
+    display: inline-block;
+    width: 65%;
+    margin: 6% 0 0 0;
+    border: 2px solid #000000;
+    border-radius: 50%;
+}
+
+div#user-profile div#user-info-1 {
+    position: relative;
+    display: inline-block;
+    width: 12.5em;
+    text-align: left;
+    line-height: 2em;
+}
+
+div#user-profile div#user-info-1 span {
+    position: absolute;
+    left: 3.5em;
+}
+
+div#user-profile div#user-info-2 {
+    display: inline-block;
+    position: relative;
+    width: 17em;
+    text-align: left;
+    line-height: 2em;
+}
+
+div#user-profile div#user-info-2 span {
+    position: absolute;
+    margin: 0;
+    left: 5.7em;
+}
+
+div#user-profile div#user-pic {
+    display: inline-block;
+    background-color: #FFD100;
+    width: 15em;
+    height: 12em;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+div#user-profile span {
+    display: inline-block;
+    margin: .5% 0 .5% 0;
+}
+
+@media (max-width: 480px) {   
+    body div#header span#header-date-time {
+        padding: 0;
+        margin: 9% 0 0 0;
+        width: 30%;
+        font-size: 1em;
+    }
+    
+    body div#header span#logo {
+        text-align: center;
+    }
+    
+    body div#header span img#header-logo {
+        display: inline-block;
+        width: 80%;
+    }
+    
+    body div#header span#buttons {
+        width: fit-content;
+        margin: 7% 3% 0 3%;
+    }
+    
+    body div#header span#buttons button {
+        width: fit-content;
+        font-size: 1em;
+    }
+
+    body div#user-profile {
+        display: block;
+        width: 100%;
+        margin: 5% 0 0 0;
+    }
+    
+    body div#operation-items {
+        display: block;
+        width: 100%;
+        margin: 5% 0 0 0;
+    }
+
+    body div#operation-items span.item {
+        height: fit-content;
+        width: 40%;
+        margin: 0 1% 4% 1%;
+        display: inline-grid;
+        cursor: pointer;    
+    }
+
+    body div#operation-items br#return-line {
+        display: none;
+    }
+}

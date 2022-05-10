@@ -33,4 +33,4 @@ var role_list = $.ajax({
     "dataType": "json"
   }).responseJSON;
 
-document.getElementById("id-input").value = parseInt(coupon_list.length != 0 ?role_list[role_list.length - 1].roleID : 0) + 1;
+document.getElementById("id-input").value = parseInt(role_list.length != 0 ? role_list[role_list.length - 1].roleID : 0) + 1;
