@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 09, 2022 at 04:00 PM
+-- Generation Time: May 10, 2022 at 10:08 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -108,7 +108,8 @@ CREATE TABLE `Orders` (
 
 CREATE TABLE `OrdersMenuItem` (
   `OrderID` int(5) NOT NULL,
-  `MenuItemID` int(5) NOT NULL
+  `MenuItemID` int(5) NOT NULL,
+  `Quantity` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
