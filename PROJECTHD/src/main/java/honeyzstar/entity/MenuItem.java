@@ -18,22 +18,15 @@ public class MenuItem {
 	private String imageDataURL;
 
 	public MenuItem() {
+		this.menuItemID = 0;
 		this.name = "";
 		this.type = null;
 		this.price = 0.0;
 		this.descriptions = "";
 		this.status = null;
-		this.createdAt = null;
-		this.updatedAt = null;
+		this.createdAt = "";
+		this.updatedAt = "";
 		this.imageDataURL = "";
-	}
-
-	public MenuItem(int id) {
-		this.menuItemID = id;
-	}
-
-	public MenuItem(String name) {
-		this.name = name;
 	}
 
 	public MenuItem(int id, String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
@@ -69,43 +62,60 @@ public class MenuItem {
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.updatedAt = null;
+		this.createdAt = "";
+		this.updatedAt = "";
 		this.imageDataURL = imageDataURL;
 	}
 
 	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
 			String createdAt, String imageDataURL) {
+		this.menuItemID = 0;
 		this.name = name;
 		this.type = type;
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
 		this.createdAt = createdAt;
-		this.updatedAt = null;
+		this.updatedAt = "";
 		this.imageDataURL = imageDataURL;
 	}
 
 	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
 			String imageDataURL) {
+		this.menuItemID = 0;
 		this.name = name;
 		this.type = type;
 		this.price = price;
 		this.descriptions = descriptions;
 		this.status = status;
-		this.createdAt = null;
-		this.updatedAt = null;
+		this.createdAt = "";
+		this.updatedAt = "";
 		this.imageDataURL = imageDataURL;
 	}
 
-	// public MenuItem(String name, MenuItemType type, double price, String
-	// descriptions, MenuItemStatus status, String createdAt) {
-	// this.name = name;
-	// this.type = type;
-	// this.price = price;
-	// this.descriptions = descriptions;
-	// this.status = status;
-	// this.createdAt = createdAt;
-	// }
+	public MenuItem(int id) {
+		this.menuItemID = id;
+		this.name = "";
+		this.type = null;
+		this.price = 0.0;
+		this.descriptions = "";
+		this.status = null;
+		this.createdAt = "";
+		this.updatedAt = "";
+		this.imageDataURL = "";
+	}
+
+	public MenuItem(String name) {
+		this.menuItemID = 0;
+		this.name = name;
+		this.type = null;
+		this.price = 0.0;
+		this.descriptions = "";
+		this.status = null;
+		this.createdAt = "";
+		this.updatedAt = "";
+		this.imageDataURL = "";
+	}
 
 	public boolean createMenuItem() {
 		try (

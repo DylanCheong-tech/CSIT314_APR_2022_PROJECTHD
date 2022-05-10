@@ -18,6 +18,7 @@ public class Coupon {
 
 	
 	public Coupon() {
+		this.couponID = 0;
 		this.name = "";
 		this.code = "";
 		this.discountType = null;
@@ -37,6 +38,7 @@ public class Coupon {
 	}
 	
 	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
+		this.couponID = 0;
 		this.name = name;
 		this.code = code;
 		this.discountType = discountType;
@@ -48,10 +50,22 @@ public class Coupon {
 
 	public Coupon(int id) {
 		this.couponID = id;
+		this.name = "";
+		this.code = "";
+		this.discountType = null;
+		this.discountAmount = 0.0;
+		this.descriptions = "";
+		this.status = null;
 	}
 
-	public Coupon(String name) {
-		this.name = name;
+	public Coupon(String code) {
+		this.couponID = 0;
+		this.name = "";
+		this.code = code;
+		this.discountType = null;
+		this.discountAmount = 0.0;
+		this.descriptions = "";
+		this.status = null;
 	}
 	
 	public boolean createCoupon() {
@@ -138,9 +152,9 @@ public class Coupon {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Coupon WHERE Name = ? ");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Coupon WHERE Code = ? ");
 
-			stmt.setString(1, this.name);
+			stmt.setString(1, this.code);
 
 			ResultSet result = stmt.executeQuery();
 

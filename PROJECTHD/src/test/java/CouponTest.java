@@ -62,8 +62,8 @@ public class CouponTest {
     @Test 
     public void testSearchCoupon (){
     	//this.testCoupon.setCouponID(62);
-    	//this.testCoupon.setCode("Coupon62");
-    	this.testCoupon.setName("Test Coupon 62");
+    	this.testCoupon.setCode("Coupon62");
+    	// this.testCoupon.setName("Test Coupon 62");
     	//this.testCoupon.setDescriptions("this is a Coupon 62");
     	//this.testCoupon.setDiscountType(DiscountType.Value);
     	//this.testCoupon.setDiscountAmount(6.83);

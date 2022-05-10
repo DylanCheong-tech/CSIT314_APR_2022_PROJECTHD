@@ -111,7 +111,7 @@ function viewMenuItem(recordID) {
 
     document.getElementById("name").value = menu_item_json.name;
     document.getElementById("type").value = menu_item_json.type;
-    document.getElementById("price").value = menu_item_json.price;
+    document.getElementById("price").value = "$ " + menu_item_json.price;
     document.getElementById("status").value = menu_item_json.status;
     document.getElementById("desc").value = menu_item_json.descriptions;
     document.getElementById("image-preview").src = menu_item_json.imageDataURL;

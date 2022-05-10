@@ -10,11 +10,11 @@
     <!--Google jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./css/menu-item/alert-box.css" />
-    <link rel="stylesheet" href="./css/menu-item/page-layout-1.css" />
+    <link rel="stylesheet" href="./css/alert-box-2.css" />
+    <link rel="stylesheet" href="./css/page-layout-2.css" />
     <link rel="stylesheet" href="./css/menu-item/table-layout.css" />
     <link rel="stylesheet" href="./css/menu-item/form-layout.css" />
-    <link rel="stylesheet" href="./css/menu-item/search-filter.css" />
+    <link rel="stylesheet" href="./css/search-filter.css" />
     <link rel="stylesheet" href="./css/font-styles.css" />
     <link rel="stylesheet" href="./css/menu-item/view-menu-item.css" />
 
@@ -82,34 +82,23 @@
             <br />
 
             <label class="text-item mode-font-color">Name</label>
-            <input id="name" class="mode-border-color-1" type="text" name="name" required pattern="[A-Za-z0-9\s]*"
-                title="No special character" />
+            <input id="name" class="mode-border-color-1" type="text" name="name"  disabled />
             <br />
 
             <label class="text-item mode-font-color">Type</label>
-            <select id="type" class="mode-border-color-1" id="type-list" name="type" required>
-                <option selected disabled value=""></option>
-                <option value="Beverage">Beverage</option>
-                <option value="SideDish">SideDish</option>
-                <option value="MainCourse">MainCourse</option>
-            </select>
+            <input id="type" class="mode-border-color-1" type="text" name="type"  disabled />
             <br />
 
             <label class="text-item mode-font-color">Price</label>
-            <input id="price" class="mode-border-color-1" type="text" name="price" required pattern="[0-9.]*"
-                title="No special character" />
+            <input id="price" class="mode-border-color-1" type="text" name="price" disabled />
             <br />
 
             <label class="text-item mode-font-color">Status</label>
-            <select id="status" class="mode-border-color-1" id="status-list" name="status" required>
-                <option selected disabled value=""></option>
-                <option value="Available">Available</option>
-                <option value="Unavailable">Unavailable</option>
-            </select>
+            <input id="status" class="mode-border-color-1" type="text" name="status"  disabled />
             <br />
 
             <label class="text-item mode-font-color">Descriptions</label>
-            <input id="desc" class="mode-border-color-1" type="text" name="descriptions" required />
+            <input id="desc" class="mode-border-color-1" type="text" name="descriptions" disabled />
             <br />
 
             <label id="image-label" class="text-item mode-font-color">Image</label>

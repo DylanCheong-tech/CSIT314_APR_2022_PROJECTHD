@@ -10,10 +10,10 @@
     <!--Google jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./css/menu-item/alert-box.css" />
-    <link rel="stylesheet" href="./css/menu-item/page-layout-1.css" />
+    <link rel="stylesheet" href="./css/alert-box-2.css" />
+    <link rel="stylesheet" href="./css/page-layout-2.css" />
     <link rel="stylesheet" href="./css/coupon/table-layout.css" />
-    <link rel="stylesheet" href="./css/menu-item/search-filter.css" />
+    <link rel="stylesheet" href="./css/search-filter.css" />
     <link rel="stylesheet" href="./css/coupon/form-layout.css" />
     <link rel="stylesheet" href="./css/coupon/view-coupon.css" />
     <link rel="stylesheet" href="./css/font-styles.css" />
@@ -79,39 +79,26 @@
             <br />
 
             <label class="text-item mode-font-color">Code</label>
-            <input id="code" class="mode-border-color-1" type="text" name="code" required pattern="[A-Za-z0-9]*"
-                title="No special character" />
+            <input id="code" class="mode-border-color-1" type="text" name="code" disabled />
             <br />
 
             <label class="text-item mode-font-color">Name</label>
-            <input id="name" class="mode-border-color-1" type="text" name="name" required pattern="[A-Za-z0-9\s]*"
-                title="No special character" />
+            <input id="name" class="mode-border-color-1" type="text" name="name" disabled />
             <br />
 
             <label class="text-item mode-font-color">Discount Type</label>
-            <select id="discountType" class="mode-border-color-1" id="type-list" name="discountType" required>
-                <option selected disabled value=""></option>
-                <option value="Percentage">Percentage</option>
-                <option value="Value">Value</option>
-                <option value="OnetoOne">One To One</option>
-            </select>
+            <input id="discountType" class="mode-border-color-1" type="text" name="discountType" disabled />
             <br />
 
             <label class="text-item mode-font-color">Discount Amount</label>
-            <input id="discountAmount" class="mode-border-color-1" type="text" name="discountAmount" required
-                pattern="[0-9.]*" title="No special character" />
+            <input id="discountAmount" class="mode-border-color-1" type="text" name="discountAmount" disabled />
             <br />
 
             <label class="text-item mode-font-color">Descriptions</label>
-            <input id="descriptions" class="mode-border-color-1" type="text" name="descriptions" required />
+            <input id="descriptions" class="mode-border-color-1" type="text" name="descriptions" disabled />
 
             <label class="text-item mode-font-color">Status</label>
-            <select id="status" class="mode-border-color-1" id="type-list" name="status" required>
-                <option selected disabled value=""></option>
-                <option value="Active">Active</option>
-                <option value="Expired">Expired</option>
-            </select>
-            <br />
+            <input id="status" class="mode-border-color-1" type="text" name="status" disabled />
             <br />
             <br />
 

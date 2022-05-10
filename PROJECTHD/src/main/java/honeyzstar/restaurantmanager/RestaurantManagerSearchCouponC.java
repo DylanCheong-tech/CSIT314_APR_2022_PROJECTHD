@@ -15,9 +15,9 @@ public class RestaurantManagerSearchCouponC extends HttpServlet {
 
         try {
             // replacing the query string <space> encoded value if any
-            String name = request.getQueryString().split("=")[1].replaceAll("%20", " ");
+            String code = request.getQueryString().split("=")[1].replaceAll("%20", " ");
 
-            Coupon resultCoupon = (new Coupon(name)).searchCoupon();
+            Coupon resultCoupon = (new Coupon(code)).searchCoupon();
 
             if (resultCoupon == null) {
                 out.println(new Gson().toJson(null));

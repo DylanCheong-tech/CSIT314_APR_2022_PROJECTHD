@@ -100,7 +100,7 @@ function viewCoupon(recordID) {
     document.getElementById("code").value = coupon_json.code;
     document.getElementById("name").value = coupon_json.name;
     document.getElementById("discountType").value = coupon_json.discountType;
-    document.getElementById("discountAmount").value = coupon_json.discountAmount;
+    document.getElementById("discountAmount").value = coupon_json.discountType == "Value" ? "$ " + coupon_json.discountAmount : coupon_json.discountAmount + "%";
     document.getElementById("descriptions").value = coupon_json.descriptions;
     document.getElementById("status").value = coupon_json.status;
 }

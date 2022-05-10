@@ -1,7 +1,7 @@
 function searchCoupon() {
     var searched_item = $.ajax({
         async: false,
-        "url": "/searchCoupon?coupon_name=" + document.getElementById("search-bar").value,
+        "url": "/searchCoupon?coupon_code=" + document.getElementById("search-bar").value,
         "type": "get",
         "dataType": "json"
     }).responseJSON;
