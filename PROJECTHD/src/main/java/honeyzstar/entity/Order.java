@@ -61,17 +61,6 @@ public class Order {
 
 			stmt.executeUpdate();
 
-			for (int i : orderItems.keySet()) {
-				PreparedStatement stmt1 = conn.prepareStatement(
-						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES ( ?, ?, ?)");
-					
-				stmt1.setInt(1, this.orderID);
-				stmt1.setInt(2, i);
-				stmt1.setInt(3, orderItems.get(i));
-				
-				stmt1.executeUpdate();
-
-			}
 			
 			
 			System.out.println("Inserted Successfully");
@@ -229,6 +218,34 @@ public class Order {
 
 		return returnArray;
 	}
+	
+	public static HashMap<Integer, Integer> getOrderMenuItemList() {
+		HashMap<Integer, Integer> returnArray = new HashMap<Integer, Integer>();
+
+		try (
+
+				Connection conn = DriverManager.getConnection(
+						connStr, dbusername, dbpassword);
+
+		) {
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ordersmenuitem");
+
+			ResultSet result = stmt.executeQuery();
+
+			while (result.next()) {
+				int menuItemID = result.getInt("MenuItemID");
+				int quantity = result.getInt("Quantity");
+
+				returnArray.put(menuItemID, quantity);
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		return returnArray;
+	}
+	
 
 	public int getOrderID() {
 		return orderID;

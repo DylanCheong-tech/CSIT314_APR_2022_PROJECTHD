@@ -175,7 +175,7 @@ public class Account {
 
 		) {
 			PreparedStatement stmt = conn
-					.prepareStatement("INSERT INTO Account (Name, RoleID, Username, Password) VALUES (?, ?, ?, ?)");
+					.prepareStatement("INSERT INTO account (Name, RoleID, Username, Password) VALUES (?, ?, ?, ?)");
 
 			stmt.setString(1, this.name);
 			stmt.setInt(2, this.role.getID());
@@ -266,7 +266,7 @@ public class Account {
 				String username = result.getString("Username");
 				String password = result.getString("Password");
 				String status = result.getString("Status");
-				Role role = Role.getRole(result.getInt("RoleID"));
+				Role role = Role.getRole(result.getInt(roleID));
 						
 				returnAcc = new Account(id, username, password, name, role, date, status);
 						/*
@@ -369,7 +369,7 @@ public class Account {
 				String password = result.getString("Password");
 				String status = result.getString("Status");
 
-				Role role = Role.getRole(result.getInt("RoleID"));
+				Role role = Role.getRole(result.getInt(roleID));
 						
 				returnArray.add(new Account(id, username, password, name, role, date, status));
 				
