@@ -51,28 +51,43 @@ public class Order {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement(
-					"INSERT INTO orders (Status, TotalAmount, TableNum, CreatedBy) VALUES ( ?, ?, ?, ?)");
-
-			stmt.setString(1, String.valueOf(OrderStatus.Created));
-			stmt.setDouble(2, this.totalAmount);
-			stmt.setInt(3, this.tableNum);
-			stmt.setInt(4, this.createdBy.getID());
-
-			stmt.executeUpdate();
 			
-			for (int i : this.orderItems.keySet()) {
-				PreparedStatement stmt1 = conn.prepareStatement(
-						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
-
-				stmt1.setInt(1, this.orderID);
-				stmt1.setInt(2, i);
-				stmt1.setInt(3, this.orderItems.get(i));
-				
-				stmt1.executeUpdate();
-				
+			PreparedStatement stmt = conn.prepareStatement("select auto_increment from information_schema.tables where table_name = 'Orders'");
+			ResultSet result = stmt.executeQuery();
+			int id = 0;
+			if (result.next()) {
+				id = result.getInt("auto_increment");
 			}
 			
+			
+			PreparedStatement stmt1 = conn.prepareStatement(
+					"INSERT INTO orders (Status, TotalAmount, TableNum, CreatedBy) VALUES ( ?, ?, ?, ?)");
+
+			stmt1.setString(1, String.valueOf(OrderStatus.Created));
+			stmt1.setDouble(2, 0.0);
+			stmt1.setInt(3, this.tableNum);
+			stmt1.setInt(4, this.createdBy.getID());
+
+			stmt1.executeUpdate();
+			
+			
+			for (int i : this.orderItems.keySet()) {
+				PreparedStatement stmt2 = conn.prepareStatement(
+						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
+
+				stmt2.setInt(1, id);
+				stmt2.setInt(2, i);
+				stmt2.setInt(3, this.orderItems.get(i));
+				
+				stmt2.executeUpdate();
+			}
+			
+			PreparedStatement stmt3 = conn.prepareStatement(
+					"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) " + 
+					"as total " + "from OrdersMenuItem group by OrdersMenuItem.OrderID where OrdersMenuItem.OrderID = 2) where OrderID = 2;");
+		
+			stmt3.executeUpdate();
+		
 			
 			System.out.println("Inserted Successfully");
 			return true;
@@ -121,17 +136,33 @@ public class Order {
 
 			stmt.executeUpdate();
 
+			
+			
+			PreparedStatement stmt1 = conn.prepareStatement(
+					"DELETE FROM ordersmenuitem WHERE OrderID = ? ");
+			stmt1.setInt(1, this.orderID);
+			
+			stmt1.executeUpdate();
+			
+			
+			
 			for (int i : this.orderItems.keySet()) {
-				PreparedStatement stmt1 = conn.prepareStatement(
-						"UPDATE ordersmenuitem SET Quantity = ? WHERE OrderID = ? AND MenuItemID = ?");
+				PreparedStatement stmt2 = conn.prepareStatement(
+						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
 
-				stmt1.setInt(1, this.orderItems.get(i));
-				stmt1.setInt(2, this.orderID);
-				stmt1.setInt(3, i);
-				
-				stmt1.executeUpdate();
+				stmt2.setInt(1, this.orderID);
+				stmt2.setInt(2, i);
+				stmt2.setInt(3, this.orderItems.get(i));
 				
 			}
+			
+			
+			
+			PreparedStatement stmt3 = conn.prepareStatement(
+					"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) " + 
+					"as total " + "from OrdersMenuItem group by OrdersMenuItem.OrderID where OrdersMenuItem.OrderID = 2) where OrderID = 2;");
+		
+			stmt3.executeUpdate();
 			
 			System.out.println("Updated Successfully");
 			return true;
