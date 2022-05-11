@@ -54,13 +54,24 @@ public class Order {
 			PreparedStatement stmt = conn.prepareStatement(
 					"INSERT INTO orders (Status, TotalAmount, TableNum, CreatedBy) VALUES ( ?, ?, ?, ?)");
 
-			stmt.setString(1, String.valueOf(this.status));
+			stmt.setString(1, String.valueOf(OrderStatus.Created));
 			stmt.setDouble(2, this.totalAmount);
 			stmt.setInt(3, this.tableNum);
 			stmt.setInt(4, this.createdBy.getID());
 
 			stmt.executeUpdate();
+			
+			for (int i : this.orderItems.keySet()) {
+				PreparedStatement stmt1 = conn.prepareStatement(
+						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
 
+				stmt1.setInt(1, this.orderID);
+				stmt1.setInt(2, i);
+				stmt1.setInt(3, this.orderItems.get(i));
+				
+				stmt1.executeUpdate();
+				
+			}
 			
 			
 			System.out.println("Inserted Successfully");
@@ -102,16 +113,26 @@ public class Order {
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement(
-					"UPDATE orders SET UpdatedAt = CURRENT_TIMESTAMP, Status = ?, TotalAmount = ?, TableNum = ?, CreatedBy = ? WHERE OrderID = ?");
+					"UPDATE orders SET UpdatedAt = CURRENT_TIMESTAMP, TableNum = ?, CreatedBy = ? WHERE OrderID = ?");
 
-			stmt.setString(1, String.valueOf(this.status));
-			stmt.setDouble(2, this.totalAmount);
 			stmt.setInt(3, this.tableNum);
 			stmt.setInt(4, this.createdBy.getID());
 			stmt.setInt(5, this.orderID);
 
 			stmt.executeUpdate();
 
+			for (int i : this.orderItems.keySet()) {
+				PreparedStatement stmt1 = conn.prepareStatement(
+						"UPDATE ordersmenuitem SET Quantity = ? WHERE OrderID = ? AND MenuItemID = ?");
+
+				stmt1.setInt(1, this.orderItems.get(i));
+				stmt1.setInt(2, this.orderID);
+				stmt1.setInt(3, i);
+				
+				stmt1.executeUpdate();
+				
+			}
+			
 			System.out.println("Updated Successfully");
 			return true;
 
@@ -142,7 +163,8 @@ public class Order {
 				this.setTotalAmount(result.getDouble("TotalAmount"));
 				this.setTableNum(result.getInt("TableNum"));
 				this.setCreatedBy(Account.getAccount(result.getInt("CreatedBy")));
-							
+				this.setOrderItems(this.getOrderMenuItemList());
+				
 				System.out.println("Searched Successfully");
 				return this;
 			}
@@ -175,6 +197,7 @@ public class Order {
 				this.setTotalAmount(result.getDouble("TotalAmount"));
 				this.setTableNum(result.getInt("TableNum"));
 				this.setCreatedBy(Account.getAccount(result.getInt("CreatedBy")));
+				this.setOrderItems(this.getOrderMenuItemList());
 				
 				System.out.println("Searched Successfully");
 				return this;
@@ -208,8 +231,12 @@ public class Order {
 				double totalAmount = result.getDouble("TotalAmount");
 				int tableNum = result.getInt("TableNum");
 				Account acc = Account.getAccount(result.getInt("CreatedBy"));
-
-				returnArray.add(new Order(id, createdAt, updatedAt, status, totalAmount, tableNum, acc));
+				Order order = new Order(id, createdAt, updatedAt, status, totalAmount, tableNum, acc);
+				
+				order.setOrderItems(order.getOrderMenuItemList());
+				
+				
+				returnArray.add(order);
 			}
 
 		} catch (SQLException ex) {
@@ -219,7 +246,7 @@ public class Order {
 		return returnArray;
 	}
 	
-	public static HashMap<Integer, Integer> getOrderMenuItemList() {
+	public HashMap<Integer, Integer> getOrderMenuItemList() {
 		HashMap<Integer, Integer> returnArray = new HashMap<Integer, Integer>();
 
 		try (
@@ -228,13 +255,17 @@ public class Order {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ordersmenuitem");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ordersmenuitem WHERE OrderID = ?");
+			
+			stmt.setInt(1, this.orderID);
 
 			ResultSet result = stmt.executeQuery();
 
 			while (result.next()) {
 				int menuItemID = result.getInt("MenuItemID");
 				int quantity = result.getInt("Quantity");
+				
+				
 
 				returnArray.put(menuItemID, quantity);
 			}

@@ -24,7 +24,7 @@ public class OrderTest {
     public void testCreateOrder(){
     	Account acc = new Account();
     	acc.setID(4);
-    	this.testOrder.setStatus(OrderStatus.Ongoing);
+    	this.testOrder.setStatus(OrderStatus.Submitted);
 		this.testOrder.setTotalAmount(43.4);
 		this.testOrder.setTableNum(4);
 		this.testOrder.setCreatedBy(acc);
@@ -63,12 +63,12 @@ public class OrderTest {
     	acc.setID(4);
 		
 		this.testOrder.setOrderID(45);
-    	this.testOrder.setStatus(OrderStatus.Ongoing);
+    	this.testOrder.setStatus(OrderStatus.Submitted);
 		this.testOrder.setTotalAmount(44.3);
 		this.testOrder.setTableNum(4);
 		this.testOrder.setCreatedBy(acc);
 
-		Order expectedOrder = new Order(4, "2022-05-05 18:27:00", null, OrderStatus.Ongoing, 48.4, 4,acc);
+		Order expectedOrder = new Order(4, "2022-05-05 18:27:00", null, OrderStatus.Submitted, 48.4, 4,acc);
 
         assertEquals("Test Staff Search Order", expectedOrder, this.testOrder.searchOrder());
     }
@@ -97,6 +97,7 @@ public class OrderTest {
 	
 	@Test 
     public void testGetOrderMenuItemList() {
-        assertTrue("Test Staff Get Order Menu Item List", Order.getOrderMenuItemList() instanceof HashMap);
+		this.testOrder.setOrderID(45);
+        assertTrue("Test Staff Get Order Menu Item List", this.testOrder.getOrderMenuItemList() instanceof HashMap);
     }
 }

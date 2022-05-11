@@ -2,6 +2,6 @@ package honeyzstar.entity;
 
 public enum OrderStatus {
 	Created,
-    Ongoing,
+    Submitted,
     Paid;
 }
