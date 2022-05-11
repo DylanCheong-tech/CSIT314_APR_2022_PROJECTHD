@@ -24,10 +24,17 @@ public class OrderTest {
     public void testCreateOrder(){
     	Account acc = new Account();
     	acc.setID(4);
-    	this.testOrder.setStatus(OrderStatus.Submitted);
-		this.testOrder.setTotalAmount(43.4);
 		this.testOrder.setTableNum(4);
 		this.testOrder.setCreatedBy(acc);
+		HashMap<Integer, Integer> menuItems = new HashMap<Integer, Integer>();
+		menuItems.put(2, 3);
+		menuItems.put(4, 3);
+		menuItems.put(2, 3);
+		menuItems.put(8, 3);
+		menuItems.put(12, 3);
+		menuItems.put(77, 3);
+
+		this.testOrder.setOrderItems(menuItems);
     	
     	assertTrue("Test Staff Create Order", this.testOrder.createOrder());
     }
@@ -44,14 +51,17 @@ public class OrderTest {
 	
 	@Test
     public void testUpdateOrder() {
-		Account acc = new Account();
-    	acc.setID(4);
 		
-		this.testOrder.setOrderID(45);
-    	this.testOrder.setStatus(OrderStatus.Paid);
-		this.testOrder.setTotalAmount(43.4);
-		this.testOrder.setTableNum(4);
-		this.testOrder.setCreatedBy(acc);
+		this.testOrder.setOrderID(6);
+		this.testOrder.setTableNum(9);
+
+		HashMap<Integer, Integer> menuItems = new HashMap<Integer, Integer>();
+		menuItems.put(99, 2);
+		menuItems.put(4, 3);
+		menuItems.put(2, 9);
+
+
+		this.testOrder.setOrderItems(menuItems);
 
     	
     	assertTrue("Test Staff Update Order", this.testOrder.updateOrder());

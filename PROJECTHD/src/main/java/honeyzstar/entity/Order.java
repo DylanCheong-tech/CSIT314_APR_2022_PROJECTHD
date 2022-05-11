@@ -16,7 +16,7 @@ public class Order {
 	private int tableNum;
 	private HashMap<Integer, Integer> orderItems;
 	private Account createdBy;
-	
+
 	public Order() {
 		this.orderID = 0;
 		this.createdAt = "";
@@ -26,8 +26,9 @@ public class Order {
 		this.totalAmount = 0.0;
 		this.tableNum = 0;
 	}
-	
-	public Order(int orderID, String createdAt, String updatedAt, OrderStatus status, double totalAmount, int tableNum, Account createdBy){
+
+	public Order(int orderID, String createdAt, String updatedAt, OrderStatus status, double totalAmount, int tableNum,
+			Account createdBy) {
 		this.orderID = orderID;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
@@ -36,30 +37,29 @@ public class Order {
 		this.tableNum = tableNum;
 		this.createdBy = createdBy;
 	}
-	
-	public Order(OrderStatus status, double totalAmount, int tableNum, Account createdBy){
+
+	public Order(OrderStatus status, double totalAmount, int tableNum, Account createdBy) {
 		this.status = status;
 		this.totalAmount = totalAmount;
 		this.tableNum = tableNum;
 		this.createdBy = createdBy;
 	}
-	
-	public boolean createOrder(){
+
+	public boolean createOrder() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
 						connStr, dbusername, dbpassword);
 
 		) {
-			
-			PreparedStatement stmt = conn.prepareStatement("select auto_increment from information_schema.tables where table_name = 'Orders'");
+
+			PreparedStatement stmt = conn.prepareStatement(
+					"select auto_increment from information_schema.tables where table_name = 'Orders'");
 			ResultSet result = stmt.executeQuery();
-			int id = 0;
 			if (result.next()) {
-				id = result.getInt("auto_increment");
+				this.orderID = result.getInt("auto_increment");
 			}
-			
-			
+
 			PreparedStatement stmt1 = conn.prepareStatement(
 					"INSERT INTO orders (Status, TotalAmount, TableNum, CreatedBy) VALUES ( ?, ?, ?, ?)");
 
@@ -69,26 +69,25 @@ public class Order {
 			stmt1.setInt(4, this.createdBy.getID());
 
 			stmt1.executeUpdate();
-			
-			
+
 			for (int i : this.orderItems.keySet()) {
 				PreparedStatement stmt2 = conn.prepareStatement(
 						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
 
-				stmt2.setInt(1, id);
+				stmt2.setInt(1, this.orderID);
 				stmt2.setInt(2, i);
 				stmt2.setInt(3, this.orderItems.get(i));
-				
+
 				stmt2.executeUpdate();
 			}
-			
+
 			PreparedStatement stmt3 = conn.prepareStatement(
-					"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) " + 
-					"as total " + "from OrdersMenuItem group by OrdersMenuItem.OrderID where OrdersMenuItem.OrderID = 2) where OrderID = 2;");
-		
+					"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) as total from OrdersMenuItem group by OrdersMenuItem.OrderID having OrdersMenuItem.OrderID = ?) where OrderID = ?");
+
+			stmt3.setInt(1, this.orderID);
+			stmt3.setInt(2, this.orderID);
 			stmt3.executeUpdate();
-		
-			
+
 			System.out.println("Inserted Successfully");
 			return true;
 
@@ -97,8 +96,8 @@ public class Order {
 			return false;
 		}
 	}
-	
-	public boolean deleteOrder(){
+
+	public boolean deleteOrder() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
@@ -128,24 +127,19 @@ public class Order {
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement(
-					"UPDATE orders SET UpdatedAt = CURRENT_TIMESTAMP, TableNum = ?, CreatedBy = ? WHERE OrderID = ?");
+					"UPDATE orders SET UpdatedAt = CURRENT_TIMESTAMP, TableNum = ? WHERE OrderID = ?");
 
-			stmt.setInt(3, this.tableNum);
-			stmt.setInt(4, this.createdBy.getID());
-			stmt.setInt(5, this.orderID);
+			stmt.setInt(1, this.tableNum);
+			stmt.setInt(2, this.orderID);
 
 			stmt.executeUpdate();
 
-			
-			
 			PreparedStatement stmt1 = conn.prepareStatement(
 					"DELETE FROM ordersmenuitem WHERE OrderID = ? ");
 			stmt1.setInt(1, this.orderID);
-			
+
 			stmt1.executeUpdate();
-			
-			
-			
+
 			for (int i : this.orderItems.keySet()) {
 				PreparedStatement stmt2 = conn.prepareStatement(
 						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
@@ -153,17 +147,17 @@ public class Order {
 				stmt2.setInt(1, this.orderID);
 				stmt2.setInt(2, i);
 				stmt2.setInt(3, this.orderItems.get(i));
-				
+
+				stmt2.executeUpdate();
 			}
-			
-			
-			
-			PreparedStatement stmt3 = conn.prepareStatement(
-					"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) " + 
-					"as total " + "from OrdersMenuItem group by OrdersMenuItem.OrderID where OrdersMenuItem.OrderID = 2) where OrderID = 2;");
-		
+
+			PreparedStatement stmt3 = conn.prepareStatement("update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) as total from OrdersMenuItem group by OrdersMenuItem.OrderID having OrdersMenuItem.OrderID = ?) where OrderID = ?");
+
+			stmt3.setInt(1, this.orderID);
+			stmt3.setInt(2, this.orderID);
+
 			stmt3.executeUpdate();
-			
+
 			System.out.println("Updated Successfully");
 			return true;
 
@@ -172,7 +166,7 @@ public class Order {
 			return false;
 		}
 	}
-	
+
 	public Order searchOrder() {
 		try (
 
@@ -195,7 +189,7 @@ public class Order {
 				this.setTableNum(result.getInt("TableNum"));
 				this.setCreatedBy(Account.getAccount(result.getInt("CreatedBy")));
 				this.setOrderItems(this.getOrderMenuItemList());
-				
+
 				System.out.println("Searched Successfully");
 				return this;
 			}
@@ -206,7 +200,7 @@ public class Order {
 
 		return null;
 	}
-	
+
 	public Order getOrder() {
 		try (
 
@@ -229,7 +223,7 @@ public class Order {
 				this.setTableNum(result.getInt("TableNum"));
 				this.setCreatedBy(Account.getAccount(result.getInt("CreatedBy")));
 				this.setOrderItems(this.getOrderMenuItemList());
-				
+
 				System.out.println("Searched Successfully");
 				return this;
 			}
@@ -240,7 +234,7 @@ public class Order {
 
 		return null;
 	}
-	
+
 	public static ArrayList<Order> getOrderList() {
 		ArrayList<Order> returnArray = new ArrayList<Order>();
 
@@ -263,10 +257,9 @@ public class Order {
 				int tableNum = result.getInt("TableNum");
 				Account acc = Account.getAccount(result.getInt("CreatedBy"));
 				Order order = new Order(id, createdAt, updatedAt, status, totalAmount, tableNum, acc);
-				
+
 				order.setOrderItems(order.getOrderMenuItemList());
-				
-				
+
 				returnArray.add(order);
 			}
 
@@ -276,7 +269,7 @@ public class Order {
 
 		return returnArray;
 	}
-	
+
 	public HashMap<Integer, Integer> getOrderMenuItemList() {
 		HashMap<Integer, Integer> returnArray = new HashMap<Integer, Integer>();
 
@@ -287,7 +280,7 @@ public class Order {
 
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ordersmenuitem WHERE OrderID = ?");
-			
+
 			stmt.setInt(1, this.orderID);
 
 			ResultSet result = stmt.executeQuery();
@@ -295,8 +288,6 @@ public class Order {
 			while (result.next()) {
 				int menuItemID = result.getInt("MenuItemID");
 				int quantity = result.getInt("Quantity");
-				
-				
 
 				returnArray.put(menuItemID, quantity);
 			}
@@ -307,7 +298,6 @@ public class Order {
 
 		return returnArray;
 	}
-	
 
 	public int getOrderID() {
 		return orderID;
@@ -364,7 +354,7 @@ public class Order {
 	public void setCreatedBy(Account createdBy) {
 		this.createdBy = createdBy;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		Order compareItem = null;
@@ -390,5 +380,5 @@ public class Order {
 
 		return false;
 	}
-	
+
 }
