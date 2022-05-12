@@ -13,7 +13,7 @@ function decreaseQty(inputID, price, eleNode, menuItemID) {
         update_total_amount();
 
         if (qtyInput.value <= 0) {
-            eleNode.style.backgroundColor = "transparent";
+            eleNode.classList.remove("highlight-item");
         }
     }
 
@@ -32,7 +32,7 @@ function increaseQty(inputID, price, eleNode, menuItemID) {
         qtyInput.value = parseFloat(qtyInput.value) + 1;
         total_amount += price;
         update_total_amount();
-        eleNode.style.backgroundColor = "#FFD100";
+        eleNode.classList.add("highlight-item");
     }
 
     if (menu_item_json[menuItemID]) {

@@ -173,6 +173,11 @@
    </servlet>
 
    <servlet>
+      <servlet-name>StaffUpdateOrderC</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffUpdateOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
       <servlet-name>StaffViewOrderC</servlet-name>
       <servlet-class>honeyzstar.staff.StaffViewOrderC</servlet-class>
    </servlet>
@@ -357,6 +362,11 @@
    <servlet-mapping>
       <servlet-name>StaffDeleteOrderC</servlet-name>
       <url-pattern>/staffDeleteOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>StaffUpdateOrderC</servlet-name>
+      <url-pattern>/staffUpdateOrder</url-pattern>
    </servlet-mapping>
 
    <servlet-mapping>

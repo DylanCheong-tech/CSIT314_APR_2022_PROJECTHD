@@ -23,7 +23,6 @@ public class StaffCreateOrderC extends HttpServlet {
 
         HashMap<Integer, Integer> menuItems = (new Gson()).fromJson(menuItemsJSON, menuItemType);
 
-        System.out.println(menuItems);
         Account staff = Account.getAccount(3);
         Order newOrder = new Order(tableNum, staff, menuItems);
 

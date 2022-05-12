@@ -87,6 +87,11 @@ table#table tbody tr td button {
     font-size: 1.1em;
 }
 
+table#table tbody tr td button.disabled-btn {
+    background-color: #D3D3D3;
+    cursor: not-allowed;
+}
+
 @media (max-width: 480px) {  
     table#table tbody {
         display: block;

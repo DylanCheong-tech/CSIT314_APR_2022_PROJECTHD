@@ -79,6 +79,10 @@ function display_list(order_list) {
 
         var button = document.createElement("button");
         button.innerHTML = "Delete";
+        if (order_list[index].status != "Created"){
+            button.disabled = true;
+            button.classList.add("disabled-btn");
+        }
         button.type = "submit";
 
         form.appendChild(button);

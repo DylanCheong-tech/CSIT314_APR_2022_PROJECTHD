@@ -58,7 +58,7 @@ public class Order {
 		this.totalAmount = order.totalAmount;
 		this.tableNum = order.tableNum;
 		this.createdBy = order.createdBy;
-		this.orderItems = order.orderItems;
+		this.orderItems = new HashMap<>(order.orderItems);
 	}
 	
 	public Order(int tableNum, Account createdBy, HashMap<Integer, Integer> menuItems) {
@@ -69,7 +69,18 @@ public class Order {
 		this.status = null;
 		this.totalAmount = 0.0;
 		this.tableNum = tableNum;
-		this.orderItems = null;
+		this.orderItems = new HashMap<>(menuItems);
+	}
+
+	public Order(int orderID, int tableNum, HashMap<Integer, Integer> menuItems) {
+		this.orderID = orderID;
+		this.createdAt = "";
+		this.updatedAt = "";
+		this.createdBy = null;
+		this.status = null;
+		this.totalAmount = 0.0;
+		this.tableNum = tableNum;
+		this.orderItems = new HashMap<>(menuItems);
 	}
 
 	public Order(int orderID) {

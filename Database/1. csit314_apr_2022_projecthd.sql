@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 10, 2022 at 11:51 AM
+-- Generation Time: May 12, 2022 at 10:06 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -94,7 +94,7 @@ CREATE TABLE `Orders` (
   `OrderID` int(5) NOT NULL,
   `CreatedAt` datetime NOT NULL DEFAULT current_timestamp(),
   `UpdatedAt` datetime DEFAULT NULL,
-  `Status` varchar(7) NOT NULL,
+  `Status` varchar(10) NOT NULL,
   `TotalAmount` decimal(6,2) NOT NULL,
   `TableNum` int(3) NOT NULL,
   `CreatedBy` int(5) DEFAULT NULL

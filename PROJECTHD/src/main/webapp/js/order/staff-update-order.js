@@ -2,6 +2,9 @@ var alert_success_message = "Update Order Successful";
 var alert_fail_message = "Update Order Fail";
 var redirect_address = "staff-update-order.html";
 
+var total_amount = 0;
+var menu_item_json = {};
+
 var order_list = $.ajax({
     async: false,
     "url": "/getOrderList",
@@ -37,7 +40,7 @@ function display_list(order_list) {
             }).responseJSON;
 
             menuItemInnerText += menu_item_json.name + "<br />";
-            qtyInnerText += order_list[index].orderItems[menuItemID]  + "<br />";
+            qtyInnerText += order_list[index].orderItems[menuItemID] + "<br />";
             priceInnerText += "$ " + menu_item_json.price + "<br />";
         }
         var column3 = document.createElement("td");
@@ -90,7 +93,7 @@ function decreaseQty(inputID, price, eleNode, menuItemID) {
         update_total_amount();
 
         if (qtyInput.value <= 0) {
-            eleNode.style.backgroundColor = "transparent";
+            eleNode.classList.remove("highlight-item");
         }
     }
 
@@ -109,7 +112,7 @@ function increaseQty(inputID, price, eleNode, menuItemID) {
         qtyInput.value = parseFloat(qtyInput.value) + 1;
         total_amount += price;
         update_total_amount();
-        eleNode.style.backgroundColor = "#FFD100";
+        eleNode.classList.add("highlight-item");
     }
 
     if (menu_item_json[menuItemID]) {
@@ -130,7 +133,7 @@ var menu_item_list = $.ajax({
 
 console.log(menu_item_list)
 
-function display_menu_items(category, order) {
+function display_menu_items(category, orderItems) {
     var frame = document.getElementById(category);
 
     for (index in menu_item_list) {
@@ -157,7 +160,12 @@ function display_menu_items(category, order) {
             var qtyInput = document.createElement("input");
             qtyInput.id = category + index;
             qtyInput.type = "text";
-            qtyInput.value = "0";
+            if (orderItems[menu_item_list[index].menuItemID]){
+                qtyInput.value = orderItems[menu_item_list[index].menuItemID];
+                span.classList.add("highlight-item");
+            }else {
+                qtyInput.value = "0";
+            }
             qtyInput.disabled = true;
 
             var addBtn = document.createElement("button");
@@ -179,25 +187,25 @@ function display_menu_items(category, order) {
     }
 }
 
-display_menu_items("MainCourse");
-display_menu_items("SideDish");
-display_menu_items("Beverage");
-
-
 function update_total_amount() {
     document.getElementById("total-amount").value = "$ " + total_amount.toFixed(2);
 }
 
-function update_order (order) {
+function update_order(order) {
     document.getElementById("table").style.display = "none";
     document.getElementById("update-form").style.display = "block";
 
-    // for (menuItemID in order.orderItems){
-    //     for (i = 0 ; i < order.orderItems.menuItemID ; i++){
-    //         increaseQty()
-    //     }
-    // }
+    document.getElementById("search-frame").style.display = "none";
+    document.getElementById("sort-frame").style.display = "none";
 
     document.getElementById("order-id").value = order.orderID;
     document.getElementById("table-number").value = order.tableNum;
+    menu_item_json = order.orderItems;
+    document.getElementById("menu-items").value = JSON.stringify(order.orderItems);
+    total_amount = order.totalAmount;
+    update_total_amount();
+
+    display_menu_items("MainCourse", order.orderItems);
+    display_menu_items("SideDish", order.orderItems);
+    display_menu_items("Beverage", order.orderItems);
 }

@@ -101,13 +101,21 @@ div form span#submit-btn-frame button {
     font-size: 1.4em;
 }
 
+div form span.highlight-item {
+    background-color: #FFD100;
+}
+
 @media (max-width: 480px) {
     div form label{
         width: 20%;
     }
 
     div form>input {
-        width: 35%;
+        width: 40%;
+    }
+
+    div form>input.date-input {
+        width: 55%;
     }
 
     div form span#menu-items-frame {

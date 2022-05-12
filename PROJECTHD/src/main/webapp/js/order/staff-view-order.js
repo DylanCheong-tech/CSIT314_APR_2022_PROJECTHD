@@ -80,6 +80,9 @@ function view_order(orderID) {
     document.getElementById("table").style.display = "none";
     document.getElementById("view-form").style.display = "block";
 
+    document.getElementById("search-frame").style.display = "none";
+    document.getElementById("sort-frame").style.display = "none";
+
     var order_json = $.ajax({
         async: false,
         "url": "/staffGetOrder?orderID=" + orderID,
@@ -141,4 +144,7 @@ function display_menu_items(menu_item_list, order) {
 function back_to_list() {
     document.getElementById("table").style.display = "table";
     document.getElementById("view-form").style.display = "none";
+
+    document.getElementById("search-frame").style.display = "inline-block";
+    document.getElementById("sort-frame").style.display = "inline-block";
 }
