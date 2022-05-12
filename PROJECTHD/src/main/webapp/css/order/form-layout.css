@@ -1,0 +1,136 @@
+div form {
+    text-align: left;
+}
+
+div form p.category {
+    border: 2px solid #000000;
+    background-color: #FFD100;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+div form span#menu-items-frame {
+    display: inline-block;
+    width: 75%;
+}
+
+div form label {
+    display: inline-block;
+    width: 15%;
+    text-align: left;
+    padding: 0 0 0 5%;
+}
+
+div form label#menu-item-label {
+    vertical-align: top;
+    margin: 1em 0 0 0;
+}
+
+div form input:disabled {
+    cursor: not-allowed;
+}
+
+div form>input {
+    width: 10%;
+    height: 1.4em;
+    margin: 1% 0 1% 0;
+    border: 1px #000000 solid;
+    font-size: 1.3em;
+    background-color: #FFFFFF;
+}
+
+div form>input.date-input {
+    width: 15%;
+}
+
+div form span.menu-item {
+    display: inline-grid;
+    border: 1px solid #000000;
+    width: 16.5%;
+    height: fit-content;
+    text-align: center;
+    margin: 0 4% 3% 0;
+}
+
+div form span.menu-item:nth-child(5n){
+    margin: 0 0 3% 0;
+}
+
+div form span.menu-item:selected-item {
+    margin: 0 0 3% 0;
+}
+
+div form span.menu-item img {
+    display: inline-block;
+    width: 90%;
+    text-align: center;
+    margin: 5% 0 0 5%;
+}
+
+div form span.menu-item span input {
+    width: 20%;
+    height: 1.5em;
+    text-align: center;
+    margin: 0 0 2% 0;
+    font-size: 1.2em;
+    background-color: transparent;
+}
+
+div form span.menu-item span button {
+    background-color: transparent;
+    border: none;
+    width: 1.2em;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin: 0 1% 0 1%;
+}
+
+div form span#submit-btn-frame {
+    text-align: center;
+    display: block;
+    margin: 5% 0 5% 0;
+}
+
+div form span#submit-btn-frame button {
+    width: 10%;
+    height: 2em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border : 2px #000000 solid;
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+@media (max-width: 480px) {
+    div form label{
+        width: 20%;
+    }
+
+    div form>input {
+        width: 35%;
+    }
+
+    div form span#menu-items-frame {
+        width: 70%;
+    }
+
+    div form span.menu-item {
+        width: 47%;
+    }
+
+    div form span.menu-item {
+        margin: 0 4% 3% 0;
+    }
+
+    div form span.menu-item:nth-child(5n){
+        margin: 0 4% 3% 0;
+    }
+    
+    div form span.menu-item:nth-child(2n){
+        margin: 0 0 3% 0;
+    }
+
+    div form span#submit-btn-frame button {
+        width: 40%;
+    }
+}

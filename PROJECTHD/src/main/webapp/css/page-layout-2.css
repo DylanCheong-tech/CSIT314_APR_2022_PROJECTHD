@@ -50,9 +50,41 @@ body div#header span#buttons button {
 }
 
 div#welcome-msg {
-    /* margin: 1% 0 1% 0; */
     padding: 1% 0 1% 0;
     text-align: center;
     font-size: 2em;
     height: fit-content;
+}
+
+@media (max-width: 480px) {      
+    body div#header span {
+        width: 30%;
+        display: inline-block;
+        text-align: right;
+    }
+    
+    body div#header span#header-date-time {
+        margin: 10% 0 0 0;
+        padding: 0;
+        font-size: 1em;
+        line-height: normal;
+    }
+    
+    body div#header span img#header-logo {
+        display: inline-block;
+        width: 100%;
+    }
+    
+    body div#header span#buttons {
+        margin: 4% 0 0 0;
+        vertical-align: top;
+        text-align: center;
+    }
+    
+    body div#header span#buttons button {
+        display: inline-block;
+        width: 100%;
+        margin: 5% 0 5% 0;
+        font-size: .8em;
+    }
 }

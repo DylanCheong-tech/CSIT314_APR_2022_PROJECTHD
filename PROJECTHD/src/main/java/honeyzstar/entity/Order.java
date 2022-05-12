@@ -59,6 +59,28 @@ public class Order {
 		this.createdBy = order.createdBy;
 	}
 	
+	public Order(int tableNum, Account createdBy, HashMap<Integer, Integer> menuItems) {
+		this.orderID = 0;
+		this.createdAt = "";
+		this.updatedAt = "";
+		this.createdBy = createdBy;
+		this.status = null;
+		this.totalAmount = 0.0;
+		this.tableNum = tableNum;
+		this.orderItems = new HashMap<>(menuItems);
+	}
+
+	public Order(int orderID) {
+		this.orderID = orderID;
+		this.createdAt = "";
+		this.updatedAt = "";
+		this.createdBy = null;
+		this.status = null;
+		this.totalAmount = 0.0;
+		this.tableNum = 0;
+		this.orderItems = null;
+	}
+
 	public boolean createOrder() {
 		try (
 
@@ -181,20 +203,21 @@ public class Order {
 		}
 	}
 
-	public Order searchOrder() {
+	public ArrayList<Order> searchOrder() {
+		ArrayList<Order> returnArray = new ArrayList<Order>();
 		try (
 
 				Connection conn = DriverManager.getConnection(
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM orders WHERE TableNum = ? ");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM orders WHERE TableNum = ?");
 
 			stmt.setInt(1, this.tableNum);
 
 			ResultSet result = stmt.executeQuery();
 
-			if (result.next()) {
+			while (result.next()) {
 				this.setOrderID(result.getInt("OrderID"));
 				this.setCreatedAt(result.getString("CreatedAt"));
 				this.setUpdatedAt(result.getString("UpdatedAt"));
@@ -205,14 +228,14 @@ public class Order {
 				this.setOrderItems(this.getOrderMenuItemList());
 
 				System.out.println("Searched Successfully");
-				return this;
+				returnArray.add(new Order(this));
 			}
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 
-		return null;
+		return (returnArray);
 	}
 
 	public Order getOrder() {
@@ -247,6 +270,29 @@ public class Order {
 		}
 
 		return null;
+	}
+
+	public boolean submitOrder() {
+		try (
+
+				Connection conn = DriverManager.getConnection(
+						connStr, dbusername, dbpassword);
+
+		) {
+			PreparedStatement stmt = conn.prepareStatement(
+					"UPDATE orders SET UpdatedAt = CURRENT_TIMESTAMP, Status = 'Submitted' WHERE OrderID = ? AND Status = 'Created'");
+
+			stmt.setInt(1, this.orderID);
+
+			stmt.executeUpdate();
+
+			System.out.println("Submitted Successfully");
+			return true;
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 	public static ArrayList<Order> getOrderList() {

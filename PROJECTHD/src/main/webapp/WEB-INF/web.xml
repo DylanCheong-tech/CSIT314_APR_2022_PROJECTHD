@@ -162,6 +162,36 @@
       <servlet-class>honeyzstar.staff.StaffLogoutC</servlet-class>
    </servlet>
 
+   <servlet>
+      <servlet-name>StaffCreateOrderC</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffCreateOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>StaffDeleteOrderC</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffDeleteOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>StaffViewOrderC</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffViewOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>StaffSearchOrderC</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffSearchOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>StaffSubmitOrderC</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffSubmitOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>StaffGetOrderList</servlet-name>
+      <servlet-class>honeyzstar.staff.StaffGetOrderList</servlet-class>
+   </servlet>
+
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
 
@@ -317,6 +347,36 @@
    <servlet-mapping>
       <servlet-name>StaffLogoutC</servlet-name>
       <url-pattern>/logoutStaff</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>StaffCreateOrderC</servlet-name>
+      <url-pattern>/staffCreateOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>StaffDeleteOrderC</servlet-name>
+      <url-pattern>/staffDeleteOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>StaffViewOrderC</servlet-name>
+      <url-pattern>/staffGetOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>StaffSubmitOrderC</servlet-name>
+      <url-pattern>/staffSubmitOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>StaffSearchOrderC</servlet-name>
+      <url-pattern>/staffSearchOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>StaffGetOrderList</servlet-name>
+      <url-pattern>/getOrderList</url-pattern>
    </servlet-mapping>
 
    <!-- Filter  -->

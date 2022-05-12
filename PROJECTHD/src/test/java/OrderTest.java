@@ -66,6 +66,13 @@ public class OrderTest {
     	
     	assertTrue("Test Staff Update Order", this.testOrder.updateOrder());
     }
+
+	@Test 
+	public void testSubmitOrder() {
+		this.testOrder.setOrderID(38);
+
+		assertTrue("Test Staff Submit Order", this.testOrder.submitOrder());
+	}
 	
 	@Test 
     public void testSearchMenuItem (){

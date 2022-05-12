@@ -7,7 +7,6 @@ div#search-frame {
   padding: .5% 0 .5% 0;
   background-color: #FFD100;
   border: 1px solid #000000;
-  /* background-color: transparent; */
 }
 
 div#sort-frame {
@@ -19,7 +18,6 @@ div#sort-frame {
   padding: .5% 0 .5% 0;
   background-color: #FFD100;
   border: 1px solid #000000;
-  /* background-color: transparent; */
 }
 
 div#search-frame input {
@@ -28,8 +26,6 @@ div#search-frame input {
   font-size: 1.5em;
   border: 1px solid #000000;
   border-radius: 10px;
-  /* background-color: transparent; */
-  /* border: none; */
 }
 
 div#search-frame input:focus {
@@ -61,4 +57,28 @@ select#sort-list{
   background-color: #FFFFFF;
   color: #000000;
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  div#sort-frame{
+    display: none;
+  }
+
+  div#search-frame {
+    width: 80%;
+    height: 2em;
+    margin: 0 0 1em 0;
+  }
+
+  div#search-frame input {
+    width: 70%;
+    height: 80%;
+    margin: 0;
+    font-size: 1em;
+  }
+
+  div#search-frame button {
+    margin: 0;
+    font-size: 1.2em;
+  }
 }
