@@ -36,6 +36,7 @@ public class Order {
 		this.status = status;
 		this.totalAmount = totalAmount;
 		this.tableNum = tableNum;
+		this.orderItems = null;
 		this.createdBy = createdBy;
 	}
 
@@ -45,7 +46,7 @@ public class Order {
 		this.updatedAt = "";
 		this.status = status;
 		this.totalAmount = totalAmount;
-		this.tableNum = tableNum;
+		this.orderItems = null;
 		this.createdBy = createdBy;
 	}
 
@@ -57,6 +58,7 @@ public class Order {
 		this.totalAmount = order.totalAmount;
 		this.tableNum = order.tableNum;
 		this.createdBy = order.createdBy;
+		this.orderItems = order.orderItems;
 	}
 	
 	public Order(int tableNum, Account createdBy, HashMap<Integer, Integer> menuItems) {
@@ -67,7 +69,7 @@ public class Order {
 		this.status = null;
 		this.totalAmount = 0.0;
 		this.tableNum = tableNum;
-		this.orderItems = new HashMap<>(menuItems);
+		this.orderItems = null;
 	}
 
 	public Order(int orderID) {
@@ -140,11 +142,19 @@ public class Order {
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("DELETE FROM Orders WHERE OrderID = ?");
+			PreparedStatement stmt = conn.prepareStatement("DELETE FROM Ordersmenuitem WHERE OrderID = ?");
 
 			stmt.setInt(1, this.orderID);
 
 			stmt.executeUpdate();
+
+			
+			
+			PreparedStatement stmt1 = conn.prepareStatement("DELETE FROM Orders WHERE OrderID = ?");
+
+			stmt1.setInt(1, this.orderID);
+
+			stmt1.executeUpdate();
 
 			System.out.println("Deleted Successfully");
 			return true;
