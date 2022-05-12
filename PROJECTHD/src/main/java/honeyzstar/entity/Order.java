@@ -21,7 +21,7 @@ public class Order {
 		this.orderID = 0;
 		this.createdAt = "";
 		this.updatedAt = "";
-		this.status = null;
+		this.status = OrderStatus.Created;
 		this.totalAmount = 0.0;
 		this.tableNum = 0;
 		this.createdBy = null;
@@ -36,16 +36,6 @@ public class Order {
 		this.status = status;
 		this.totalAmount = totalAmount;
 		this.tableNum = tableNum;
-		this.orderItems = null;
-		this.createdBy = createdBy;
-	}
-
-	public Order(OrderStatus status, double totalAmount, int tableNum, Account createdBy) {
-		this.orderID = 0;
-		this.createdAt = "";
-		this.updatedAt = "";
-		this.status = status;
-		this.totalAmount = totalAmount;
 		this.orderItems = null;
 		this.createdBy = createdBy;
 	}
@@ -66,7 +56,7 @@ public class Order {
 		this.createdAt = "";
 		this.updatedAt = "";
 		this.createdBy = createdBy;
-		this.status = null;
+		this.status = OrderStatus.Created;
 		this.totalAmount = 0.0;
 		this.tableNum = tableNum;
 		this.orderItems = new HashMap<>(menuItems);
@@ -77,7 +67,7 @@ public class Order {
 		this.createdAt = "";
 		this.updatedAt = "";
 		this.createdBy = null;
-		this.status = null;
+		this.status = OrderStatus.Created;
 		this.totalAmount = 0.0;
 		this.tableNum = tableNum;
 		this.orderItems = new HashMap<>(menuItems);
@@ -88,7 +78,7 @@ public class Order {
 		this.createdAt = "";
 		this.updatedAt = "";
 		this.createdBy = null;
-		this.status = null;
+		this.status = OrderStatus.Created;
 		this.totalAmount = 0.0;
 		this.tableNum = 0;
 		this.orderItems = null;

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./css/font-styles.css" />
     <link rel="stylesheet" href="./css/order/form-layout.css" />
     <link rel="stylesheet" href="./css/order/staff-update-order.css" />
+    <link rel="stylesheet" href="./css/loading.css" />
 
 </head>
 
@@ -45,10 +46,9 @@
         <select onchange="sort('sort-list')" id="sort-list">
             <option selected disabled>Sort</option>
             <option value="id">By ID</option>
-            <option value="code">By Code</option>
-            <option value="name">By Name</option>
-            <option value="discountType">By Discount Type</option>
-            <option value="discountAmount">By Discount Amount</option>
+            <option value="tableNumber">By Table Number</option>
+            <option value="amount">By Total Amount</option>
+            <option value="createdBy">By Created By</option>
             <option value="status">By Status</option>
         </select>
     </div>
@@ -113,9 +113,19 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
+    <div id="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <br />
+        <span>Loading...</span>
+    </div>
+
+    <script src="./js/loading.js"></script>
     <script src="./js/order/staff-update-order.js"></script>
     <script src="./js/order/search-function.js"></script>
-    <script src="./js/logoutRestaurantManager.js"></script>
+    <script src="./js/order/sort-function.js"></script>
+    <script src="./js/logoutStaff.js"></script>
     <script src="./js/alert-box.js"></script>
     <script src="./js/date-time.js"></script>
 </body>

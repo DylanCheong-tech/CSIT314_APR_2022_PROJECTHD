@@ -6,7 +6,7 @@ function searchOrder() {
         "dataType": "json"
     }).responseJSON;
 
-    if (!searched_item) {
+    if (searched_item.length == 0) {
         show_confrim_btn();
         alert_box_msg.textContent = "Order Not Found";
         alert_box.style.display = "inline-block";

@@ -5,16 +5,8 @@ var redirect_address = "staff-update-order.html";
 var total_amount = 0;
 var menu_item_json = {};
 
-var order_list = $.ajax({
-    async: false,
-    "url": "/getOrderList",
-    "type": "get",
-    "dataType": "json"
-}).responseJSON;
-
-console.log(order_list);
-
 var list_frame = document.getElementById("order-list");
+var order_list = {};
 
 function display_list(order_list) {
     for (index in order_list) {
@@ -69,6 +61,10 @@ function display_list(order_list) {
 
         var btnCol = document.createElement("td");
         var button = document.createElement("button");
+        if (order_list[index].status != "Created"){
+            button.disabled = true;
+            button.classList.add("disabled-btn");
+        }
         button.innerHTML = "Update";
         button.onclick = update_order.bind(event, order_list[index]);
         button.type = "button";
@@ -80,10 +76,17 @@ function display_list(order_list) {
     }
 }
 
-display_list(order_list);
-
-var total_amount = 0;
-var menu_item_json = {};
+$.ajax({
+    async: true,
+    "url": "/getOrderList",
+    "type": "get",
+    "dataType": "json",
+    "complete" :  (data) => {
+        order_list = data.responseJSON;
+        display_list(data.responseJSON);
+        hide_loader();
+    }
+});
 
 function decreaseQty(inputID, price, eleNode, menuItemID) {
     var qtyInput = document.getElementById(inputID);
@@ -124,14 +127,7 @@ function increaseQty(inputID, price, eleNode, menuItemID) {
     document.getElementById("menu-items").value = JSON.stringify(menu_item_json);
 }
 
-var menu_item_list = $.ajax({
-    async: false,
-    "url": "/getMenuItemList",
-    "type": "get",
-    "dataType": "json"
-}).responseJSON;
-
-console.log(menu_item_list)
+var menu_item_list = {};
 
 function display_menu_items(category, orderItems) {
     var frame = document.getElementById(category);
@@ -205,7 +201,17 @@ function update_order(order) {
     total_amount = order.totalAmount;
     update_total_amount();
 
-    display_menu_items("MainCourse", order.orderItems);
-    display_menu_items("SideDish", order.orderItems);
-    display_menu_items("Beverage", order.orderItems);
+    $.ajax({
+        async: true,
+        "url": "/getMenuItemList",
+        "type": "get",
+        "dataType": "json",
+        "complete": (data) => {
+            menu_item_list = data.responseJSON;
+            display_menu_items("MainCourse");
+            display_menu_items("SideDish");
+            display_menu_items("Beverage");
+            hide_loader();
+        }
+    });
 }

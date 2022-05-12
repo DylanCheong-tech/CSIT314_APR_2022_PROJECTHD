@@ -5,6 +5,10 @@ var redirect_address = "staff-create-order.html";
 var total_amount = 0;
 var menu_item_json = {};
 
+function update_total_amount() {
+    document.getElementById("total-amount").value = "$ " + total_amount.toFixed(2);
+}
+
 function decreaseQty(inputID, price, eleNode, menuItemID) {
     var qtyInput = document.getElementById(inputID);
     if (parseInt(qtyInput.value) > 0) {
@@ -44,14 +48,7 @@ function increaseQty(inputID, price, eleNode, menuItemID) {
     document.getElementById("menu-items").value = JSON.stringify(menu_item_json);
 }
 
-var menu_item_list = $.ajax({
-    async: false,
-    "url": "/getMenuItemList",
-    "type": "get",
-    "dataType": "json"
-}).responseJSON;
-
-console.log(menu_item_list)
+var menu_item_list = {};
 
 function display_menu_items(category) {
     var frame = document.getElementById(category);
@@ -102,10 +99,27 @@ function display_menu_items(category) {
     }
 }
 
-display_menu_items("MainCourse");
-display_menu_items("SideDish");
-display_menu_items("Beverage");
+$.ajax({
+    async: true,
+    "url": "/getMenuItemList",
+    "type": "get",
+    "dataType": "json",
+    "complete": (data) => {
+        menu_item_list = data.responseJSON;
+        display_menu_items("MainCourse");
+        display_menu_items("SideDish");
+        display_menu_items("Beverage");
+        hide_loader();
+    }
+});
 
-function update_total_amount() {
-    document.getElementById("total-amount").value = "$ " + total_amount.toFixed(2);
-}
+$.ajax({
+    async: true,
+    "url": "/getOrderList",
+    "type": "get",
+    "dataType": "json",
+    "complete" : (data) => {
+        var order_list = data.responseJSON;
+        document.getElementById("orderID").value = parseInt(order_list.length != 0 ? order_list[order_list.length - 1].orderID : 0) + 1;
+    }
+});

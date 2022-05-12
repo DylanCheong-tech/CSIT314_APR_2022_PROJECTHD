@@ -1,0 +1,56 @@
+body>*:not(#loader){
+    opacity: 20%;
+}
+
+div#loader {
+    width: 20%;
+    height: 8em;
+    padding: .5em;
+    display: inline-block;
+    border-radius: 12px;
+    opacity: 100%;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+
+div#loader span {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+div.dot {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 4em .5em 0 .5em;
+    border-radius: 50%;
+    background-color: #000000;
+    animation: bounce .5s alternate infinite;
+}
+
+div.dot:nth-child(2) {
+    animation-delay: .12s;
+}
+
+div.dot:nth-child(3) {
+    animation-delay: .24s;
+}
+
+@keyframes bounce {
+    from {
+        transform: scaleX(1.25);
+    }
+
+    to {
+        transform: translateY(-3em) scaleX(1);
+    }
+}
+
+@media (max-width: 480px){
+    div#loader{
+        width: 80%;
+        left: 10%;
+    }
+}

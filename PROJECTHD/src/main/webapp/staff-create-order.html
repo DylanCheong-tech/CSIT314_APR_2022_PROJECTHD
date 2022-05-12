@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/font-styles.css" />
     <link rel="stylesheet" href="./css/order/form-layout.css" />
     <link rel="stylesheet" href="./css/order/staff-create-order.css" />
+    <link rel="stylesheet" href="./css/loading.css" />
 
 </head>
 
@@ -74,8 +75,17 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
+    <div id="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <br />
+        <span>Loading...</span>
+    </div>
+
+    <script src="./js/loading.js"></script>
     <script src="./js/order/staff-create-order.js"></script>
-    <script src="./js/logoutRestaurantManager.js"></script>
+    <script src="./js/logoutStaff.js"></script>
     <script src="./js/alert-box.js"></script>
     <script src="./js/date-time.js"></script>
 </body>

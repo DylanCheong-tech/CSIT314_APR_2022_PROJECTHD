@@ -2,16 +2,8 @@ var alert_success_message = "Submit Order Successful";
 var alert_fail_message = "Submit Order Fail";
 var redirect_address = "staff-submit-order.html";
 
-var order_list = $.ajax({
-    async: false,
-    "url": "/getOrderList",
-    "type": "get",
-    "dataType": "json"
-}).responseJSON;
-
-console.log(order_list);
-
 var list_frame = document.getElementById("order-list");
+var order_list = {};
 
 function display_list(order_list) {
 
@@ -92,4 +84,14 @@ function display_list(order_list) {
     }
 }
 
-display_list(order_list);
+$.ajax({
+    async: true,
+    "url": "/getOrderList",
+    "type": "get",
+    "dataType": "json",
+    "complete" :  (data) => {
+        order_list = data.responseJSON;
+        display_list(data.responseJSON);
+        hide_loader();
+    }
+});
