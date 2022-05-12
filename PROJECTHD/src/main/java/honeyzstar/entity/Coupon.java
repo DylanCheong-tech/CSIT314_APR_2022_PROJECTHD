@@ -9,8 +9,8 @@ public class Coupon {
 	private static final String dbusername = "root";
 	private static final String dbpassword = "";
 	private int couponID;
-	private String name;
 	private String code;
+	private String name;
 	private DiscountType discountType;
 	private double discountAmount;
 	private String descriptions;
@@ -27,7 +27,7 @@ public class Coupon {
 		this.status = null;
 	}
 
-	public Coupon(int id, String code, String name, String descriptions, DiscountType discountType, double discountAmount, CouponStatus status) {
+	public Coupon(int id, String code, String name, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
 		this.couponID = id;
 		this.name = name;
 		this.code = code;
@@ -37,7 +37,7 @@ public class Coupon {
 		this.status = status;
 	}
 	
-	public Coupon(String name, String code, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
+	public Coupon(String code, String name, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
 		this.couponID = 0;
 		this.name = name;
 		this.code = code;
@@ -66,6 +66,16 @@ public class Coupon {
 		this.discountAmount = 0.0;
 		this.descriptions = "";
 		this.status = null;
+	}
+	
+	public Coupon(Coupon coupon) {
+		this.couponID = coupon.couponID;
+		this.name = coupon.name;
+		this.code = coupon.code;
+		this.discountType = coupon.discountType;
+		this.discountAmount = coupon.discountAmount;
+		this.descriptions = coupon.descriptions;
+		this.status = coupon.status;
 	}
 	
 	public boolean createCoupon() {

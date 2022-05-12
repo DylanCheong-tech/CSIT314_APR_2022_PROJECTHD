@@ -21,10 +21,11 @@ public class Order {
 		this.orderID = 0;
 		this.createdAt = "";
 		this.updatedAt = "";
-		this.createdBy = null;
 		this.status = null;
 		this.totalAmount = 0.0;
 		this.tableNum = 0;
+		this.createdBy = null;
+		
 	}
 
 	public Order(int orderID, String createdAt, String updatedAt, OrderStatus status, double totalAmount, int tableNum,
@@ -39,12 +40,25 @@ public class Order {
 	}
 
 	public Order(OrderStatus status, double totalAmount, int tableNum, Account createdBy) {
+		this.orderID = 0;
+		this.createdAt = "";
+		this.updatedAt = "";
 		this.status = status;
 		this.totalAmount = totalAmount;
 		this.tableNum = tableNum;
 		this.createdBy = createdBy;
 	}
 
+	public Order(Order order) {
+		this.orderID = order.orderID;
+		this.createdAt = order.createdAt;
+		this.updatedAt = order.updatedAt;
+		this.status = order.status;
+		this.totalAmount = order.totalAmount;
+		this.tableNum = order.tableNum;
+		this.createdBy = order.createdBy;
+	}
+	
 	public boolean createOrder() {
 		try (
 

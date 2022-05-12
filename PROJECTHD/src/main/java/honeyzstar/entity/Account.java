@@ -1,5 +1,6 @@
 package honeyzstar.entity;
 import java.sql.*;
+
 import java.util.ArrayList;
 
 public class Account {
@@ -21,6 +22,7 @@ public class Account {
 		this.name = "";
 		this.role = null;
 		this.dateJoined = "";
+		this.status = "";
 	}
 
 	public Account(int accountID, String username, String password, String name, Role role, String dateJoined, String status) {
@@ -30,7 +32,7 @@ public class Account {
 		this.name = name;
 		this.role = role;
 		this.dateJoined = dateJoined;
-		this.status = status;
+		this.status = "";
 	}
 
 	public Account(int accountID, String username, String password, String name, Role role, String dateJoined) {
@@ -40,6 +42,7 @@ public class Account {
 		this.name = name;
 		this.role = role;
 		this.dateJoined = dateJoined;
+		this.status = "";
 	}
 
 	public Account(String username, String password, String name, Role role, String dateJoined) {
@@ -48,7 +51,8 @@ public class Account {
 		this.password = password;
 		this.name = name;
 		this.role = role;
-		this.dateJoined = dateJoined;
+		this.dateJoined = "";
+		this.status = "";
 	}
 
 	public Account(int accountID, String username, String password, String name, Role role) {
@@ -58,6 +62,7 @@ public class Account {
 		this.name = name;
 		this.role = role;
 		this.dateJoined = "";
+		this.status = "";
 	}
 
 	public Account(String username, String password, String name, Role role) {
@@ -67,6 +72,7 @@ public class Account {
 		this.name = name;
 		this.role = role;
 		this.dateJoined = "";
+		this.status = "";
 	}
 
 	public Account(String username, String password, Role role) {
@@ -76,6 +82,7 @@ public class Account {
 		this.name = "";
 		this.role = role;
 		this.dateJoined = "";
+		this.status = "";
 	}
 
 	public Account(Account account) {
@@ -85,6 +92,7 @@ public class Account {
 		this.name = account.name;
 		this.role = account.role;
 		this.dateJoined = account.dateJoined;
+		this.status = account.status;
 	}
 
 	public boolean login() {
@@ -460,9 +468,9 @@ public class Account {
 	}
 
 	@Override 
-	public boolean equals (Object anotherAcc){
+	public boolean equals (Object obj){
 		if (anotherAcc instanceof Account){
-			Account compareAcc = (Account) anotherAcc;
+			Account compareAcc = (Account) obj;
 			if (this.accountID == compareAcc.accountID){
 				if (this.name.equals(compareAcc.name)){
 					if (this.username.equals(compareAcc.username)){

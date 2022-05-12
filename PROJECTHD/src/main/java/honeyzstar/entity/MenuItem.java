@@ -44,6 +44,7 @@ public class MenuItem {
 
 	public MenuItem(String name, MenuItemType type, double price, String descriptions, MenuItemStatus status,
 			String createdAt, String updatedAt, String imageDataURL) {
+		this.menuItemID = 0;
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -94,6 +95,7 @@ public class MenuItem {
 	}
 
 	public MenuItem(int id) {
+		this.menuItemID = 0;
 		this.menuItemID = id;
 		this.name = "";
 		this.type = null;
@@ -117,6 +119,18 @@ public class MenuItem {
 		this.imageDataURL = "";
 	}
 
+	public MenuItem(MenuItem item) {
+		this.menuItemID = item.menuItemID;
+		this.name = item.name;
+		this.type = item.type;
+		this.price = item.price;
+		this.descriptions = item.descriptions;
+		this.status = item.status;
+		this.createdAt = item.createdAt;
+		this.updatedAt = item.updatedAt;
+		this.imageDataURL = item.imageDataURL;
+	}
+	
 	public boolean createMenuItem() {
 		try (
 
