@@ -41,7 +41,7 @@ public class CouponTestDataGenerator {
 			int random = rn.nextInt(2);
 			String iString = String.valueOf(i + 1);
 			
-			Coupon coupon = new Coupon(name + iString, code + iString, discountTypeArray.get(random), xrounded, "this is a Coupon " + iString, statusArray.get(random));
+			Coupon coupon = new Coupon(code + iString, name + iString, "this is a Coupon " + iString, discountTypeArray.get(random), xrounded,  statusArray.get(random));
 			couponArray.add(coupon);
 			
 		}

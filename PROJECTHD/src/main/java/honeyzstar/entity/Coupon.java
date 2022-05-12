@@ -19,28 +19,28 @@ public class Coupon {
 	
 	public Coupon() {
 		this.couponID = 0;
-		this.name = "";
 		this.code = "";
+		this.name = "";
 		this.discountType = null;
 		this.discountAmount = 0.0;
 		this.descriptions = "";
 		this.status = null;
 	}
 
-	public Coupon(int id, String code, String name, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
+	public Coupon(int id, String code, String name, String descriptions, DiscountType discountType, double discountAmount,  CouponStatus status) {
 		this.couponID = id;
-		this.name = name;
 		this.code = code;
+		this.name = name;
 		this.discountType = discountType;
 		this.discountAmount = discountAmount;
 		this.descriptions = descriptions;
 		this.status = status;
 	}
 	
-	public Coupon(String code, String name, DiscountType discountType, double discountAmount, String descriptions, CouponStatus status) {
+	public Coupon(String code, String name, String descriptions, DiscountType discountType, double discountAmount, CouponStatus status) {
 		this.couponID = 0;
-		this.name = name;
 		this.code = code;
+		this.name = name;
 		this.discountType = discountType;
 		this.discountAmount = discountAmount;
 		this.descriptions = descriptions;
@@ -50,8 +50,8 @@ public class Coupon {
 
 	public Coupon(int id) {
 		this.couponID = id;
-		this.name = "";
 		this.code = "";
+		this.name = "";
 		this.discountType = null;
 		this.discountAmount = 0.0;
 		this.descriptions = "";

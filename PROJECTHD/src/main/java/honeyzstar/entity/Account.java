@@ -8,90 +8,90 @@ public class Account {
 	private static final String dbusername  = "root";
 	private static final String dbpassword = "";
 	private int accountID;
-	private String username;
-	private String password;
 	private String name;
 	private Role role;
 	private String dateJoined;
+	private String username;
+	private String password;
 	private String status;
 
 	public Account() {
 		this.accountID = 0;
-		this.username = "";
-		this.password = "";
 		this.name = "";
 		this.role = null;
 		this.dateJoined = "";
+		this.username = "";
+		this.password = "";
 		this.status = "";
 	}
 
-	public Account(int accountID, String username, String password, String name, Role role, String dateJoined, String status) {
+	public Account(int accountID, String name, Role role, String dateJoined, String username, String password, String status) {
 		this.accountID = accountID;
-		this.username = username;
-		this.password = password;
 		this.name = name;
 		this.role = role;
 		this.dateJoined = dateJoined;
+		this.username = username;
+		this.password = password;
 		this.status = "";
 	}
 
-	public Account(int accountID, String username, String password, String name, Role role, String dateJoined) {
+	public Account(int accountID, String name, Role role, String dateJoined, String username, String password) {
 		this.accountID = accountID;
-		this.username = username;
-		this.password = password;
 		this.name = name;
 		this.role = role;
 		this.dateJoined = dateJoined;
+		this.username = username;
+		this.password = password;
 		this.status = "";
 	}
 
-	public Account(String username, String password, String name, Role role, String dateJoined) {
+	public Account(String name, Role role, String dateJoined, String username, String password) {
 		this.accountID = 0;
-		this.username = username;
-		this.password = password;
 		this.name = name;
 		this.role = role;
 		this.dateJoined = "";
+		this.username = username;
+		this.password = password;
 		this.status = "";
 	}
 
-	public Account(int accountID, String username, String password, String name, Role role) {
+	public Account(int accountID, String name, Role role, String username, String password) {
 		this.accountID = accountID;
-		this.username = username;
-		this.password = password;
 		this.name = name;
 		this.role = role;
 		this.dateJoined = "";
+		this.username = username;
+		this.password = password;
 		this.status = "";
 	}
 
 	public Account(String username, String password, String name, Role role) {
 		this.accountID = 0;
-		this.username = username;
-		this.password = password;
 		this.name = name;
 		this.role = role;
 		this.dateJoined = "";
+		this.username = username;
+		this.password = password;
 		this.status = "";
 	}
 
 	public Account(String username, String password, Role role) {
 		this.accountID = 0;
-		this.username = username;
-		this.password = password;
 		this.name = "";
 		this.role = role;
 		this.dateJoined = "";
+		this.username = username;
+		this.password = password;
 		this.status = "";
 	}
 
 	public Account(Account account) {
 		this.accountID = account.accountID;
-		this.username = account.username;
-		this.password = account.password;
 		this.name = account.name;
 		this.role = account.role;
 		this.dateJoined = account.dateJoined;
+		this.username = account.username;
+		this.password = account.password;
 		this.status = account.status;
 	}
 
@@ -276,7 +276,7 @@ public class Account {
 				String status = result.getString("Status");
 				Role role = Role.getRole(result.getInt(roleID));
 						
-				returnAcc = new Account(id, username, password, name, role, date, status);
+				returnAcc = new Account(id, name, role, date, username, password, status);
 						/*
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
 				stmt2.setInt(1, roleID);
@@ -328,7 +328,7 @@ public class Account {
 				
 				Role role = Role.getRole(roleID);
 						
-				returnAcc = new Account(id, username, password, name, role, date, status);
+				returnAcc = new Account(id, name, role, date, username, password, status);
 				
 				/*
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
@@ -379,7 +379,7 @@ public class Account {
 
 				Role role = Role.getRole(result.getInt(roleID));
 						
-				returnArray.add(new Account(id, username, password, name, role, date, status));
+				returnArray.add(new Account(id, name, role, date, username, password, status));
 				
 				/*
 				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
@@ -469,7 +469,7 @@ public class Account {
 
 	@Override 
 	public boolean equals (Object obj){
-		if (anotherAcc instanceof Account){
+		if (obj instanceof Account){
 			Account compareAcc = (Account) obj;
 			if (this.accountID == compareAcc.accountID){
 				if (this.name.equals(compareAcc.name)){

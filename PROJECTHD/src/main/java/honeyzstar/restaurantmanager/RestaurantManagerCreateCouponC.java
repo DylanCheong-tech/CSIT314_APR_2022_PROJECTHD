@@ -19,7 +19,7 @@ public class RestaurantManagerCreateCouponC extends HttpServlet {
         String status = request.getParameter("status");
         String desc = request.getParameter("descriptions");
 
-        Coupon newCoupon = new Coupon(name, code, DiscountType.valueOf(discountType), discountAmount, desc, CouponStatus.valueOf(status));
+        Coupon newCoupon = new Coupon(code, name, desc, DiscountType.valueOf(discountType), discountAmount, CouponStatus.valueOf(status));
         
         if(newCoupon.createCoupon()){
             response.sendRedirect("/create-coupon.html?status=success");
