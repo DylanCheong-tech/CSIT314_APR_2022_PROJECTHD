@@ -26,9 +26,9 @@ public class StaffUpdateOrderC extends HttpServlet {
         Order updateOrder = new Order(orderID, tableNum, menuItems);
 
         if (updateOrder.updateOrder()) {
-            response.sendRedirect("/staff-update-order.html?status=success");
+            response.sendRedirect("/staff/staff-update-order.html?status=success");
         }else {
-            response.sendRedirect("/staff-update-order.html?status=fail");
+            response.sendRedirect("/staff/staff-update-order.html?status=fail");
         }
     }
 }

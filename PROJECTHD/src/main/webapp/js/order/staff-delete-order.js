@@ -1,6 +1,6 @@
 var alert_success_message = "Delete Order Successful";
 var alert_fail_message = "Delete Order Fail";
-var redirect_address = "staff-delete-order.html";
+var redirect_address = "/staff/staff-delete-order.html";
 
 var list_frame = document.getElementById("order-list");
 var order_list = {};

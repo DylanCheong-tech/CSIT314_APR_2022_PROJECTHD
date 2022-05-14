@@ -1,6 +1,6 @@
 var alert_success_message = "Create Coupon Successful";
 var alert_fail_message = "Create Coupon Fail";
-var redirect_address = "create-coupon.html";
+var redirect_address = "/restaurantmanager/create-coupon.html";
 
 var coupon_list = $.ajax({
     async: false,

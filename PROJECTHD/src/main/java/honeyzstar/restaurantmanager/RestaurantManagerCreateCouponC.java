@@ -22,10 +22,10 @@ public class RestaurantManagerCreateCouponC extends HttpServlet {
         Coupon newCoupon = new Coupon(code, name, desc, DiscountType.valueOf(discountType), discountAmount, CouponStatus.valueOf(status));
         
         if(newCoupon.createCoupon()){
-            response.sendRedirect("/create-coupon.html?status=success");
+            response.sendRedirect("/restaurantmanager/create-coupon.html?status=success");
         }
         else{
-            response.sendRedirect("/create-coupon.html?status=fail");
+            response.sendRedirect("/restaurantmanager/create-coupon.html?status=fail");
         }
     }
 }

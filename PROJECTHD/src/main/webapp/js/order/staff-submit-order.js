@@ -1,6 +1,6 @@
 var alert_success_message = "Submit Order Successful";
 var alert_fail_message = "Submit Order Fail";
-var redirect_address = "staff-submit-order.html";
+var redirect_address = "/staff/staff-submit-order.html";
 
 var list_frame = document.getElementById("order-list");
 var order_list = {};

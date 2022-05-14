@@ -23,10 +23,10 @@ public class RestaurantManagerUpdateMenuItemC extends HttpServlet{
         MenuItem newMenuItem = new MenuItem(menuItemID, name, MenuItemType.valueOf(type), price, desc, MenuItemStatus.valueOf(status) , image);
         
         if(newMenuItem.updateMenuItem()){
-            response.sendRedirect("/update-menu-item.html?status=success");
+            response.sendRedirect("/restaurantmanager/update-menu-item.html?status=success");
         }
         else{
-            response.sendRedirect("/update-menu-item.html?status=fail");
+            response.sendRedirect("/restaurantmanager/update-menu-item.html?status=fail");
         }
     }
 }

@@ -1,6 +1,6 @@
 var alert_success_message = "Create Menu Item Successful";
 var alert_fail_message = "Create Menu Item Fail";
-var redirect_address = "create-menu-item.html";
+var redirect_address = "/restaurantmanager/create-menu-item.html";
 
 var img_reader = new FileReader();
 var img_data_url;

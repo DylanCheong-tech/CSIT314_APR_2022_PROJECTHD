@@ -16,9 +16,9 @@ public class StaffSubmitOrderC extends HttpServlet {
         Order order = new Order(orderID);
 
         if (order.submitOrder()) {
-            response.sendRedirect("/staff-submit-order.html?status=success");
+            response.sendRedirect("/staff/staff-submit-order.html?status=success");
         }else {
-            response.sendRedirect("/staff-submit-order.html?status=fail");
+            response.sendRedirect("/staff/staff-submit-order.html?status=fail");
         }
     }
 }

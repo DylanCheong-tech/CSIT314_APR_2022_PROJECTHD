@@ -5,18 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Account</title>
+    <title>View Account</title>
 
     <!--Google jQuery CDN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./css/alert-box.css" />
-    <link rel="stylesheet" href="./css/page-layout-1.css" />
-    <link rel="stylesheet" href="./css/form-layout.css" />
-    <link rel="stylesheet" href="./css/table-layout.css" />
-    <link rel="stylesheet" href="./css/account/update-account.css" />
-    <link rel="stylesheet" href="./css/font-styles.css" />
-
+    <link rel="stylesheet" href="/css/alert-box.css" />
+    <link rel="stylesheet" href="/css/page-layout-1.css" />
+    <link rel="stylesheet" href="/css/form-layout.css" />
+    <link rel="stylesheet" href="/css/table-layout.css" />
+    <link rel="stylesheet" href="/css/account/view-account.css" />
+    <link rel="stylesheet" href="/css/font-styles.css" />
 </head>
 
 <body>
@@ -29,7 +28,7 @@
     </div>
 
     <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
-        Update Account
+        View Account
     </div>
 
     <table id="table" align="center">
@@ -49,28 +48,26 @@
     </table>
 
     <div id="form" class="mode-border-color-1">
-        <p class="mode-font-color mode-bg-color-2 mode-border-color-3">Update Account Form</p>
-        <form action="/updateAccount" method="POST">
+        <p class="mode-font-color mode-bg-color-2 mode-border-color-3">View Account Form</p>
+        <form>
             <label class="text-item mode-font-color">ID</label>
-            <input class="mode-border-color-1" id="accID" name="accountID" type="text" readonly/>
-            <br />
-            
-            <label class="text-item mode-font-color">Name</label>
-            <input class="mode-border-color-1" id="name" name="name" type="text" required pattern="[A-Za-z0-9\s]*" title="No special character" />
+            <input class="mode-border-color-1" id="accID" type="text" disabled />
             <br />
 
             <label class="text-item mode-font-color">Role ID</label>
-            <select class="mode-border-color-1" id="role-list" name="roleID" required>
-                <option selected disabled value=""></option>
-            </select>
+            <input class="mode-border-color-1" id="role" type="text" disabled />
+            <br />
+
+            <label class="text-item mode-font-color">Name</label>
+            <input class="mode-border-color-1" id="name" type="text" disabled />
             <br />
 
             <label class="text-item mode-font-color">Username</label>
-            <input class="mode-border-color-1" id="username" name="username" type="text" required pattern="[a-z0-9]*" title="No special character" />
+            <input class="mode-border-color-1" id="username" type="text" disabled />
             <br />
 
             <label class="text-item mode-font-color">Password</label>
-            <input class="mode-border-color-1" id="password" name="password" type="text" required />
+            <input class="mode-border-color-1" id="password" type="text" disabled />
             <br />
 
             <label class="text-item mode-font-color">Date Joined</label>
@@ -82,7 +79,7 @@
             <br />
             <br />
 
-            <button type="submit">Update</button>
+            <button type="button" onclick="backToList()">Back</button>
         </form>
     </div>
 
@@ -94,10 +91,10 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
-    <script src="./js/account/update-account.js"></script>
-    <script src="./js/logoutUserAdmin.js"></script>
-    <script src="./js/date-time.js"></script>
-    <script src="./js/page-theme.js"></script>
+    <script src="/js/account/view-account.js"></script>
+    <script src="/js/logoutUserAdmin.js"></script>
+    <script src="/js/date-time.js"></script>
+    <script src="/js/page-theme.js"></script>
 </body>
 
 </html>

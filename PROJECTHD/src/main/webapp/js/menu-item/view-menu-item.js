@@ -1,4 +1,4 @@
-var redirect_address = "view-menu-item.html";
+var redirect_address = "/restaurantmanager/view-menu-item.html";
 
 var menu_item_list = $.ajax({
     async: false,

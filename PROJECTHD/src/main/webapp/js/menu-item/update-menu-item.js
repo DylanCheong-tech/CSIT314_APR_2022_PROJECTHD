@@ -1,6 +1,6 @@
 var alert_success_message = "Update Menu Item Successful";
 var alert_fail_message = "Update Menu Item Fail";
-var redirect_address = "update-menu-item.html";
+var redirect_address = "/restaurantmanager/update-menu-item.html";
 
 var img_reader = new FileReader();
 var img_data_url;

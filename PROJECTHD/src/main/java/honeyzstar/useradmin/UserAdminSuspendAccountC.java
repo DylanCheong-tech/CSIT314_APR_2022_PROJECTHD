@@ -12,9 +12,9 @@ public class UserAdminSuspendAccountC extends HttpServlet {
         int accountID = Integer.parseInt(request.getParameter("accountID"));
 
         if (Account.suspendAccount(accountID)){
-            response.sendRedirect("/suspend-account.html?status=success");
+            response.sendRedirect("/useradmin/suspend-account.html?status=success");
         }else {
-            response.sendRedirect("/suspend-account.html?status=fail");
+            response.sendRedirect("/useradmin/suspend-account.html?status=fail");
         }
     }
 }
