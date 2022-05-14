@@ -18,7 +18,7 @@ function display_list(order_list) {
         var menuItemInnerText = "";
         var qtyInnerText = "";
         var priceInnerText = "";
-        for (menuItemID in order_list[index].orderItems) {
+        for (menuItemID in order_list[index].menuItems) {
             var menu_item_json = $.ajax({
                 async: false,
                 "url": "/getMenuItem?menuItemID=" + menuItemID,
@@ -27,7 +27,7 @@ function display_list(order_list) {
             }).responseJSON;
 
             menuItemInnerText += menu_item_json.name + "<br />";
-            qtyInnerText += order_list[index].orderItems[menuItemID] + "<br />";
+            qtyInnerText += order_list[index].menuItems[menuItemID] + "<br />";
             priceInnerText += "$ " + menu_item_json.price + "<br />";
         }
         var column3 = document.createElement("td");
@@ -101,7 +101,7 @@ function view_order(orderID) {
     document.getElementById("total-amount").value = "$ " + order_json.totalAmount;
 
     var menu_items = [];
-    for (menuItemID in order_json.orderItems) {
+    for (menuItemID in order_json.menuItems) {
         var menu_item_json = $.ajax({
             async: false,
             "url": "/getMenuItem?menuItemID=" + menuItemID,
@@ -118,6 +118,12 @@ function view_order(orderID) {
 function display_menu_items(menu_item_list, order) {
     var frame = document.getElementById("menu-items");
 
+    var firstChild = frame.firstElementChild;
+    while (firstChild) {
+        firstChild.remove();
+        firstChild = frame.firstElementChild;
+    }
+
     for (index in menu_item_list) {
         var span = document.createElement("span");
         span.classList.add("menu-item");
@@ -132,7 +138,7 @@ function display_menu_items(menu_item_list, order) {
         span2.innerText = "$ " + menu_item_list[index].price.toFixed(2);
 
         var span3 = document.createElement("span");
-        span3.innerText = "Qty : " + order.orderItems[menu_item_list[index].menuItemID];
+        span3.innerText = "Qty : " + order.menuItems[menu_item_list[index].menuItemID];
 
         span.appendChild(img);
         span.appendChild(span1);

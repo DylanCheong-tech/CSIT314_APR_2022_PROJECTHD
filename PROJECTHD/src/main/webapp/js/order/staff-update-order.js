@@ -23,7 +23,7 @@ function display_list(order_list) {
         var menuItemInnerText = "";
         var qtyInnerText = "";
         var priceInnerText = "";
-        for (menuItemID in order_list[index].orderItems) {
+        for (menuItemID in order_list[index].menuItems) {
             var menu_item_json = $.ajax({
                 async: false,
                 "url": "/getMenuItem?menuItemID=" + menuItemID,
@@ -32,7 +32,7 @@ function display_list(order_list) {
             }).responseJSON;
 
             menuItemInnerText += menu_item_json.name + "<br />";
-            qtyInnerText += order_list[index].orderItems[menuItemID] + "<br />";
+            qtyInnerText += order_list[index].menuItems[menuItemID] + "<br />";
             priceInnerText += "$ " + menu_item_json.price + "<br />";
         }
         var column3 = document.createElement("td");
@@ -129,7 +129,7 @@ function increaseQty(inputID, price, eleNode, menuItemID) {
 
 var menu_item_list = {};
 
-function display_menu_items(category, orderItems) {
+function display_menu_items(category, menuItems) {
     var frame = document.getElementById(category);
 
     for (index in menu_item_list) {
@@ -156,9 +156,9 @@ function display_menu_items(category, orderItems) {
             var qtyInput = document.createElement("input");
             qtyInput.id = category + index;
             qtyInput.type = "text";
-            console.log(orderItems)
-            if (orderItems[menu_item_list[index].menuItemID]){
-                qtyInput.value = orderItems[menu_item_list[index].menuItemID];
+            console.log(menuItems)
+            if (menuItems[menu_item_list[index].menuItemID]){
+                qtyInput.value = menuItems[menu_item_list[index].menuItemID];
                 span.classList.add("highlight-item");
             }else {
                 qtyInput.value = "0";
@@ -198,8 +198,8 @@ function update_order(order) {
 
     document.getElementById("order-id").value = order.orderID;
     document.getElementById("table-number").value = order.tableNum;
-    menu_item_json = order.orderItems;
-    document.getElementById("menu-items").value = JSON.stringify(order.orderItems);
+    menu_item_json = order.menuItems;
+    document.getElementById("menu-items").value = JSON.stringify(order.menuItems);
     total_amount = order.totalAmount;
     update_total_amount();
 
@@ -210,9 +210,9 @@ function update_order(order) {
         "dataType": "json",
         "complete": (data) => {
             menu_item_list = data.responseJSON;
-            display_menu_items("MainCourse", order.orderItems);
-            display_menu_items("SideDish", order.orderItems);
-            display_menu_items("Beverage", order.orderItems);
+            display_menu_items("MainCourse", order.menuItems);
+            display_menu_items("SideDish", order.menuItems);
+            display_menu_items("Beverage", order.menuItems);
             hide_loader();
         }
     });

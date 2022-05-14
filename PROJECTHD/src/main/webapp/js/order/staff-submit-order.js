@@ -22,7 +22,7 @@ function display_list(order_list) {
             var menuItemInnerText = "";
             var qtyInnerText = "";
             var priceInnerText = "";
-            for (menuItemID in order_list[index].orderItems) {
+            for (menuItemID in order_list[index].menuItems) {
                 var menu_item_json = $.ajax({
                     async: false,
                     "url": "/getMenuItem?menuItemID=" + menuItemID,
@@ -31,7 +31,7 @@ function display_list(order_list) {
                 }).responseJSON;
 
                 menuItemInnerText += menu_item_json.name + "<br />";
-                qtyInnerText += order_list[index].orderItems[menuItemID] + "<br />";
+                qtyInnerText += order_list[index].menuItems[menuItemID] + "<br />";
                 priceInnerText += "$ " + menu_item_json.price + "<br />";
             }
             var column3 = document.createElement("td");
