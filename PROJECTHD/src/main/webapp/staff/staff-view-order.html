@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Order</title>
+    <title>View Order</title>
 
     <!--Google jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./css/alert-box-2.css" />
-    <link rel="stylesheet" href="./css/page-layout-2.css" />
-    <link rel="stylesheet" href="./css/order/table-layout.css" />
-    <link rel="stylesheet" href="./css/search-filter.css" />
-    <link rel="stylesheet" href="./css/font-styles.css" />
-    <link rel="stylesheet" href="./css/order/form-layout.css" />
-    <link rel="stylesheet" href="./css/order/staff-update-order.css" />
-    <link rel="stylesheet" href="./css/loading.css" />
+    <link rel="stylesheet" href="/css/alert-box-2.css" />
+    <link rel="stylesheet" href="/css/page-layout-2.css" />
+    <link rel="stylesheet" href="/css/order/table-layout.css" />
+    <link rel="stylesheet" href="/css/search-filter.css" />
+    <link rel="stylesheet" href="/css/font-styles.css" />
+    <link rel="stylesheet" href="/css/order/form-layout.css" />
+    <link rel="stylesheet" href="/css/order/staff-view-order.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
 
 </head>
 
@@ -25,7 +25,7 @@
     <div id="header">
         <span id="header-date-time" class="mode-font-color"></span>
         <span id="logo">
-            <img id="header-logo" src="./img/logo.png" alt="logo_image" />
+            <img id="header-logo" src="/img/logo.png" alt="logo_image" />
         </span>
         <span id="buttons">
             <button id="portal-btn" type="button" onclick="window.location.href = '/staff-portal.html'">Portal Home</button>
@@ -34,7 +34,7 @@
     </div>
 
     <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
-        Update Order
+        View Order
     </div>
 
     <div id="search-frame" class="mode-border-color-1">
@@ -73,35 +73,36 @@
     </table>
     <div id="outline"></div>
 
-    <div id="update-form">
-        <form action="/staffUpdateOrder" method="POST">
+    <div id="view-form">
+        <form action="/staffCreateOrder" method="POST">
             <label>ID</label> 
-            <input id="order-id" type="text" name="orderID" readonly />
+            <input id="order-id" type="text" disabled />
             <br />
 
-            <label>Table Number</label> <input id="table-number" type="text" name="tableNum" pattern="[0-9]*" required />
+            <label>Table Number</label> <input id="table-number" type="text" disabled />
             <br />
             <label id="menu-item-label">Menu Item</label>
             <span id="menu-items-frame">
-                <p class="category">Main Course</p>
-                <br />
-                <div class="menu-items-container" id="MainCourse"></div>
-
-                <p class="category">Side Dish</p>
-                <br />
-                <div class="menu-items-container" id="SideDish"></div>
-
-                <p class="category">Beverage</p>
-                <br />
-                <div class="menu-items-container" id="Beverage"></div>
+                <div class="menu-items-container" id="menu-items"></div>
             </span>
 
+            <label>Created By</label> <input id="created-by" type="text" disabled />
+            <br />
+
+            <label>Created At</label> <input class="date-input" id="created-at" type="text" disabled />
+            <br />
+
+            <label>Updated At</label> <input class="date-input" id="updated-at" type="text" disabled />
+            <br />
+
+            <label>Status</label> <input id="status" type="text" disabled />
+            <br />
+
             <label>Total Amount</label>
-            <input id="total-amount" name="totalAmount" type="text" value="$ 0.00" disabled />
+            <input id="total-amount" type="text" disabled />
 
             <br />
-            <input id="menu-items" type="text" name="menuItems" style="display: none;" />
-            <span id="submit-btn-frame"><button type="submit">Update</button></span>
+            <span id="submit-btn-frame"><button type="button" onclick="back_to_list()">Back</button></span>
         </form>
     </div>
 
@@ -121,13 +122,13 @@
         <span>Loading...</span>
     </div>
 
-    <script src="./js/loading.js"></script>
-    <script src="./js/order/staff-update-order.js"></script>
-    <script src="./js/order/search-function.js"></script>
-    <script src="./js/order/sort-function.js"></script>
-    <script src="./js/logoutStaff.js"></script>
-    <script src="./js/alert-box.js"></script>
-    <script src="./js/date-time.js"></script>
+    <script src="/js/loading.js"></script>
+    <script src="/js/order/staff-view-order.js"></script>
+    <script src="/js/order/search-function.js"></script>
+    <script src="/js/order/sort-function.js"></script>
+    <script src="/js/logoutStaff.js"></script>
+    <script src="/js/alert-box.js"></script>
+    <script src="/js/date-time.js"></script>
 </body>
 
 </html>

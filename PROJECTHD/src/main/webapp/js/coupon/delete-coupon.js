@@ -1,6 +1,6 @@
 var alert_success_message = "Delete Coupon Successful";
 var alert_fail_message = "Delete Coupon Fail";
-var redirect_address = "delete-coupon.html";
+var redirect_address = "/restaurantmanager/delete-coupon.html";
 
 var coupon_list = $.ajax({
     async: false,

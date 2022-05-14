@@ -1,6 +1,6 @@
 var alert_success_message = "Create Order Successful";
 var alert_fail_message = "Create Order Fail";
-var redirect_address = "staff-create-order.html";
+var redirect_address = "/staff/staff-create-order.html";
 
 var total_amount = 0;
 var menu_item_json = {};

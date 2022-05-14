@@ -22,10 +22,10 @@ public class RestaurantManagerCreateMenuItemC extends HttpServlet {
         MenuItem newMenuItem = new MenuItem(name, MenuItemType.valueOf(type), price, desc, MenuItemStatus.valueOf(status) , image);
         
         if(newMenuItem.createMenuItem()){
-            response.sendRedirect("/create-menu-item.html?status=success");
+            response.sendRedirect("/restaurantmanager/create-menu-item.html?status=success");
         }
         else{
-            response.sendRedirect("/create-menu-item.html?status=fail");
+            response.sendRedirect("/restaurantmanager/create-menu-item.html?status=fail");
         }
     }
 }

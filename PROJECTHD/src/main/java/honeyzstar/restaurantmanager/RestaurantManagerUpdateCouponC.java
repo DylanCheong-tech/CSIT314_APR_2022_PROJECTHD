@@ -23,10 +23,10 @@ public class RestaurantManagerUpdateCouponC extends HttpServlet {
         Coupon updateCoupon = new Coupon(couponID, code, name, desc,  DiscountType.valueOf(discountType), discountAmount, CouponStatus.valueOf(status));
         
         if(updateCoupon.updateCoupon()){
-            response.sendRedirect("/update-coupon.html?status=success");
+            response.sendRedirect("/restaurantmanager/update-coupon.html?status=success");
         }
         else{
-            response.sendRedirect("/update-coupon.html?status=fail");
+            response.sendRedirect("/restaurantmanager/update-coupon.html?status=fail");
         }
     }
 }

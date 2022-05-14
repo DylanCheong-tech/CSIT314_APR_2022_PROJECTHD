@@ -1,6 +1,6 @@
 var alert_success_message = "Delete Menu Item Successful";
 var alert_fail_message = "Delete Menu Item Fail";
-var redirect_address = "delete-menu-item.html";
+var redirect_address = "/restaurantmanager/delete-menu-item.html";
 
 var menu_item_list = $.ajax({
     async: false,

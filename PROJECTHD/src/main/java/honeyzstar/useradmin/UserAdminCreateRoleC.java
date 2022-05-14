@@ -15,10 +15,10 @@ public class UserAdminCreateRoleC extends HttpServlet {
         Role newRole = new Role(name, descriptions);
         
         if(newRole.createRole()){
-            response.sendRedirect("/create-role.html?status=success");
+            response.sendRedirect("/useradmin/create-role.html?status=success");
         }
         else{
-            response.sendRedirect("/create-role.html?status=fail");
+            response.sendRedirect("/useradmin/create-role.html?status=fail");
         }
     }
 }

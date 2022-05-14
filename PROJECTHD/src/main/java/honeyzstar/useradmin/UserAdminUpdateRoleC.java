@@ -16,10 +16,10 @@ public class UserAdminUpdateRoleC extends HttpServlet {
         Role updateRole = new Role(roleID, name, descriptions);
 
         if(updateRole.updateRole()){
-            response.sendRedirect("/update-role.html?status=success");
+            response.sendRedirect("/useradmin/update-role.html?status=success");
         }
         else{
-            response.sendRedirect("/update-role.html?status=fail");
+            response.sendRedirect("/useradmin/update-role.html?status=fail");
         }
     }
 }

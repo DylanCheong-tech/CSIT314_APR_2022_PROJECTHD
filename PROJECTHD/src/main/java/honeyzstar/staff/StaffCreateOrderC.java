@@ -27,9 +27,9 @@ public class StaffCreateOrderC extends HttpServlet {
         Order newOrder = new Order(tableNum, staff, menuItems);
 
         if (newOrder.createOrder()) {
-            response.sendRedirect("/staff-create-order.html?status=success");
+            response.sendRedirect("/staff/staff-create-order.html?status=success");
         }else {
-            response.sendRedirect("/staff-create-order.html?status=fail");
+            response.sendRedirect("/staff/staff-create-order.html?status=fail");
         }
     }
 }

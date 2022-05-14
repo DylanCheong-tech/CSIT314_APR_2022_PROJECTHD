@@ -1,6 +1,6 @@
 var alert_success_message = "Update Coupon Successful";
 var alert_fail_message = "Update Coupon Fail";
-var redirect_address = "update-coupon.html";
+var redirect_address = "/restaurantmanager/update-coupon.html";
 
 var coupon_list = $.ajax({
     async: false,

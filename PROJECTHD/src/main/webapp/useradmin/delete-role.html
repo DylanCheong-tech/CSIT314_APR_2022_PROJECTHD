@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suspend Account</title>
+    <title>Delete Role</title>
 
     <!--Google jQuery CDN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./css/alert-box.css" />
-    <link rel="stylesheet" href="./css/page-layout-1.css" />
-    <link rel="stylesheet" href="./css/account/suspend-account.css" />
-    <link rel="stylesheet" href="./css/table-layout.css" />
-    <link rel="stylesheet" href="./css/font-styles.css" />
-
+    <link rel="stylesheet" href="/css/alert-box.css" />
+    <link rel="stylesheet" href="/css/page-layout-1.css" />
+    <link rel="stylesheet" href="/css/form-layout.css" />
+    <link rel="stylesheet" href="/css/table-layout.css" />
+    <link rel="stylesheet" href="/css/role/delete-role.css" />
+    <link rel="stylesheet" href="/css/font-styles.css" />
 </head>
 
 <body>
@@ -28,24 +28,18 @@
     </div>
 
     <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
-        Suspend Account
+        Delete Role
     </div>
 
     <table id="table" align="center">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Role ID</th>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Date Joined</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Descriptions</th>
+            <th>Action</th>
         </thead>
 
-        <tbody id="acc-list">
+        <tbody id="role-list">
         </tbody>
     </table>
 
@@ -57,10 +51,10 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
-    <script src="./js/account/suspend-account.js"></script>
-    <script src="./js/logoutUserAdmin.js"></script>
-    <script src="./js/date-time.js"></script>
-    <script src="./js/page-theme.js"></script>
+    <script src="/js/role/delete-role.js"></script>
+    <script src="/js/logoutUserAdmin.js"></script>
+    <script src="/js/date-time.js"></script>
+    <script src="/js/page-theme.js"></script>
 </body>
 
 </html>

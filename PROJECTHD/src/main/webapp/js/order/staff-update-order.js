@@ -1,6 +1,6 @@
 var alert_success_message = "Update Order Successful";
 var alert_fail_message = "Update Order Fail";
-var redirect_address = "staff-update-order.html";
+var redirect_address = "/staff/staff-update-order.html";
 
 var total_amount = 0;
 var menu_item_json = {};

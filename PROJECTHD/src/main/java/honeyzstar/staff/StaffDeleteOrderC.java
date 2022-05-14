@@ -16,9 +16,9 @@ public class StaffDeleteOrderC extends HttpServlet {
         Order order = new Order(orderID);
 
         if (order.deleteOrder()) {
-            response.sendRedirect("/staff-delete-order.html?status=success");
+            response.sendRedirect("/staff/staff-delete-order.html?status=success");
         }else {
-            response.sendRedirect("/staff-delete-order.html?status=fail");
+            response.sendRedirect("/staff/staff-delete-order.html?status=fail");
         }
     }
 }

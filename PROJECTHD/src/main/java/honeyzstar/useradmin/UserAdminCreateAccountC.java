@@ -19,10 +19,10 @@ public class UserAdminCreateAccountC extends HttpServlet {
         Account newAccount = new Account(username, password, name, new Role(roleID));
         
         if(newAccount.createAccount()){
-            response.sendRedirect("/create-account.html?status=success");
+            response.sendRedirect("/useradmin/create-account.html?status=success");
         }
         else{
-            response.sendRedirect("/create-account.html?status=fail");
+            response.sendRedirect("/useradmin/create-account.html?status=fail");
         }
     }
 }

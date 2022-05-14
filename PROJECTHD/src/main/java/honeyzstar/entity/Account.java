@@ -32,7 +32,7 @@ public class Account {
 		this.dateJoined = dateJoined;
 		this.username = username;
 		this.password = password;
-		this.status = "";
+		this.status = status;
 	}
 
 	public Account(int accountID, String name, Role role, String dateJoined, String username, String password) {

@@ -25,7 +25,7 @@ else if (status == "fail") {
 
 function alert_confirm() {
     alert_box.style.display = "none";
-    window.location.href = "/create-account.html";
+    window.location.href = "/useradmin/create-account.html";
 }
 
 var role_list = $.ajax({
@@ -49,5 +49,6 @@ var account_list = $.ajax({
     "type": "get",
     "dataType": "json"
 }).responseJSON;
+console.log(account_list);
 
 document.getElementById("id-input").value = parseInt(account_list.length != 0 ? account_list[account_list.length - 1].accountID : 0) + 1;

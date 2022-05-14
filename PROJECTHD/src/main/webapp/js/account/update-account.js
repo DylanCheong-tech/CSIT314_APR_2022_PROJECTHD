@@ -23,7 +23,7 @@ else if (status == "fail") {
 
 function alert_confirm() {
     alert_box.style.display = "none";
-    window.location.href = "/update-account.html";
+    window.location.href = "/useradmin/update-account.html";
 }
 
 var account_list = $.ajax({

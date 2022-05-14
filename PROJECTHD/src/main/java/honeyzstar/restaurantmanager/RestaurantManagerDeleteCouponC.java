@@ -14,10 +14,10 @@ public class RestaurantManagerDeleteCouponC extends HttpServlet {
         Coupon coupon = new Coupon(couponID);
         
         if(coupon.deleteCoupon()){
-            response.sendRedirect("/delete-coupon.html?status=success");
+            response.sendRedirect("/restaurantmanager/delete-coupon.html?status=success");
         }
         else{
-            response.sendRedirect("/delete-coupon.html?status=fail");
+            response.sendRedirect("/restaurantmanager/delete-coupon.html?status=fail");
         }
     }
 }

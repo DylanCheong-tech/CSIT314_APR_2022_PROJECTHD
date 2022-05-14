@@ -10,16 +10,16 @@
     <!--Google jQuery CDN-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="./css/user-admin-portal.css" />
-    <link rel="stylesheet" href="./css/alert-box.css" />
-    <link rel="stylesheet" href="./css/font-styles.css" />
+    <link rel="stylesheet" href="/css/user-admin-portal.css" />
+    <link rel="stylesheet" href="/css/alert-box.css" />
+    <link rel="stylesheet" href="/css/font-styles.css" />
 </head>
 
 <body>
     <div id="header">
         <span id="header-date-time" class="mode-font-color"></span>
         <span id="logo">
-            <img id="header-logo" src="./img/logo.png" alt="logo_image" />
+            <img id="header-logo" src="/img/logo.png" alt="logo_image" />
         </span>
         <span id="buttons">
             <button id="logout-btn" type="button" onclick="logout()">Logout</button>
@@ -31,52 +31,52 @@
     </div>
 
     <div id="operation-items" align="center">
-        <span class="item mode-border-color-1" onclick="redirect_page('/create-account.html')">
-            <img class="action-logo" src="./img/useradmin/Create_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/create-account.html')">
+            <img class="action-logo" src="/img/useradmin/Create_Light.png" alt="action_logo" />
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Create Account</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/suspend-account.html')">
-            <img class="action-logo" src="./img/useradmin/Delete_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/suspend-account.html')">
+            <img class="action-logo" src="/img/useradmin/Delete_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Suspend Account</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/update-account.html')">
-            <img class="action-logo" src="./img/useradmin/Update_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/update-account.html')">
+            <img class="action-logo" src="/img/useradmin/Update_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Update Account</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/search-account.html')">
-            <img class="action-logo" src="./img/useradmin/Search_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/search-account.html')">
+            <img class="action-logo" src="/img/useradmin/Search_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Search Account</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/view-account.html')">
-            <img class="action-logo" src="./img/useradmin/View_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/view-account.html')">
+            <img class="action-logo" src="/img/useradmin/View_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">View Account</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/create-role.html')">
-            <img class="action-logo" src="./img/useradmin/Create_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/create-role.html')">
+            <img class="action-logo" src="/img/useradmin/Create_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Create Role</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/delete-role.html')">
-            <img class="action-logo" src="./img/useradmin/Delete_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/delete-role.html')">
+            <img class="action-logo" src="/img/useradmin/Delete_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Delete Role</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/update-role.html')">
-            <img class="action-logo" src="./img/useradmin/Update_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/update-role.html')">
+            <img class="action-logo" src="/img/useradmin/Update_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Update Role</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/search-role.html')">
-            <img class="action-logo" src="./img/useradmin/Search_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/search-role.html')">
+            <img class="action-logo" src="/img/useradmin/Search_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">Search Role</button>
         </span>
-        <span class="item mode-border-color-1" onclick="redirect_page('/view-role.html')">
-            <img class="action-logo" src="./img/useradmin/View_Light.png" alt="action_logo" />
+        <span class="item mode-border-color-1" onclick="redirect_page('/useradmin/view-role.html')">
+            <img class="action-logo" src="/img/useradmin/View_Light.png" alt="action_logo" />
 
             <button class="action-button mode-font-color mode-bg-color-2 mode-border-color-1">View Role</button>
         </span>
@@ -91,9 +91,9 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
-    <script src="./js/logoutUserAdmin.js"></script>
-    <script src="./js/date-time.js"></script>
-    <script src="./js/page-theme.js"></script>
+    <script src="/js/logoutUserAdmin.js"></script>
+    <script src="/js/date-time.js"></script>
+    <script src="/js/page-theme.js"></script>
 </body>
 
 </html>

@@ -13,10 +13,10 @@ public class RestaurantManagerDeleteMenuItemC extends HttpServlet{
         MenuItem menuItem = new MenuItem(menuItemID);
         
         if(menuItem.deleteMenuItem()){
-            response.sendRedirect("/delete-menu-item.html?status=success");
+            response.sendRedirect("/restaurantmanager/delete-menu-item.html?status=success");
         }
         else{
-            response.sendRedirect("/delete-menu-item.html?status=fail");
+            response.sendRedirect("/restaurantmanager/delete-menu-item.html?status=fail");
         }
     }
 }

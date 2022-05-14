@@ -1,4 +1,4 @@
-var redirect_address = "staff-search-order.html";
+var redirect_address = "/staff/staff-search-order.html";
 
 var list_frame = document.getElementById("order-list");
 var order_list = {};

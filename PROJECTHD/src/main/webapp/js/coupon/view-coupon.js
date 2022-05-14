@@ -1,4 +1,4 @@
-var redirect_address = "view-coupon.html";
+var redirect_address = "/restaurantmanager/view-coupon.html";
 
 var coupon_list = $.ajax({
     async: false,

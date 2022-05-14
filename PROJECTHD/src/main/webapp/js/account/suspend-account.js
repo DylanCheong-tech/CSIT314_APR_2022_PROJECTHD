@@ -23,7 +23,7 @@ else if (status == "fail") {
 
 function alert_confirm() {
     alert_box.style.display = "none";
-    window.location.href = "/suspend-account.html";
+    window.location.href = "/useradmin/suspend-account.html";
 }
 
 function displayLogout() {

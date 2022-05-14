@@ -19,10 +19,10 @@ public class UserAdminUpdateAccountC extends HttpServlet {
         Account updateAccount = new Account(accountID, name, new Role(roleId), username, password);
         
         if(updateAccount.updateAccount()){
-            response.sendRedirect("/update-account.html?status=success");
+            response.sendRedirect("/useradmin/update-account.html?status=success");
         }
         else{
-            response.sendRedirect("/update-account.html?status=fail");
+            response.sendRedirect("/useradmin/update-account.html?status=fail");
         }
     }
 }

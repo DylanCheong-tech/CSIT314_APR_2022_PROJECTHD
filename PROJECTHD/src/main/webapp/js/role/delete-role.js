@@ -23,7 +23,7 @@ else if (status == "fail") {
 
 function alert_confirm() {
     alert_box.style.display = "none";
-    window.location.href = "/delete-role.html";
+    window.location.href = "/useradmin/delete-role.html";
 }
 
 var role_list = $.ajax({

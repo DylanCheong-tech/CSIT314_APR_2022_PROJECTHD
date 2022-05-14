@@ -23,7 +23,7 @@ else if (status == "fail"){
 
 function alert_confirm() {
     alert_box.style.display = "none";
-    window.location.href = "/create-role.html";
+    window.location.href = "/useradmin/create-role.html";
 }
 
 var role_list = $.ajax({

@@ -12,9 +12,9 @@ public class UserAdminDeleteRoleC extends HttpServlet {
         int roleID = Integer.parseInt(request.getParameter("roleID"));
 
         if (Role.deleteRole(roleID)){
-            response.sendRedirect("/delete-role.html?status=success");
+            response.sendRedirect("/useradmin/delete-role.html?status=success");
         }else {
-            response.sendRedirect("/delete-role.html?status=fail");
+            response.sendRedirect("/useradmin/delete-role.html?status=fail");
         }
     }
 }
