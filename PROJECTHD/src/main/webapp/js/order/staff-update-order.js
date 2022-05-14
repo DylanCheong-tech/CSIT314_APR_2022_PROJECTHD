@@ -66,7 +66,7 @@ function display_list(order_list) {
             button.classList.add("disabled-btn");
         }
         button.innerHTML = "Update";
-        button.onclick = update_order.bind(event, order_list[index]);
+        button.onclick = update_order.bind(event, order_list[index], );
         button.type = "button";
 
         btnCol.appendChild(button);
@@ -156,6 +156,7 @@ function display_menu_items(category, orderItems) {
             var qtyInput = document.createElement("input");
             qtyInput.id = category + index;
             qtyInput.type = "text";
+            console.log(orderItems)
             if (orderItems[menu_item_list[index].menuItemID]){
                 qtyInput.value = orderItems[menu_item_list[index].menuItemID];
                 span.classList.add("highlight-item");
@@ -188,6 +189,7 @@ function update_total_amount() {
 }
 
 function update_order(order) {
+    display_loader();
     document.getElementById("table").style.display = "none";
     document.getElementById("update-form").style.display = "block";
 
@@ -208,9 +210,9 @@ function update_order(order) {
         "dataType": "json",
         "complete": (data) => {
             menu_item_list = data.responseJSON;
-            display_menu_items("MainCourse");
-            display_menu_items("SideDish");
-            display_menu_items("Beverage");
+            display_menu_items("MainCourse", order.orderItems);
+            display_menu_items("SideDish", order.orderItems);
+            display_menu_items("Beverage", order.orderItems);
             hide_loader();
         }
     });
