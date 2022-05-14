@@ -14,7 +14,7 @@ public class Order {
 	private OrderStatus status;
 	private double totalAmount;
 	private int tableNum;
-	private HashMap<Integer, Integer> orderItems;
+	private HashMap<Integer, Integer> menuItems;
 	private Account createdBy;
 
 	public Order() {
@@ -36,7 +36,7 @@ public class Order {
 		this.status = status;
 		this.totalAmount = totalAmount;
 		this.tableNum = tableNum;
-		this.orderItems = null;
+		this.menuItems = null;
 		this.createdBy = createdBy;
 	}
 
@@ -48,7 +48,7 @@ public class Order {
 		this.totalAmount = order.totalAmount;
 		this.tableNum = order.tableNum;
 		this.createdBy = order.createdBy;
-		this.orderItems = new HashMap<>(order.orderItems);
+		this.menuItems = new HashMap<>(order.menuItems);
 	}
 	
 	public Order(int tableNum, Account createdBy, HashMap<Integer, Integer> menuItems) {
@@ -59,7 +59,7 @@ public class Order {
 		this.status = OrderStatus.Created;
 		this.totalAmount = 0.0;
 		this.tableNum = tableNum;
-		this.orderItems = new HashMap<>(menuItems);
+		this.menuItems = new HashMap<>(menuItems);
 	}
 
 	public Order(int orderID, int tableNum, HashMap<Integer, Integer> menuItems) {
@@ -70,7 +70,7 @@ public class Order {
 		this.status = OrderStatus.Created;
 		this.totalAmount = 0.0;
 		this.tableNum = tableNum;
-		this.orderItems = new HashMap<>(menuItems);
+		this.menuItems = new HashMap<>(menuItems);
 	}
 
 	public Order(int orderID) {
@@ -81,7 +81,7 @@ public class Order {
 		this.status = OrderStatus.Created;
 		this.totalAmount = 0.0;
 		this.tableNum = 0;
-		this.orderItems = null;
+		this.menuItems = null;
 	}
 
 	public boolean createOrder() {
@@ -109,13 +109,13 @@ public class Order {
 
 			stmt1.executeUpdate();
 
-			for (int i : this.orderItems.keySet()) {
+			for (int i : this.menuItems.keySet()) {
 				PreparedStatement stmt2 = conn.prepareStatement(
 						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
 
 				stmt2.setInt(1, this.orderID);
 				stmt2.setInt(2, i);
-				stmt2.setInt(3, this.orderItems.get(i));
+				stmt2.setInt(3, this.menuItems.get(i));
 
 				stmt2.executeUpdate();
 			}
@@ -187,13 +187,13 @@ public class Order {
 
 			stmt1.executeUpdate();
 
-			for (int i : this.orderItems.keySet()) {
+			for (int i : this.menuItems.keySet()) {
 				PreparedStatement stmt2 = conn.prepareStatement(
 						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
 
 				stmt2.setInt(1, this.orderID);
 				stmt2.setInt(2, i);
-				stmt2.setInt(3, this.orderItems.get(i));
+				stmt2.setInt(3, this.menuItems.get(i));
 
 				stmt2.executeUpdate();
 			}
@@ -236,7 +236,7 @@ public class Order {
 				this.setTotalAmount(result.getDouble("TotalAmount"));
 				this.setTableNum(result.getInt("TableNum"));
 				this.setCreatedBy(Account.getAccount(result.getInt("CreatedBy")));
-				this.setOrderItems(this.getOrderMenuItemList());
+				this.setMenuItems(this.getOrderMenuItemList());
 
 				System.out.println("Searched Successfully");
 				returnArray.add(new Order(this));
@@ -270,7 +270,7 @@ public class Order {
 				this.setTotalAmount(result.getDouble("TotalAmount"));
 				this.setTableNum(result.getInt("TableNum"));
 				this.setCreatedBy(Account.getAccount(result.getInt("CreatedBy")));
-				this.setOrderItems(this.getOrderMenuItemList());
+				this.setMenuItems(this.getOrderMenuItemList());
 
 				System.out.println("Searched Successfully");
 				return this;
@@ -329,7 +329,7 @@ public class Order {
 				Account acc = Account.getAccount(result.getInt("CreatedBy"));
 				Order order = new Order(id, createdAt, updatedAt, status, totalAmount, tableNum, acc);
 
-				order.setOrderItems(order.getOrderMenuItemList());
+				order.setMenuItems(order.getOrderMenuItemList());
 
 				returnArray.add(order);
 			}
@@ -390,8 +390,8 @@ public class Order {
 		return tableNum;
 	}
 
-	public HashMap<Integer, Integer> getOrderItems() {
-		return orderItems;
+	public HashMap<Integer, Integer> getMenuItems() {
+		return menuItems;
 	}
 
 	public void setOrderID(int orderID) {
@@ -418,8 +418,8 @@ public class Order {
 		this.tableNum = tableNum;
 	}
 
-	public void setOrderItems(HashMap<Integer, Integer> orderItems) {
-		this.orderItems = orderItems;
+	public void setMenuItems(HashMap<Integer, Integer> menuItems) {
+		this.menuItems = menuItems;
 	}
 
 	public void setCreatedBy(Account createdBy) {

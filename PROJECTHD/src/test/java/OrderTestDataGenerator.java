@@ -36,7 +36,7 @@ public class OrderTestDataGenerator {
 				}
 			}
 			
-			order.setOrderItems(menuItems);
+			order.setMenuItems(menuItems);
 			
 			order.createOrder();
 		}

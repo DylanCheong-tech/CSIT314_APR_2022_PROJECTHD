@@ -34,7 +34,7 @@ public class OrderTest {
 		menuItems.put(12, 3);
 		menuItems.put(77, 3);
 
-		this.testOrder.setOrderItems(menuItems);
+		this.testOrder.setMenuItems(menuItems);
     	
     	assertTrue("Test Staff Create Order", this.testOrder.createOrder());
     }
@@ -61,7 +61,7 @@ public class OrderTest {
 		menuItems.put(2, 9);
 
 
-		this.testOrder.setOrderItems(menuItems);
+		this.testOrder.setMenuItems(menuItems);
 
     	
     	assertTrue("Test Staff Update Order", this.testOrder.updateOrder());
