@@ -14,7 +14,6 @@ public class UserAdminViewAccountC extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            System.out.println(request.getQueryString().split("=")[1]);
             int accountID = Integer.parseInt(request.getQueryString().split("=")[1]);
 
             Account resultAcc = Account.getAccount(accountID);

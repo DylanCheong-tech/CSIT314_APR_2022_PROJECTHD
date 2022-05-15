@@ -2,15 +2,6 @@ var alert_success_message = "Delete Menu Item Successful";
 var alert_fail_message = "Delete Menu Item Fail";
 var redirect_address = "/restaurantmanager/delete-menu-item.html";
 
-var menu_item_list = $.ajax({
-    async: false,
-    "url": "/getMenuItemList",
-    "type": "get",
-    "dataType": "json"
-}).responseJSON;
-
-console.log(menu_item_list);
-
 var list_frame = document.getElementById("menu-item-list");
 
 function display_list(menu_item_list) {
@@ -85,4 +76,13 @@ function display_list(menu_item_list) {
     }
 }
 
-display_list(menu_item_list);
+$.ajax({
+    async: true,
+    "url": "/getMenuItemList",
+    "type": "get",
+    "dataType": "json",
+    "complete" : (data) => {
+        display_list(data.responseJSON);
+        hide_loader();
+    }
+});

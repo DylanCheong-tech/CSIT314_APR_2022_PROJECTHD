@@ -1,14 +1,5 @@
 var redirect_address = "/restaurantmanager/view-menu-item.html";
 
-var menu_item_list = $.ajax({
-    async: false,
-    "url": "/getMenuItemList",
-    "type": "get",
-    "dataType": "json"
-}).responseJSON;
-
-console.log(menu_item_list);
-
 var list_frame = document.getElementById("menu-item-list");
 
 function display_list(menu_item_list) {
@@ -84,7 +75,17 @@ function display_list(menu_item_list) {
         list_frame.appendChild(row);
     }
 };
-display_list(menu_item_list);
+
+$.ajax({
+    async: true,
+    "url": "/getMenuItemList",
+    "type": "get",
+    "dataType": "json",
+    "complete" : (data) => {
+        display_list(data.responseJSON);
+        hide_loader();
+    }
+});
 
 function viewMenuItem(recordID) {
     var menu_item_json = $.ajax({

@@ -2,15 +2,6 @@ var alert_success_message = "Delete Coupon Successful";
 var alert_fail_message = "Delete Coupon Fail";
 var redirect_address = "/restaurantmanager/delete-coupon.html";
 
-var coupon_list = $.ajax({
-    async: false,
-    "url": "/getCouponList",
-    "type": "get",
-    "dataType": "json"
-}).responseJSON;
-
-console.log(coupon_list);
-
 var list_frame = document.getElementById("coupon-list");
 
 function display_list(coupon_list) {
@@ -85,4 +76,13 @@ function display_list(coupon_list) {
     }
 }
 
-display_list(coupon_list);
+$.ajax({
+    async: true,
+    "url": "/getCouponList",
+    "type": "get",
+    "dataType": "json",
+    "complete" : (data) => {
+        display_list(data.responseJSON);
+        hide_loader();
+    }
+});

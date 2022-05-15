@@ -23,7 +23,8 @@ public class StaffCreateOrderC extends HttpServlet {
 
         HashMap<Integer, Integer> menuItems = (new Gson()).fromJson(menuItemsJSON, menuItemType);
 
-        Account staff = Account.getAccount(3);
+        HttpSession session = request.getSession();
+        Account staff = Account.getAccount(Integer.parseInt(session.getAttribute("userID").toString()));
         Order newOrder = new Order(tableNum, staff, menuItems);
 
         if (newOrder.createOrder()) {
