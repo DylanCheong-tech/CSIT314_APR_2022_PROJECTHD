@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2022 at 12:35 PM
+-- Generation Time: May 16, 2022 at 04:57 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -65,7 +65,8 @@ CREATE TABLE `Bill` (
   `PayableAmount` decimal(6,2) NOT NULL DEFAULT 0.00,
   `PaidAt` datetime DEFAULT NULL,
   `Status` varchar(6) NOT NULL DEFAULT 'Unpaid',
-  `GST` decimal(6,2) NOT NULL DEFAULT 0.00
+  `GST` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `DiscountAmount` decimal(6,2) NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

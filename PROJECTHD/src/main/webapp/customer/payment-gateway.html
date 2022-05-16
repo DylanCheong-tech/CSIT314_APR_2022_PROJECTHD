@@ -26,10 +26,10 @@
         <span>$ 999.99</span>
     </div>
 
-    <form>
+    <form action="/customerMakePayment" method="POST">
         <div id="payment-form">
             <label>Email</label>
-            <input type="email" placeholder="eg. johndoe123@gmail.com" required />
+            <input type="email" name="email" placeholder="eg. johndoe123@gmail.com" required />
 
             <label>Payment by</label>
             <span id="vendor-icon">

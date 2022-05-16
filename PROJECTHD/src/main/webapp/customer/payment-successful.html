@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+
+    <!--Google jQuery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/customer/header.css" />
+    <link rel="stylesheet" href="/css/customer/payment-successful.css" />
+    <link rel="stylesheet" href="/css/font-styles.css" />
+</head>
+
+<body>
+    <div id="header">
+    </div>
+
+    <div id="content">
+        <img src="/img/customer/success.png" />
+
+        <span class="green-color">PAYMENT SUCCESSFUL</span>
+
+        <span id="bill-info">
+            <span class="column-1">Bill ID</span>
+            <span id="bill-id" class="column-2"></span>
+            <span class="column-1">Amount Paid</span>
+            <span id="amount-paid" class="column-2"></span>
+            <span class="column-1">Merchant</span>
+            <span id="merchant" class="column-2"></span>
+        </span>
+
+        <span>Bill has been sent to your email</span>
+        <span>Thank you and we hope to see you again</span>
+    </div>
+
+    <div id="back-button">
+        <button type="button" onclick="window.location.href = '/customer/home-page.html'">Back to Home</button>
+    </div>
+
+    <script src="/js/customer/payment-successful.js"></script>
+</body>
+
+</html>

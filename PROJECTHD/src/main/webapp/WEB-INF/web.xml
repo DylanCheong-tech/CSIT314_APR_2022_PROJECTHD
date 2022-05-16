@@ -233,6 +233,11 @@
       <servlet-class>honeyzstar.customer.CustomerApplyCouponC</servlet-class>
    </servlet>
 
+   <servlet>
+      <servlet-name>CustomerMakePaymentC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerMakePaymentC</servlet-class>
+   </servlet>
+
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
 
@@ -459,6 +464,11 @@
    <servlet-mapping>
       <servlet-name>CustomerViewBillC</servlet-name>
       <url-pattern>/customerGetBill</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>CustomerMakePaymentC</servlet-name>
+      <url-pattern>/customerMakePayment</url-pattern>
    </servlet-mapping>
 
    <!-- Filter  -->

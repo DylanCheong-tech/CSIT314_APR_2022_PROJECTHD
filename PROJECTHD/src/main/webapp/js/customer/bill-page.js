@@ -5,13 +5,12 @@ $.ajax({
     "dataType": "json",
     "complete" :  (data) => {
         var bill = data.responseJSON;
-        console.log(bill)
         document.getElementById("table-num").textContent = bill.order.tableNum;
         document.getElementById("bill-id").textContent = bill.billID;
         document.getElementById("created-date").textContent = bill.createdAt;
         display_menu_items(bill.order.menuItems);
         document.getElementById("subtotal").textContent = "$ " + bill.order.totalAmount.toFixed(2);
-        document.getElementById("discount").textContent = "$ " + "0.00";
+        document.getElementById("discount").textContent = "- $ " + bill.discountAmount.toFixed(2);
         document.getElementById("GST").textContent = "$ " + bill.GST.toFixed(2);
         document.getElementById("grand-total-value").textContent = "$ " + bill.payableAmount.toFixed(2);
     }

@@ -13,6 +13,7 @@ public class Bill {
     private Coupon coupon;
     private double payableAmount;
     private double GST;
+    private double discountAmount;
     private String paidAt;
     private BillStatus status;
 
@@ -24,12 +25,13 @@ public class Bill {
         this.coupon = null;
         this.payableAmount = 0.0;
         this.GST = 0.0;
+        this.discountAmount = 0.0;
         this.paidAt = "";
         this.status = null;
     }
 
     public Bill(int billID, String createdAt, Order order, String email, Coupon coupon, double payableAmount,
-            double GST,
+            double GST, double discountAmount,
             String paidAt, BillStatus status) {
         this.billID = billID;
         this.createdAt = createdAt;
@@ -38,6 +40,7 @@ public class Bill {
         this.coupon = coupon == null ? null : new Coupon(coupon);
         this.payableAmount = payableAmount;
         this.GST = GST;
+        this.discountAmount = discountAmount;
         this.paidAt = paidAt;
         this.status = status;
     }
@@ -50,6 +53,7 @@ public class Bill {
         this.coupon = otherBill.coupon == null ? null : new Coupon(coupon);
         this.payableAmount = otherBill.payableAmount;
         this.GST = otherBill.GST;
+        this.discountAmount = otherBill.discountAmount;
         this.paidAt = otherBill.paidAt;
         this.status = otherBill.status;
     }
@@ -62,6 +66,7 @@ public class Bill {
         this.coupon = null;
         this.payableAmount = 0.0;
         this.GST = 0.0;
+        this.discountAmount = 0.0;
         this.paidAt = "";
         this.status = null;
     }
@@ -74,6 +79,7 @@ public class Bill {
         this.coupon = null;
         this.payableAmount = 0.0;
         this.GST = 0.0;
+        this.discountAmount = 0.0;
         this.paidAt = "";
         this.status = null;
     }
@@ -147,12 +153,36 @@ public class Bill {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("UPDATE Bill SET GST = (select (totalAmount * 0.07) from Bill JOIN Orders on Bill.OrderID = Orders.OrderID where BillID = ?) WHERE BillID = ?");
+            PreparedStatement stmt = conn.prepareStatement(
+                    "SELECT DiscountType FROM Bill JOIN Coupon ON Bill.CouponID = Coupon.CouponID WHERE BillID = ?");
+            stmt.setInt(1, this.billID);
+            ResultSet couponType = stmt.executeQuery();
+
+            if (couponType.next()) {
+                String type = couponType.getString("DiscountType");
+                if (type.equals("Percentage")) {
+                    stmt = conn.prepareStatement(
+                            "UPDATE Bill SET Bill.DiscountAmount = (SELECT Coupon.DiscountAmount * Orders.TotalAmount / 100 from Coupon JOIN Bill ON Coupon.CouponID = Bill.CouponID JOIN Orders ON Orders.OrderID = Bill.OrderID WHERE BillID = ? AND Coupon.DiscountType = 'Percentage') WHERE BillID = ?");
+                    stmt.setInt(1, this.billID);
+                    stmt.setInt(2, this.billID);
+                    stmt.executeUpdate();
+                } else {
+                    stmt = conn.prepareStatement(
+                            "UPDATE Bill SET Bill.DiscountAmount = (SELECT Coupon.DiscountAmount from Coupon JOIN Bill ON Coupon.CouponID = Bill.CouponID WHERE BillID = ? AND Coupon.DiscountType = 'Value') WHERE BillID = ?");
+                    stmt.setInt(1, this.billID);
+                    stmt.setInt(2, this.billID);
+                    stmt.executeUpdate();
+                }
+            }
+
+            stmt = conn.prepareStatement(
+                    "UPDATE Bill SET GST = (select ((totalAmount - DiscountAmount) * 0.07) from Bill JOIN Orders on Bill.OrderID = Orders.OrderID where BillID = ?) WHERE BillID = ?");
             stmt.setInt(1, this.billID);
             stmt.setInt(2, this.billID);
             stmt.executeUpdate();
 
-            stmt = conn.prepareStatement("UPDATE Bill SET PayableAmount = (SELECT (totalAmount + GST) from Bill JOIN Orders on Bill.OrderID = Orders.OrderID where BillID = ?) WHERE BillID = ?");
+            stmt = conn.prepareStatement(
+                    "UPDATE Bill SET PayableAmount = (SELECT (totalAmount - DiscountAmount + GST) from Bill JOIN Orders on Bill.OrderID = Orders.OrderID where BillID = ?) WHERE BillID = ?");
             stmt.setInt(1, this.billID);
             stmt.setInt(2, this.billID);
             stmt.executeUpdate();
@@ -170,6 +200,7 @@ public class Bill {
                         : (new Coupon(result.getInt("CouponID"))).getCoupon();
                 this.payableAmount = result.getDouble("PayableAmount");
                 this.GST = result.getDouble("GST");
+                this.discountAmount = result.getDouble("DiscountAmount");
                 this.paidAt = result.getString("PaidAt") == null ? "" : result.getString("PaidAt");
                 this.status = BillStatus.valueOf(result.getString("Status"));
 
@@ -181,6 +212,35 @@ public class Bill {
         }
 
         return null;
+    }
+
+    public boolean makePayment(String email) {
+        try (
+
+                Connection conn = DriverManager.getConnection(
+                        connStr, dbusername, dbpassword);
+
+        ) {
+            this.email = email;
+
+            PreparedStatement stmt = conn.prepareStatement(
+                    "UPDATE Bill SET Email = ?, Status = 'Paid' WHERE BillID = ?");
+            stmt.setString(1, this.email);
+            stmt.setInt(2, this.billID);
+            stmt.executeUpdate();
+
+            stmt = conn.prepareStatement(
+                    "UPDATE Orders SET Status = 'Paid' WHERE OrderID = ?");
+            stmt.setInt(1, this.order.getOrderID());
+            stmt.executeUpdate();
+
+            return true;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
     }
 
     public int getBillID() {
@@ -209,6 +269,10 @@ public class Bill {
 
     public double getGST() {
         return this.GST;
+    }
+
+    public double getDiscountAmount() {
+        return this.discountAmount;
     }
 
     public String getPaidAt() {
@@ -247,6 +311,10 @@ public class Bill {
         this.GST = GST;
     }
 
+    public void setDiscountAmount(double discountAmount) {
+        this.discountAmount = discountAmount;
+    }
+
     public void setPaidAt(String paidAt) {
         this.paidAt = paidAt;
     }
@@ -271,9 +339,11 @@ public class Bill {
                         if (this.coupon.equals(bill.coupon)) {
                             if (this.payableAmount == bill.payableAmount) {
                                 if (this.GST == bill.GST) {
-                                    if (this.paidAt.equals(bill.paidAt)) {
-                                        if (this.status.equals(bill.status)) {
-                                            return true;
+                                    if (this.discountAmount == bill.discountAmount) {
+                                        if (this.paidAt.equals(bill.paidAt)) {
+                                            if (this.status.equals(bill.status)) {
+                                                return true;
+                                            }
                                         }
                                     }
                                 }
@@ -305,6 +375,8 @@ public class Bill {
         str.append(this.payableAmount + "\n");
         str.append("GST :");
         str.append(this.GST + "\n");
+        str.append("Discoount Amount :");
+        str.append(this.discountAmount + "\n");
         str.append("Paid At :");
         str.append(this.paidAt + "\n");
         str.append("Status :");
