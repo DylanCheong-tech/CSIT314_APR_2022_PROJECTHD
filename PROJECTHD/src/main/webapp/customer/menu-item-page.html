@@ -24,24 +24,28 @@
         </span>
     </div>
 
-   <div id="menu-item-info">
-       <span>
-           <img id="menu-item-img" /> <br />
-           <span>
-               <button type="button" onclick="qty('minus')">-</button>
-               <input id="qty" type="text" value = 1 disabled />
-               <button type="button" onclick="qty('add')">+</button>
+    <form action="/customerUpdateOrder" method="POST">
+        <div id="menu-item-info">
+            <span>
+                <img id="menu-item-img" /> <br />
+                <span>
+                    <button type="button" onclick="qty_1('minus')">-</button>
+                    <input id="qty" type="text" name="qty" value=1 readonly />
+                    <button type="button" onclick="qty_1('add')">+</button>
+                </span>
+                <span id="menu-item-name"></span>
+                <span id="price"></span>
+                <span id="menu-item-description"></span>
             </span>
-           <span id="menu-item-name"></span>
-           <span id="price"></span>
-           <span id="menu-item-description"></span>
-       </span>
-   </div>
+        </div>
 
-   <div id="add-to-cart">
-       <button type="button">Add To Cart</button>
-   </div>
-   
+        <div id="add-to-cart">
+            <input id="menuItemID" type="text" name="menuItemID" />
+            <button type="submit">Add To Cart</button>
+        </div>
+
+    </form>
+
     <script src="/js/customer/menu-item-page.js"></script>
 </body>
 

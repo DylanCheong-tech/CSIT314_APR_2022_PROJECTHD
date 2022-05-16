@@ -26,7 +26,7 @@ public class Order {
 		this.tableNum = 0;
 		this.createdBy = null;
 		this.menuItems = new HashMap<>();
-		
+
 	}
 
 	public Order(int orderID, String createdAt, String updatedAt, OrderStatus status, double totalAmount, int tableNum,
@@ -51,7 +51,7 @@ public class Order {
 		this.createdBy = order.createdBy;
 		this.menuItems = new HashMap<>(order.menuItems);
 	}
-	
+
 	public Order(int tableNum, Account createdBy, HashMap<Integer, Integer> menuItems) {
 		this.orderID = 0;
 		this.createdAt = "";
@@ -106,27 +106,33 @@ public class Order {
 			stmt1.setString(1, String.valueOf(OrderStatus.Created));
 			stmt1.setDouble(2, 0.0);
 			stmt1.setInt(3, this.tableNum);
-			stmt1.setInt(4, this.createdBy.getID());
+			if (this.createdBy == null) {
+				stmt1.setNull(4, Types.NULL);
+			} else {
+				stmt1.setInt(4, this.createdBy.getID());
+			}
 
 			stmt1.executeUpdate();
 
-			for (int i : this.menuItems.keySet()) {
-				PreparedStatement stmt2 = conn.prepareStatement(
-						"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
+			if (!this.menuItems.isEmpty()) {
+				for (int i : this.menuItems.keySet()) {
+					PreparedStatement stmt2 = conn.prepareStatement(
+							"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
 
-				stmt2.setInt(1, this.orderID);
-				stmt2.setInt(2, i);
-				stmt2.setInt(3, this.menuItems.get(i));
+					stmt2.setInt(1, this.orderID);
+					stmt2.setInt(2, i);
+					stmt2.setInt(3, this.menuItems.get(i));
 
-				stmt2.executeUpdate();
+					stmt2.executeUpdate();
+				}
+
+				PreparedStatement stmt3 = conn.prepareStatement(
+						"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) as total from OrdersMenuItem group by OrdersMenuItem.OrderID having OrdersMenuItem.OrderID = ?) where OrderID = ?");
+
+				stmt3.setInt(1, this.orderID);
+				stmt3.setInt(2, this.orderID);
+				stmt3.executeUpdate();
 			}
-
-			PreparedStatement stmt3 = conn.prepareStatement(
-					"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) as total from OrdersMenuItem group by OrdersMenuItem.OrderID having OrdersMenuItem.OrderID = ?) where OrderID = ?");
-
-			stmt3.setInt(1, this.orderID);
-			stmt3.setInt(2, this.orderID);
-			stmt3.executeUpdate();
 
 			System.out.println("Inserted Successfully");
 			return true;
@@ -150,8 +156,6 @@ public class Order {
 
 			stmt.executeUpdate();
 
-			
-			
 			PreparedStatement stmt1 = conn.prepareStatement("DELETE FROM Orders WHERE OrderID = ?");
 
 			stmt1.setInt(1, this.orderID);
@@ -199,7 +203,8 @@ public class Order {
 				stmt2.executeUpdate();
 			}
 
-			PreparedStatement stmt3 = conn.prepareStatement("update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) as total from OrdersMenuItem group by OrdersMenuItem.OrderID having OrdersMenuItem.OrderID = ?) where OrderID = ?");
+			PreparedStatement stmt3 = conn.prepareStatement(
+					"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) as total from OrdersMenuItem group by OrdersMenuItem.OrderID having OrdersMenuItem.OrderID = ?) where OrderID = ?");
 
 			stmt3.setInt(1, this.orderID);
 			stmt3.setInt(2, this.orderID);
@@ -371,6 +376,16 @@ public class Order {
 		return returnArray;
 	}
 
+	public boolean updateMenuItem(int menuItemID, int qty){
+		if (this.menuItems.containsKey(menuItemID)){
+			this.menuItems.replace(menuItemID, this.menuItems.get(menuItemID) + qty);
+		}else {
+			this.menuItems.put(menuItemID, qty);
+		}
+
+		return this.updateOrder();
+	}
+
 	public int getOrderID() {
 		return orderID;
 	}
@@ -454,7 +469,7 @@ public class Order {
 	}
 
 	@Override
-	public String toString(){
+	public String toString() {
 		StringBuilder str = new StringBuilder();
 
 		str.append("ID : ");

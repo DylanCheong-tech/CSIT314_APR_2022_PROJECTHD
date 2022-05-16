@@ -197,6 +197,37 @@
       <servlet-class>honeyzstar.staff.StaffGetOrderList</servlet-class>
    </servlet>
 
+   <!-- Customer -->
+   <servlet>
+      <servlet-name>CustomerViewMenuItemsC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerViewMenuItemsC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>CustomerCreateOrderC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerCreateOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>CustomerUpdateOrderC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerUpdateOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>CustomerViewOrderC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerViewOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>CustomerSubmitOrderC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerSubmitOrderC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>CustomerViewBillC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerViewBillC</servlet-class>
+   </servlet>
+
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
 
@@ -387,6 +418,37 @@
    <servlet-mapping>
       <servlet-name>StaffGetOrderList</servlet-name>
       <url-pattern>/getOrderList</url-pattern>
+   </servlet-mapping>
+
+   <!-- Customer -->
+   <servlet-mapping>
+      <servlet-name>CustomerViewMenuItemsC</servlet-name>
+      <url-pattern>/customerGetMenuItemList</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>CustomerCreateOrderC</servlet-name>
+      <url-pattern>/customerCreateOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>CustomerUpdateOrderC</servlet-name>
+      <url-pattern>/customerUpdateOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>CustomerViewOrderC</servlet-name>
+      <url-pattern>/customerGetOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>CustomerSubmitOrderC</servlet-name>
+      <url-pattern>/customerSubmitOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>CustomerViewBillC</servlet-name>
+      <url-pattern>/customerGetBill</url-pattern>
    </servlet-mapping>
 
    <!-- Filter  -->

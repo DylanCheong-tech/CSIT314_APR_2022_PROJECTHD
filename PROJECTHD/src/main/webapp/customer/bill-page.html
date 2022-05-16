@@ -23,79 +23,40 @@
 
     <div id="payment-details">
         <span class="column-1">Table</span>
-        <span class="column-2">021</span>
+        <span id="table-num" class="column-2"></span>
         <span class="column-1">Bill ID</span>
-        <span class="column-2">000001</span>
+        <span id="bill-id" class="column-2"></span>
         <span class="column-1">Bill Date</span>
-        <span class="column-2">YYYY-MM-DD HH-MM-SS</span>
+        <span id="created-date" class="column-2"></span>
     </div>
     
     <div id="summary-frame">
         <div id="summary">
             <p>SUMMARY</p>
             <span id="menu-items-frame">
-                <span class="menu-items">
-                    <span class="column-1">2x</span>
-                    <span class="column-2">Menu Item 2</span>
-                    <span class="column-3">$ 7.99</span>
-                </span>
-
-                <span class="menu-items">
-                    <span class="column-1">2x</span>
-                    <span class="column-2">Menu Item 2</span>
-                    <span class="column-3">$ 7.99</span>
-                </span>
-
-                <span class="menu-items">
-                    <span class="column-1">2x</span>
-                    <span class="column-2">Menu Item 2</span>
-                    <span class="column-3">$ 7.99</span>
-                </span>
-
-                <span class="menu-items">
-                    <span class="column-1">2x</span>
-                    <span class="column-2">Menu Item 2</span>
-                    <span class="column-3">$ 7.99</span>
-                </span>
-
-                <span class="menu-items">
-                    <span class="column-1">2x</span>
-                    <span class="column-2">Menu Item 2</span>
-                    <span class="column-3">$ 7.99</span>
-                </span>
-
-                <span class="menu-items">
-                    <span class="column-1">2x</span>
-                    <span class="column-2">Menu Item 2</span>
-                    <span class="column-3">$ 7.99</span>
-                </span>
-
-                <span class="menu-items">
-                    <span class="column-1">2x</span>
-                    <span class="column-2">Menu Item 2</span>
-                    <span class="column-3">$ 7.99</span>
-                </span>
+                
             </span>
             <span id="pricing">
                 <span class="column-1">Subtotal</span>
-                <span class="column2">$ 47.40</span>
-                <span class="column-1 discount-highlight">LBR30 30% OFF</span>
-                <span class="column-2">- $ 14.22</span>
+                <span id="subtotal" class="column2"></span>
+                <span id="coupon" class="column-1 discount-highlight">LBR30 30% OFF</span>
+                <span id="discount" class="column-2"></span>
                 <span class="column-1">GST 7%</span>
-                <span class="column-2">$ 7.90</span>
+                <span id="GST" class="column-2"></span>
             </span>
         </div>
     </div>
 
     <div id="grand-total">
         <span>GRAND TOTAL</span>
-        <span>$ 999.99</span>
+        <span id="grand-total-value">$ 999.99</span>
     </div>
 
     <div id="make-payment-button">
         <button type="button" onclick="window.location.href = '/customer/payment-gateway.html'">Make Payment</button>
     </div>
 
+    <script src="/js/customer/bill-page.js"></script>
 </body>
 
 </html>

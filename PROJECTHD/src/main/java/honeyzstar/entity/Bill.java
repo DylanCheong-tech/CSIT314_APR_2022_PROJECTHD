@@ -12,6 +12,7 @@ public class Bill {
     private String email;
     private Coupon coupon;
     private double payableAmount;
+    private double GST;
     private String paidAt;
     private BillStatus status;
 
@@ -22,11 +23,13 @@ public class Bill {
         this.email = "";
         this.coupon = null;
         this.payableAmount = 0.0;
+        this.GST = 0.0;
         this.paidAt = "";
         this.status = null;
     }
 
     public Bill(int billID, String createdAt, Order order, String email, Coupon coupon, double payableAmount,
+            double GST,
             String paidAt, BillStatus status) {
         this.billID = billID;
         this.createdAt = createdAt;
@@ -34,6 +37,7 @@ public class Bill {
         this.email = email;
         this.coupon = coupon == null ? null : new Coupon(coupon);
         this.payableAmount = payableAmount;
+        this.GST = GST;
         this.paidAt = paidAt;
         this.status = status;
     }
@@ -45,6 +49,7 @@ public class Bill {
         this.email = otherBill.email;
         this.coupon = otherBill.coupon == null ? null : new Coupon(coupon);
         this.payableAmount = otherBill.payableAmount;
+        this.GST = otherBill.GST;
         this.paidAt = otherBill.paidAt;
         this.status = otherBill.status;
     }
@@ -56,6 +61,19 @@ public class Bill {
         this.email = "";
         this.coupon = null;
         this.payableAmount = 0.0;
+        this.GST = 0.0;
+        this.paidAt = "";
+        this.status = null;
+    }
+
+    public Bill(Order order) {
+        this.billID = 0;
+        this.createdAt = "";
+        this.order = new Order(order);
+        this.email = "";
+        this.coupon = null;
+        this.payableAmount = 0.0;
+        this.GST = 0.0;
         this.paidAt = "";
         this.status = null;
     }
@@ -68,10 +86,17 @@ public class Bill {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO BILL (OrderID) VALUES (?)");
-            stmt.setInt(1, this.order.getOrderID());
+            PreparedStatement stmt = conn.prepareStatement(
+                    "select auto_increment from information_schema.tables where table_name = 'Bill'");
+            ResultSet result = stmt.executeQuery();
+            if (result.next()) {
+                this.billID = result.getInt("auto_increment");
+            }
 
-            stmt.executeUpdate();
+            PreparedStatement stmt1 = conn.prepareStatement("INSERT INTO BILL (OrderID) VALUES (?)");
+            stmt1.setInt(1, this.order.getOrderID());
+
+            stmt1.executeUpdate();
 
             return true;
 
@@ -116,17 +141,29 @@ public class Bill {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT * from Bill where BillID = ?");
+            PreparedStatement stmt = conn.prepareStatement("UPDATE Bill SET GST = (select (totalAmount * 0.07) from Bill JOIN Orders on Bill.OrderID = Orders.OrderID where BillID = ?) WHERE BillID = ?");
             stmt.setInt(1, this.billID);
+            stmt.setInt(2, this.billID);
+            stmt.executeUpdate();
 
-            ResultSet result = stmt.executeQuery();
+            // stmt = conn.prepareStatement("UPDATE Bill SET Payable Amount = (SELECT (totalAmount + GST) from Bill JOIN Orders on Bill.OrderID = Orders.OrderID where BillID = ?) WHERE BillID = ?");
+            // stmt.setInt(1, this.billID);
+            // stmt.setInt(2, this.billID);
+            // stmt.executeUpdate();
+
+            PreparedStatement stmt2 = conn.prepareStatement("SELECT * from Bill where BillID = ?");
+            stmt2.setInt(1, this.billID);
+
+            ResultSet result = stmt2.executeQuery();
 
             if (result.next()) {
                 this.createdAt = result.getString("CreatedAt");
-                this.order = (new Order(result.getInt(result.getInt("OrderID"))).getOrder());
+                this.order = (new Order(result.getInt("OrderID")).getOrder());
                 this.email = result.getString("Email") == null ? "" : result.getString("Email");
-                this.coupon = result.getInt("CouponID") == 0 ? new Coupon() : (new Coupon(result.getInt("CouponID"))).getCoupon();
+                this.coupon = result.getInt("CouponID") == 0 ? null
+                        : (new Coupon(result.getInt("CouponID"))).getCoupon();
                 this.payableAmount = result.getDouble("Payable Amount");
+                this.GST = result.getDouble("GST");
                 this.paidAt = result.getString("PaidAt") == null ? "" : result.getString("PaidAt");
                 this.status = BillStatus.valueOf(result.getString("Status"));
 
@@ -164,6 +201,10 @@ public class Bill {
         return this.payableAmount;
     }
 
+    public double getGST() {
+        return this.GST;
+    }
+
     public String getPaidAt() {
         return this.paidAt;
     }
@@ -196,6 +237,10 @@ public class Bill {
         this.payableAmount = payableAmount;
     }
 
+    public void setGST(double GST) {
+        this.GST = GST;
+    }
+
     public void setPaidAt(String paidAt) {
         this.paidAt = paidAt;
     }
@@ -219,11 +264,14 @@ public class Bill {
                     if (this.email.equals(bill.email)) {
                         if (this.coupon.equals(bill.coupon)) {
                             if (this.payableAmount == bill.payableAmount) {
-                                if (this.paidAt.equals(bill.paidAt)) {
-                                    if (this.status.equals(bill.status)) {
-                                        return true;
+                                if (this.GST == bill.GST) {
+                                    if (this.paidAt.equals(bill.paidAt)) {
+                                        if (this.status.equals(bill.status)) {
+                                            return true;
+                                        }
                                     }
                                 }
+
                             }
                         }
                     }
@@ -235,7 +283,7 @@ public class Bill {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder str = new StringBuilder();
         str.append("ID :");
         str.append(this.billID + "\n");
@@ -249,6 +297,8 @@ public class Bill {
         str.append(this.coupon + "\n");
         str.append("Payable Amount :");
         str.append(this.payableAmount + "\n");
+        str.append("GST :");
+        str.append(this.GST + "\n");
         str.append("Paid At :");
         str.append(this.paidAt + "\n");
         str.append("Status :");

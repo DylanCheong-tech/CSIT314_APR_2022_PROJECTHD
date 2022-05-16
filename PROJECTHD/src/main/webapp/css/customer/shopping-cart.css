@@ -180,3 +180,8 @@ div#submit-button button {
     border: none;
     cursor: pointer;
 }
+
+div#submit-button button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+}

@@ -35,51 +35,6 @@
 
     <div id="content">
         <span id="menu-items">
-            <span class="item">
-                <img src="/img/image-upload.png" />
-                <span class="item-name">
-                    <span>Menu Item 2</span>
-                    <span>$ 23.33</span>
-                </span>
-                <span class="item-qty">
-                    <span>
-                        <button type="button" onclick="qty('minus')">-</button>
-                        <input id="qty" type="text" value=1 disabled />
-                        <button type="button" onclick="qty('add')">+</button>
-                    </span>
-
-                </span>
-            </span>
-            <span class="item">
-                <img src="/img/image-upload.png" />
-                <span class="item-name">
-                    <span>Menu Item 2</span>
-                    <span>$ 23.33</span>
-                </span>
-                <span class="item-qty">
-                    <span>
-                        <button type="button" onclick="qty('minus')">-</button>
-                        <input id="qty" type="text" value=1 disabled />
-                        <button type="button" onclick="qty('add')">+</button>
-                    </span>
-
-                </span>
-            </span>
-            <span class="item">
-                <img src="/img/image-upload.png" />
-                <span class="item-name">
-                    <span>Menu Item 2</span>
-                    <span>$ 23.33</span>
-                </span>
-                <span class="item-qty">
-                    <span>
-                        <button type="button" onclick="qty('minus')">-</button>
-                        <input id="qty" type="text" value=1 disabled />
-                        <button type="button" onclick="qty('add')">+</button>
-                    </span>
-
-                </span>
-            </span>
         </span>
 
         <span>
@@ -102,10 +57,14 @@
     </div>
 
     <div id="submit-button">
-        <button type="button">Submit</button>
+        <form action="/customerSubmitOrder" method="post">
+            <button id="submit-order-btn" type="submit">Submit</button>
+        </form>
+        
     </div>
 
     <script src="/js/customer/side-menu.js"></script>
+    <script src="/js/customer/shopping-cart.js"></script>
 </body>
 
 </html>

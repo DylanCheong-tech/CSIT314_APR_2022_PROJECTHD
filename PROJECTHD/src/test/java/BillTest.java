@@ -38,7 +38,7 @@ public class BillTest {
     @Test
     public void testGetBill() {
         this.testBill.setBillID(1);
-        Bill expectedBill = new Bill(1, "2022-05-16 10:25:15", (new Order(3).getOrder()), "avccs@gmail.com", (new Coupon(2)).getCoupon(), 0.00, "2022-05-16 11:19:09", BillStatus.valueOf("Unpaid"));
+        Bill expectedBill = new Bill(1, "2022-05-16 10:25:15", (new Order(3).getOrder()), "avccs@gmail.com", (new Coupon(2)).getCoupon(), 0.00, 0.00, "2022-05-16 11:19:09", BillStatus.valueOf("Unpaid"));
         System.out.println(this.testBill.getBill());
         assertEquals(expectedBill, this.testBill.getBill());
     }

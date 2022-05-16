@@ -48,7 +48,7 @@ function change_menu(ele, category) {
 
     $.ajax({
         async: true,
-        "url": "/getMenuItemList",
+        "url": "/customerGetMenuItemList",
         "type": "get",
         "dataType": "json",
         "complete": (data) => {
@@ -63,3 +63,14 @@ change_menu(null, "MainCourse");
 function redirect_menu_item_page (menuItemID){
     window.location.href = "/customer/menu-item-page.html?menuItemID=" + menuItemID;
 }
+
+$.ajax({
+    async: true,
+    "url": "/customerGetOrder" ,
+    "type": "get",
+    "dataType": "json",
+    "complete" :  (data) => {
+        var order = data.responseJSON;
+        document.getElementById("table-number").textContent = order.tableNum;
+    }
+});

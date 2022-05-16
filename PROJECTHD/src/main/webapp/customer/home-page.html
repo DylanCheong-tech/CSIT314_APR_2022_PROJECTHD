@@ -25,11 +25,11 @@
     </div>
 
     <div id="order-button">
-        <form>
+        <form action="/customerCreateOrder" method="POST">
             <span class="hide">Please input your table number</span>
             <input class="hide" id="table-num" type="text" name="tableNum" pattern="[0-9]+" />
             <img class="hide" src="/img/customer/back-arrow.png" onclick="update_table_number()" />
-            <button class="show" type="button" onclick="window.location.href = '/customer/main-menu-page.html'">Start Order</button>
+            <button class="show" type="submit">Start Order</button>
         </form>
         
     </div>
