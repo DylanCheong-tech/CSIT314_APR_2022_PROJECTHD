@@ -1,0 +1,39 @@
+body {
+    transition: 1s;
+}
+
+div#side-navigation {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    display: inline-grid;
+    grid-template-rows: 4em 4em 4em;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #FFD100;
+    overflow-x: hidden;
+    transition: 1s;
+    padding-top: 20%;
+}
+
+div#side-navigation a {
+    /* width: 76%; */
+    width: 7em;
+    margin: 0 0 8% 12%;
+    text-decoration: none;
+    font-size: 2em;
+    color: #000000;
+    display: inline-block;
+    text-align: left;
+    border-bottom: 2px solid #000000;
+    cursor: pointer;
+}
+
+div#side-navigation a img {
+    display: inline-block;
+    width: 15%;
+    /* height: 50%; */
+    /* margin-top: 10%; */
+    margin-right: 10%;
+}

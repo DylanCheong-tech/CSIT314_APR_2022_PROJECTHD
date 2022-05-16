@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+
+    <!--Google jQuery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/customer/header.css" />
+    <link rel="stylesheet" href="/css/customer/main-menu-page.css" />
+    <link rel="stylesheet" href="/css/customer/side-navigation.css" />
+    <link rel="stylesheet" href="/css/font-styles.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
+</head>
+
+<body>
+    <div id="header" class="no-fade">
+        <span class="side-bar" onclick="toggleSideMenu(this)">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <span id="cart-icon">
+            <img src="/img/customer/shopping-cart.png" onclick="window.location.href = '/customer/shopping-cart.html'" />
+        </span>
+    </div>
+
+    <div id="side-navigation" class="no-fade">
+        <a href="/customer/home-page.html"><img src="/img/customer/home.png" />Home</a>
+        <a href="/customer/main-menu-page.html"><img src="/img/customer/order.png" />Order</a>
+        <a href="/customer/bill-page.html"><img src="/img/customer/bill.png" />Bill</a>
+    </div>
+
+    <p id="title">MENU ITEM</p>
+
+    <div id="search-bar-frame">
+        <span>
+            <img src="/img/customer/search.png" alt="search-clip-art" />
+            <input type="text" placeholder="Search Menu Item here ... " />
+        </span>
+    </div>
+
+    <div id="menu-category-tab">
+        <span class="on-select" onclick="change_menu(this, 'MainCourse')">Main Course</span>
+        <span onclick="change_menu(this, 'SideDish')">Side Dish</span>
+        <span onclick="change_menu(this, 'Beverage')">Beverages</span>
+    </div>
+
+    <div id="menu-items-frame">
+        
+    </div>
+
+    <div id="table-number-frame">
+        <span>Table Number</span>
+        <span id="table-number">22</span>
+    </div>
+
+    <div id="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <br />
+        <span>Loading...</span>
+    </div>
+   
+    <script src="/js/customer/side-menu.js"></script>
+    <script src="/js/loading.js"></script>
+    <script src="/js/customer/main-menu-page.js"></script>
+</body>
+
+</html>

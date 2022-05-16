@@ -1,0 +1,104 @@
+body {
+    max-width: 390px;
+    min-height: 844px;
+    margin: auto;
+    border: 2px solid black;
+    text-align: center;
+}
+
+p {
+    font-size: 2em;
+    margin: 0;
+}
+
+div {
+    display: inline-block;
+    width: 90%;
+    margin: .2em 0 0.2em 0;
+    min-height: 3em;
+}
+
+div#amount, div#payment-form {
+    background-color: #FFD100;
+    border-radius: 12px;
+}
+
+div#amount span {
+    display: inline-block;
+    text-align: left;
+    width: 45%;
+    margin: .5em 0 0 0;
+    font-size: 1.2em;
+}
+
+div#amount span:nth-child(2) {
+    text-align: right;
+}
+
+div#payment-form {
+    display: inline-grid;
+    width: 90%;
+}
+
+div#payment-form>*{
+    display: inline-block;
+    width: 90%;
+    grid-column: 1 / span 2;
+    font-size: 1.2em;
+    text-align: left;
+    margin: .5em 0 0 .8em;
+}
+
+div#payment-form span#vendor-icon{
+    text-align: center;
+}
+
+div#payment-form span#vendor-icon span {
+    display: inline-block;
+    width: 15%;
+    margin: .5em 0 .5em .1em;
+    padding: .2em;
+    cursor: pointer;
+    border-radius: 8px;   
+}
+
+div#payment-form span#vendor-icon span.vendor-selected {
+    border: 1px #000000 solid;
+    background-color: #00FF00;
+}
+
+div#payment-form span#vendor-icon span img {
+    width: 100%;
+    margin-top: 5%;
+}
+
+div#payment-form input {
+    width: 85%;
+    border: none;
+    border-radius: 9px;
+    padding: .3em;
+}
+
+div#payment-form input.column-1, div#payment-form input.column-2{
+    width: 75%;
+    margin-bottom: 1.5em;
+}
+
+div#payment-form .column-1 {
+    grid-column: 1;
+}
+
+div#payment-form .column-2 {
+    grid-column: 2;
+}
+
+div#confirm-button button {
+    font-size: 1.2em;
+    display: inline-block;
+    width: 70%;
+    padding: .5em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border: none;
+    cursor: pointer;
+}

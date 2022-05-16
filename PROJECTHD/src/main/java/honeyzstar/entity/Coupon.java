@@ -337,4 +337,26 @@ public class Coupon {
 
 		return false;
 	}
+
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+
+		str.append("ID : ");
+		str.append(this.couponID + "\n");
+		str.append("Code : ");
+		str.append(this.code + "\n");
+		str.append("Name : ");
+		str.append(this.name + "\n");
+		str.append("Discount Type : ");
+		str.append(this.discountType + "\n");
+		str.append("Discount Amoount : ");
+		str.append(this.discountAmount + "\n");
+		str.append("Descriptions : ");
+		str.append(this.descriptions + "\n");
+		str.append("Status : ");
+		str.append(this.status + "\n");
+
+		return str.toString();
+	}
 }

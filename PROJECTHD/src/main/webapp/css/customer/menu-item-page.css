@@ -1,0 +1,103 @@
+body {
+    max-width: 390px;
+    min-height: 844px;
+    margin: auto;
+    border: 2px solid black;
+    text-align: center;
+}
+
+div#header {
+    text-align: center;
+    margin: 1em 0 0 0;
+}
+
+div#header span {
+    display: inline-block;
+    text-align: right;
+    width: 43%;
+    cursor: pointer;
+    margin: 0 1.5em 0 0;
+}
+
+div#header span:nth-child(1) {
+    text-align: left;
+    margin: 0 0 0 1.5em;
+}
+
+div#header span img {
+    display: inline-block;
+    width: 15%;
+}
+
+div#menu-item-info {
+    height: 450px;
+    margin: 8em 0 0 0;
+}
+
+div#menu-item-info>span {
+    display: inline-block;
+    width: 70%;
+    height: 100%;
+    row-gap: .5em;
+    background-color: #FFD100;
+    border-radius: 70% / 40%;
+    font-size: 1.2em;
+}
+
+div#menu-item-info>span * {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 .5em 0;
+    position: relative;
+    top: -10%;
+}
+
+div#menu-item-info>span img {
+    width: 55%;
+    border-radius: 10%;
+}
+
+div#menu-item-info>span span:nth-child(3) {
+    width: 35%;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: .3em;
+}
+
+div#menu-item-info>span span:nth-child(3) button {
+    width: 30%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+div#menu-item-info>span span:nth-child(3) input {
+    border: none;
+    background-color: transparent;
+    width: 25%;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+div#menu-item-info>span span:last-child {
+    width: 80%;
+    margin: 2.5em 0 0 0;
+    font-size: 1em;
+}
+
+div#add-to-cart {
+    margin: 3em 0 0 0;
+}
+
+div#add-to-cart button {
+    width: 90%;
+    padding: .5em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border : none;
+    cursor: pointer;
+    font-size: 1.4em;
+}

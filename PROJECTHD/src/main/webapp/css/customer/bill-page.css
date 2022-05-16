@@ -1,0 +1,124 @@
+body {
+    max-width: 390px;
+    min-height: 844px;
+    margin: auto;
+    border: 2px solid black;
+    text-align: center;
+}
+
+p {
+    font-size: 2em;
+    margin: 0;
+}
+
+div {
+    display: inline-block;
+    width: 90%;
+    margin: .2em 0 0.2em 0;
+    min-height: 3em;
+}
+
+div#payment-details{
+    display: inline-grid;
+    grid-template-columns: 30% 70%;
+    font-size: 1.2em;
+    row-gap: .5em;
+}
+
+div#payment-details span.column-1 {
+    text-align: left;
+    grid-column: 1;
+}
+
+div#payment-details span.column-2 {
+    text-align: right;
+    grid-column: 2;
+}
+
+div#summary-frame {
+    background-color: #FFD100;
+    border-radius: 12px;
+}
+
+div#summary-frame div#summary {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    padding: .3em;
+    margin: 1.5em 0 1.5em 0;
+    width: 91.5%;
+}
+
+div#summary-frame div#summary p {
+    text-align: right;
+    font-size: 1.5em;
+    color: #FFD100;
+}
+
+div#summary-frame div#summary span#menu-items-frame {
+    display: block;
+    height: 25em;
+}
+
+div#summary-frame div#summary span span.menu-items {
+    display: inline-grid;
+    grid-template-columns: 15% 65% 30%;
+    width: 100%;
+    text-align: left;
+    margin: 0 0 .3em 0;
+}
+
+div#summary-frame div#summary span span.menu-items span.column-1 {
+    grid-column: 1;
+}
+
+div#summary-frame div#summary span span.menu-items span.column-2 {
+    grid-column: 2;
+}
+
+div#summary-frame div#summary span span.menu-items span.column-3 {
+    grid-column: 3;
+}
+
+div#summary-frame div#summary span#pricing {
+    display: inline-grid;
+    grid-template-columns: 80% 30%;
+    width: 100%;
+    text-align: left;
+    margin: 0 0 .3em 0;
+}
+
+div#summary-frame div#summary span#pricing span.column-1 {
+    grid-column: 1;
+}
+
+div#summary-frame div#summary span#pricing span.column-2 {
+    grid-column: 2;
+}
+
+div#grand-total {
+    background-color: #FFD100;
+    border-radius: 12px;
+}
+
+div#grand-total span {
+    display: inline-block;
+    text-align: left;
+    width: 45%;
+    margin: .5em 0 0 0;
+    font-size: 1.2em;
+}
+
+div#grand-total span:nth-child(2) {
+    text-align: right;
+}
+
+div#make-payment-button button {
+    font-size: 1.2em;
+    display: inline-block;
+    width: 70%;
+    padding: .5em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border: none;
+    cursor: pointer;
+}

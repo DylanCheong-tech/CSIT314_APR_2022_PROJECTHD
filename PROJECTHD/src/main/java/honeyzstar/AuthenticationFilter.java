@@ -23,7 +23,7 @@ public class AuthenticationFilter implements Filter {
 
         String requestPath = ((HttpServletRequest) request).getRequestURI();
 
-        if (!requestPath.equals("/login.html") && requestPath.endsWith(".html") && (session == null || session.getAttribute("username") == null)) {
+        if (!requestPath.contains("customer") && !requestPath.equals("/login.html") && requestPath.endsWith(".html") && (session == null || session.getAttribute("username") == null)) {
             ((HttpServletResponse) response).sendRedirect("/login.html");
             
         } else {

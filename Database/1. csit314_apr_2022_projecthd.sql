@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 12, 2022 at 10:06 AM
+-- Generation Time: May 16, 2022 at 06:32 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -48,6 +48,23 @@ CREATE TABLE `AccountLog` (
   `AccountID` int(5) NOT NULL,
   `Date` datetime NOT NULL DEFAULT current_timestamp(),
   `OperationFlag` varchar(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Bill`
+--
+
+CREATE TABLE `Bill` (
+  `BillID` int(5) NOT NULL,
+  `CreatedAt` datetime NOT NULL DEFAULT current_timestamp(),
+  `OrderID` int(5) NOT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `CouponID` int(5) DEFAULT NULL,
+  `Payable Amount` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `PaidAt` datetime DEFAULT NULL,
+  `Status` varchar(6) NOT NULL DEFAULT 'Unpaid'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -144,6 +161,14 @@ ALTER TABLE `AccountLog`
   ADD KEY `AccountID` (`AccountID`);
 
 --
+-- Indexes for table `Bill`
+--
+ALTER TABLE `Bill`
+  ADD PRIMARY KEY (`BillID`),
+  ADD KEY `CouponID` (`CouponID`),
+  ADD KEY `OrderID` (`OrderID`);
+
+--
 -- Indexes for table `Coupon`
 --
 ALTER TABLE `Coupon`
@@ -192,6 +217,12 @@ ALTER TABLE `AccountLog`
   MODIFY `LogID` int(5) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `Bill`
+--
+ALTER TABLE `Bill`
+  MODIFY `BillID` int(5) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `Coupon`
 --
 ALTER TABLE `Coupon`
@@ -230,6 +261,13 @@ ALTER TABLE `Account`
 --
 ALTER TABLE `AccountLog`
   ADD CONSTRAINT `accountlog_ibfk_1` FOREIGN KEY (`AccountID`) REFERENCES `Account` (`AccountID`);
+
+--
+-- Constraints for table `Bill`
+--
+ALTER TABLE `Bill`
+  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`CouponID`) REFERENCES `Coupon` (`CouponID`),
+  ADD CONSTRAINT `bill_ibfk_2` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`OrderID`);
 
 --
 -- Constraints for table `Orders`

@@ -25,6 +25,7 @@ public class Order {
 		this.totalAmount = 0.0;
 		this.tableNum = 0;
 		this.createdBy = null;
+		this.menuItems = new HashMap<>();
 		
 	}
 
@@ -36,7 +37,7 @@ public class Order {
 		this.status = status;
 		this.totalAmount = totalAmount;
 		this.tableNum = tableNum;
-		this.menuItems = null;
+		this.menuItems = new HashMap<>();
 		this.createdBy = createdBy;
 	}
 
@@ -81,7 +82,7 @@ public class Order {
 		this.status = OrderStatus.Created;
 		this.totalAmount = 0.0;
 		this.tableNum = 0;
-		this.menuItems = null;
+		this.menuItems = new HashMap<>();
 	}
 
 	public boolean createOrder() {
@@ -450,6 +451,30 @@ public class Order {
 		}
 
 		return false;
+	}
+
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+
+		str.append("ID : ");
+		str.append(this.orderID + "\n");
+		str.append("Created At : ");
+		str.append(this.createdAt + "\n");
+		str.append("Updated At : ");
+		str.append(this.updatedAt + "\n");
+		str.append("Status : ");
+		str.append(this.status + "\n");
+		str.append("Total Amount : ");
+		str.append(this.totalAmount + "\n");
+		str.append("Table Numner : ");
+		str.append(this.tableNum + "\n");
+		str.append("Menu Items : ");
+		str.append(this.menuItems.toString() + "\n");
+		str.append("Created By : ");
+		str.append(this.createdBy.toString() + "\n");
+
+		return str.toString();
 	}
 
 }

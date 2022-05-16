@@ -1,0 +1,79 @@
+
+div#header {
+    text-align: right;
+    margin: 1em 0 0 0;
+}
+
+div#header span.side-bar {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 38%;
+    top: .6em;
+    z-index: 2;
+    transition: all 1s;
+}
+
+div#header span.side-bar:hover {
+    cursor: pointer;
+}
+
+div#header span.side-bar span {
+    height: .3em;
+    width: 70%;
+    border-radius: 5px;
+    display: block;
+    background-color: #000000;
+    position: absolute;
+    left: 17.5%;
+    transition: all .5s ease-in-out;
+}
+
+div#header span.side-bar span:nth-child(1){
+    top: 20%;
+}
+
+div#header span.side-bar span:nth-child(2){
+    top: 40%;
+}
+
+div#header span.side-bar span:nth-child(3){
+    top: 60%;
+}
+
+div#header span.side-bar.open span:nth-child(1){
+    transform: rotate(45deg);
+    top: 33%;
+    left: 10%;
+}
+
+div#header span.side-bar.open span:nth-child(2){
+    width: 0;
+    opacity: 0;
+}
+
+div#header span.side-bar.open span:nth-child(3){
+    transform: rotate(-45deg);
+    top: 33%;
+    left: 9%;
+}
+
+div#header span#cart-icon{
+    margin: 1em .5em 0 0;
+    cursor: pointer;
+}
+
+div#header span#cart-icon img {
+    display: inline-block;
+    width: 8%;
+}
+
+@media (max-width: 480px){
+    div#header span.side-bar {
+        left: 5%;
+    }
+
+    div#header span.side-bar.open {
+        left: 60%;
+    }
+}
