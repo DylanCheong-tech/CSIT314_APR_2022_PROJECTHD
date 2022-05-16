@@ -211,6 +211,7 @@ public class Order {
 
 			stmt3.executeUpdate();
 
+			this.getOrder();
 			System.out.println("Updated Successfully");
 			return true;
 

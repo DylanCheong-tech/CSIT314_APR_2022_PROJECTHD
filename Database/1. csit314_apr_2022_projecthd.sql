@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2022 at 11:25 AM
+-- Generation Time: May 16, 2022 at 12:35 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -62,7 +62,7 @@ CREATE TABLE `Bill` (
   `OrderID` int(5) NOT NULL,
   `Email` varchar(50) DEFAULT NULL,
   `CouponID` int(5) DEFAULT NULL,
-  `Payable Amount` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `PayableAmount` decimal(6,2) NOT NULL DEFAULT 0.00,
   `PaidAt` datetime DEFAULT NULL,
   `Status` varchar(6) NOT NULL DEFAULT 'Unpaid',
   `GST` decimal(6,2) NOT NULL DEFAULT 0.00

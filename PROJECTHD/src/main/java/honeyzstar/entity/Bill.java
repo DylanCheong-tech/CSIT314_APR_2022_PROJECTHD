@@ -122,6 +122,12 @@ public class Bill {
 
             if (result.next()) {
                 this.coupon = (new Coupon(result.getInt("CouponID"))).getCoupon();
+
+                stmt = conn.prepareStatement("UPDATE Bill SET CouponID = ? WHERE BillID = ?");
+                stmt.setInt(1, result.getInt("CouponID"));
+                stmt.setInt(2, this.billID);
+                stmt.executeUpdate();
+
                 return true;
             }
 
@@ -146,10 +152,10 @@ public class Bill {
             stmt.setInt(2, this.billID);
             stmt.executeUpdate();
 
-            // stmt = conn.prepareStatement("UPDATE Bill SET Payable Amount = (SELECT (totalAmount + GST) from Bill JOIN Orders on Bill.OrderID = Orders.OrderID where BillID = ?) WHERE BillID = ?");
-            // stmt.setInt(1, this.billID);
-            // stmt.setInt(2, this.billID);
-            // stmt.executeUpdate();
+            stmt = conn.prepareStatement("UPDATE Bill SET PayableAmount = (SELECT (totalAmount + GST) from Bill JOIN Orders on Bill.OrderID = Orders.OrderID where BillID = ?) WHERE BillID = ?");
+            stmt.setInt(1, this.billID);
+            stmt.setInt(2, this.billID);
+            stmt.executeUpdate();
 
             PreparedStatement stmt2 = conn.prepareStatement("SELECT * from Bill where BillID = ?");
             stmt2.setInt(1, this.billID);
@@ -162,7 +168,7 @@ public class Bill {
                 this.email = result.getString("Email") == null ? "" : result.getString("Email");
                 this.coupon = result.getInt("CouponID") == 0 ? null
                         : (new Coupon(result.getInt("CouponID"))).getCoupon();
-                this.payableAmount = result.getDouble("Payable Amount");
+                this.payableAmount = result.getDouble("PayableAmount");
                 this.GST = result.getDouble("GST");
                 this.paidAt = result.getString("PaidAt") == null ? "" : result.getString("PaidAt");
                 this.status = BillStatus.valueOf(result.getString("Status"));

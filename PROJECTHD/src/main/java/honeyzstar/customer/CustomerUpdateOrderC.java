@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 
 import java.io.*;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import honeyzstar.entity.Order;
 
@@ -44,11 +45,14 @@ public class CustomerUpdateOrderC extends HttpServlet {
         Order order = (new Order(orderID)).getOrder();
 
         try {
+            JsonObject returnObj = new JsonObject();
             if (order.updateMenuItem(menuItemID, qty)) {
-                out.println(new Gson().toJson("{'status' : 'success'}"));
+                returnObj.add("order", (new Gson()).toJsonTree(order));
+                returnObj.addProperty("status", "success");
             }else {
-                out.println(new Gson().toJson("{'status' : 'fail'}"));
+                returnObj.addProperty("status", "fail");
             }
+            out.println((new Gson()).toJson(returnObj));
         } finally {
             out.close();
         }

@@ -56,7 +56,7 @@ function add_qty (menuitemid, input_id){
         "type": "get",
         "dataType" : "json",
         "complete" : (data) => {
-            console.log(data.responseJSON);
+            update_total_amount(data.responseJSON.order.totalAmount);
         }
     });
 }
@@ -74,7 +74,7 @@ function minus_qty (menuitemid, input_id){
         "type": "get",
         "dataType" : "json",
         "complete" : (data) => {
-            console.log(data.responseJSON);
+            update_total_amount(data.responseJSON.order.totalAmount);
         }
     });
 }
@@ -90,6 +90,8 @@ $.ajax({
             document.getElementById("submit-order-btn").disabled = true;
         }
 
+        update_total_amount(order.totalAmount);
+
         for (id in order.menuItems){
             $.ajax({
                 async : false,
@@ -103,3 +105,24 @@ $.ajax({
         }
     }
 });
+
+function apply_coupon (){
+    var coupon_code = document.getElementById("coupon").value;
+    $.ajax({
+        async: true,
+        "url": "/customerApplyCoupon?couponCode=" + coupon_code,
+        "type": "get",
+        "dataType": "json",
+        "complete" : (data) => {
+            var promotion = document.getElementById("promotion");
+            promotion.className = "";
+            promotion.classList.add(data.responseJSON.status);
+
+            document.getElementById("coupon-message").innerHTML = data.responseJSON.status == "success" ? "Coupon Applied successfully" : "Sorry, this code is not valid.<br />Please check the code and try again";
+        }
+    });
+}
+
+function update_total_amount(value){
+    document.getElementById("sub-total-amount").textContent = "$ " + value.toFixed(2);
+}

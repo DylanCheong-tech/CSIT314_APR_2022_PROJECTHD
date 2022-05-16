@@ -228,6 +228,11 @@
       <servlet-class>honeyzstar.customer.CustomerViewBillC</servlet-class>
    </servlet>
 
+   <servlet>
+      <servlet-name>CustomerApplyCouponC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerApplyCouponC</servlet-class>
+   </servlet>
+
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
 
@@ -444,6 +449,11 @@
    <servlet-mapping>
       <servlet-name>CustomerSubmitOrderC</servlet-name>
       <url-pattern>/customerSubmitOrder</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>CustomerApplyCouponC</servlet-name>
+      <url-pattern>/customerApplyCoupon</url-pattern>
    </servlet-mapping>
 
    <servlet-mapping>

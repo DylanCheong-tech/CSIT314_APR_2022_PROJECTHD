@@ -39,13 +39,11 @@
 
         <span>
             <p>PROMOTIONS</p>
-            <span id="promotion" class="success">
+            <span id="promotion">
                 <span>Enter your promo coupon</span>
                 <input id="coupon" type="text" placeholder="Eg. CNY50" />
-                <button type="button">Apply</button>
+                <button type="button" onclick="apply_coupon()">Apply</button>
                 <span id="coupon-message">
-                    Sorry, this code is not valid.<br />
-                    Please check the code and try again
                 </span>
             </span>
         </span>
@@ -53,14 +51,13 @@
 
     <div id="sub-total">
         <span>SUB TOTAL</span>
-        <span>$ 999.99</span>
+        <span id="sub-total-amount"></span>
     </div>
 
     <div id="submit-button">
         <form action="/customerSubmitOrder" method="post">
             <button id="submit-order-btn" type="submit">Submit</button>
         </form>
-        
     </div>
 
     <script src="/js/customer/side-menu.js"></script>
