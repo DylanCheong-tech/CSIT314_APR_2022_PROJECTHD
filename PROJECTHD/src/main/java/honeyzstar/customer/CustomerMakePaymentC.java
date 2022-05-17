@@ -18,11 +18,8 @@ public class CustomerMakePaymentC extends HttpServlet {
 
         Bill bill = (new Bill(billID)).getBill();
 
-        if (bill.makePayment(email)) {
-
-        }else {
-
-        }
+        bill.makePayment(email);
+        
+        response.sendRedirect("/customer/payment-successful.html");
     }
 }
-

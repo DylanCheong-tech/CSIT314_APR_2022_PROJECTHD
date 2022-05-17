@@ -61,6 +61,18 @@ div#header span.side-bar.open span:nth-child(3){
 div#header span#cart-icon{
     margin: 1em .5em 0 0;
     cursor: pointer;
+    position: relative;
+}
+
+div#header span#cart-icon span.not-empty{
+    display: inline-block;
+    position: absolute;
+    left: -6px;
+    top: -12px;
+    width: .8em;
+    height: .8em;
+    background-color: red;
+    border-radius: 50%;
 }
 
 div#header span#cart-icon img {

@@ -24,3 +24,17 @@ $.ajax({
         document.getElementById("menu-item-description").textContent = return_json.descriptions;
     }
 });
+
+$.ajax({
+    async: true,
+    "url": "/customerGetOrder",
+    "type": "get",
+    "dataType": "json",
+    "complete": (data) => {
+        var order = data.responseJSON;
+        if (Object.keys(order.menuItems).length)
+            document.getElementById("cart-red-dot").classList.add("not-empty");
+        else
+            document.getElementById("cart-red-dot").className = "";
+    }
+});

@@ -82,6 +82,10 @@ $.ajax({
     "complete": (data) => {
         var order = data.responseJSON;
         document.getElementById("table-number").textContent = order.tableNum;
+        if (Object.keys(order.menuItems).length)
+            document.getElementById("cart-red-dot").classList.add("not-empty");
+        else
+            document.getElementById("cart-red-dot").className = "";
     }
 });
 
@@ -99,7 +103,7 @@ function search_menu_item() {
                 console.log(data.responseJSON);
             }
         });
-    }else {
+    } else {
         change_menu(current_category_ele, current_category)
     }
 }

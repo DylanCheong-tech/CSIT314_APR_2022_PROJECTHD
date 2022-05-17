@@ -29,6 +29,21 @@ div#header span img {
     width: 15%;
 }
 
+div#header span#cart-icon{
+    position: relative;
+}
+
+div#header span#cart-icon span.not-empty{
+    display: inline-block;
+    position: absolute;
+    left: 7.1em;
+    top: -.1em;
+    width: .8em;
+    height: .8em;
+    background-color: red;
+    border-radius: 50%;
+}
+
 div#menu-item-info {
     height: 450px;
     margin: 8em 0 0 0;
