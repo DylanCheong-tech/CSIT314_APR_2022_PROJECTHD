@@ -1,4 +1,4 @@
-function add_menu_items (menu_item, qty, order_status) {
+function add_menu_items(menu_item, qty, order_status) {
     var menu_items_frame = document.getElementById("menu-items");
 
     var span = document.createElement("span");
@@ -46,59 +46,71 @@ function add_menu_items (menu_item, qty, order_status) {
 
 }
 
-function add_qty (menuitemid, input_id){
+function add_qty(menuitemid, input_id) {
     var input = document.getElementById(input_id);
     input.value = parseInt(input.value) + 1;
 
     $.ajax({
-        async : true,
-        "url" : "/customerUpdateOrder?menuItemID=" + menuitemid + "&qty=" + 1,
+        async: true,
+        "url": "/customerUpdateOrder?menuItemID=" + menuitemid + "&qty=" + 1,
         "type": "get",
-        "dataType" : "json",
-        "complete" : (data) => {
+        "dataType": "json",
+        "complete": (data) => {
             update_total_amount(data.responseJSON.order.totalAmount);
         }
     });
 }
 
-function minus_qty (menuitemid, input_id){
+function minus_qty(menuitemid, input_id, confirm_remove) {
     var input = document.getElementById(input_id);
     var value = input.value;
 
+    if (value > 0) {
+        if (confirm_remove == true){
+            close_confirm_box();
+            document.location.reload();
+        }
+        else if (value == 1){
+            show_confirm_box(menuitemid, input_id);
+            return;
+        }
+        $.ajax({
+            async: true,
+            "url": "/customerUpdateOrder?menuItemID=" + menuitemid + "&qty=" + -1,
+            "type": "get",
+            "dataType": "json",
+            "complete": (data) => {
+                update_total_amount(data.responseJSON.order.totalAmount);
+            }
+        });
+    }else {
+
+    }
+
     value == 0 ? 0 : value--;
     input.value = value;
-
-    $.ajax({
-        async : true,
-        "url" : "/customerUpdateOrder?menuItemID=" + menuitemid + "&qty=" + -1,
-        "type": "get",
-        "dataType" : "json",
-        "complete" : (data) => {
-            update_total_amount(data.responseJSON.order.totalAmount);
-        }
-    });
 }
 
 $.ajax({
     async: true,
-    "url": "/customerGetOrder" ,
+    "url": "/customerGetOrder",
     "type": "get",
     "dataType": "json",
-    "complete" :  (data) => {
+    "complete": (data) => {
         var order = data.responseJSON;
-        if (order.status == "Submitted"){
+        if (order.status == "Submitted") {
             document.getElementById("submit-order-btn").disabled = true;
         }
 
         update_total_amount(order.totalAmount);
 
-        for (id in order.menuItems){
+        for (id in order.menuItems) {
             $.ajax({
-                async : false,
-                "url" : "/getMenuItem?menuItemID=" + id,
+                async: false,
+                "url": "/getMenuItem?menuItemID=" + id,
                 "type": "get",
-                "dataType" : "json",
-                "complete" : (data2) => {
+                "dataType": "json",
+                "complete": (data2) => {
                     add_menu_items(data2.responseJSON, order.menuItems[id], order.status);
                 }
             });
@@ -106,14 +118,14 @@ $.ajax({
     }
 });
 
-function apply_coupon (){
+function apply_coupon() {
     var coupon_code = document.getElementById("coupon").value;
     $.ajax({
         async: true,
         "url": "/customerApplyCoupon?couponCode=" + coupon_code,
         "type": "get",
         "dataType": "json",
-        "complete" : (data) => {
+        "complete": (data) => {
             var promotion = document.getElementById("promotion");
             promotion.className = "";
             promotion.classList.add(data.responseJSON.status);
@@ -123,6 +135,20 @@ function apply_coupon (){
     });
 }
 
-function update_total_amount(value){
+function update_total_amount(value) {
     document.getElementById("sub-total-amount").textContent = "$ " + value.toFixed(2);
+}
+
+function show_confirm_box (menuitemid, input_id){
+    document.getElementById("confirm-box").style.display = "block";
+    document.getElementById("confirm-btn").onclick = confirm_remove.bind(event, menuitemid, input_id);
+}
+
+function close_confirm_box() {
+    document.getElementById("confirm-box").style.display = "none";
+}
+
+function confirm_remove(menuitemid, input_id){
+    console.log(menuitemid)
+    minus_qty(menuitemid, input_id, true)
 }

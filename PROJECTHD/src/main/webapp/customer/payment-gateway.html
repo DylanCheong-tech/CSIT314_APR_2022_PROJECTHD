@@ -33,16 +33,16 @@
 
             <label>Payment by</label>
             <span id="vendor-icon">
-                <span class="vendor-selected">
-                    <img src="/img/customer/visa.png" />
+                <span onclick="select_merchant(this, 'Visa')">
+                    <img src="/img/customer/visa.png"  />
                 </span>
-                <span>
+                <span onclick="select_merchant(this, 'MasterCard')">
                     <img src="/img/customer/mastercard.png" />
                 </span>
-                <span>
+                <span onclick="select_merchant(this, 'American Express')">
                     <img src="/img/customer/american-express.png" />
                 </span>
-                <span>
+                <span onclick="select_merchant(this, 'JCB')">
                     <img src="/img/customer/jcb.png" />
                 </span>
             </span>
@@ -61,9 +61,12 @@
         </div>
 
         <div id="confirm-button">
+            <input id="payment-vendor" name="merchant" type="text" readonly />
             <button type="submit">Confirm</button>
         </div>
     </form>
+
+    <script src="/js/customer/payment-gateway.js"></script>
 </body>
 
 </html>

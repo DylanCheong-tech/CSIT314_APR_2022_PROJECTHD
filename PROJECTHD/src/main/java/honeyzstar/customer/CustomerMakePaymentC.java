@@ -13,6 +13,7 @@ public class CustomerMakePaymentC extends HttpServlet {
 
         HttpSession session = request.getSession();
         int billID = Integer.parseInt(session.getAttribute("billID").toString());
+        String merchant = request.getParameter("merchant");
 
         String email = request.getParameter("email");
 
@@ -20,6 +21,6 @@ public class CustomerMakePaymentC extends HttpServlet {
 
         bill.makePayment(email);
         
-        response.sendRedirect("/customer/payment-successful.html");
+        response.sendRedirect("/customer/payment-successful.html?merchant=" + merchant);
     }
 }

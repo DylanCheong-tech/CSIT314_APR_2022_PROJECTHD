@@ -204,12 +204,23 @@ public class Order {
 			}
 
 			PreparedStatement stmt3 = conn.prepareStatement(
-					"update orders set totalAmount = (select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) as total from OrdersMenuItem group by OrdersMenuItem.OrderID having OrdersMenuItem.OrderID = ?) where OrderID = ?");
+					"select sum(Quantity * (select price from MenuItem where menuitem.MenuItemID = OrdersMenuItem.MenuItemID)) as Total from OrdersMenuItem group by OrdersMenuItem.OrderID having OrdersMenuItem.OrderID = ?");
 
 			stmt3.setInt(1, this.orderID);
-			stmt3.setInt(2, this.orderID);
 
-			stmt3.executeUpdate();
+			ResultSet result = stmt3.executeQuery();
+
+			PreparedStatement stmt4 = conn.prepareStatement(
+					"update orders set totalAmount = ? where OrderID = ?");
+
+			if (result.next()) {
+				stmt4.setDouble(1, result.getDouble("Total"));
+			}else {
+				stmt4.setDouble(1, 0.00);
+			}
+
+			stmt4.setInt(2, this.orderID);
+			stmt4.executeUpdate();
 
 			this.getOrder();
 			System.out.println("Updated Successfully");
@@ -377,10 +388,11 @@ public class Order {
 		return returnArray;
 	}
 
-	public boolean updateMenuItem(int menuItemID, int qty){
-		if (this.menuItems.containsKey(menuItemID)){
+	public boolean updateMenuItem(int menuItemID, int qty) {
+		if (this.menuItems.containsKey(menuItemID)) {
 			this.menuItems.replace(menuItemID, this.menuItems.get(menuItemID) + qty);
-		}else {
+			this.menuItems.remove(menuItemID, 0);
+		} else {
 			this.menuItems.put(menuItemID, qty);
 		}
 

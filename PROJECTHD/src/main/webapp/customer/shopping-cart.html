@@ -31,7 +31,7 @@
         <a href="/customer/bill-page.html"><img src="/img/customer/bill.png" />Bill</a>
     </div>
 
-    <p id="title">ORDER CART</p>
+    <p id="title">SHOPPING CART</p>
 
     <div id="content">
         <span id="menu-items">
@@ -58,6 +58,14 @@
         <form action="/customerSubmitOrder" method="post">
             <button id="submit-order-btn" type="submit">Submit</button>
         </form>
+    </div>
+
+    <div id="confirm-box">
+        <span>
+            <span>Do you want to remove item ?</span>
+            <button type="button" onclick="close_confirm_box()">No</button>
+            <button id="confirm-btn" type="button">Yes</button>
+        </span>
     </div>
 
     <script src="/js/customer/side-menu.js"></script>
