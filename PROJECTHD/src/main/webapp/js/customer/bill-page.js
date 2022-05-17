@@ -10,6 +10,7 @@ $.ajax({
         document.getElementById("created-date").textContent = bill.createdAt;
         display_menu_items(bill.order.menuItems);
         document.getElementById("subtotal").textContent = "$ " + bill.order.totalAmount.toFixed(2);
+        if (bill.coupon) document.getElementById("coupon").textContent = "Discount: " + bill.coupon.code.toUpperCase();
         document.getElementById("discount").textContent = "- $ " + bill.discountAmount.toFixed(2);
         document.getElementById("GST").textContent = "$ " + bill.GST.toFixed(2);
         document.getElementById("grand-total-value").textContent = "$ " + bill.payableAmount.toFixed(2);

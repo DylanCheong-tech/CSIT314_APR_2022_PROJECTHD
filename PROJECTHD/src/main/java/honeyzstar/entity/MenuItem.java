@@ -244,6 +244,42 @@ public class MenuItem {
 		return null;
 	}
 
+	public static ArrayList<MenuItem> searchMenuItem(String name) {
+		ArrayList<MenuItem> returnList = new ArrayList<MenuItem>();
+
+		try (
+
+				Connection conn = DriverManager.getConnection(
+						connStr, dbusername, dbpassword);
+		) {
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM MenuItem WHERE Name LIKE ? ");
+
+			stmt.setString(1, "%" + name + "%");
+
+			ResultSet result = stmt.executeQuery();
+
+			while (result.next()) {
+				MenuItem item = new MenuItem();
+				item.setMenuItemID(result.getInt("MenuItemID"));
+				item.setName(result.getString("Name"));
+				item.setType(MenuItemType.valueOf(result.getString("Type")));
+				item.setPrice(result.getDouble("Price"));
+				item.setDescriptions(result.getString("Descriptions"));
+				item.setStatus(MenuItemStatus.valueOf(result.getString("Status")));
+				item.setCreatedAt(result.getString("CreatedAt"));
+				item.setUpdatedAt(result.getString("UpdatedAt"));
+				item.setImageDataURL(result.getString("ImageDataURL"));
+
+				returnList.add(item);
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+
+		return returnList;
+	}
+
 	public MenuItem getMenuItem() {
 		try (
 

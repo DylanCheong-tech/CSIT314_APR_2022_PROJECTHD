@@ -17,6 +17,9 @@
 
 <body>
     <div id="header" class="no-fade">
+        <span class="back-arrow" onclick="window.location.href = '/customer/main-menu-page.html'">
+            <img src="/img/customer/back-arrow.png" />
+        </span>
     </div>
 
     <p id="title">BILL</p>
@@ -39,7 +42,7 @@
             <span id="pricing">
                 <span class="column-1">Subtotal</span>
                 <span id="subtotal" class="column2"></span>
-                <span id="coupon" class="column-1 discount-highlight">LBR30 30% OFF</span>
+                <span id="coupon" class="column-1 discount-highlight">Discount </span>
                 <span id="discount" class="column-2"></span>
                 <span class="column-1">GST 7%</span>
                 <span id="GST" class="column-2"></span>
@@ -49,7 +52,7 @@
 
     <div id="grand-total">
         <span>GRAND TOTAL</span>
-        <span id="grand-total-value">$ 999.99</span>
+        <span id="grand-total-value">$ 0.00</span>
     </div>
 
     <div id="make-payment-button">

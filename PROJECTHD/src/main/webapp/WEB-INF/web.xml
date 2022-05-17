@@ -204,6 +204,11 @@
    </servlet>
 
    <servlet>
+      <servlet-name>CustomerSearchMenuItemC</servlet-name>
+      <servlet-class>honeyzstar.customer.CustomerSearchMenuItemC</servlet-class>
+   </servlet>
+
+   <servlet>
       <servlet-name>CustomerCreateOrderC</servlet-name>
       <servlet-class>honeyzstar.customer.CustomerCreateOrderC</servlet-class>
    </servlet>
@@ -434,6 +439,11 @@
    <servlet-mapping>
       <servlet-name>CustomerViewMenuItemsC</servlet-name>
       <url-pattern>/customerGetMenuItemList</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>CustomerSearchMenuItemC</servlet-name>
+      <url-pattern>/customerSearchMenuItem</url-pattern>
    </servlet-mapping>
 
    <servlet-mapping>
