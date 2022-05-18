@@ -233,9 +233,9 @@ public class Role {
 	}
 
 	@Override
-	public boolean equals(Object anotherRole) {
-		if (anotherRole instanceof Role){
-			Role compareRole = (Role) anotherRole;
+	public boolean equals(Object obj) {
+		if (obj instanceof Role){
+			Role compareRole = (Role) obj;
 			if (this.roleID == compareRole.roleID) {
 				if (this.name.equals(compareRole.name)) {
 					if (this.descriptions.equals(compareRole.descriptions)) {
