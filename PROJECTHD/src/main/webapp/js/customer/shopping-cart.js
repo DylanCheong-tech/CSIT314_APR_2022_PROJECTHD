@@ -139,13 +139,43 @@ function update_total_amount(value) {
 function show_confirm_box (menuitemid, input_id){
     document.getElementById("confirm-box").style.display = "block";
     document.getElementById("confirm-btn").onclick = confirm_remove.bind(event, menuitemid, input_id);
+    
+    var spans = document.querySelectorAll("div#confirm-box>span");
+    spans.forEach((item) => {
+        item.classList.remove("show");
+    });
+
+    spans.item(0).classList.add("show");
 }
 
-function close_confirm_box() {
+function close_confirm_box(submit) {
     document.getElementById("confirm-box").style.display = "none";
+
+    if (submit){
+        document.getElementById("redirect-control").value = "false";
+        document.getElementById("submit-form").submit();
+    }
 }
 
 function confirm_remove(menuitemid, input_id){
     console.log(menuitemid)
     minus_qty(menuitemid, input_id, true)
+}
+
+function submitOrder(e) {
+    e.preventDefault();
+
+    document.getElementById("confirm-box").style.display = "block";
+    
+    var spans = document.querySelectorAll("div#confirm-box>span");
+    spans.forEach((item) => {
+        item.classList.remove("show");
+    });
+
+    spans.item(1).classList.add("show");
+}
+
+function redirect_bill_page() {
+    document.getElementById("redirect-control").value = "true";
+    document.getElementById("submit-form").submit();
 }

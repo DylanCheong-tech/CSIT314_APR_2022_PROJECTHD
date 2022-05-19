@@ -20,7 +20,7 @@ $.ajax({
         document.getElementById("menuItemID").value  = return_json.menuItemID;
         document.getElementById("menu-item-img").src = return_json.imageDataURL;
         document.getElementById("menu-item-name").textContent = return_json.name;
-        document.getElementById("price").textContent = "$ " + return_json.price;
+        document.getElementById("price").textContent = "$ " + return_json.price.toFixed(2);
         document.getElementById("menu-item-description").textContent = return_json.descriptions;
     }
 });

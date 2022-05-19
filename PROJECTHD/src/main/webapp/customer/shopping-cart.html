@@ -55,16 +55,22 @@
     </div>
 
     <div id="submit-button">
-        <form action="/customerSubmitOrder" method="post">
-            <button id="submit-order-btn" type="submit">Submit</button>
+        <form id="submit-form" action="/customerSubmitOrder" method="post">
+            <input id="redirect-control" type="text" name="redirect-to-bill"  />
+            <button id="submit-order-btn" type="submit" onclick="submitOrder(event)">Submit</button>
         </form>
     </div>
 
     <div id="confirm-box">
         <span>
             <span>Do you want to remove item ?</span>
-            <button type="button" onclick="close_confirm_box()">No</button>
+            <button type="button" onclick="close_confirm_box(false)" class="highlight-button">No</button>
             <button id="confirm-btn" type="button">Yes</button>
+        </span>
+        <span class="show">
+            <span>Do you want to make payment now ?</span>
+            <button type="button" onclick="close_confirm_box(true)">No</button>
+            <button class="highlight-button" onclick="redirect_bill_page()" type="button">Yes</button>
         </span>
     </div>
 

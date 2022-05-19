@@ -181,9 +181,8 @@ div#submit-button button {
     cursor: pointer;
 }
 
-div#submit-button button:disabled {
-    background-color: lightgray;
-    cursor: not-allowed;
+div#submit-button form input {
+    display: none;
 }
 
 div#confirm-box {
@@ -195,7 +194,7 @@ div#confirm-box {
 }
 
 div#confirm-box>span {
-    display: inline-grid;
+    display: none;
     width: fit-content;
     padding: 1.5em;
     background-color: #FFFFFF;
@@ -203,6 +202,10 @@ div#confirm-box>span {
     border-radius: 12px;
     row-gap: .8em;
     column-gap: 1em;
+}
+
+div#confirm-box>span.show {
+    display: inline-grid;
 }
 
 div#confirm-box>span span {
@@ -223,6 +226,9 @@ div#confirm-box>span button {
 
 div#confirm-box>span button:nth-child(2) {
     grid-column: 1;
-    background-color: #FFD100;
     justify-self: right;
+}
+
+div#confirm-box>span button.highlight-button {
+    background-color: #FFD100;
 }

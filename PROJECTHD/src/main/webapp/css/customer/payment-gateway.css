@@ -6,6 +6,22 @@ body {
     text-align: center;
 }
 
+div#header {
+    text-align: left;
+}
+
+div#header span {
+    display: inline-block;
+    width: 50%;
+    margin: 0 1.5em 0 0;
+}
+
+div#header span img {
+    display: inline-block;
+    width: 20%;
+    cursor: pointer;
+}
+
 p {
     font-size: 2em;
     margin: 0;
