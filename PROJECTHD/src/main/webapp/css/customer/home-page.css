@@ -79,7 +79,7 @@ body div#order-button form button {
     padding: .5em;
     border-radius: 12px;
     background-color: #FFD100;
-    border : 2px #000000 solid;
+    border : none;
     cursor: pointer;
     font-size: 1.4em;
     grid-column: 1 / span 2;

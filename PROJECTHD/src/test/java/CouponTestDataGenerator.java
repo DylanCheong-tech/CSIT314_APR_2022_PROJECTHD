@@ -38,10 +38,11 @@ public class CouponTestDataGenerator {
 	        double xrounded = Math.round(x * 100.0) / 100.0; 
 	        
 			Random rn = new Random();
-			int random = rn.nextInt(2);
+			int random1 = rn.nextInt(2);
+			int random2 = rn.nextInt(2);
 			String iString = String.valueOf(i + 1);
 			
-			Coupon coupon = new Coupon(code + iString, name + iString, "this is a Coupon " + iString, discountTypeArray.get(random), xrounded,  statusArray.get(random));
+			Coupon coupon = new Coupon(code + iString, name + iString, "this is a Coupon " + iString, discountTypeArray.get(random1), xrounded,  statusArray.get(random2));
 			couponArray.add(coupon);
 			
 		}

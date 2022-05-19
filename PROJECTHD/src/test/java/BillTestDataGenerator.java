@@ -1,4 +1,3 @@
-import java.lang.System.Logger;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -7,18 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 import honeyzstar.entity.*;
 
 public class BillTestDataGenerator {
-	
-	
-	
-	
-	
 	private static long getRandomTimeBetweenTwoDates () {
 		long beginTime = Timestamp.valueOf("2020-01-01 10:00:00").getTime();
 
@@ -61,7 +53,6 @@ public class BillTestDataGenerator {
 			Bill bill = new Bill();
 			bill.setOrder(order);
 			
-			
 			try (
 
 	                Connection conn = DriverManager.getConnection(
@@ -85,25 +76,17 @@ public class BillTestDataGenerator {
 	        } catch (SQLException ex) {
 	            ex.printStackTrace();
 	        }
-			
-			
-	
-			
+
 			if(randomValue == 0) {
 				bill.applyCoupon(code + String.valueOf(randomCode));
 			}
 			
 			bill = bill.getBill();
 			
-			
-			
 			if(randomEmail == 1) {
 				bill.setEmail(email + String.valueOf(i+1));
 				bill.makePayment(bill.getEmail());
 			}
-			
-			
-			
 		
 		}
 	}

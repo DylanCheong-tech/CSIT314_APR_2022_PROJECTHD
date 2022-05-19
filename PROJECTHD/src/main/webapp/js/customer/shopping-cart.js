@@ -22,7 +22,7 @@ function add_menu_items(menu_item, qty, order_status) {
     var span3 = document.createElement("span");
     var minus_button = document.createElement("button");
     minus_button.type = "button";
-    minus_button.onclick = order_status == "Submitted" ? null : minus_qty.bind(event, menu_item.menuItemID, 'qty_' + menu_item.menuItemID);
+    minus_button.onclick = minus_qty.bind(event, menu_item.menuItemID, 'qty_' + menu_item.menuItemID);
     minus_button.textContent = "-";
     var input = document.createElement("input");
     input.id = 'qty_' + menu_item.menuItemID;
@@ -31,7 +31,7 @@ function add_menu_items(menu_item, qty, order_status) {
     input.disabled = true;
     var add_button = document.createElement("button");
     add_button.type = "button";
-    add_button.onclick = order_status == "Submitted" ? null : add_qty.bind(event, menu_item.menuItemID, 'qty_' + menu_item.menuItemID);
+    add_button.onclick = add_qty.bind(event, menu_item.menuItemID, 'qty_' + menu_item.menuItemID);
     add_button.textContent = "+";
 
     span3.appendChild(minus_button);
@@ -98,9 +98,6 @@ $.ajax({
     "dataType": "json",
     "complete": (data) => {
         var order = data.responseJSON;
-        if (order.status == "Submitted") {
-            document.getElementById("submit-order-btn").disabled = true;
-        }
 
         update_total_amount(order.totalAmount);
 

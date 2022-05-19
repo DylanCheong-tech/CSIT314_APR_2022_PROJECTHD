@@ -32,8 +32,10 @@ function fade_in_pic () {
     $("#promo-img").fadeIn(2000, function () {
         setTimeout(() => {
             fade_out_pic();
-        }, 1000);
+        }, 3000);
     });
 }
 
-fade_out_pic();
+setTimeout(() => {
+    fade_out_pic();
+}, 3000);
