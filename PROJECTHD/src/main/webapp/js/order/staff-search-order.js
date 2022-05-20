@@ -47,7 +47,7 @@ function display_list(order_list) {
         row.appendChild(column6);
 
         var column7 = document.createElement("td");
-        column7.innerHTML = order_list[index].createdBy.name;
+        column7.innerHTML = order_list[index].createdBy ? order_list[index].createdBy.name : "-";
         row.appendChild(column7);
 
         var column8 = document.createElement("td");

@@ -47,7 +47,7 @@ function display_list(order_list) {
         row.appendChild(column6);
 
         var column7 = document.createElement("td");
-        column7.innerHTML = order_list[index].createdBy.name;
+        column7.innerHTML = order_list[index].createdBy ? order_list[index].createdBy.name : "-";
         row.appendChild(column7);
 
         var column8 = document.createElement("td");
@@ -94,7 +94,7 @@ function view_order(orderID) {
 
     document.getElementById("order-id").value = order_json.orderID;
     document.getElementById("table-number").value = order_json.tableNum;
-    document.getElementById("created-by").value = order_json.createdBy.name;
+    document.getElementById("created-by").value = order_json.createdBy ? order_json.createdBy.name : "-";
     document.getElementById("created-at").value = order_json.createdAt;
     document.getElementById("updated-at").value = order_json.updatedAt ? order_json.updatedAt : "-";
     document.getElementById("status").value = order_json.status;
