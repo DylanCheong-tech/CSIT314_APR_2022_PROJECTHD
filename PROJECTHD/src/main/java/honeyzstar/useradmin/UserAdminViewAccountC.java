@@ -1,4 +1,5 @@
 package honeyzstar.useradmin;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
@@ -16,13 +17,10 @@ public class UserAdminViewAccountC extends HttpServlet {
         try {
             int accountID = Integer.parseInt(request.getQueryString().split("=")[1]);
 
-            Account resultAcc = Account.getAccount(accountID);
+            Account resultAcc = new Account(accountID);
+            resultAcc.getAccount();
 
-            if (resultAcc == null) {
-                out.println(new Gson().toJson(null));
-            } else {
-                out.println(new Gson().toJson(resultAcc));
-            }
+            out.println(new Gson().toJson(resultAcc));
 
         } finally {
             out.close();

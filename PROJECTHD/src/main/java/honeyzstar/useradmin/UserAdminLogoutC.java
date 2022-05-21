@@ -17,6 +17,8 @@ public class UserAdminLogoutC extends HttpServlet {
         username = (String) session.getAttribute("username");
         session.removeAttribute("username");
 
-        Account.logout(username);
+        Account account = new Account();
+        account.setUsername(username);
+        account.logout();
     }
 }

@@ -34,6 +34,12 @@ public class Role {
 		this.descriptions = "";
 	}
 
+	public Role(String roleName) {
+		this.roleID = 0;
+		this.name = roleName;
+		this.descriptions = "";
+	}
+
 	public Role(Role role) {
 		this.roleID = role.roleID;
 		this.name = role.name;
@@ -88,7 +94,7 @@ public class Role {
 		}
 	}
 
-	public static boolean deleteRole(int roleID) {
+	public boolean deleteRole() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
@@ -97,7 +103,7 @@ public class Role {
 		) {
 			PreparedStatement stmt = conn.prepareStatement("DELETE FROM Role WHERE RoleID = ? ");
 
-			stmt.setInt(1, roleID);
+			stmt.setInt(1, this.roleID);
 
 			stmt.executeUpdate();
 
@@ -110,9 +116,7 @@ public class Role {
 		}
 	}
 
-	public static Role searchRole(String roleName) {
-
-		Role returnRole = null;
+	public Role searchRole() {
 
 		try (
 
@@ -122,16 +126,15 @@ public class Role {
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role WHERE Name = ? ");
 
-			stmt.setString(1, roleName);
+			stmt.setString(1, this.name);
 
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
-				int id = result.getInt("RoleID");
-				String name = result.getString("Name");
-				String descriptions = result.getString("Descriptions");
-
-				returnRole = new Role(id, name, descriptions);
+				this.roleID = result.getInt("RoleID");
+				this.name = result.getString("Name");
+				this.descriptions = result.getString("Descriptions");
+				return this;
 			}
 
 			System.out.println("Searched Successfully");
@@ -140,12 +143,10 @@ public class Role {
 			ex.printStackTrace();
 		}
 
-		return returnRole;
+		return null;
 	}
 
-	public static Role getRole(int roleID) {
-		Role returnRole = null;
-
+	public Role getRole() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
@@ -154,16 +155,16 @@ public class Role {
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
 
-			stmt.setInt(1, roleID);
+			stmt.setInt(1, this.roleID);
 
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
-				int id = result.getInt("RoleID");
-				String name = result.getString("Name");
-				String descriptions = result.getString("Descriptions");
+				this.roleID = result.getInt("RoleID");
+				this.name = result.getString("Name");
+				this.descriptions = result.getString("Descriptions");
 
-				returnRole = new Role(id, name, descriptions);
+				return this;
 			}
 
 			System.out.println("Viewed Successfully");
@@ -172,7 +173,7 @@ public class Role {
 			ex.printStackTrace();
 		}
 
-		return returnRole;
+		return null;
 	}
 
 	public static ArrayList<Role> getRolelist() {

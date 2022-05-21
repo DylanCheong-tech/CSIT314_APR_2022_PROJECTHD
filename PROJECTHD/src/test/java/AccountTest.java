@@ -33,7 +33,7 @@ public class AccountTest {
 
     @Test
     public void testSuspendAccount (){
-        assertTrue("Test User Admin Suspend Account", Account.suspendAccount(30));
+        assertTrue("Test User Admin Suspend Account", (new Account(30)).suspendAccount());
     }
 
     @Test 
@@ -49,7 +49,7 @@ public class AccountTest {
 
     @Test
     public void testSearchAccount (){
-        Account searchAccount = Account.searchAccount("Test Update Account");
+        Account searchAccount = (new Account("Test Update Account")).searchAccount();
         Account expectedAccount = new Account(20, "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-04-30 20:44:56", "testupdateusername", "testupdatepassword", "Suspended");
 
         assertEquals("Test User Admin Search Account", expectedAccount, searchAccount);
@@ -57,7 +57,7 @@ public class AccountTest {
 
     @Test 
     public void testGetAccount (){
-        Account viewAccount = Account.getAccount(20);
+        Account viewAccount = (new Account(20)).getAccount();
         Account expectedAccount = new Account(20, "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-04-30 20:44:56", "testupdateusername", "testupdatepassword", "Suspended");
 
         assertEquals("Test User Admin View Account", expectedAccount, viewAccount);

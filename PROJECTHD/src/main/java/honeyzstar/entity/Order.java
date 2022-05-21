@@ -253,7 +253,7 @@ public class Order {
 				this.setStatus(OrderStatus.valueOf(result.getString("Status")));
 				this.setTotalAmount(result.getDouble("TotalAmount"));
 				this.setTableNum(result.getInt("TableNum"));
-				this.setCreatedBy(Account.getAccount(result.getInt("CreatedBy")));
+				this.setCreatedBy((new Account(result.getInt("CreatedBy"))).getAccount());
 				this.setMenuItems(this.getOrderMenuItemList());
 
 				System.out.println("Searched Successfully");
@@ -287,7 +287,7 @@ public class Order {
 				this.setStatus(OrderStatus.valueOf(result.getString("Status")));
 				this.setTotalAmount(result.getDouble("TotalAmount"));
 				this.setTableNum(result.getInt("TableNum"));
-				this.setCreatedBy(Account.getAccount(result.getInt("CreatedBy")));
+				this.setCreatedBy((new Account(result.getInt("CreatedBy"))).getAccount());
 				this.setMenuItems(this.getOrderMenuItemList());
 
 				System.out.println("Searched Successfully");
@@ -344,7 +344,7 @@ public class Order {
 				OrderStatus status = OrderStatus.valueOf(result.getString("Status"));
 				double totalAmount = result.getDouble("TotalAmount");
 				int tableNum = result.getInt("TableNum");
-				Account acc = Account.getAccount(result.getInt("CreatedBy"));
+				Account acc = (new Account(result.getInt("CreatedBy"))).getAccount();
 				Order order = new Order(id, createdAt, updatedAt, status, totalAmount, tableNum, acc);
 
 				order.setMenuItems(order.getOrderMenuItemList());

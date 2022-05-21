@@ -43,7 +43,7 @@ public class RoleTest {
 
     @Test
     public void testSearchRole(){
-        Role searchRole = Role.searchRole("Restaurant Manager");
+        Role searchRole = (new Role("Restaurant Manager")).searchRole();
         Role expectedRole = new Role(1, "Restaurant Manager", "This is Restaurant Manager");
 
         assertEquals("Test User Admin Search Role", expectedRole, searchRole);
@@ -51,7 +51,7 @@ public class RoleTest {
 
     @Test
     public void testGetRole(){
-        Role viewRole = Role.getRole(2);
+        Role viewRole = new Role(2).getRole();
         Role expectedRole = new Role(2, "Staff", "This is Staff");
 
         assertEquals("Test User Admin View Role", expectedRole, viewRole);

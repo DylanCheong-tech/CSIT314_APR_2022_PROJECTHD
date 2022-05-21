@@ -1,4 +1,5 @@
 package honeyzstar.useradmin;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
@@ -17,13 +18,10 @@ public class UserAdminSearchAccountC extends HttpServlet {
             // replacing the query string <space> encoded value if any
             String name = request.getQueryString().split("=")[1].replaceAll("%20", " ");
 
-            Account resultAcc = Account.searchAccount(name);
+            Account resultAcc = new Account(name);
+            resultAcc.searchAccount();
 
-            if (resultAcc == null) {
-                out.println(new Gson().toJson(null));
-            } else {
-                out.println(new Gson().toJson(resultAcc));
-            }
+            out.println(new Gson().toJson(resultAcc));
 
         } finally {
             out.close();

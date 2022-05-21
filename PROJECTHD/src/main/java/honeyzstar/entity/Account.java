@@ -85,6 +85,26 @@ public class Account {
 		this.status = "";
 	}
 
+	public Account(int accountID) {
+		this.accountID = accountID;
+		this.name = "";
+		this.role = null;
+		this.dateJoined = "";
+		this.username = "";
+		this.password = "";
+		this.status = "";
+	}
+
+	public Account(String name) {
+		this.accountID = 0;
+		this.name = name;
+		this.role = null;
+		this.dateJoined = "";
+		this.username = "";
+		this.password = "";
+		this.status = "";
+	}
+
 	public Account(Account account) {
 		this.accountID = account.accountID;
 		this.name = account.name;
@@ -143,17 +163,15 @@ public class Account {
 		}
 	}
 
-	public static boolean logout(String username) {
+	public boolean logout() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
 						connStr, dbusername, dbpassword);
 
 		) {
-			PreparedStatement stmt = conn.prepareStatement("SELECT Password FROM Account WHERE Username = ? ");
-
-			stmt = conn.prepareStatement("SELECT AccountID FROM Account WHERE Username = ?");
-			stmt.setString(1, username);
+			PreparedStatement stmt = conn.prepareStatement("SELECT AccountID FROM Account WHERE Username = ?");
+			stmt.setString(1, this.username);
 
 			ResultSet result = stmt.executeQuery();
 			int accountID;
@@ -201,7 +219,7 @@ public class Account {
 		}
 	}
 
-	public static boolean suspendAccount(int accountID) {
+	public boolean suspendAccount() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
@@ -211,7 +229,7 @@ public class Account {
 			PreparedStatement stmt = conn
 					.prepareStatement("UPDATE Account SET Status = 'Suspended' WHERE AccountID = ? ");
 
-			stmt.setInt(1, accountID);
+			stmt.setInt(1, this.accountID);
 
 			stmt.executeUpdate();
 
@@ -251,9 +269,7 @@ public class Account {
 		}
 	}
 
-	public static Account searchAccount(String accountName) {
-		Account returnAcc = null;
-
+	public Account searchAccount() {
 		try (
 
 				Connection conn = DriverManager.getConnection(
@@ -262,35 +278,20 @@ public class Account {
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Account WHERE Name = ? ");
 
-			stmt.setString(1, accountName);
+			stmt.setString(1, this.name);
 
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
-				int id = result.getInt("AccountID");
-				String name = result.getString("Name");
-				int roleID = result.getInt("RoleID");
-				String date = result.getString("DateJoined");
-				String username = result.getString("Username");
-				String password = result.getString("Password");
-				String status = result.getString("Status");
-				Role role = Role.getRole(roleID);
+				this.accountID = result.getInt("AccountID");
+				this.name = result.getString("Name");
+				this.dateJoined = result.getString("DateJoined");
+				this.username = result.getString("Username");
+				this.password = result.getString("Password");
+				this.status = result.getString("Status");
+				this.role = (new Role(result.getInt("RoleID")).getRole());
 						
-				returnAcc = new Account(id, name, role, date, username, password, status);
-						/*
-				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
-				stmt2.setInt(1, roleID);
-
-				ResultSet roleResult = stmt2.executeQuery();
-
-				if (roleResult.next()) {
-					String roleName = roleResult.getString("Name");
-					String desc = roleResult.getString("Descriptions");
-
-					returnAcc = new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status);
-				}
-				*/
-				
+				return this;
 			}
 
 			System.out.println("Searched Successfully");
@@ -299,11 +300,10 @@ public class Account {
 			ex.printStackTrace();
 		}
 
-		return returnAcc;
+		return null;
 	}
 
-	public static Account getAccount(int accountID) {
-		Account returnAcc = null;
+	public Account getAccount() {
 
 		try (
 
@@ -313,36 +313,20 @@ public class Account {
 		) {
 			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Account WHERE AccountID = ? ");
 
-			stmt.setInt(1, accountID);
+			stmt.setInt(1, this.accountID);
 
 			ResultSet result = stmt.executeQuery();
 
 			if (result.next()) {
-				int id = result.getInt("AccountID");
-				String name = result.getString("Name");
-				int roleID = result.getInt("RoleID");
-				String date = result.getString("DateJoined");
-				String username = result.getString("Username");
-				String password = result.getString("Password");
-				String status = result.getString("Status");
-				
-				Role role = Role.getRole(roleID);
+				this.accountID = result.getInt("AccountID");
+				this.name = result.getString("Name");
+				this.dateJoined = result.getString("DateJoined");
+				this.username = result.getString("Username");
+				this.password = result.getString("Password");
+				this.status = result.getString("Status");
+				this.role = (new Role(result.getInt("RoleID")).getRole());
 						
-				returnAcc = new Account(id, name, role, date, username, password, status);
-				
-				/*
-				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
-				stmt2.setInt(1, roleID);
-
-				ResultSet roleResult = stmt2.executeQuery();
-
-				if (roleResult.next()) {
-					String roleName = roleResult.getString("Name");
-					String desc = roleResult.getString("Descriptions");
-
-					returnAcc = new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status);
-				}
-				*/
+				return this;
 
 			}
 
@@ -352,7 +336,7 @@ public class Account {
 			ex.printStackTrace();
 		}
 
-		return returnAcc;
+		return null;
 	}
 
 	public static ArrayList<Account> getAccountList() {
@@ -377,24 +361,9 @@ public class Account {
 				String password = result.getString("Password");
 				String status = result.getString("Status");
 
-				Role role = Role.getRole(roleID);
+				Role role = (new Role(roleID)).getRole();
 						
-				returnArray.add(new Account(id, name, role, date, username, password, status));
-				
-				/*
-				PreparedStatement stmt2 = conn.prepareStatement("SELECT * FROM Role WHERE RoleID = ? ");
-				stmt2.setInt(1, roleID);
-
-				ResultSet roleResult = stmt2.executeQuery();
-
-				if (roleResult.next()) {
-					String roleName = roleResult.getString("Name");
-					String desc = roleResult.getString("Descriptions");
-
-					returnArray.add(new Account(id, username, password, name, new Role(roleID, roleName, desc), date, status));
-				}
-				*/
-				
+				returnArray.add(new Account(id, name, role, date, username, password, status));			
 			
 			}
 
