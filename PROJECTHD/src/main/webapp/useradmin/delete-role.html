@@ -8,27 +8,44 @@
     <title>Delete Role</title>
 
     <!--Google jQuery CDN-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="/css/alert-box.css" />
-    <link rel="stylesheet" href="/css/page-layout-1.css" />
-    <link rel="stylesheet" href="/css/form-layout.css" />
-    <link rel="stylesheet" href="/css/table-layout.css" />
-    <link rel="stylesheet" href="/css/role/delete-role.css" />
+    <link rel="stylesheet" href="/css/alert-box-2.css" />
+    <link rel="stylesheet" href="/css/page-layout-2.css" />
+    <link rel="stylesheet" href="/css/search-filter.css" />
+    <link rel="stylesheet" href="/css/role/table-layout.css" />
     <link rel="stylesheet" href="/css/font-styles.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
+
 </head>
 
 <body>
     <div id="header">
         <span id="header-date-time" class="mode-font-color"></span>
+        <span id="logo">
+            <img id="header-logo" src="/img/logo.png" alt="logo_image" />
+        </span>
         <span id="buttons">
-            <button id="portal-btn" type="button" onclick="window.location.href = '/user-admin-portal.html'">User Admin Portal</button>
+            <button id="portal-btn" type="button" onclick="window.location.href = '/user-admin-portal.html'">Portal Home</button>
             <button id="logout-btn" type="button" onclick="logout()">Logout</button>
         </span>
     </div>
 
     <div id="welcome-msg" class="mode-font-color mode-bg-color-2 mode-border-color-2">
         Delete Role
+    </div>
+
+    <div id="search-frame" class="mode-border-color-1">
+        <input id="search-bar" class="mode-font-color" placeholder="Enter Role Name ... " />
+        <button id="search-btn" onclick="searchRole()">Search</button>
+    </div>
+
+    <div id="sort-frame">
+        <select onchange="sort('sort-list')" id="sort-list">
+            <option selected disabled>Sort</option>
+            <option value="id">By ID</option>
+            <option value="name">By Name</option>
+        </select>
     </div>
 
     <table id="table" align="center">
@@ -42,6 +59,7 @@
         <tbody id="role-list">
         </tbody>
     </table>
+    <div id="outline"></div>
 
     <div id="alert-box">
         <span id="alert-message"></span>
@@ -51,10 +69,21 @@
         <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
     </div>
 
+    <div id="loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <br />
+        <span>Loading...</span>
+    </div>
+
+    <script src="/js/loading.js"></script>
     <script src="/js/role/delete-role.js"></script>
-    <script src="/js/logoutUserAdmin.js"></script>
+    <script src="/js/role/search-function.js"></script>
+    <script src="/js/role/sort-function.js"></script>
+    <script src="/js/logoutStaff.js"></script>
+    <script src="/js/alert-box.js"></script>
     <script src="/js/date-time.js"></script>
-    <script src="/js/page-theme.js"></script>
 </body>
 
 </html>

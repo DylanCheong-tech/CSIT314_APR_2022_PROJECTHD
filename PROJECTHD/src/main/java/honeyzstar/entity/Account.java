@@ -274,7 +274,7 @@ public class Account {
 				String username = result.getString("Username");
 				String password = result.getString("Password");
 				String status = result.getString("Status");
-				Role role = Role.getRole(result.getInt(roleID));
+				Role role = Role.getRole(roleID);
 						
 				returnAcc = new Account(id, name, role, date, username, password, status);
 						/*

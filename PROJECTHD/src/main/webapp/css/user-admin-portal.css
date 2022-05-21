@@ -2,6 +2,11 @@ body {
     text-align: center;
 }
 
+body div#header {
+    min-height: 6em;
+    background-color: #FFD100 ;
+}
+
 body div#header span {
     width: 32%;
     display: inline-block;
@@ -10,10 +15,10 @@ body div#header span {
 
 body div#header span#header-date-time {
     text-align: left;
-    font-size: 2em;
-    line-height: 2em;
+    font-size: 1.5em;
+    line-height: 1em;
     padding: 0 0 0 1em;
-    margin: 1.5% 0 0 0;
+    margin: 4% 0 0 0;
     vertical-align: top;
 }
 
@@ -27,55 +32,108 @@ body div#header span img#header-logo {
 }
 
 body div#header span#buttons {
-    margin: 5% 0 0 0;
+    margin: 4% 0 0 0;
     vertical-align: top;
 }
 
 body div#header span#buttons button {
     display: inline-block;
-    width: 50%;
+    width: 35%;
     height: 2.5em;
     border-radius: 9px;
-    background-color: #FFD100;
+    background-color: #FFFFFF;
     border : 2px #000000 solid;
     font-size: 1.1em;
     cursor: pointer;
 }
 
-body div#welcome-msg {
-    margin: 1% 0 5% 0;
-    padding: 1% 0 1% 0;
-    text-align: center;
-    background-color: #FFD100;
-    font-size: 2em;
+body div#user-profile {
+    display: inline-block;
+    width: 25%;
+    margin: 5% 0 0 0;
+}
+
+body div#operation-items {
+    display: inline-block;
+    width: 70%;
+    margin: 5% 0 0 0;
+}
+
+body div#operation-items p#operation-title {
+    text-align: left;
+    margin: 0 1% 2% 5%;
+    font-size: 1.2em;
 }
 
 body div#operation-items span.item {
     height: fit-content;
     width: 17%;
     margin: 0 1% 4% 1%;
-    display: inline-grid;
-    position: relative;
+    display: inline-grid;    
+    cursor: pointer;    
+}
 
+body div#operation-items span.item span {
+    background-color: #FFD100;
     border: 2px #000000 solid;
-    border-radius: 50px;
-    cursor: pointer;
+    border-radius: 15px;
+    text-align: center;
 }
 
 body div#operation-items span.item img.action-logo{
-    margin: 10% 0 10% 27.5%;
+    margin: 15% 0 15% 0;
     width: 45%;
 }
 
-body div#operation-items span.item button.action-button{
-    background-color: #FFD100;
-    border-radius: 50px;
-    width: 80%;
-    margin: 0 0 0 10%;
-    font-size: 1.2em;
+div#user-profile {
+    vertical-align: top;
+}
 
-    height: 2.5em;
+div#user-profile div#user-pic img {
+    display: inline-block;
+    width: 65%;
+    margin: 6% 0 0 0;
+    border: 2px solid #000000;
+    border-radius: 50%;
+}
+
+div#user-profile div#user-info-1 {
+    position: relative;
+    display: inline-block;
+    width: 12.5em;
+    text-align: left;
+    line-height: 2em;
+}
+
+div#user-profile div#user-info-1 span {
     position: absolute;
-    top : 90%;
-    cursor: pointer;
+    left: 3.5em;
+}
+
+div#user-profile div#user-info-2 {
+    display: inline-block;
+    position: relative;
+    width: 17em;
+    text-align: left;
+    line-height: 2em;
+}
+
+div#user-profile div#user-info-2 span {
+    position: absolute;
+    margin: 0;
+    left: 5.7em;
+}
+
+div#user-profile div#user-pic {
+    display: inline-block;
+    background-color: #FFD100;
+    width: 15em;
+    height: 12em;
+    border: 2px solid #000000;
+    border-radius: 10px;
+}
+
+div#user-profile span {
+    display: inline-block;
+    margin: .5% 0 .5% 0;
 }

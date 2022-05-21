@@ -42,10 +42,10 @@ function sort(select_id) {
     }
     else if (sort_criteria == "createdBy"){
         order_list.sort((a, b) => {
-            if (a.createdBy.name.toLowerCase() < b.createdBy.name.toLowerCase()){
+            if (a.createdBy.toLowerCase() < b.createdBy.toLowerCase()){
                 return -1;
             }
-            else if (a.createdBy.name.toLowerCase() > b.createdBy.name.toLowerCase()){
+            else if (a.createdBy.toLowerCase() > b.createdBy.toLowerCase()){
                 return 1;
             }
             else{

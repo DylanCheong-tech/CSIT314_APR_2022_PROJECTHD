@@ -1,27 +1,4 @@
-var params = new URLSearchParams(window.location.search);
-var status = params.get("status");
-var alert_box = document.getElementById("alert-box");
-var alert_box_msg = document.getElementById("alert-message");
-
-function show_confrim_btn() {
-    var hide_btn = document.getElementsByClassName("confirm-btn");
-    for (index in hide_btn) {
-        hide_btn.item(index).style.display = "inline-block";
-    }
-}
-
-function alert_confirm() {
-    alert_box.style.display = "none";
-}
-
-var account_list = $.ajax({
-    async: false,
-    "url": "/getAccountList",
-    "type": "get",
-    "dataType": "json"
-}).responseJSON;
-
-function displayAccountList(json_list) {
+function display_list(json_list) {
     var list_frame = document.getElementById("acc-list");
 
     for (index in json_list) {
@@ -61,7 +38,7 @@ function displayAccountList(json_list) {
         var column6 = document.createElement("td");
         column6.classList.add("mode-font-color");
         column6.classList.add("mode-border-color-1");
-        column6.innerHTML = json_list[index].dateJoined.split(" ")[0];
+        column6.innerHTML = json_list[index].dateJoined;
         row.appendChild(column6);
 
         var column7 = document.createElement("td");
@@ -74,58 +51,13 @@ function displayAccountList(json_list) {
     }
 }
 
-// display the list of account 
-displayAccountList(account_list);
-
-function searchAccount() {
-    document.getElementById("back-btn-frame").style.display = "block";
-
-    var accName = document.getElementById("search-bar").value;
-
-    var requested_json = $.ajax({
-        async: false,
-        "url": "/searchAccount?name=" + accName,
-        "type": "get",
-        "dataType": "json"
-    }).responseJSON;
-
-    var list_frame = document.getElementById("acc-list");
-
-    if (!requested_json) {
-        show_confrim_btn();
-        alert_box_msg.textContent = "Search Account Fail";
-        alert_box.style.display = "inline-block";
-        return;
+$.ajax({
+    async: true,
+    "url": "/getAccountList",
+    "type": "get",
+    "dataType": "json",
+    "complete" : (data) => {
+        display_list(data.responseJSON);
+        hide_loader();
     }
-
-    // remove all the list first
-    var firstChild = list_frame.firstElementChild;
-    while (firstChild) {
-        firstChild.remove();
-        firstChild = list_frame.firstElementChild;
-    }
-
-    let result_list = [requested_json];
-
-    displayAccountList(result_list);
-    display_theme(current_theme);
-}
-
-function alert_confirm() {
-    alert_box.style.display = "none";
-}
-
-function back () {
-    document.getElementById("back-btn-frame").style.display = "none";
-    document.getElementById("search-bar").value = "";
-
-    var list_frame = document.getElementById("acc-list");
-    // remove all the list first
-    var firstChild = list_frame.firstElementChild;
-    while (firstChild) {
-        firstChild.remove();
-        firstChild = list_frame.firstElementChild;
-    }
-
-    displayAccountList(account_list);
-}
+});

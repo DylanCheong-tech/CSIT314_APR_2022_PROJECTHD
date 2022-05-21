@@ -1,13 +1,21 @@
 function sort(select_id) {
     var sort_criteria = document.getElementById(select_id).value;
 
+    var account_list = $.ajax({
+        async: false,
+        "url": "/getAccountList",
+        "type": "get",
+        "dataType": "json"
+    }).responseJSON;
+
+    console.log(account_list)
 
     if (sort_criteria == "id") {
-        coupon_list.sort((a, b) => {
-            if (a.couponID < b.couponID) {
+        account_list.sort((a, b) => {
+            if (a.accountID < b.accountID) {
                 return -1;
             }
-            else if (a.couponID > b.couponID) {
+            else if (a.accountID > b.accountID) {
                 return 1;
             }
             else {
@@ -15,12 +23,12 @@ function sort(select_id) {
             }
         });
     }
-    else if (sort_criteria == "code") {
-        coupon_list.sort((a, b) => {
-            if (a.code.toLowerCase() < b.code.toLowerCase()) {
+    if (sort_criteria == "roleID") {
+        account_list.sort((a, b) => {
+            if (a.role.roleID < b.role.roleID) {
                 return -1;
             }
-            else if (a.code.toLowerCase() > b.code.toLowerCase()) {
+            else if (a.role.roleID > b.role.roleID) {
                 return 1;
             }
             else {
@@ -29,7 +37,7 @@ function sort(select_id) {
         });
     }
     else if (sort_criteria == "name") {
-        coupon_list.sort((a, b) => {
+        account_list.sort((a, b) => {
             if (a.name.toLowerCase() < b.name.toLowerCase()) {
                 return -1;
             }
@@ -41,12 +49,12 @@ function sort(select_id) {
             }
         });
     }
-    else if (sort_criteria == "discountType") {
-        coupon_list.sort((a, b) => {
-            if (a.discountType.toLowerCase() < b.discountType.toLowerCase()) {
+    else if (sort_criteria == "username") {
+        account_list.sort((a, b) => {
+            if (a.username.toLowerCase() < b.username.toLowerCase()) {
                 return -1;
             }
-            else if (a.discountType.toLowerCase() > b.discountType.toLowerCase()) {
+            else if (a.username.toLowerCase() > b.username.toLowerCase()) {
                 return 1;
             }
             else {
@@ -54,21 +62,21 @@ function sort(select_id) {
             }
         });
     }
-    else if (sort_criteria == "discountAmount") {
-        coupon_list.sort((a, b) => {
-            if (a.discountAmount < b.discountAmount) {
+    else if (sort_criteria == "dateJoined"){
+        account_list.sort((a, b) => {
+            if (a.dateJoined.toLowerCase() < b.dateJoined.toLowerCase()){
                 return -1;
             }
-            else if (a.discountAmount > b.discountAmount) {
+            else if (a.dateJoined.toLowerCase() > b.dateJoined.toLowerCase()){
                 return 1;
             }
-            else {
+            else{
                 return 0;
             }
         });
     }
     else if (sort_criteria == "status") {
-        coupon_list.sort((a, b) => {
+        account_list.sort((a, b) => {
             if (a.status.toLowerCase() < b.status.toLowerCase()) {
                 return -1;
             }
@@ -81,7 +89,7 @@ function sort(select_id) {
         });
     }
 
-    var list_frame = document.getElementById("coupon-list");
+    var list_frame = document.getElementById("acc-list");
     // remove all the list first
     var firstChild = list_frame.firstElementChild;
     while (firstChild) {
@@ -89,5 +97,5 @@ function sort(select_id) {
         firstChild = list_frame.firstElementChild;
     }
 
-    display_list(coupon_list);
+    display_list(account_list);
 }

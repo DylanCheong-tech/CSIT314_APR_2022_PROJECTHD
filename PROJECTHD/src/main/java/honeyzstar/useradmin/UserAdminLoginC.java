@@ -22,9 +22,15 @@ public class UserAdminLoginC extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if (loginSuccess) {
-			response.sendRedirect("/user-admin-portal.html");
-			if (session.getAttribute("username") == null) {
+			response.sendRedirect("/user-admin-portal.html?userID=" + acc.getID());
+
+			if (session.getAttribute("username") == null || !session.getAttribute("username").toString().equals(username)) {
 				session.setAttribute("username", username);
+				session.setMaxInactiveInterval(30 * 60);
+			}
+
+			if (session.getAttribute("userID") == null || Integer.parseInt(session.getAttribute("userID").toString()) != acc.getID()) {
+				session.setAttribute("userID", acc.getID());
 				session.setMaxInactiveInterval(30 * 60);
 			}
 
