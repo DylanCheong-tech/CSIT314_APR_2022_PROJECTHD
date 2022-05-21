@@ -18,4 +18,4 @@ jobs:
         java-version: 14
 
     - name: Build Web Application Project with Maven
-      run: mvn install -DskipTests
+      run: mvn -f ./here install -DskipTests
