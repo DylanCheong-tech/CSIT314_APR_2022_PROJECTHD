@@ -61,30 +61,18 @@ public class CouponTest {
     
     @Test 
     public void testSearchCoupon (){
-    	//this.testCoupon.setCouponID(62);
     	this.testCoupon.setCode("Coupon62");
-    	// this.testCoupon.setName("Test Coupon 62");
-    	//this.testCoupon.setDescriptions("this is a Coupon 62");
-    	//this.testCoupon.setDiscountType(DiscountType.Value);
-    	//this.testCoupon.setDiscountAmount(6.83);
-    	//this.testCoupon.setStatus(CouponStatus.Active);
 
-		Coupon expectedCoupon = new Coupon(62, "Coupon62", "Test Coupon 62", "this is a Coupon 62", DiscountType.Value, 7.14, CouponStatus.Expired);
+		Coupon expectedCoupon = new Coupon(62, "Coupon62", "Test Coupon 62", "this is a Coupon 62", DiscountType.Percentage, 10.42, CouponStatus.Active);
 
         assertEquals("Test Restaurant Manager Search Coupon", expectedCoupon, this.testCoupon.searchCoupon());
     }
     
     @Test 
     public void testGetCoupon (){
-    	this.testCoupon.setCouponID(61);
-    	//this.testCoupon.setCode("Coupon61");
-    	//this.testCoupon.setName("Test Coupon 61");
-    	//this.testCoupon.setDescriptions("this is a Coupon 61");
-    	//this.testCoupon.setDiscountType(DiscountType.Value);
-    	//this.testCoupon.setDiscountAmount(4.91);
-    	//this.testCoupon.setStatus(CouponStatus.Expired);
+    	this.testCoupon.setCouponID(25);
 
-		Coupon expectedCoupon = new Coupon(61, "Coupon61", "Test Coupon 61", "this is a Coupon 61", DiscountType.Value, 7.09, CouponStatus.Expired);
+		Coupon expectedCoupon = new Coupon(25, "Coupon25", "Test Coupon 25", "this is a Coupon 25", DiscountType.Percentage, 6.39, CouponStatus.Expired);
 
         assertEquals("Test Restaurant Manager View Menu Item", expectedCoupon, this.testCoupon.getCoupon());
     }

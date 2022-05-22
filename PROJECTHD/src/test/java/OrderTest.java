@@ -75,7 +75,7 @@ public class OrderTest {
 	}
 	
 	@Test 
-    public void testSearchMenuItem (){
+    public void testSearchOrder (){
 		Account acc = new Account();
     	acc.setID(4);
 		

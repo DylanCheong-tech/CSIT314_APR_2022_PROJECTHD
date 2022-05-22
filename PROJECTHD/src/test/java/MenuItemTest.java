@@ -56,15 +56,8 @@ public class MenuItemTest {
     
     @Test 
     public void testSearchMenuItem (){
-    	//this.testMenuItem.setMenuItemID(96);
     	this.testMenuItem.setName("Test Menu Item 96");
-    	//this.testMenuItem.setType(MenuItemType.MainCourse);
-    	//this.testMenuItem.setPrice(7.37);
-    	//this.testMenuItem.setStatus(MenuItemStatus.Unavailable);
-    	//this.testMenuItem.setDescriptions("this is a menu item 96");
-    	//this.testMenuItem.setCreatedAt("2022-05-05 18:27:00");
-    	//this.testMenuItem.setUpdatedAt(null);
-    	//this.testMenuItem.setImageDataURL("this is an image URL 96");
+
 
 		MenuItem expectedMenuItem = new MenuItem(96, "Test Menu Item 96", MenuItemType.MainCourse, 7.37, "this is a test menu item", MenuItemStatus.Unavailable , "2022-05-05 18:27:00", null, "this is an image URL 96");
 
@@ -74,14 +67,6 @@ public class MenuItemTest {
     @Test 
     public void testGetMenuItem (){
     	this.testMenuItem.setMenuItemID(95);
-    	//this.testMenuItem.setName("Test Menu Item 95");
-    	//this.testMenuItem.setType(MenuItemType.SideDish);
-    	//this.testMenuItem.setPrice(5.95);
-    	//this.testMenuItem.setStatus(MenuItemStatus.Unavailable);
-    	//this.testMenuItem.setDescriptions("this is a menu item 96");
-    	//this.testMenuItem.setCreatedAt("2022-05-05 18:27:00");
-    	//this.testMenuItem.setUpdatedAt(null);
-    	//this.testMenuItem.setImageDataURL("this is an image URL 95");
 
 		MenuItem expectedMenuItem = new MenuItem(95, "Test Menu Item 95", MenuItemType.SideDish, 5.95, "this is a test menu item", MenuItemStatus.Unavailable , "2022-05-05 18:27:00", null, "this is an image URL 95");
 

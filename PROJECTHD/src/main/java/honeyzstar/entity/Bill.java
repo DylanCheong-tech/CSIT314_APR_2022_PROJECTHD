@@ -167,6 +167,7 @@ public class Bill {
                     stmt.setInt(2, this.billID);
                     stmt.executeUpdate();
                 } else {
+                    stmt.close();
                     stmt = conn.prepareStatement(
                             "UPDATE Bill SET Bill.DiscountAmount = (SELECT Coupon.DiscountAmount from Coupon JOIN Bill ON Coupon.CouponID = Bill.CouponID WHERE BillID = ? AND Coupon.DiscountType = 'Value') WHERE BillID = ?");
                     stmt.setInt(1, this.billID);
