@@ -1,0 +1,170 @@
+const margin = { top: 10, right: 150, bottom: 120, left: 60 },
+    width = 1000 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
+
+const svg = d3.select("#report-graph")
+    .append("svg")
+    .attr("id", "svg-report")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+function draw_graph(data, x_axis_label, y_axis_label) {
+    
+    if (data.length == 0) {
+        d3.select("#report-frame").append("div")
+            .attr("id", "no-result")
+            .append("img")
+            .attr("src", "/img/frown-face.png");
+        d3.select("#no-result")
+            .append("div")
+            .html("Sorry, no results found.<br />Please select another time frame");
+
+        d3.select("#report-graph").style("display", "none");
+
+        return;
+    }
+
+    d3.select("#report-graph").style("display", "block");
+    d3.select("#no-result").remove();
+
+    // Add X axis
+    const x = d3.scaleBand()
+        .domain(data.map((d) => { return d.key }))
+        .range([0, width])
+        .padding([0.2])
+    svg.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(x).tickSize(0))
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform", "rotate(-65)");;
+
+    svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height + margin.bottom - 5)
+        .attr("font-size", "1.5em")
+        .text(x_axis_label);
+
+    var max_data_value = d3.max(data, d => Math.max(d.value));
+    // Add Y axis
+    const y = d3.scaleLinear()
+        .domain([
+            0,
+            max_data_value + (10 - max_data_value % 10)
+        ])
+        .range([height, 0]);
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+    svg.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", 0)
+        .attr("dy", "-1.5em")
+        .attr("font-size", "1.5em")
+        .attr("transform", "rotate(-90)")
+        .text(y_axis_label);
+
+    // gridlines in y axis function
+    function make_y_gridlines() {
+        return d3.axisLeft(y)
+            .ticks(5)
+    }
+    // add the Y gridlines
+    svg.append("g")
+        .attr("class", "grid")
+        .call(make_y_gridlines()
+            .tickSize(-width)
+            .tickFormat("")
+        )
+
+    // Append rectangles for bar chart
+    svg.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("fill", "#FFD100")
+        .attr("x", function (d) { return x(d.key); })
+        .attr("width", x.bandwidth())
+        .attr("y", function (d) { return y(d.value); })
+        .attr("height", function (d) { return height - y(d.value); });
+
+}
+
+d3.select("#report-graph").append("button").text("Download").attr("type", "button");
+
+var report_period = "hourly";
+
+document.getElementById("report-period").onchange = function () {
+    report_period = this.value;
+    var report_period_ele = document.getElementById("report-time");
+
+    if (report_period == "hourly") {
+        report_period_ele.type = "datetime-local";
+    }
+    else if (report_period == "daily") {
+        report_period_ele.type = "date";
+    }
+    else if (report_period == "weekly") {
+        report_period_ele.type = "week";
+    }
+    else {
+        report_period_ele.type = "month";
+        report_period_ele.placeholder = "yyyy";
+        report_period_ele.min = "1900";
+        report_period_ele.max = "2099";
+    }
+}
+
+function clean_graph() {
+    svg.selectAll("*").remove();
+}
+
+function generateReport() {
+    console.log(document.getElementById("report-time").value);
+    var report_time = document.getElementById("report-time").value;
+    var url_string = "";
+    var x_axis_label = "";
+
+    if (report_period == "hourly") {
+        var split_string = report_time.split("T");
+        var date = split_string[0].split("-");
+        var time = split_string[1].split(":");
+        // only need for hour value, let the user know he/she only need to specify the hour value
+        document.getElementById("report-time").value = `${date[0]}-${date[1]}-${date[2]}T${time[0]}:00`;
+        url_string = "/getHourlyMenuPreferencesReport" + `?year=${date[0]}&month=${date[1]}&day=${date[2]}&hour=${time[0]}`;
+        x_axis_label = `${date[0]}-${date[1]}-${date[2]}  ${time[0]}:00 ~ ${date[0]}-${date[1]}-${date[2]}  ${time[0]}:59`;
+    }
+    else if (report_period == "daily") {
+        var split_string = report_time.split("-");
+        url_string = "/getDailyMenuPreferencesReport" + `?year=${split_string[0]}&month=${split_string[1]}&day=${split_string[2]}`;
+        x_axis_label = `${split_string[0]}-${split_string[1]}-${split_string[2]}`;
+    }
+    else if (report_period == "weekly") {
+        var split_string = report_time.split("-");
+        url_string = "/getWeeklyMenuPreferencesReport" + `?year=${split_string[0]}&week=${split_string[1].substr(1)}`;
+        x_axis_label = `${split_string[0]} Week-${split_string[1]}`;
+    }
+    else {
+        var split_string = report_time.split("-");
+        url_string = "/getMonthlyMenuPreferencesReport" + `?year=${split_string[0]}&month=${split_string[1]}`;
+        x_axis_label = `${split_string[0]} Month-${split_string[1]}`;
+    }
+
+    $.ajax({
+        async: true,
+        "url": url_string,
+        "type": "get",
+        "dataType": "json",
+        "complete": (data) => {
+            clean_graph();
+            draw_graph(data.responseJSON, x_axis_label, "Menu Preferences");
+        }
+    });
+}

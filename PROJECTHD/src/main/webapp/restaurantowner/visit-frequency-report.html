@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Frequency Report</title>
+
+    <!--Google jQuery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- d3js version 6 -->
+    <script src="https://d3js.org/d3.v6.js"></script>
+
+    <link rel="stylesheet" href="/css/alert-box-2.css" />
+    <link rel="stylesheet" href="/css/page-layout-2.css" />
+    <link rel="stylesheet" href="/css/font-styles.css" />
+    <link rel="stylesheet" href="/css/report/report-frame.css" />
+
+</head>
+
+<body>
+    <div id="header">
+        <span id="header-date-time" class="mode-font-color"></span>
+        <span id="logo">
+            <img id="header-logo" src="/img/logo.png" alt="logo_image" />
+        </span>
+        <span id="buttons">
+            <button id="portal-btn" type="button" onclick="window.location.href = '/restaurant-owner-portal.html'">Home</button>
+            <button id="logout-btn" type="button" onclick="logout()">Logout</button>
+        </span>
+    </div>
+
+    <div id="report-frame">
+        <div id="report-header">
+            <span>Visit Frequency Report</span>
+            <select id="report-period">
+                <option value="hourly" selected>Hourly</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+            </select>
+            <input id="report-time" type="date" />
+            <button type="button" onclick="generateReport()">Generate</button>
+        </div>
+
+        <div id="report-graph">
+
+        </div>
+    </div>
+
+    <div id="alert-box">
+        <span id="alert-message"></span>
+        <br />
+        <button class="logout-btn" type="button" onclick="confirm_logout()">Logout</button>
+        <button class="logout-btn" type="button" onclick="cancel_logout()">Cancel</button>
+        <button class="confirm-btn" type="button" onclick="alert_confirm()">Ok</button>
+    </div>
+
+    <script src="/js/report/visit-frequency-report.js"></script>
+    <script src="/js/logoutRestaurantOwner.js"></script>
+    <script src="/js/alert-box.js"></script>
+    <script src="/js/date-time.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+body {
+    background-color: lightgrey;
+}
+
+div#report-frame {
+    display: inline-grid;
+    width: 90%;
+    margin: 1em 0 0 0;
+    padding: 1em;
+    border: 1px solid black;
+    background-color: #FFFFFF;
+}
+
+div#report-header {
+    display: inline-grid;
+    width: 100%;
+    grid-template-columns: 40% 20% 20% 20%;
+}
+
+div#report-header span {
+    font-size: 1.2em;
+    text-align: left;
+}
+
+div#report-header select, div#report-header input {
+    margin: 0 1em 0 1em;
+}
+
+div#report-header button, div#report-graph button{
+    margin: 0 1em 0 1em;
+
+    width: 65%;
+    padding: .3em;
+    border-radius: 9px;
+    background-color: #FFD100;
+    border : 2px #000000 solid;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+div#report-graph button {
+    width: 15%;
+}
+
+div#no-result {
+    width: 70%;
+    margin: 2em 15% 2em 15%;
+    padding: 1.5em 0 1.5em 0;
+    border: 1px solid #000000;
+    border-radius: 25px;
+    background-color: #FFE4C4;
+    font-size: 1.5em;
+}
+
+div#no-result img {
+    margin: 1.5em 0 2.5em 0;
+}

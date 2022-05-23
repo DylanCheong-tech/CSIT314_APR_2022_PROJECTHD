@@ -243,6 +243,78 @@
       <servlet-class>honeyzstar.customer.CustomerMakePaymentC</servlet-class>
    </servlet>
 
+   <!-- Restaurant Owner  -->
+
+   <servlet>
+      <servlet-name>RestaurantOwnerLoginC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerLoginC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerLogoutC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerLogoutC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetHourlyAverageSpendingReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetHourlyAverageSpendingReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetDailyAverageSpendingReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetDailyAverageSpendingReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetWeeklyAverageSpendingReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetWeeklyAverageSpendingReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetMonthlyAverageSpendingReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetMonthlyAverageSpendingReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetHourlyVisitFrequencyReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetHourlyVisitFrequencyReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetDailyVisitFrequencyReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetDailyVisitFrequencyReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetWeeklyVisitFrequencyReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetWeeklyVisitFrequencyReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetMonthlyVisitFrequencyReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetMonthlyVisitFrequencyReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetHourlyMenuPreferencesReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetHourlyMenuPreferencesReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetDailyMenuPreferencesReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetDailyMenuPreferencesReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetWeeklyMenuPreferencesReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetWeeklyMenuPreferencesReportC</servlet-class>
+   </servlet>
+
+   <servlet>
+      <servlet-name>RestaurantOwnerGetMonthlyMenuPreferencesReportC</servlet-name>
+      <servlet-class>honeyzstar.restaurantowner.RestaurantOwnerGetMonthlyMenuPreferencesReportC</servlet-class>
+   </servlet>
+
    <!-- Note: All <servlet> elements MUST be grouped together and
          placed IN FRONT of the <servlet-mapping> elements -->
 
@@ -479,6 +551,78 @@
    <servlet-mapping>
       <servlet-name>CustomerMakePaymentC</servlet-name>
       <url-pattern>/customerMakePayment</url-pattern>
+   </servlet-mapping>
+
+   <!-- Restaurant Owner -->
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerLoginC</servlet-name>
+      <url-pattern>/loginRestaurantOwner</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerLogoutC</servlet-name>
+      <url-pattern>/logoutRestaurantOwner</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetHourlyAverageSpendingReportC</servlet-name>
+      <url-pattern>/getHourlyAverageSpendingReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetDailyAverageSpendingReportC</servlet-name>
+      <url-pattern>/getDailyAverageSpendingReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetWeeklyAverageSpendingReportC</servlet-name>
+      <url-pattern>/getWeeklyAverageSpendingReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetMonthlyAverageSpendingReportC</servlet-name>
+      <url-pattern>/getMonthlyAverageSpendingReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetHourlyVisitFrequencyReportC</servlet-name>
+      <url-pattern>/getHourlyVisitFrequencyReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetDailyVisitFrequencyReportC</servlet-name>
+      <url-pattern>/getDailyVisitFrequencyReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetWeeklyVisitFrequencyReportC</servlet-name>
+      <url-pattern>/getWeeklyVisitFrequencyReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetMonthlyVisitFrequencyReportC</servlet-name>
+      <url-pattern>/getMonthlyVisitFrequencyReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetHourlyMenuPreferencesReportC</servlet-name>
+      <url-pattern>/getHourlyMenuPreferencesReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetDailyMenuPreferencesReportC</servlet-name>
+      <url-pattern>/getDailyMenuPreferencesReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetWeeklyMenuPreferencesReportC</servlet-name>
+      <url-pattern>/getWeeklyMenuPreferencesReport</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>RestaurantOwnerGetMonthlyMenuPreferencesReportC</servlet-name>
+      <url-pattern>/getMonthlyMenuPreferencesReport</url-pattern>
    </servlet-mapping>
 
    <!-- Filter  -->
