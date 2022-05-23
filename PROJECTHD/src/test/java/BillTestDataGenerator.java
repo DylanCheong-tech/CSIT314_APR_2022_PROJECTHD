@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Random;
 
 import honeyzstar.entity.*;
@@ -27,25 +28,34 @@ public class BillTestDataGenerator {
 		
 		String email = "This is my email ";
 		String code = "Coupon";
-		
+		ArrayList<Integer> orderIDArray = new ArrayList<Integer>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		
 		for (int i = 0; i < 100; i++) {
 			Date randomDate = new Date(getRandomTimeBetweenTwoDates());
-			String date = dateFormat.format(randomDate);
 			randomDate.getTime();
+			String date = dateFormat.format(randomDate);
+			
 			
 			
 			
 			Random rn = new Random();
-			int randomOrderID = rn.nextInt(100) + 1 ;
+			int randomOrderID = rn.nextInt(100) + 101 ;
 			int randomCouponID = rn.nextInt(100) + 1 ;
 			int randomCode = rn.nextInt(100) + 1 ;
 			int randomValue = rn.nextInt(2);
 			int randomEmail = rn.nextInt(2);
 			
+			if(!orderIDArray.contains(randomOrderID)) {
+				orderIDArray.add(randomOrderID);
+			}else {
+				do {
+					randomOrderID = rn.nextInt(100) + 101;
+				}while(orderIDArray.contains(randomOrderID));
+			}
+			
 			Order order = new Order();
 			order.setOrderID(randomOrderID);
+			order.getOrder();
 			
 			Coupon coupon = new Coupon();
 			coupon.setCouponID(randomCouponID);
@@ -69,7 +79,7 @@ public class BillTestDataGenerator {
 
 	            PreparedStatement stmt1 = conn.prepareStatement("INSERT INTO BILL (OrderID, CreatedAt) VALUES (?, ?)");
 	            stmt1.setInt(1, bill.getOrder().getOrderID());
-	            stmt1.setString(2, date);
+	            stmt1.setString(2, order.getCreatedAt());
 
 	            stmt1.executeUpdate();
 
@@ -87,6 +97,7 @@ public class BillTestDataGenerator {
 				bill.setEmail(email + String.valueOf(i+1));
 				bill.makePayment(bill.getEmail());
 			}
+		
 		
 		}
 	}

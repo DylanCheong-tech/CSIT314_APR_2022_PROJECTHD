@@ -406,6 +406,10 @@ public class Order {
 	public String getCreatedAt() {
 		return createdAt;
 	}
+	
+	public Account getCreatedBy() {
+		return createdBy;
+	}
 
 	public OrderStatus getStatus() {
 		return status;
