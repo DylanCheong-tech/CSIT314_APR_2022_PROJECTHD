@@ -27,8 +27,8 @@
     <div id="order-button">
         <form action="/customerCreateOrder" method="POST">
             <span class="hide">Please input your table number</span>
-            <input class="hide" id="table-num" type="text" name="tableNum" pattern="[0-9]+" />
-            <img class="hide" src="/img/customer/back-arrow.png" onclick="update_table_number()" />
+            <input class="hide" id="table-num" type="text" name="tableNum" onkeypress="keypressed(event)" required />
+            <img class="hide" src="/img/customer/back-arrow.png" onclick="update_table_number(event)" />
             <button class="show" type="submit">Start Order</button>
         </form>
         

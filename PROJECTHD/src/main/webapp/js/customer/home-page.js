@@ -3,11 +3,12 @@ var table_number;
 function update_table_number() {
     var input = document.getElementById("table-num");
 
-    if (input.validity.patternMismatch || input.value == "") {
+    if (!input.value.match(/[0-9]+/) || input.value == "") {
+        input.setCustomValidity("Please enter a valid table number !");
         input.reportValidity();
-        input.setCustomValidity("Please enter a valid table number !")
     }
     else {
+        input.setCustomValidity("");
         table_number = parseInt(input.value);
         document.querySelectorAll(".hide").forEach((item) => {
             item.style.display = "none";
@@ -15,6 +16,13 @@ function update_table_number() {
         document.querySelectorAll(".show").forEach((item) => {
             item.style.display = "inline-block";
         });
+    }
+}
+
+function keypressed (event) {
+    if (event.keyCode == 13){
+        event.preventDefault();
+        update_table_number();
     }
 }
 
