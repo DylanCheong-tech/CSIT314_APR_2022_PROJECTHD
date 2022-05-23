@@ -23,7 +23,7 @@ function display_menu_items(menu_item_list, category) {
 
             frame.appendChild(span);
         }
-
+        category = "";
     }
 }
 
