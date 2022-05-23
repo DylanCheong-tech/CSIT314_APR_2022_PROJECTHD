@@ -34,7 +34,7 @@ public class StaffViewOrderTest {
     @Test
     public void testViewOrder() throws ServletException, IOException {
         // test data
-        when(request.getQueryString()).thenReturn("orderID=100");
+        when(request.getQueryString()).thenReturn("orderID=15");
 
         StringWriter string_writer = new StringWriter();
         PrintWriter output_writer = new PrintWriter(string_writer);
@@ -48,7 +48,7 @@ public class StaffViewOrderTest {
         verify(response, times(1)).getWriter();
 
         output_writer.flush();
-        assertTrue("Asserting Returning Order Object", string_writer.toString().contains("{\"orderID\":100,\"createdAt\":\"2022-05-12 16:09:23\",\"status\":\"Paid\",\"totalAmount\":61.11,\"tableNum\":40,\"menuItems\":{\"66\":7,\"52\":3,\"63\":4},\"createdBy\":{\"accountID\":17,\"name\":\"Test Account 17\",\"role\":{\"roleID\":3,\"name\":\"Restaurant Owner\",\"descriptions\":\"This is Restaurant Owner\"},\"dateJoined\":\"2022-05-05 02:26:53\",\"username\":\"username17\",\"password\":\"password17\",\"status\":\"Suspended\"}}"));
+        assertTrue("Asserting Returning Order Object", string_writer.toString().contains("{\"orderID\":15,\"createdAt\":\"2022-05-12 16:09:20\",\"status\":\"Created\",\"totalAmount\":23.76,\"tableNum\":4,\"menuItems\":{\"68\":6,\"45\":3},\"createdBy\":{\"accountID\":18,\"name\":\"Test Account 18\",\"role\":{\"roleID\":4,\"name\":\"User Admin\",\"descriptions\":\"This is User Admin\"},\"dateJoined\":\"2022-05-05 02:26:53\",\"username\":\"username18\",\"password\":\"password18\",\"status\":\"Active\"}}"));
 
         
         System.out.println(string_writer.toString());

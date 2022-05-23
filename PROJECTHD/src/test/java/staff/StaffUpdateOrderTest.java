@@ -36,9 +36,9 @@ public class StaffUpdateOrderTest {
     @Test
     public void testUpdateOrder() throws ServletException, IOException {
         // test data
-        when(request.getParameter("orderID")).thenReturn("103");
-        when(request.getParameter("tableNum")).thenReturn("12");
-        when(request.getParameter("menuItems")).thenReturn("{}");
+        when(request.getParameter("orderID")).thenReturn("3");
+        when(request.getParameter("tableNum")).thenReturn("44");
+        when(request.getParameter("menuItems")).thenReturn("{ \"100\" : 2, \"52\" : 2, \"55\" : 3, \"73\" : 2 }");
 
         StaffUpdateOrderC updateOrderServlet = new StaffUpdateOrderC();
         updateOrderServlet.doPost(request, response);

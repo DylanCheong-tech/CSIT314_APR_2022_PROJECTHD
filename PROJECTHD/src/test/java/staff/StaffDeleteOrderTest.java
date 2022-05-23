@@ -35,7 +35,7 @@ public class StaffDeleteOrderTest {
     @Test
     public void testDeleteOrder() throws ServletException, IOException {
         // test data
-        when(request.getParameter("orderID")).thenReturn("103");
+        when(request.getParameter("orderID")).thenReturn("101");
 
         StaffDeleteOrderC deleteOrderServlet = new StaffDeleteOrderC();
         deleteOrderServlet.doPost(request, response);

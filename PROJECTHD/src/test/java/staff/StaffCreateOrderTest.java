@@ -37,8 +37,8 @@ public class StaffCreateOrderTest {
     @Test
     public void testCreateOrder() throws ServletException, IOException {
         // test data
-        when(request.getParameter("tableNum")).thenReturn("12");
-        when(request.getParameter("menuItems")).thenReturn("{}");
+        when(request.getParameter("tableNum")).thenReturn("88");
+        when(request.getParameter("menuItems")).thenReturn("{ \"8\" : 1, \"9\" : 2, \"11\" : 3, \"89\" : 1, \"99\" : 1 }");
 
         when(request.getSession()).thenReturn(this.session);
         when(session.getAttribute("userID")).thenReturn("3");

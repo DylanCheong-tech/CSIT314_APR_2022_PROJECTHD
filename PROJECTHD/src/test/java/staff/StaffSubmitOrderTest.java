@@ -35,7 +35,7 @@ public class StaffSubmitOrderTest {
     @Test
     public void testSubmitOrder() throws ServletException, IOException {
         // test data
-        when(request.getParameter("orderID")).thenReturn("103");
+        when(request.getParameter("orderID")).thenReturn("101");
 
         StaffSubmitOrderC submitOrderServlet = new StaffSubmitOrderC();
         submitOrderServlet.doPost(request, response);
