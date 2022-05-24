@@ -23,7 +23,7 @@ public class OrderTestDataGenerator {
 	private static long getRandomTimeBetweenTwoDates () {
 		long beginTime = Timestamp.valueOf("2020-01-01 10:00:00").getTime();
 
-		long endTime = Timestamp.valueOf("2022-12-31 20:59:59").getTime();
+		long endTime = Timestamp.valueOf("2020-12-31 20:59:59").getTime();
 
 	    long diff = endTime - beginTime + 1;
 	    return beginTime + (long) (Math.random() * diff);
@@ -105,7 +105,7 @@ public class OrderTestDataGenerator {
 								"INSERT INTO ordersmenuitem (OrderID, MenuItemID, Quantity) VALUES (?, ?, ?)");
 
 						stmt2.setInt(1, orderObj.getOrderID());
-						stmt2.setInt(2, i);
+						stmt2.setInt(2, k);
 						stmt2.setInt(3, orderObj.getMenuItems().get(k));
 
 						stmt2.executeUpdate();
@@ -118,8 +118,6 @@ public class OrderTestDataGenerator {
 					stmt3.setInt(2, orderObj.getOrderID());
 					stmt3.executeUpdate();
 				}
-
-				System.out.println("Inserted Successfully");
 
 			} catch (SQLException ex) {
 				ex.printStackTrace();
