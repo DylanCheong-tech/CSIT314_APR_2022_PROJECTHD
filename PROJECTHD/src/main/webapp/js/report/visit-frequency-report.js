@@ -120,6 +120,7 @@ document.getElementById("report-period").onchange = function () {
 
 function clean_graph() {
     svg.selectAll("*").remove();
+    d3.select("#no-result").remove()
 }
 
 function generateReport() {
