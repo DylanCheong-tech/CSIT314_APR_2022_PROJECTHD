@@ -26,13 +26,13 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), AVG(PayableAmount) FROM Bill WHERE YEAR(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(PaidAt), MONTH(PaidAt), AVG(PayableAmount) FROM Bill WHERE YEAR(PaidAt) = ? GROUP BY YEAR(PaidAt), MONTH(PaidAt)");
             stmt.setInt(1, year);
             ResultSet result = stmt.executeQuery();
             
             while (result.next()) {
                 HashMap<String, Object> value_pair = new HashMap<String, Object>();
-                value_pair.put("key", result.getInt("MONTH(CreatedAt)"));
+                value_pair.put("key", result.getInt("MONTH(PaidAt)"));
                 value_pair.put("value", result.getDouble("AVG(PayableAmount)"));
                 returnArray.add(value_pair);
             }
@@ -55,14 +55,14 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), AVG(PayableAmount) FROM Bill WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt), AVG(PayableAmount) FROM Bill WHERE YEAR(PaidAt) = ? AND MONTH(PaidAt) = ? GROUP BY YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt)");
             stmt.setInt(1, year);
             stmt.setInt(2, month);
             ResultSet result = stmt.executeQuery();
             
             while (result.next()) {
                 HashMap<String, Object> value_pair = new HashMap<String, Object>();
-                value_pair.put("key", result.getInt("WEEK(CreatedAt)"));
+                value_pair.put("key", result.getInt("WEEK(PaidAt)"));
                 value_pair.put("value", result.getDouble("AVG(PayableAmount)"));
                 returnArray.add(value_pair);
             }
@@ -85,14 +85,14 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt), AVG(PayableAmount) FROM Bill WHERE YEAR(CreatedAt) = ? AND WEEK(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt), DAY(PaidAt), AVG(PayableAmount) FROM Bill WHERE YEAR(PaidAt) = ? AND WEEK(PaidAt) = ? GROUP BY YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt), DAY(PaidAt)");
             stmt.setInt(1, year);
             stmt.setInt(2, week);
             ResultSet result = stmt.executeQuery();
             
             while (result.next()) {
                 HashMap<String, Object> value_pair = new HashMap<String, Object>();
-                value_pair.put("key", result.getInt("DAY(CreatedAt)"));
+                value_pair.put("key", result.getInt("DAY(PaidAt)"));
                 value_pair.put("value", result.getDouble("AVG(PayableAmount)"));
                 returnArray.add(value_pair);
             }
@@ -115,7 +115,7 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), DAY(CreatedAt), HOUR(CreatedAt), AVG(PayableAmount) FROM Bill WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? AND DAY(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), DAY(CreatedAt), HOUR(CreatedAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(PaidAt), MONTH(PaidAt), DAY(PaidAt), HOUR(PaidAt), AVG(PayableAmount) FROM Bill WHERE YEAR(PaidAt) = ? AND MONTH(PaidAt) = ? AND DAY(PaidAt) = ? GROUP BY YEAR(PaidAt), MONTH(PaidAt), DAY(PaidAt), HOUR(PaidAt)");
             stmt.setInt(1, year);
             stmt.setInt(2, month);
             stmt.setInt(3, day);
@@ -123,7 +123,7 @@ public class Report {
             
             while (result.next()) {
                 HashMap<String, Object> value_pair = new HashMap<String, Object>();
-                value_pair.put("key", result.getInt("HOUR(CreatedAt)"));
+                value_pair.put("key", result.getInt("HOUR(PaidAt)"));
                 value_pair.put("value", result.getDouble("AVG(PayableAmount)"));
                 returnArray.add(value_pair);
             }
