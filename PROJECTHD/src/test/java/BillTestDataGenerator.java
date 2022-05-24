@@ -3,7 +3,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -25,26 +24,26 @@ public class BillTestDataGenerator {
 		paidTime[0] = 30;
 		paidTime[1] = 40;
 		paidTime[2] = 50;
+
+		for (int i = 1; i < 101; i++){
+			orderIDArray.add(i);
+		}
 		
 		for (int i = 0; i < 100; i++) {
 			
 			Random rn = new Random();
-			int randomOrderID = rn.nextInt(100) + 1 ;
 			int randomCouponID = rn.nextInt(100) + 1 ;
 			int randomCode = rn.nextInt(100) + 1 ;
 			int randomValue = rn.nextInt(2);
 			int randomPaidTime = rn.nextInt(3);
-			if(!orderIDArray.contains(randomOrderID)) {
-				orderIDArray.add(randomOrderID);
-			}else {
-				do {
-					randomOrderID = rn.nextInt(100) + 1;
-				}while(orderIDArray.contains(randomOrderID));
-			}
+
+			int randomIndex = rn.nextInt(100 - i);
+			int currentOrderID = orderIDArray.get(randomIndex);
+			orderIDArray.remove((Object) currentOrderID);
 			
 			
 			Order order = new Order();
-			order.setOrderID(randomOrderID);
+			order.setOrderID(currentOrderID);
 			order.getOrder();
 			
 			Coupon coupon = new Coupon();
