@@ -231,7 +231,7 @@ public class Bill {
             stmt.executeUpdate();
 
             stmt = conn.prepareStatement(
-                    "UPDATE Orders SET Status = 'Paid' WHERE OrderID = ?");
+                    "UPDATE Orders SET Status = 'Paid', UpdatedAt = CURRENT_TIMESTAMP WHERE OrderID = ?");
             stmt.setInt(1, this.order.getOrderID());
             stmt.executeUpdate();
 
