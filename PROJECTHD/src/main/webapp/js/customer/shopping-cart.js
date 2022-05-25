@@ -127,7 +127,7 @@ function apply_coupon() {
             promotion.className = "";
             promotion.classList.add(data.responseJSON.status);
 
-            document.getElementById("coupon-message").innerHTML = data.responseJSON.status == "success" ? "Coupon Applied successfully" : "Sorry, this code is not valid.<br />Please check the code and try again";
+            document.getElementById("coupon-message").innerHTML = data.responseJSON.status == "success" ? "Coupon applied successfully" : "Sorry, this code is not valid.<br />Please check the code and try again";
         }
     });
 }
