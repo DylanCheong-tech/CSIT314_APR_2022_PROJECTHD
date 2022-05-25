@@ -55,14 +55,14 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt), AVG(PayableAmount) FROM Bill WHERE YEAR(PaidAt) = ? AND MONTH(PaidAt) = ? GROUP BY YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt, 3), AVG(PayableAmount) FROM Bill WHERE YEAR(PaidAt) = ? AND MONTH(PaidAt) = ? GROUP BY YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt, 3)");
             stmt.setInt(1, year);
             stmt.setInt(2, month);
             ResultSet result = stmt.executeQuery();
             
             while (result.next()) {
                 HashMap<String, Object> value_pair = new HashMap<String, Object>();
-                value_pair.put("key", result.getInt("WEEK(PaidAt)"));
+                value_pair.put("key", result.getInt("WEEK(PaidAt, 3)"));
                 value_pair.put("value", result.getDouble("AVG(PayableAmount)"));
                 returnArray.add(value_pair);
             }
@@ -85,7 +85,7 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt), DAY(PaidAt), AVG(PayableAmount) FROM Bill WHERE YEAR(PaidAt) = ? AND WEEK(PaidAt) = ? GROUP BY YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt), DAY(PaidAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt, 3), DAY(PaidAt), AVG(PayableAmount) FROM Bill WHERE YEAR(PaidAt) = ? AND WEEK(PaidAt, 3) = ? GROUP BY YEAR(PaidAt), MONTH(PaidAt), WEEK(PaidAt, 3), DAY(PaidAt)");
             stmt.setInt(1, year);
             stmt.setInt(2, week);
             ResultSet result = stmt.executeQuery();
@@ -177,14 +177,14 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), COUNT(*) FROM Bill WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), COUNT(*) FROM Bill WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3)");
             stmt.setInt(1, year);
             stmt.setInt(2, month);
             ResultSet result = stmt.executeQuery();
             
             while (result.next()) {
                 HashMap<String, Object> value_pair = new HashMap<String, Object>();
-                value_pair.put("key", result.getInt("WEEK(CreatedAt)"));
+                value_pair.put("key", result.getInt("WEEK(CreatedAt, 3)"));
                 value_pair.put("value", result.getInt("COUNT(*)"));
                 returnArray.add(value_pair);
             }
@@ -207,14 +207,14 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt), COUNT(*) FROM Bill WHERE YEAR(CreatedAt) = ? AND WEEK(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), DAY(CreatedAt), COUNT(*) FROM Bill WHERE YEAR(CreatedAt) = ? AND WEEK(CreatedAt, 3) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), DAY(CreatedAt)");
             stmt.setInt(1, year);
             stmt.setInt(2, week);
             ResultSet result = stmt.executeQuery();
             
             while (result.next()) {
                 HashMap<String, Object> value_pair = new HashMap<String, Object>();
-                value_pair.put("key", result.getInt("WEEK(CreatedAt)"));
+                value_pair.put("key", result.getInt("WEEK(CreatedAt, 3)"));
                 value_pair.put("value", result.getInt("COUNT(*)"));
                 returnArray.add(value_pair);
             }
@@ -237,7 +237,7 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt), HOUR(CreatedAt), COUNT(*) FROM Bill WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? AND DAY(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt), HOUR(CreatedAt)");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), DAY(CreatedAt), HOUR(CreatedAt), COUNT(*) FROM Bill WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? AND DAY(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), DAY(CreatedAt), HOUR(CreatedAt)");
             stmt.setInt(1, year);
             stmt.setInt(2, month);
             stmt.setInt(3, day);
@@ -298,7 +298,7 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), MenuItemID, COUNT(*) FROM Orders JOIN OrdersMenuItem on Orders.OrderID = OrdersMenuItem.OrderID WHERE YEAR(CreatedAt) = ? AND WEEK(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), MenuItemID");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), MenuItemID, COUNT(*) FROM Orders JOIN OrdersMenuItem on Orders.OrderID = OrdersMenuItem.OrderID WHERE YEAR(CreatedAt) = ? AND WEEK(CreatedAt, 3) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), MenuItemID");
             stmt.setInt(1, year);
             stmt.setInt(2, week);
             ResultSet result = stmt.executeQuery();
@@ -327,7 +327,7 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt), MenuItemID, COUNT(*) FROM Orders JOIN OrdersMenuItem on Orders.OrderID = OrdersMenuItem.Orderid WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? AND DAY(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt), MenuItemID");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), DAY(CreatedAt), MenuItemID, COUNT(*) FROM Orders JOIN OrdersMenuItem on Orders.OrderID = OrdersMenuItem.Orderid WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? AND DAY(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), DAY(CreatedAt), MenuItemID");
             stmt.setInt(1, year);
             stmt.setInt(2, month);
             stmt.setInt(3, day);
@@ -357,7 +357,7 @@ public class Report {
 
         ) {
 
-            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt), HOUR(CreatedAt), MenuItemID, COUNT(*) FROM Orders JOIN OrdersMenuItem on Orders.OrderID = OrdersMenuItem.Orderid WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? AND DAY(CreatedAt) = ? AND HOUR(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt), DAY(CreatedAt), HOUR(CreatedAt), MenuItemID");
+            PreparedStatement stmt = conn.prepareStatement("SELECT YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), DAY(CreatedAt), HOUR(CreatedAt), MenuItemID, COUNT(*) FROM Orders JOIN OrdersMenuItem on Orders.OrderID = OrdersMenuItem.Orderid WHERE YEAR(CreatedAt) = ? AND MONTH(CreatedAt) = ? AND DAY(CreatedAt) = ? AND HOUR(CreatedAt) = ? GROUP BY YEAR(CreatedAt), MONTH(CreatedAt), WEEK(CreatedAt, 3), DAY(CreatedAt), HOUR(CreatedAt), MenuItemID");
             stmt.setInt(1, year);
             stmt.setInt(2, month);
             stmt.setInt(3, day);
