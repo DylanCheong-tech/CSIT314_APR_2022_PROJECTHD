@@ -63,7 +63,7 @@ public class BillTestDataGenerator {
 			String stringDate = formatter.format(dateTime);
 			
 			LocalDateTime dateTime2 = LocalDateTime.parse(order.getCreatedAt(), formatter);
-			dateTime = dateTime2.plusMinutes(paidTime[randomUpdatedTime]);
+			dateTime = dateTime2.plusMinutes(updatedTime[randomUpdatedTime]);
 			String stringDate2 = formatter.format(dateTime);
 			
 			try (
