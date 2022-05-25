@@ -2,7 +2,11 @@ function display_menu_items(menu_item_list, category) {
     var frame = document.getElementById("menu-items-frame");
 
     for (index in menu_item_list) {
-        if (!category) category = menu_item_list[index].type;
+        var no_category = false;
+        if (!category) {
+            no_category = true;
+            category = menu_item_list[index].type;
+        }
         if (menu_item_list[index].type == category && menu_item_list[index].status == "Available") {
             var span = document.createElement("span");
             span.classList.add("menu-item");
@@ -23,7 +27,8 @@ function display_menu_items(menu_item_list, category) {
 
             frame.appendChild(span);
         }
-        category = "";
+
+        if (no_category) category = "";
     }
 }
 
