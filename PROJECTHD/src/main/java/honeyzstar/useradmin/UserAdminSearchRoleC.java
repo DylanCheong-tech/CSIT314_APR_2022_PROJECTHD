@@ -17,11 +17,14 @@ public class UserAdminSearchRoleC extends HttpServlet {
         // replacing the query string <space> encoded value if any
         String name = request.getQueryString().split("=")[1].replaceAll("%20", " ");
 
-        Role resultRole = new Role(name);
-        resultRole.searchRole();
-
         try {
-            out.println(new Gson().toJson(resultRole));
+
+            Role resultRole = new Role(name);
+            if (resultRole.searchRole() == null) {
+                out.println(new Gson().toJson(null));
+            } else {
+                out.println(new Gson().toJson(resultRole));
+            }
 
         } finally {
             out.close();

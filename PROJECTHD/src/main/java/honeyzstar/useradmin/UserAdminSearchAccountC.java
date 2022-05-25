@@ -19,9 +19,12 @@ public class UserAdminSearchAccountC extends HttpServlet {
             String name = request.getQueryString().split("=")[1].replaceAll("%20", " ");
 
             Account resultAcc = new Account(name);
-            resultAcc.searchAccount();
-
-            out.println(new Gson().toJson(resultAcc));
+            
+            if (resultAcc.searchAccount() == null){
+                out.println(new Gson().toJson(null));
+            }else {
+                out.println(new Gson().toJson(resultAcc));
+            }
 
         } finally {
             out.close();

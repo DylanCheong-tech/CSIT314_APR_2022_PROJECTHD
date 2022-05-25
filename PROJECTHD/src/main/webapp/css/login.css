@@ -11,6 +11,10 @@ div:nth-child(2) {
     margin: 5em 0 0 0;
 }
 
+div#header {
+    background-color: #FFD100;
+}
+
 div#header img {
     width: 8%;
 }
@@ -22,20 +26,17 @@ div#login-div {
 }
 
 div#login-div div#image-frame {
-    width: 430%;
+    width: 100%;
     height: fit-content;
     position: absolute;
-    left: -1%;
     text-align: left;
     transition: all 4s;
 }
 
 div#login-div img.background-image{
     display: inline-block;
-    width: 24%;
     opacity: 80%;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
+    width: 100%;
 }
 
 div#login-div form {

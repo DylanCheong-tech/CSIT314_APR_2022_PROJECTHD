@@ -11,6 +11,7 @@ img_reader.addEventListener('load', () => {
     document.getElementById("image-preview").src = img_data_url;
     document.getElementById("hidden-image-data-url").value = img_data_url;
     document.getElementById("submit-btn").disabled = false;
+    document.getElementById("image-drop").style.backgroundColor = "rgb(113, 255, 124, 0.6)";
 });
 
 function compress_image (file){
