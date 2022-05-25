@@ -101,7 +101,6 @@ public class BillTestDataGenerator {
 			
 			
 			
-			
 			bill.setEmail(emailStart + String.valueOf(i+1) + emailEnd);
 			
 			try (
@@ -126,12 +125,7 @@ public class BillTestDataGenerator {
 
 	        } catch (SQLException ex) {
 	            ex.printStackTrace();
-	        }
-			
-			//bill.makePayment(bill.getEmail());
-		
-		
-			
+	        }	
 		}
 	}
 }
