@@ -24,7 +24,12 @@ public class BillTestDataGenerator {
 		paidTime[0] = 30;
 		paidTime[1] = 40;
 		paidTime[2] = 50;
-
+		
+		int[] updatedTime = new int[3];
+		updatedTime[0] = 5;
+		updatedTime[1] = 10;
+		updatedTime[2] = 15;
+		
 		for (int i = 1; i < 101; i++){
 			orderIDArray.add(i);
 		}
@@ -36,7 +41,8 @@ public class BillTestDataGenerator {
 			int randomCode = rn.nextInt(100) + 1 ;
 			int randomValue = rn.nextInt(2);
 			int randomPaidTime = rn.nextInt(3);
-
+			int randomUpdatedTime = rn.nextInt(3);
+			
 			int randomIndex = rn.nextInt(100 - i);
 			int currentOrderID = orderIDArray.get(randomIndex);
 			orderIDArray.remove((Object) currentOrderID);
@@ -55,6 +61,10 @@ public class BillTestDataGenerator {
 			LocalDateTime dateTime = LocalDateTime.parse(order.getCreatedAt(), formatter);
 			dateTime = dateTime.plusMinutes(paidTime[randomPaidTime]);
 			String stringDate = formatter.format(dateTime);
+			
+			LocalDateTime dateTime2 = LocalDateTime.parse(order.getCreatedAt(), formatter);
+			dateTime = dateTime2.plusMinutes(paidTime[randomUpdatedTime]);
+			String stringDate2 = formatter.format(dateTime);
 			
 			try (
 
@@ -88,8 +98,37 @@ public class BillTestDataGenerator {
 			bill = bill.getBill();
 			
 			
+			
+			
+			
+			
 			bill.setEmail(emailStart + String.valueOf(i+1) + emailEnd);
-			bill.makePayment(bill.getEmail());
+			
+			try (
+
+	                Connection conn = DriverManager.getConnection(
+	                        connStr, dbusername, dbpassword);
+
+	        ) {
+
+	            PreparedStatement stmt = conn.prepareStatement(
+	                    "UPDATE Bill SET Email = ?, Status = 'Paid' WHERE BillID = ?");
+	            stmt.setString(1, bill.getEmail());
+	            stmt.setInt(2, bill.getBillID());
+	            stmt.executeUpdate();
+
+	            stmt = conn.prepareStatement(
+	                    "UPDATE Orders SET Status = 'Paid', UpdatedAt = ? WHERE OrderID = ?");
+	            stmt.setString(1, stringDate2);
+	            stmt.setInt(2, bill.getOrder().getOrderID());
+	            stmt.executeUpdate();
+
+
+	        } catch (SQLException ex) {
+	            ex.printStackTrace();
+	        }
+			
+			//bill.makePayment(bill.getEmail());
 		
 		
 			
