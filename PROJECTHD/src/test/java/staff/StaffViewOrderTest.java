@@ -48,7 +48,7 @@ public class StaffViewOrderTest {
         verify(response, times(1)).getWriter();
 
         output_writer.flush();
-        assertTrue("Asserting Returning Order Object", string_writer.toString().contains("{\"orderID\":15,\"createdAt\":\"2022-05-12 16:09:20\",\"status\":\"Created\",\"totalAmount\":23.76,\"tableNum\":4,\"menuItems\":{\"68\":6,\"45\":3},\"createdBy\":{\"accountID\":18,\"name\":\"Test Account 18\",\"role\":{\"roleID\":4,\"name\":\"User Admin\",\"descriptions\":\"This is User Admin\"},\"dateJoined\":\"2022-05-05 02:26:53\",\"username\":\"username18\",\"password\":\"password18\",\"status\":\"Active\"}}"));
+        assertTrue("Asserting Returning Order Object", string_writer.toString().contains("{\"orderID\":15,\"createdAt\":\"2020-04-29 01:58:46\",\"updatedAt\":\"2020-04-29 02:03:46\",\"status\":\"Paid\",\"totalAmount\":294.5,\"tableNum\":48,\"menuItems\":{\"96\":10,\"5\":2,\"8\":8,\"77\":6,\"45\":10,\"13\":7},\"createdBy\":{\"accountID\":9,\"name\":\"Test Account 9\",\"role\":{\"roleID\":2,\"name\":\"Staff\",\"descriptions\":\"This is Staff\"},\"dateJoined\":\"2022-05-05 02:26:53\",\"username\":\"username9\",\"password\":\"password9\",\"status\":\"Active\"}}"));
 
         
         System.out.println(string_writer.toString());

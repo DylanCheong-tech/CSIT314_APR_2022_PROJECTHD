@@ -26,6 +26,7 @@ public class MenuItemTest {
     	this.testMenuItem.setPrice(5.4);
     	this.testMenuItem.setStatus(MenuItemStatus.Available);
     	this.testMenuItem.setDescriptions("this is a menu item");
+        this.testMenuItem.setImageDataURL("imageDataURL");
     	
     	assertTrue("Test Restaurant Manager Create Menu Item", this.testMenuItem.createMenuItem());
     }
@@ -33,11 +34,6 @@ public class MenuItemTest {
     @Test
     public void testDeleteMenuItem (){
     	this.testMenuItem.setMenuItemID(99);
-    	this.testMenuItem.setName("testname1");
-    	this.testMenuItem.setType(MenuItemType.MainCourse);
-    	this.testMenuItem.setPrice(5.3);
-    	this.testMenuItem.setStatus(MenuItemStatus.Available);
-    	this.testMenuItem.setDescriptions("this is a test menu item");
     	
         assertTrue("Test Restaurant Manager Delete Menu Item", this.testMenuItem.deleteMenuItem());
     }

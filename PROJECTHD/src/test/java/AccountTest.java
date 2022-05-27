@@ -22,7 +22,6 @@ public class AccountTest {
 
     @Test
     public void testCreateAccount (){
-        // this.testAccount.setID(1);
         this.testAccount.setName("Test Create Account");
         this.testAccount.setUsername("testcreateusername");
         this.testAccount.setPassword("testcreatepassword");
@@ -50,7 +49,7 @@ public class AccountTest {
     @Test
     public void testSearchAccount (){
         Account searchAccount = (new Account("Test Update Account")).searchAccount();
-        Account expectedAccount = new Account(20, "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-04-30 20:44:56", "testupdateusername", "testupdatepassword", "Suspended");
+        Account expectedAccount = new Account(20, "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-05-05 02:26:53", "testupdateusername", "testupdatepassword", "Active");
 
         assertEquals("Test User Admin Search Account", expectedAccount, searchAccount);
     }
@@ -58,7 +57,7 @@ public class AccountTest {
     @Test 
     public void testGetAccount (){
         Account viewAccount = (new Account(20)).getAccount();
-        Account expectedAccount = new Account(20, "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-04-30 20:44:56", "testupdateusername", "testupdatepassword", "Suspended");
+        Account expectedAccount = new Account(20, "Test Update Account", new Role(3, "Restaurant Owner", "This is Restaurant Owner"), "2022-05-05 02:26:53", "testupdateusername", "testupdatepassword", "Active");
 
         assertEquals("Test User Admin View Account", expectedAccount, viewAccount);
     }
