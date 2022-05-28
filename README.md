@@ -50,7 +50,7 @@ The name of the restaurant is Honeyz Star, which is a Korean fast-food restauran
 mvn -f ./PROJECTHD tomcat7:run
 ```
 After the server code is started, head over to your any browser and accees the application with the following address:
-[http://localhost:9000/login](http://localhost:9000/login)
+[http://localhost:9000/login.html](http://localhost:9000/login.html)
 
 
 Last Updated On : 28th May 2022
