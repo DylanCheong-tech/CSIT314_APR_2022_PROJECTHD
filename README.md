@@ -46,11 +46,12 @@ The name of the restaurant is Honeyz Star, which is a Korean fast-food restauran
 1. Maven Project Manager 
 
 ## Application Startup
+1. Start the database and setup or load in the data if neccessary (as the SQL scripts provided)
+2. Run the following command on terminal with maven in the project directory
 ```
 mvn -f ./PROJECTHD tomcat7:run
 ```
-After the server code is started, head over to your any browser and accees the application with the following address:
+3. After the server code is started, head over to your any browser and accees the application with the following address:
 [http://localhost:9000/login.html](http://localhost:9000/login.html)
 
-
-Last Updated On : 28th May 2022
+#### Last Updated On : 28th May 2022
