@@ -1,7 +1,7 @@
 # CSIT314_APR_2022_PROJECTHD
 UOW Bachelor of Computer Science (Big Data) - Software Development Methodologies's Project
 
-This is a project whick adopting the Agile Software Development Methodology. It takes 5 sprints (each sprint per week) to be done all the deliverables.
+This is a project which adopting the Agile Software Development Methodology. It takes 5 sprints (each sprint per week) to be done all the deliverables.
 
 Group member:
 1. Cheong Wai Hong (@DylanCheong-tech)
@@ -13,7 +13,7 @@ Group member:
 7. Johan Heng
 
 ## Overview 
-In this project, the team is tasked to design and develop a contactless table ordering system that provides a platform for customers to order food and drinks from a restaurant’s digital menu. The customers will be able to make payment directly using the system that can run on their phone, or computer. They will enter a unique code that is available at each table to access the system to make their orders. 
+In this project, the team is asked to design and develop a contactless table ordering system that provides a platform for customers to order food and drinks from a restaurant’s digital menu. The customers will be able to make payment directly using the system that can run on their phone, or computer. They will enter a unique code that is available at each table to access the system to make their orders. 
 
 The name of the restaurant is Honeyz Star, which is a Korean fast-food restaurant that specializes in selling fried chicken. Honeyz Star’s Contactless Ordering System supports different user profiles including customers and restaurant employees and employers. For each role, there are different system requirements as each role has different objectives in the system.
 
